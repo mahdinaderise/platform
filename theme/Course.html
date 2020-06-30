@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> لیست وظیفه ها </title>
+<!-- Style -->
+    <link rel="stylesheet" href="vendors/select2/css/select2.min.css" type="text/css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/media/image/favicon.png"/>
+
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="vendors/bundle.css" type="text/css">
+
+    <!-- Datepicker -->
+    <link rel="stylesheet" href="vendors/datepicker/daterangepicker.css">
+    <link rel="stylesheet" href="assets/Datepiker/persian-datepicker.css">
+
+    
+    <!-- Fullcalendar -->
+    <link rel="stylesheet" href="vendors/fullcalendar/fullcalendar.min.css" type="text/css">
+	<link href='assets/Cal/fullcalendar.css' rel='stylesheet' />
+    <link href='assets/Cal/fullcalendar.print.css' rel='stylesheet' media='print' />
+    
+    <!-- Vmap -->
+    <link rel="stylesheet" href="vendors/vmap/jqvmap.min.css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="assets/css/app.min.css" type="text/css">
+</head>
+<body>
+
+<!-- begin::preloader-->
+<div class="preloader">
+    <div class="preloader-icon"></div>
+</div>
+<!-- end::preloader -->
+
+<!-- begin::header -->
+<div class="header">
+
+    <div>
+        <ul class="navbar-nav">
+
+            <!-- begin::navigation-toggler -->
+            <li class="nav-item navigation-toggler">
+                <a href="#" class="nav-link" title="Hide navigation">
+                    <i data-feather="arrow-left"></i>
+                </a>
+            </li>
+            <li class="nav-item navigation-toggler mobile-toggler">
+                <a href="#" class="nav-link" title="Show navigation">
+                    <i data-feather="menu"></i>
+                </a>
+            </li>
+            <!-- end::navigation-toggler -->
+
+            <li class="nav-item">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ایجاد</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="#" class="dropdown-item">دانش آموز</a>
+                    <a href="#" class="dropdown-item">گزارش</a>
+                </div>
+            </li>
+         
+        </ul>
+    </div>
+
+    <div>
+        <ul class="navbar-nav">
+
+           
+            <!-- begin::header search -->
+            <li class="nav-item">
+                <a href="#" class="nav-link" title="جست‌و‌جو" data-toggle="dropdown">
+                    <i data-feather="search"></i>
+                </a>
+                <div class="dropdown-menu p-2 dropdown-menu-right">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="جستجو">
+                            <div class="input-group-prepend">
+                                <button class="btn" type="button">
+                                    <i data-feather="search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <!-- end::header search -->
+
+            <!-- begin::header minimize/maximize -->
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link" title="تمام صفحه" data-toggle="fullscreen">
+                    <i class="maximize" data-feather="maximize"></i>
+                    <i class="minimize" data-feather="minimize"></i>
+                </a>
+            </li>
+            <!-- end::header minimize/maximize -->
+
+            <!-- begin::header messages dropdown -->
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link nav-link-notify" title="گفت‌گوها" data-toggle="dropdown">
+                    <i data-feather="message-circle"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-left dropdown-menu-big">
+                    <div class="p-4 text-center d-flex justify-content-between"
+                         data-backround-image="assets/media/image/image1.jpg">
+                        <h6 class="mb-0">گفت‌گوها</h6>
+                        <small class="font-size-11 opacity-7">2 گفت‌گو خوانده نشده</small>
+                    </div>
+                    <div>
+                        <ul class="list-group list-group-flush">
+                            <li>
+                                <a href="#" class="list-group-item d-flex hide-show-toggler">
+                                    <div>
+                                        <figure class="avatar avatar-sm m-r-15">
+                                            <img src="assets/media/image/user/man_avatar1.jpg"
+                                                 class="rounded-circle" alt="user">
+                                        </figure>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 line-height-20 d-flex justify-content-between">
+                                           علی احمدی
+                                            <i title="Mark as read" data-toggle="tooltip"
+                                               class="hide-show-toggler-item fa fa-circle-o font-size-11"></i>
+                                        </p>
+                                        <div class="small text-muted">
+                                            <span class="mr-2">02:30 بعدازظهر</span>
+                                            <span>آخرین تغییر رو کامیت کردم</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   class="list-group-item d-flex align-items-center hide-show-toggler">
+                                    <div>
+                                        <figure class="avatar avatar-sm m-r-15">
+                                            <img src="assets/media/image/user/women_avatar5.jpg"
+                                                 class="rounded-circle" alt="user">
+                                        </figure>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 line-height-20 d-flex justify-content-between">
+                                            صنم صفایی
+                                            <i title="Mark as read" data-toggle="tooltip"
+                                               class="hide-show-toggler-item fa fa-circle-o font-size-11"></i>
+                                        </p>
+                                        <div class="small text-muted">
+                                            <span class="mr-2">08:36 بعدازظهر</span>
+                                            <span>فایل نهایی ارسال شد؟</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="text-divider small pb-2 pl-3 pt-3">
+                                <span>گفت‌گوهای قدیمی</span>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   class="list-group-item d-flex align-items-center hide-show-toggler">
+                                    <div>
+                                        <figure class="avatar avatar-sm m-r-15">
+                                            <img src="assets/media/image/user/man_avatar3.jpg"
+                                                 class="rounded-circle" alt="user">
+                                        </figure>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 line-height-20 d-flex justify-content-between">
+                                            احمد رضایی
+                                            <i title="Mark as unread" data-toggle="tooltip"
+                                               class="hide-show-toggler-item fa fa-check font-size-11"></i>
+                                        </p>
+                                        <div class="small text-muted">
+                                            <span class="mr-2">11:09 بعدازظهر</span>
+                                            <span>آخرین تغییر رو کامیت کردم</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="list-group-item d-flex hide-show-toggler">
+                                    <div>
+                                        <figure class="avatar avatar-sm m-r-15">
+                                            <img src="assets/media/image/user/man_avatar2.jpg"
+                                                 class="rounded-circle" alt="user">
+                                        </figure>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 line-height-20 d-flex justify-content-between">
+                                            الهه جم
+                                            <i title="Mark as unread" data-toggle="tooltip"
+                                               class="hide-show-toggler-item fa fa-check font-size-11"></i>
+                                        </p>
+                                        <div class="small text-muted">
+                                            <span class="mr-2">دیروز</span>
+                                            <span>فایل نهایی ارسال شد؟</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   class="list-group-item d-flex align-items-center hide-show-toggler">
+                                    <div>
+                                        <figure class="avatar avatar-sm m-r-15">
+                                            <img src="assets/media/image/user/women_avatar1.jpg"
+                                                 class="rounded-circle" alt="user">
+                                        </figure>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 line-height-20 d-flex justify-content-between">
+                                            نیلوفر فروهر
+                                            <i title="Mark as unread" data-toggle="tooltip"
+                                               class="hide-show-toggler-item fa fa-check font-size-11"></i>
+                                        </p>
+                                        <div class="small text-muted">
+                                            <span class="mr-2">دیروز</span>
+                                            <span>فایل نهایی ارسال شد؟</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="p-2 text-right">
+                        <ul class="list-inline small">
+                            <li class="list-inline-item">
+                                <a href="#">علامتگذاری به عنوان خوانده شده</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <!-- end::header messages dropdown -->
+
+            <!-- begin::header notification dropdown -->
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link nav-link-notify" title="اطلاعیه‌ها" data-toggle="dropdown">
+                    <i data-feather="bell"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-left dropdown-menu-big">
+                    <div class="p-4 text-center d-flex justify-content-between"
+                         data-backround-image="assets/media/image/image1.jpg">
+                        <h6 class="mb-0">اطلاعیه‌ها</h6>
+                        <small class="font-size-11 opacity-7">1 اطلاعیه خوانده نشده</small>
+                    </div>
+                    <div>
+                        <ul class="list-group list-group-flush">
+                            <li>
+                                <a href="#" class="list-group-item d-flex hide-show-toggler">
+                                    <div>
+                                        <figure class="avatar avatar-sm m-r-15">
+                                                <span class="avatar-title bg-success-bright text-success rounded-circle">
+                                                    <i class="ti-user"></i>
+                                                </span>
+                                        </figure>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 line-height-20 d-flex justify-content-between">
+                                            ثبت نام خریدار جدید
+                                            <i title="Mark as read" data-toggle="tooltip"
+                                               class="hide-show-toggler-item fa fa-circle-o font-size-11"></i>
+                                        </p>
+                                        <span class="text-muted small">20 دقیقه قبل</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="text-divider small pb-2 pl-3 pt-3">
+                                <span>اطلاعیه‌های قبلی</span>
+                            </li>
+                            <li>
+                                <a href="#" class="list-group-item d-flex hide-show-toggler">
+                                    <div>
+                                        <figure class="avatar avatar-sm m-r-15">
+                                                <span class="avatar-title bg-warning-bright text-warning rounded-circle">
+                                                    <i class="ti-package"></i>
+                                                </span>
+                                        </figure>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 line-height-20 d-flex justify-content-between">
+                                           سفارش جدید دریافت شد
+                                            <i title="Mark as unread" data-toggle="tooltip"
+                                               class="hide-show-toggler-item fa fa-check font-size-11"></i>
+                                        </p>
+                                        <span class="text-muted small">45 ثانیه قبل</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   class="list-group-item d-flex align-items-center hide-show-toggler">
+                                    <div>
+                                        <figure class="avatar avatar-sm m-r-15">
+                                                <span class="avatar-title bg-danger-bright text-danger rounded-circle">
+                                                    <i class="ti-server"></i>
+                                                </span>
+                                        </figure>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 line-height-20 d-flex justify-content-between">
+                                           به سقف مجاز سرور نزدیک شده اید
+                                            <i title="Mark as unread" data-toggle="tooltip"
+                                               class="hide-show-toggler-item fa fa-check font-size-11"></i>
+                                        </p>
+                                        <span class="text-muted small">55 ثانیه قبل</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   class="list-group-item d-flex align-items-center hide-show-toggler">
+                                    <div>
+                                        <figure class="avatar avatar-sm m-r-15">
+                                                <span class="avatar-title bg-info-bright text-info rounded-circle">
+                                                    <i class="ti-layers"></i>
+                                                </span>
+                                        </figure>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="mb-0 line-height-20 d-flex justify-content-between">
+                                            اپ های دارای بروزسانی
+                                            <i title="Mark as unread" data-toggle="tooltip"
+                                               class="hide-show-toggler-item fa fa-check font-size-11"></i>
+                                        </p>
+                                        <span class="text-muted small">دیروز</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="p-2 text-right">
+                        <ul class="list-inline small">
+                            <li class="list-inline-item">
+                                <a href="#">علامتگذاری به عنوان خوانده شده</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <!-- end::header notification dropdown -->
+
+            <!-- begin::user menu -->
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link" title="User menu" data-toggle="dropdown">
+                    <i data-feather="settings"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-left dropdown-menu-big">
+                    <div class="p-4 text-center d-flex justify-content-between"
+                         data-backround-image="assets/media/image/image1.jpg">
+                        <h6 class="mb-0">تنظیمات</h6>
+                    </div>
+                    <div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                                    <label class="custom-control-label" for="customSwitch1">مجوز ارسال اطلاعیه</label>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                    <label class="custom-control-label" for="customSwitch2">پنهان کردن درخواست ها</label>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch3" checked>
+                                    <label class="custom-control-label" for="customSwitch3">افزایش سرعت انجام دستورات</label>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch4" checked>
+                                    <label class="custom-control-label" for="customSwitch4">پنهان کردن منو</label>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch5">
+                                    <label class="custom-control-label" for="customSwitch5">به خاطرسپاری بازدید</label>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch6">
+                                    <label class="custom-control-label" for="customSwitch6">فعالسازی تولید گزارش خودکار</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <!-- end::user menu -->
+        </ul>
+
+        <!-- begin::mobile header toggler -->
+        <ul class="navbar-nav d-flex align-items-center">
+            <li class="nav-item header-toggler">
+                <a href="#" class="nav-link">
+                    <i data-feather="arrow-down"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- end::mobile header toggler -->
+    </div>
+
+</div>
+<!-- end::header -->
+
+<!-- begin::main -->
+<div id="main">
+
+    <!-- begin::navigation -->
+    <div class="navigation">
+
+        <div class="navigation-menu-tab">
+            <div>
+                <div class="navigation-menu-tab-header" data-toggle="tooltip" title="مهدی نظری" data-placement="right">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
+                        <figure class="avatar avatar-sm">
+                            <img src="assets/media/image/user/man_avatar5.jpg" class="rounded-circle" alt="avatar">
+                        </figure>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left dropdown-menu-big">
+                        <div class="p-3 text-center" data-backround-image="assets/media/image/image1.jpg">
+                            <figure class="avatar mb-3">
+                                <img src="assets/media/image/user/man_avatar5.jpg" class="rounded-circle" alt="image">
+                            </figure>
+                            <h6 class="d-flex align-items-center justify-content-center">
+
+                                مهدی نظری                                
+                                <a href="#" class="btn btn-primary btn-sm ml-2" data-toggle="tooltip" title="ویرایش پروفایل">
+                                    <i data-feather="edit-2"></i>
+                                </a>
+                            </h6>
+                            <small>شارژ: <strong>1000 تومان</strong></small>
+                        </div>
+                        <div class="dropdown-menu-body">
+                            <div class="border-bottom p-4">
+                                <h6 class="text-uppercase font-size-11 d-flex justify-content-between">
+                                   حافظه
+                                    <span>%25</span>
+                                </h6>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 35%;"
+                                         aria-valuenow="35"
+                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item">پروفایل</a>
+                                <a href="#" class="list-group-item d-flex">
+                                    دنبال‌کنندگان<span class="text-muted ml-auto">214</span>
+                                </a>
+                                <a href="#" class="list-group-item d-flex">
+                                    صندوق ورودی <span class="text-muted ml-auto">18</span>
+                                </a>
+                                <a href="#" class="list-group-item" data-sidebar-target="#settings">صورتحساب</a>
+                                <a href="#" class="list-group-item" data-sidebar-target="#settings">راهنمایی?</a>
+                                <a href="#" class="list-group-item text-danger" data-sidebar-target="#settings">خروج</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-grow-1">
+                <ul>
+                    <li>
+                        <a class="active" href="#" data-toggle="tooltip" data-placement="right" title="داشبرد"
+                           data-nav-target="#dashboards">
+                            <i data-feather="bar-chart-2"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="بلاگ" data-nav-target="#apps">
+                            <i data-feather="command"></i>
+                        </a>
+                    </li>
+                   
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="تنظیمات">
+                            <i data-feather="settings"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.html" data-toggle="tooltip" data-placement="right" title="خروج">
+                            <i data-feather="log-out"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- begin::navigation menu -->
+        <div class="navigation-menu-body">
+
+            <!-- begin::navigation-logo -->
+            <!-- <div>
+                <div id="navigation-logo">
+                    <a href="index.html">
+                        <img class="logo" src="assets/media/image/logo-F.png" alt="logo">
+                        <img class="logo-light" src="assets/media/image/logo-light.png" alt="light logo">
+                    </a>
+                </div>
+            </div> -->
+            <!-- end::navigation-logo -->
+
+            <div class="navigation-menu-group">
+
+                <div class="open" id="dashboards">
+                    <ul>
+                        <li class="navigation-divider">داشبردها</li>
+                        <li><a href="index.html"> داشبرد</a></li>
+                        <li><a href="Tasks.html">لیست Task</a></li>
+                        <li><a class="active"  href="dashboard-four.html">لیست دانش آموزان</a></li>
+                        <li><a href="dashboard-five.html">مدیریت مالی</a></li>
+                        <li class="navigation-divider">آخرین دانش آموزان</li>
+                        <li>
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item d-flex align-items-center">
+                                    <div>
+                                        <div class="avatar avatar-sm m-r-10">
+                                            <img src="assets/media/image/user/man_avatar1.jpg" class="rounded-circle" alt="image">
+                                        </div>
+                                    </div>
+                                    <span>علی احمدی</span>
+                                </a>
+                                <a href="#" class="list-group-item d-flex align-items-center">
+                                    <div>
+                                        <div class="avatar avatar-sm m-r-10">
+                                            <img src="assets/media/image/user/man_avatar2.jpg" class="rounded-circle" alt="image">
+                                        </div>
+                                    </div>
+                                    <span> محمد رحیمی</span>
+                                </a>
+                                <a href="#" class="list-group-item d-flex align-items-center">
+                                    <div>
+                                        <div class="avatar avatar-sm m-r-10">
+                                            <img src="assets/media/image/user/man_avatar3.jpg" class="rounded-circle" alt="image">
+                                        </div>
+                                    </div>
+                                    <span>کریم محمدی</span>
+                                </a>
+                            </div>
+                        </li>
+                       
+                    </ul>
+                </div>
+                 <div id="apps">
+                    <ul>
+                        <li class="navigation-divider">وبلاگ</li>
+                        <li>
+                            <a href="#">
+                                <span>ارسال پست جدید</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>نمایش پست های من</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>نمایش تمام پست ها</span>
+                                <span class="badge badge-danger">5</span>
+                            </a>
+                        </li>
+                     
+                    </ul>
+                </div> 
+         
+            </div>
+        </div>
+        <!-- end::navigation menu -->
+
+    </div>
+    <!-- end::navigation -->
+
+    <!-- begin::main-content -->
+ <div class="main-content">
+
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="container-fluid d-sm-flex justify-content-between">
+                <h4>لیست وظیفه</h4>
+                <nav aria-label="breadcrumb">
+                    <!-- <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">داشبرد</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page"></li>
+                    </ol>
+                </nav> -->
+            </div>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <button type="button" class="btn btn-success btn-uppercase" data-toggle="modal" data-target="#exampleModal">
+                <i class="ti-check-box mr-2"></i>  ایجاد وظیفه
+              </button>
+           
+              <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                         <h5 class="">ایجاد وظیفه</h5> 
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <div>
+                            <p style="margin-bottom: 2px;">انتخاب دانشجو : </p>
+                            <select class="select2-example">
+                                <option>انتخاب دانشجو</option>
+                                <option value="France">علی کریمی</option>
+                                <option value="Brazil">حسین یعقوبی</option>
+                                <option value="Yemen">حسن احمدی</option>
+                                <option value="United States">کامران تفتی</option>
+                                <option value="China">محسن شاهمرادی</option>
+                                <option value="Argentina">علی حجتی</option>
+                                <option value="Bulgaria">محسن داریوشی</option>
+                              </select>
+                        </div>
+                        <p style="margin-bottom: 2px;">انتخاب درس : </p>
+                        <div>
+                            <select class="select2-example">
+                                <option>انتخاب درس</option>
+                                <option value="France">داده کاوی </option>
+                                <option value="Brazil">ریاضی مهندسی </option>
+                                <option value="Yemen">آمار  و احتمالات </option>
+                                <option value="United States">فیزیک </option>
+                                <option value="China">علوم </option>
+                                <option value="Argentina">شیمی </option>
+                                <option value="Bulgaria">نرم افزار  مهندسی </option>
+                              </select>
+                        </div>
+                        <div class="form-group wd-xs-300">
+                            <label class="form-control-label">نام موضوع :</label>
+                            <input id="state" class="form-control" name="name_state">
+                            <div class="valid-feedback">
+                                عالی!
+                            </div>
+                        </div>
+                    </form>
+                </section>
+             
+
+                <h3>شرح توضیحات</h3>
+                <section class="card card-body border mb-0">
+                    <h5>شرح توضیحات</h5>
+                    <p>دکمه های بعدی و قبلی به شما کمک می کند تا از طریق محتوای خود حرکت کنید.</p>
+                </section>
+            </div>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                      <button type="button" class="btn btn-primary">اعمال تغییرات</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-hover bg-white text-center">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">نام وظیفه</th>
+                      <th scope="col">توضیحات وظیفه </th>
+                      <th scope="col">لیست افراد</th>
+                      <th scope="col">مدیریت</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>وظیفه یک</td>
+                      <td>توضیحات یک</td>
+                      <td><a href="#">نمایش</a></td>
+                      <td>
+                        <button type="button" class="btn btn-primary"  title="ویرایش" data-toggle="tooltip" data-placement="bottom">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                <!-- مودال ویرایش اطلاعات -->
+
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>وظیفه دو</td>
+                      <td>توضیحات دو</td>
+                      <td><a href="#">نمایش</a></td>
+                      <td>
+                        <a href="#">ویرایش</a>|
+                        <a href="#">حذف</a>|
+                        <a href="#">جزئیات</a>
+                    </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>وظیفه سه</td>
+                      <td>توضیحات سه</td>
+                      <td><a href="#">نمایش</a></td>
+                      <td>
+                        <a href="#">ویرایش</a>|
+                        <a href="#">حذف</a>|
+                        <a href="#">جزئیات</a>
+                    </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+
+ </div>
+    <!-- end::main-content -->
+
+</div>
+<!-- end::main -->
+
+<!-- Plugin scripts -->
+<script src="vendors/bundle.js"></script>
+
+<!-- Chartjs -->
+<script src="vendors/charts/chartjs/chart.min.js"></script>
+
+<!-- Apex chart -->
+<script src="vendors/charts/apex/apexcharts.min.js"></script>
+
+<!-- Circle progress -->
+<script src="vendors/circle-progress/circle-progress.min.js"></script>
+
+<!-- Peity -->
+<script src="vendors/charts/peity/jquery.peity.min.js"></script>
+<script src="assets/js/examples/charts/peity.js"></script>
+
+<!-- Datepicker -->
+<script src="vendors/datepicker/daterangepicker.js"></script>
+<script src="assets/Datepiker/persian-datepicker.js"></script>
+<script src="vendors/datepicker/bootstrap-datepicker.fa.min.js"></script>
+
+
+<!-- Slick -->
+<script src="vendors/slick/slick.min.js"></script>
+
+<!-- Javascript -->
+<script src="vendors/select2/js/select2.min.js"></script>
+
+<!-- Vamp -->
+<script src="vendors/vmap/jquery.vmap.min.js"></script>
+<script src="vendors/vmap/maps/jquery.vmap.usa.js"></script>
+<script src="assets/js/examples/vmap.js"></script>
+
+
+<!-- a -->
+<script src='assets/Cal/moment.js'></script>
+<script src='assets/Cal/moment-jalaali.js'></script>
+<script src='assets/Cal/fullcalendar.js'></script>
+<script src='assets/Cal/fa.js'></script>
+
+<script>
+    $('.select2-example').select2({
+    placeholder: 'Select'
+});
+</script>
+<!-- Dashboard scripts -->
+<script src="assets/js/examples/dashboard.js"></script>
+<div class="colors"> <!-- To use theme colors with Javascript -->
+    <div class="bg-primary"></div>
+    <div class="bg-primary-bright"></div>
+    <div class="bg-secondary"></div>
+    <div class="bg-secondary-bright"></div>
+    <div class="bg-info"></div>
+    <div class="bg-info-bright"></div>
+    <div class="bg-success"></div>
+    <div class="bg-success-bright"></div>
+    <div class="bg-danger"></div>
+    <div class="bg-danger-bright"></div>
+    <div class="bg-warning"></div>
+    <div class="bg-warning-bright"></div>
+</div>
+
+
+<!-- App scripts -->
+<script src="assets/js/app.min.js"></script>
+</body>
+
+</html>
