@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> لیست دانش آموزان </title>
+    <title> لیست دانش آموزان  </title>
+<!-- Style -->
+    <link rel="stylesheet" href="vendors/select2/css/select2.min.css" type="text/css">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/media/image/favicon.png"/>
@@ -602,100 +604,88 @@
         </div>
     </div>
     <div class="container-fluid">
-        
-              <div style="margin-bottom: 20px;">
-                <button type="button" class="btn btn-success btn-uppercase" data-toggle="modal" data-target="#exampleModal">
-                    <i class="ti-check-box mr-2"></i>  ایجاد دانش آموز
-                  </button>
-               
-                  <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                             <h5 class=""> ایجاد دانش آموز</h5> 
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                          </button>
-                        </div>
-                        
-                        <div class="modal-body">
-                            
-                            <form>
-                            <div class="form-group wd-xs-300">
-                                <label class="form-control-label">نام :</label>
-                                <input id="state" class="form-control" name="name_state">
-                                <div class="valid-feedback">
-                                    عالی!
-                                </div>
-                            </div>
-                            <div class="form-group wd-xs-300">
-                                <label class="form-control-label">نام خانوادگی:</label>
-                                <input id="state" class="form-control" name="name_state">
-                                <div class="valid-feedback">
-                                    عالی!
-                                </div>
-                            </div>
-                            <div class="form-group wd-xs-300">
-                                <label class="form-control-label"> Email:</label>
-                                <input id="state" class="form-control" name="name_state">
-                                <div class="valid-feedback">
-                                    عالی!
-                                </div>
-                            </div>
-                            <div>
-                                <p style="margin-bottom: 2px;">انتخاب پایه : </p>
-                                <select class="select2-example">
-                                    <option>پایه را انتخاب کنید</option>
-                                    <option value="1">اول</option>
-                                    <option value="2">دوم</option>
-                                    <option value="3">سوم</option>
-                                    <option value="4">چهارم</option>
-                                    <option value="5">پنجم</option>
-                                    <option value="6">ششم</option>
-                                    <option value="7">هفتم</option>
-                                  </select>
-                            </div>
-                        </form>
-                    </section>
-                 
-    
+       
+        <div style="margin-bottom: 20px;">
+            <button type="button" class="btn btn-success btn-uppercase" data-toggle="modal" data-target="#exampleModal">
+                <i class="ti-check-box mr-2"></i>  ایجاد دانش آموز
+              </button>
+           
+              <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                         <h5 class="">ایجاد دانش آموز</h5> 
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
                     
-                </div>
-                          
+                    <div class="modal-body">
+                        <div>
+                            <label style="margin-bottom: 2px;">نام دانشجو : </label><em style="color: red;"></em>
+                            <input class="form-control" type="text" placeholder=" به طور مثال: علی">
+                            <label style="margin-bottom: 2px;">نام خانوادگی دانشجو : </label><em style="color: red;"></em>
+                            <input class="form-control" type="text" placeholder=" به طور مثال: کریمی">
+                            <label style="margin-bottom: 2px;"> کد ملی  </label><em style="color: red;"></em>
+                            <input class="form-control" type="text" placeholder="*******127">
+
                         </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
-                          <button type="button" class="btn btn-primary">اعمال تغییرات</button>
+                        <p style="margin-bottom: 2px;">انتخاب درس : </p>
+                        <div>
+                            <select class="select2-example">
+                                <option>انتخاب پایه</option>
+                                <option value="France">پایه اول  </option>
+                                <option value="Brazil">پایه دوم  </option>
+                                <option value="Yemen">  پایه سوم  </option>
+                                <option value="United States">پایه چهارم </option>
+                                <option value="China">پایه پنجم </option>
+                                <option value="Argentina">پایه ششم </option>
+                                <option value="Bulgaria">پایه هفتم</option>
+                              </select>
                         </div>
-                      </div>
+                        <div class="form-group wd-xs-300">
+                            <div class="valid-feedback">
+                                عالی!
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                      <button type="button" class="btn btn-primary">اعمال تغییرات</button>
                     </div>
                   </div>
-
+                </div>
+              </div>
+        </div>
         <div class="row">
             <div class="table-responsive">
                 <table class="table table-hover bg-white text-center">
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">نام</th>
-                      <th scope="col">نام خانوادگی</th>
-                      <th scope="col">شناسه</th>
+                      <th scope="col">نام وظیفه</th>
+                      <th scope="col">توضیحات وظیفه </th>
+                      <th scope="col">لیست افراد</th>
                       <th scope="col">مدیریت</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <th scope="row">1</th>
-                      <td>علی</td>
-                      <td>احمدی</td>
-                      <td>@mdo</td>
+                      <td>وظیفه یک</td>
+                      <td>توضیحات یک</td>
+                      <td><a href="#">نمایش</a></td>
                       <td>
                         <button type="button" class="btn btn-primary"  title="ویرایش" data-toggle="tooltip" data-placement="bottom">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 <!-- مودال ویرایش اطلاعات -->
 
                         </button>
-                        <button type="button" class="btn btn-primary" title="حذف" data-toggle="tooltip" data-placement="bottom">
+                        <button type="button" class="btn btn-primary"  title="حذف" data-toggle="tooltip" data-placement="bottom">
                             <i class="fa fa-times" aria-hidden="true"></i>
                         </button>
                         <button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom"  style="padding-right: 20px; padding-left: 20px;">
@@ -705,9 +695,9 @@
                     </tr>
                     <tr>
                       <th scope="row">2</th>
-                      <td>محمد</td>
-                      <td>محمدی</td>
-                      <td>@fat</td>
+                      <td>وظیفه دو</td>
+                      <td>توضیحات دو</td>
+                      <td><a href="#">نمایش</a></td>
                       <td>
                         <button type="button" class="btn btn-primary"  title="ویرایش" data-toggle="tooltip" data-placement="bottom">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -717,16 +707,16 @@
                         <button type="button" class="btn btn-primary" title="حذف" data-toggle="tooltip" data-placement="bottom">
                             <i class="fa fa-times" aria-hidden="true"></i>
                         </button>
-                        <button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom"  style="padding-right: 20px; padding-left: 20px;">
+                        <button type="button" class="btn btn-primary"  title="جزئیات" data-toggle="tooltip" data-placement="bottom"  style="padding-right: 20px; padding-left: 20px;">
                             <i class="fa fa-info" aria-hidden="true"></i>
                         </button>
                     </td>
                     </tr>
                     <tr>
                       <th scope="row">3</th>
-                      <td>لیلا</td>
-                      <td>پرنده</td>
-                      <td>@twitter</td>
+                      <td>وظیفه سه</td>
+                      <td>توضیحات سه</td>
+                      <td><a href="#">نمایش</a></td>
                       <td>
                         <button type="button" class="btn btn-primary"  title="ویرایش" data-toggle="tooltip" data-placement="bottom">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -778,6 +768,9 @@
 <!-- Slick -->
 <script src="vendors/slick/slick.min.js"></script>
 
+<!-- Javascript -->
+<script src="vendors/select2/js/select2.min.js"></script>
+
 <!-- Vamp -->
 <script src="vendors/vmap/jquery.vmap.min.js"></script>
 <script src="vendors/vmap/maps/jquery.vmap.usa.js"></script>
@@ -790,7 +783,11 @@
 <script src='assets/Cal/fullcalendar.js'></script>
 <script src='assets/Cal/fa.js'></script>
 
-
+<script>
+    $('.select2-example').select2({
+    placeholder: 'Select'
+});
+</script>
 <!-- Dashboard scripts -->
 <script src="assets/js/examples/dashboard.js"></script>
 <div class="colors"> <!-- To use theme colors with Javascript -->
