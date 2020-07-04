@@ -394,9 +394,6 @@
         <!-- begin::navigation menu -->
         <div class="navigation-menu-body">
 
-            
-            
-            
             <!-- begin::navigation-logo -->
             <!-- <div>
                 <div id="navigation-logo">
@@ -475,118 +472,114 @@
  <div class="main-content">
     <div class="page-header">
     <div class="container-fluid d-sm-flex justify-content-between">
-        <h4>  لیست وظیفه های من </h4>
+        <h4>  لیست درس های من </h4>
     </div> </div>
     
         <!-- اینجا ساخته شود -->
 
 <div class="container-fluid">
     <div class="container-fluid d-sm-flex justify-content-between">
-        <h4> وظیفه ها </h4></div>
+        <h4> درس ها </h4></div>
+    <div style="margin-bottom: 20px;">
+        
+       
+          <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                     <h5 class="">ایجاد وظیفه</h5> 
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                
+                <div class="modal-body">
+                    <div>
+                        <p style="margin-bottom: 2px;"> دانشجو : </p>
+                        <select class="select2-example">
+                            <option>انتخاب دانشجو</option>
+                            <option value="France">علی کریمی</option>
+                            <option value="Brazil">حسین یعقوبی</option>
+                            <option value="Yemen">حسن احمدی</option>
+                            <option value="United States">کامران تفتی</option>
+                            <option value="China">محسن شاهمرادی</option>
+                            <option value="Argentina">علی حجتی</option>
+                            <option value="Bulgaria">محسن داریوشی</option>
+                          </select>
+                    </div>
+                    <p style="margin-bottom: 2px;"> درس : </p>
+                    <div>
+                        <select class="select2-example">
+                            <option>انتخاب درس</option>
+                            <option value="France">داده کاوی </option>
+                            <option value="Brazil">ریاضی مهندسی </option>
+                            <option value="Yemen">آمار  و احتمالات </option>
+                            <option value="United States">فیزیک </option>
+                            <option value="China">علوم </option>
+                            <option value="Argentina">شیمی </option>
+                            <option value="Bulgaria">نرم افزار  مهندسی </option>
+                          </select>
+                    </div>
+                    <div class="form-group wd-xs-300">
+                        <label class="form-control-label">نام موضوع :</label>
+                        <input id="state" class="form-control" name="name_state">
+                        <div class="valid-feedback">
+                            عالی!
+                        </div>
+                    </div>
+                </form>
+            </section>
+         
 
+<!-- Textarea -->
+        <div class="form-group">
+             <label for="exampleFormControlTextarea1"> شرح توضیحات</label>
+             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+
+        </div>
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                  <button type="button" class="btn btn-primary">اعمال تغییرات</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row">
             <div class="table-responsive">
                 <table class="table table-hover bg-white text-center">
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">نام وظیفه</th>
-                      <th scope="col">شرح </th>
-                      <th scope="col">تاریخ</th>
-                      <th scope="col">عملیات</th>
+                      <th scope="col">نام درس</th>
+                      <th scope="col">کد درس </th>
+                      <th scope="col">تعداد وظیفه درس</th>
+                      <th scope="col">نمایش درس</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <th scope="row">1</th>
-                      <td>وظیفه یک</td>
-                      <td>توضیحات یک</td>
-                      <td><a href="#">11/12/1398</a></td>
-                      <td>
-                        <button type="button" class="btn btn-primary"  title="انجام" data-toggle="modal" data-target="#exampleModal">
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                <!-- مودال ویرایش اطلاعات -->
-                                
-
-                        </button>
-                        <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                     <h5 class="">ایجاد درس</h5> 
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                  </button>
-                                </div>
-                                
-                                <div class="modal-body">
-                                    <div>
-                                        <label class="form-control-label">نام درس :</label>
-                                        <input id="state" class="form-control" name="name_state">
-                                    </div>
-                                    <div class="form-group wd-xs-300">
-              
-                                        <div class="valid-feedback">
-                                            عالی!
-                                        </div>
-                                    </div>
-                                </form>
-                            </section>
-                         
-            
-            <!-- Textarea -->
-                        <div class="form-group">
-                             <label for="exampleFormControlTextarea1"> شرح توضیحات</label>
-                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-              
-                        </div>
-                                  
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
-                                  <button type="button" class="btn btn-primary">اعمال تغییرات</button>
-                                </div>
-                              </div>
-                            </div>
-                        <button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom"  style="padding-right: 20px; padding-left: 20px;">
-                            <i class="fa fa-info" aria-hidden="true"></i>
-                        </button>
-                      </td>
+                      <td>درس یک</td>
+                      <td> 1234</td>
+                      <td>1</td>
+                 <td><a href="#">نمایش</a></td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
-                      <td>وظیفه دو</td>
-                      <td>توضیحات دو</td>
-                      <td><a href="#">1/10/1398</a></td>
-                      <td>
-                        <button type="button" class="btn btn-primary"  title="انجام" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                <!-- مودال ویرایش اطلاعات -->
-
-                        </button>
-
-                        <button type="button" class="btn btn-primary"  title="جزئیات" data-toggle="tooltip" data-placement="bottom"  style="padding-right: 20px; padding-left: 20px;">
-                            <i class="fa fa-info" aria-hidden="true"></i>
-                        </button>
-                    </td>
+                      <td>دس دو</td>
+                      <td> 4567</td>
+                      <td>2</td>
+                      <td><a href="#">نمایش</a></td>
                     </tr>
                     <tr>
                       <th scope="row">3</th>
-                      <td>وظیفه سه</td>
-                      <td>توضیحات سه</td>
-                      <td><a href="#">5/2/1399</a></td>
-                      <td>
-                        <button type="button" class="btn btn-primary"  title="انجام" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                <!-- مودال ویرایش اطلاعات -->
-
-                        </button>
-
-                        <button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom"  style="padding-right: 20px; padding-left: 20px;">
-                            <i class="fa fa-info" aria-hidden="true"></i>
-                        </button>
-                    </td>
+                      <td>درس سه</td>
+                      <td> 8912</td>
+                      <td>5</td>
+                 <td><a href="#">نمایش</a></td>
                     </tr>
                   </tbody>
                 </table>
