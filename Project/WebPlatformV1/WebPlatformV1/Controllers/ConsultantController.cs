@@ -16,5 +16,9 @@ namespace WebPlatformV1.Controllers
         {
             return View();
         }
+        public IActionResult paymanagment()
+        {
+            return View();
+        }
     }
 }
