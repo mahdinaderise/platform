@@ -1,25 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "xfutFwLdh9x30tsnpMrBsIWxySuCWnmHgKGstkh85UYGYTne1oXOuiClv90l72d4pjASpPQTBYl/MIsdPHxdVg==",
-  "success": true,
-  "projectFilePath": "E:\\Naderi\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.1.5\\microsoft.aspnetcore.mvc.razor.extensions.3.1.5.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.1.5\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.1.5.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.5\\microsoft.aspnetcore.razor.language.3.1.5.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\2.9.3\\microsoft.codeanalysis.analyzers.2.9.3.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\microsoft.codeanalysis.common\\3.3.0\\microsoft.codeanalysis.common.3.3.0.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\microsoft.codeanalysis.csharp\\3.3.0\\microsoft.codeanalysis.csharp.3.3.0.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\microsoft.codeanalysis.razor\\3.1.5\\microsoft.codeanalysis.razor.3.1.5.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\microsoft.extensions.dependencymodel\\3.1.5\\microsoft.extensions.dependencymodel.3.1.5.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections.immutable\\1.5.0\\system.collections.immutable.1.5.0.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
-    "C:\\Users\\aragrp.com\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.3\\system.threading.tasks.extensions.4.5.3.nupkg.sha512"
-  ],
-  "logs": []
+  "dgSpecHash": "sh2uL8st70vXDvO0RSNYVD9wPlmQJB5sGrXprCooZxtVaKBmcX5zisETOcbrXdOlxAh6wbAidPADM2tY9UBcZg==",
+  "success": false,
+  "projectFilePath": "C:\\gitp\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation. No packages exist with this id in source(s): Microsoft Visual Studio Offline Packages",
+      "libraryId": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }
