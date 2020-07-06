@@ -788,3 +788,9 @@ C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Web
 C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.pdb
 C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.genruntimeconfig.cache
 C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\blog.cshtml.g.cs
+C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\Course.cshtml.g.cs
+C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\invoice.cshtml.g.cs
+C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\list_t_s.cshtml.g.cs
+C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\paymanagment.cshtml.g.cs
+C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\students.cshtml.g.cs
+C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\Tasks.cshtml.g.cs
