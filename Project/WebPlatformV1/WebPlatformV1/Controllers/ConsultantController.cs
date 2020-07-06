@@ -16,5 +16,29 @@ namespace WebPlatformV1.Controllers
         {
             return View();
         }
+        public IActionResult Course()
+        {
+            return View();
+        }
+        public IActionResult invoice()
+        {
+            return View();
+        }
+        public IActionResult list_t_s()
+        {
+            return View();
+        }
+        public IActionResult paymanagment()
+        {
+            return View();
+        }
+        public IActionResult students()
+        {
+            return View();
+        }
+        public IActionResult Tasks()
+        {
+            return View();
+        }
     }
 }
