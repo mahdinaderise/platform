@@ -794,3 +794,8 @@ C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Raz
 C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\paymanagment.cshtml.g.cs
 C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\students.cshtml.g.cs
 C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\Tasks.cshtml.g.cs
+C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Students\course.cshtml.g.cs
+C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Students\ido.cshtml.g.cs
+C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Students\index.cshtml.g.cs
+C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Students\studenttask.cshtml.g.cs
+C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Students\students.cshtml.g.cs
