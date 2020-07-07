@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewData["Title"] = "invoice";
+    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
+}
+
+<div class="main-content">
+
+    <div class="container-fluid">
+        <!-- اینجا ساخته شود -->
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-body p-50">
+                        <div class="invoice">
+                            <div class="d-md-flex justify-content-between align-items-center">
+                                <h2 class="font-weight-800 d-flex align-items-center">
+                                </h2>
+                                <h3 class="text-xs-left m-b-0">صورتحساب #INV-16</h3>
+                            </div>
+                            <hr class="m-t-b-50">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>
+                                        <b>قالب مدیریتی بورداش</b>
+                                    </p>
+                                    <p>اصفهان,<br>جلفا ,<br>پلاک 1</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="text-right">
+                                        <b>صورتحساب به </b>
+                                    </p>
+                                    <p class="text-right">اصفهان &amp; ولیعصر,<br> کوچه یک<br> پلاک 125</p>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table mb-4 mt-4">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>توضیحات</th>
+                                            <th class="text-right">روز</th>
+                                            <th class="text-right">قیمت هر واحد</th>
+                                            <th class="text-right">جمع کل</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="text-right">
+                                            <td class="text-right">1</td>
+                                            <td class="text-right">تعرفه</td>
+                                            <td>60</td>
+                                            <td> 50,000</td>
+                                            <td> 3,000,000</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-left">
+                                <p>بهای کل بدون مالیات:  3,000,000  </p>
+                                <p>مالیات (10%) : 300,000</p>
+                                <h4 class="font-weight-800">کل : 3,300,000</h4>
+                            </div>
+                            <p class="text-center small text-muted  m-t-50">
+                                <span class="row">
+                                    <span class="col-md-12 offset-3">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                                    </span>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="text-left d-print-none">
+                            <hr class="mb-5 mt-5">
+                            <a href="#" class="btn btn-primary">
+                                <i data-feather="send" class="mr-2"></i>پرداخت صورتحساب
+                            </a>
+                            <a href="javascript:window.print()" class="btn btn-success m-l-5">
+                                <i data-feather="printer" class="mr-2"></i> پرینت
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- end::main-content -->
+
+</div>
