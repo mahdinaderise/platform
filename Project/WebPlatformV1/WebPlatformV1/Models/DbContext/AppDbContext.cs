@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace WebPlatformV1.Models.DbContext
 {
     public class AppDbContext : IdentityDbContext
     {
+        public string Name { get; set; }
+        public string Family { get; set; }
+        public int NationlCode { get; set; }
+        public int Tell { get; set; }
+        public string State { get; set; }
         public AppDbContext(DbContextOptions dbContextOptions)
        : base(dbContextOptions)
         {
@@ -17,22 +23,41 @@ namespace WebPlatformV1.Models.DbContext
 
 
     }
-    public class Tbl_Blog
+    public class StudentOfCansultant
     {[Key]
+        public int ID { get; set; }
+        public AppDbContext IDCansultant { get; set; }
+        public AppDbContext IDStudent { get; set; }
+    }
+    public class Tbl_Blog
+    {
+        [Key]
         public int ID { get; set; }
         public int IDConsultant { get; set; }
         public int IDAttach { get; set; }
         public string Note { get; set; }
+        public AppDbContext Cansultant { get; set; }
+        public List<Tbl_Attach> tbl_Attaches { get; set; }
     }
-    public class Tbl_Consultant
+    public class Tbl_Attach
     {
         [Key]
-        public int IDConsultant { get; set; }
-        public string NameConsultant { get; set; }
-        public string FamilyConsultant { get; set; }
-        public int NationlCode { get; set; }
-        public int Tell { get; set; }
+        public int IDAttach { get; set; }
+        public string Link { get; set; }
+        public string Type { get; set; }
+        public Tbl_Blog blog { get; set; }
     }
+    //public class Tbl_Consultant: IdentityUser
+    //{
+    //    [Key]
+    //    public int IDConsultant { get; set; }
+    //    public string NameConsultant { get; set; }
+    //    public string FamilyConsultant { get; set; }
+    //    public int NationlCode { get; set; }
+    //    public int Tell { get; set; }
+    //    public Tbl_Blog blog { get; set; }
+
+    //}
     public class Tbl_Course
     {
         [Key]
@@ -75,22 +100,22 @@ namespace WebPlatformV1.Models.DbContext
         public string link { get; set; }
         public string type { get; set; }
     }
-    public class Tbl_Student
-    {
-        [Key]
-        public int IDStudent { get; set; }
-        [Required]
-        public string NameStudent { get; set; }
-        [Required]
-        public string FamilyStudent { get; set; }
-        [Required]
-        public int NationalCode { get; set; }
-        [Required]
-        public string State { get; set; }
-        public int Tell { get; set; }
-        [Required]
-        public string Address { get; set; }
-    }
+    //public class Tbl_Student: IdentityUser
+    //{
+    //    [Key]
+    //    public int IDStudent { get; set; }
+    //    [Required]
+    //    public string NameStudent { get; set; }
+    //    [Required]
+    //    public string FamilyStudent { get; set; }
+    //    [Required]
+    //    public int NationalCode { get; set; }
+    //    [Required]
+    //    public string State { get; set; }
+    //    public int Tell { get; set; }
+    //    [Required]
+    //    public string Address { get; set; }
+    //}
     public class Tbl_Tasks
     {
         [Key]
@@ -100,6 +125,10 @@ namespace WebPlatformV1.Models.DbContext
         public int IDido { get; set; }
         public string NameTasks { get; set; }
         public DateTime SendDelivery { get; set; }
+        public AppDbContext Cansultant { get; set; }
+        public AppDbContext Student { get; set; }
+
+
     }
     public class Tbl_AddPanel
     {
