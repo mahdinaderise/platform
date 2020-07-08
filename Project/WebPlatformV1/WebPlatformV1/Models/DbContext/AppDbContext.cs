@@ -21,13 +21,13 @@ namespace WebPlatformV1.Models.DbContext
 
         }
 
-
+        public DbSet<StudentOfCansultant> studentOfCansultants { get; set; }
     }
     public class StudentOfCansultant
     {[Key]
         public int ID { get; set; }
-        public AppDbContext IDCansultant { get; set; }
-        public AppDbContext IDStudent { get; set; }
+        public int IDStudent { get; set; }
+        public virtual AppDbContext IDCansultant { get; set; }
     }
     public class Tbl_Blog
     {
