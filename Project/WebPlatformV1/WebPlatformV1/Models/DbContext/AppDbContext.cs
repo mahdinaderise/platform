@@ -8,13 +8,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace WebPlatformV1.Models.DbContext
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
-        public string Name { get; set; }
-        public string Family { get; set; }
-        public int NationlCode { get; set; }
-        public int Tell { get; set; }
-        public string State { get; set; }
+       
         public AppDbContext(DbContextOptions dbContextOptions)
        : base(dbContextOptions)
         {
@@ -27,7 +23,7 @@ namespace WebPlatformV1.Models.DbContext
     {[Key]
         public int ID { get; set; }
         public int IDStudent { get; set; }
-        public virtual AppDbContext IDCansultant { get; set; }
+        public virtual ApplicationUser IDCansultant { get; set; }
     }
     public class Tbl_Blog
     {
