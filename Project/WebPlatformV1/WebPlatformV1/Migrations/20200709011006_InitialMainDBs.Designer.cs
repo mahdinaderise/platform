@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200709011006_InitialMainDBs")]
+    partial class InitialMainDBs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -369,15 +371,10 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Tbl_TasksIDTasks")
-                        .HasColumnType("int");
-
                     b.Property<int>("TimeStudy")
                         .HasColumnType("int");
 
                     b.HasKey("IDdo");
-
-                    b.HasIndex("Tbl_TasksIDTasks");
 
                     b.ToTable("tbl_Dos");
                 });
@@ -585,13 +582,6 @@ namespace WebPlatformV1.Migrations
                     b.HasOne("WebPlatformV1.Models.ApplicationUser", "Cansultant")
                         .WithMany()
                         .HasForeignKey("CansultantId");
-                });
-
-            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Do", b =>
-                {
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Tasks", "Tbl_Tasks")
-                        .WithMany()
-                        .HasForeignKey("Tbl_TasksIDTasks");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_FinnialManegment", b =>

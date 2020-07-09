@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -8,22 +9,41 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace WebPlatformV1.Models.DbContext
 {
+
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
-       
+
         public AppDbContext(DbContextOptions dbContextOptions)
        : base(dbContextOptions)
         {
 
         }
+  
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
 
+            }
         public DbSet<StudentOfCansultant> studentOfCansultants { get; set; }
+        public DbSet<Tbl_AddPanel> tbl_AddPanels { get; set; }
+        public DbSet<Tbl_Attach> tbl_Attaches { get; set; }
+        public DbSet<Tbl_Blog> tbl_Blogs { get; set; }
+        public DbSet<Tbl_Course> tbl_Courses { get; set; }
+        public DbSet<Tbl_Do> tbl_Dos { get; set; }
+        public DbSet<Tbl_FinnialManegment> tbl_FinnialManegments { get; set; }
+        public DbSet<Tbl_Headline> tbl_Headlines { get; set; }
+        public DbSet<Tbl_Tasks> tbl_Tasks { get; set; }
+        public DbSet<Tbl_TasksCourse> tbl_TasksCourses { get; set;}
+
     }
     public class StudentOfCansultant
     {[Key]
         public int ID { get; set; }
-        public int IDStudent { get; set; }
-        public virtual ApplicationUser IDCansultant { get; set; }
+        [MaxLength(450)]
+        //public string IDStudent { get; set; }
+        public virtual ApplicationUser Cansultant { get; set; }
+        public virtual ApplicationUser Student { get; set; }
+
     }
     public class Tbl_Blog
     {
@@ -32,7 +52,7 @@ namespace WebPlatformV1.Models.DbContext
         public int IDConsultant { get; set; }
         public int IDAttach { get; set; }
         public string Note { get; set; }
-        public AppDbContext Cansultant { get; set; }
+        public ApplicationUser Cansultant { get; set; }
         public List<Tbl_Attach> tbl_Attaches { get; set; }
     }
     public class Tbl_Attach
@@ -59,6 +79,9 @@ namespace WebPlatformV1.Models.DbContext
         [Key]
         public int IDCourse { get; set; }
         public string NameCourse { get; set; }
+        public string grade { get; set; }
+        public List<Tbl_Headline> tbl_Headlines{ get; set; }
+        public IList<Tbl_TasksCourse> Tbl_TasksCourses { get; set; }
     }
     public class Tbl_Do
     {
@@ -71,6 +94,7 @@ namespace WebPlatformV1.Models.DbContext
         public int CountTest { get; set; }
         [Required]
         public int TimeStudy { get; set; }
+        public virtual Tbl_Tasks Tbl_Tasks { get; set; }
     }
     public class Tbl_FinnialManegment
     {
@@ -80,6 +104,7 @@ namespace WebPlatformV1.Models.DbContext
         public int NumReceipt { get; set; }
         public int DatePayment { get; set; }
         public string State { get; set; }
+        public ApplicationUser Student { get; set; }
     }
     public class Tbl_Headline
     {
@@ -89,13 +114,13 @@ namespace WebPlatformV1.Models.DbContext
         [Required]
         public string HeadlineName { get; set; }
     }
-    public class Tbl_SendFileConsultant
-    {
-        [Key]
-        public int IDAttach { get; set; }
-        public string link { get; set; }
-        public string type { get; set; }
-    }
+    //public class Tbl_SendFileConsultant
+    //{
+    //    [Key]
+    //    public int IDAttach { get; set; }
+    //    public string link { get; set; }
+    //    public string type { get; set; }
+    //}
     //public class Tbl_Student: IdentityUser
     //{
     //    [Key]
@@ -121,8 +146,9 @@ namespace WebPlatformV1.Models.DbContext
         public int IDido { get; set; }
         public string NameTasks { get; set; }
         public DateTime SendDelivery { get; set; }
-        public AppDbContext Cansultant { get; set; }
-        public AppDbContext Student { get; set; }
+        public IList<Tbl_TasksCourse> Tbl_TasksCourses { get; set; }
+        public ApplicationUser Cansultant { get; set; }
+        public ApplicationUser Student { get; set; }
 
 
     }
@@ -136,13 +162,19 @@ namespace WebPlatformV1.Models.DbContext
         public int Date { get; set; }
         [Required]
         public int Price { get; set; }
+        public ApplicationUser Cansultant { get; set; }
+        public ApplicationUser Student { get; set; }
 
     }
     public class Tbl_TasksCourse
-    {
-        [Key]
-        public int IDTasksCourse { get; set; }
+    {[Key]
+        public int ID { get; set; }
+
         public int IDCourse { get; set; }
+
         public int IDTasks { get; set; }
+
+        public virtual Tbl_Course course { get; set; }
+        public virtual Tbl_Tasks tasks { get; set; }
     }
 }
