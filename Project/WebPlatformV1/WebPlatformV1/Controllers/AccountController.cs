@@ -14,7 +14,7 @@ namespace WebPlatformV1.Controllers
     {
         private readonly UserManager<ApplicationUsers> _userManager;
         private readonly SignInManager<ApplicationUsers> _signInManager;
-
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public AccountController(UserManager<ApplicationUsers> userManager, SignInManager<ApplicationUsers> signInManager)
         {
@@ -22,14 +22,24 @@ namespace WebPlatformV1.Controllers
             _signInManager = signInManager;
         }
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult RegisterConsultant()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> RegisterConsultant(RegisterViewModel model)
+
         {
-            if (ModelState.IsValid)
+            bool x = await _roleManager.RoleExistsAsync("Consultant");
+            if (!x)
+            {
+                // first we create Admin rool    
+                var role = new IdentityRole();
+                role.Name = "Consultant";
+                await _roleManager.CreateAsync(role);
+            }
+
+                if (ModelState.IsValid)
             {
                 var user = new ApplicationUsers()
                 {
@@ -44,6 +54,7 @@ namespace WebPlatformV1.Controllers
 
                 if (result.Succeeded)
                 {
+                    var result1 = await _userManager.AddToRoleAsync(user, "Consultant");
                     return RedirectToAction("Index", "Home");
                 }
 
