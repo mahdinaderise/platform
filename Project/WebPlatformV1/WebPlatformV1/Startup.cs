@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1
@@ -27,12 +28,12 @@ namespace WebPlatformV1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContextPool<AppDbContext>(options =>
+            services.AddDbContextPool<MainDBContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("SqlServer"));
             });
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppDbContext>()
+            services.AddIdentity<ApplicationUsers, IdentityRole>()
+                .AddEntityFrameworkStores<MainDBContext>()
                 .AddDefaultTokenProviders();
         }
 

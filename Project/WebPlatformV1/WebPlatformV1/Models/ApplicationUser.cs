@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WebPlatformV1.Models
 {
-    public class ApplicationUser:IdentityUser
+    public class ApplicationUsers:IdentityUser
     {
         public string Name { get; set; }
         public string Family { get; set; }
-        public int NationlCode { get; set; }
-        public string State { get; set; }
+        public int NationalCode { get; set; }
+        public bool State { get; set; }
     }
 }

@@ -8,8 +8,8 @@ using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(MainDBContext))]
+    partial class MainDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -150,7 +150,7 @@ namespace WebPlatformV1.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("WebPlatformV1.Models.ApplicationUser", b =>
+            modelBuilder.Entity("WebPlatformV1.Models.ApplicationUsers", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -181,7 +181,7 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NationlCode")
+                    b.Property<int>("NationalCode")
                         .HasColumnType("int");
 
                     b.Property<string>("NormalizedEmail")
@@ -204,8 +204,8 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -511,7 +511,7 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.ApplicationUser", null)
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -520,7 +520,7 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.ApplicationUser", null)
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -535,7 +535,7 @@ namespace WebPlatformV1.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebPlatformV1.Models.ApplicationUser", null)
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -544,7 +544,7 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.ApplicationUser", null)
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -553,22 +553,22 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.StudentOfCansultant", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.ApplicationUser", "Cansultant")
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Cansultant")
                         .WithMany()
                         .HasForeignKey("CansultantId");
 
-                    b.HasOne("WebPlatformV1.Models.ApplicationUser", "Student")
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_AddPanel", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.ApplicationUser", "Cansultant")
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Cansultant")
                         .WithMany()
                         .HasForeignKey("CansultantId");
 
-                    b.HasOne("WebPlatformV1.Models.ApplicationUser", "Student")
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId");
                 });
@@ -582,7 +582,7 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Blog", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.ApplicationUser", "Cansultant")
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Cansultant")
                         .WithMany()
                         .HasForeignKey("CansultantId");
                 });
@@ -596,7 +596,7 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_FinnialManegment", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.ApplicationUser", "Student")
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId");
                 });
@@ -610,11 +610,11 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Tasks", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.ApplicationUser", "Cansultant")
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Cansultant")
                         .WithMany()
                         .HasForeignKey("CansultantId");
 
-                    b.HasOne("WebPlatformV1.Models.ApplicationUser", "Student")
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId");
                 });
