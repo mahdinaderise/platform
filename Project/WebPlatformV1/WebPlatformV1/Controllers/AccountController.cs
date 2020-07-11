@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebPlatformV1.Models;
@@ -9,6 +10,7 @@ using WebPlatformV1.ViewModels.Account;
 
 namespace WebPlatformV1.Controllers
 {
+
     public class AccountController : Controller
 
     {
@@ -24,6 +26,55 @@ namespace WebPlatformV1.Controllers
         }
         [HttpGet]
         public IActionResult RegisterConsultant()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult RegisterStudent()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> RegisterStudent(RegisterViewModel model,string? IdConsultnt)
+        {
+            bool x = await _roleManager.RoleExistsAsync("Student");
+            if (!x)
+            {
+                // first we create Admin rool    
+                var role = new IdentityRole();
+                role.Name = "Student";
+                await _roleManager.CreateAsync(role);
+            }
+
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUsers()
+                {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    NationalCode = model.NationalCode,
+                    State = true,
+                    EmailConfirmed = true
+                };
+
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    var result1 = await _userManager.AddToRoleAsync(user, "Student");
+                    return RedirectToAction("Index", "Home");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+            }
+            return View(model);
+
+        }
+        public IActionResult AccessDenied()
         {
             return View();
         }

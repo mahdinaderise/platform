@@ -1,0 +1,59 @@
+﻿@model WebPlatformV1.Models.DbContext.Tbl_Tasks
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Tbl_Tasks</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IDCansoltant" class="control-label"></label>
+                <input asp-for="IDCansoltant" class="form-control" />
+                <span asp-validation-for="IDCansoltant" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IDStudent" class="control-label"></label>
+                <input asp-for="IDStudent" class="form-control" />
+                <span asp-validation-for="IDStudent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IDido" class="control-label"></label>
+                <input asp-for="IDido" class="form-control" />
+                <span asp-validation-for="IDido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameTasks" class="control-label"></label>
+                <input asp-for="NameTasks" class="form-control" />
+                <span asp-validation-for="NameTasks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SendDelivery" class="control-label"></label>
+                <input asp-for="SendDelivery" class="form-control" />
+                <span asp-validation-for="SendDelivery" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>

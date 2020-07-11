@@ -1,107 +1,59 @@
-﻿
+﻿@model WebPlatformV1.Models.DbContext.Tbl_FinnialManegment
+
 @{
-    ViewData["Title"] = "paymanagment";
-    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
+    Layout = null;
 }
 
-    <div class="main-content">
-        <div class="page-header">
-            <div class="container-fluid d-sm-flex justify-content-between">
-                <h4>لیست پرداخت های شما</h4>
-                <nav aria-label="breadcrumb">
-                    <!-- <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="#">داشبرد</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page"></li>
-                    </ol>
-                </nav> -->
-                </nav>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>paymanagment</title>
+</head>
+<body>
+
+<h4>Tbl_FinnialManegment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="paymanagment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IDFinancial" class="control-label"></label>
+                <input asp-for="IDFinancial" class="form-control" />
+                <span asp-validation-for="IDFinancial" class="text-danger"></span>
             </div>
-        </div>
-        <div class="container-fluid">
-            <!-- اینجا ساخته شود -->
-
-            <button type="button" class="btn btn-success btn-uppercase" data-toggle="modal" data-target="#exampleModal">
-                <i class="ti-check-box mr-2"></i>  شارژ حساب شما
-            </button>
-            <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="">ایجاد وظیفه</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body">
-                            <div>
-
-
-                            </div>
-                            <div class="form-group wd-xs-300">
-                                <label class="form-control-label">تعداد روز درخواستی شما  :</label>
-                                <input id="state" class="form-control" name="name_state">
-                                <div class="valid-feedback">
-                                    عالی!
-                                </div>
-                            </div>
-                            
-                            
-
-
-                            <!-- Textarea -->
-
-
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
-                        <button type="button" class="btn btn-primary">اعمال تغییرات</button>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label asp-for="IDConsultant" class="control-label"></label>
+                <input asp-for="IDConsultant" class="form-control" />
+                <span asp-validation-for="IDConsultant" class="text-danger"></span>
             </div>
-            <div class="table-responsive">
-                 <!-- Required for Responsive -->
-                <table class="table table-striped table-bordered bg-white">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>ردیف</th>
-                            <th>شماره رسید</th>
-                            <th>تاریخ پرداخت</th>
-                            <th>وضعیت</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1 </td>
-                            <td>123456789 </td>
-                            <td>1398/12/06</td>
-                            <td>موفق</td>
-                        </tr>
-                        <tr>
-                            <td> 2</td>
-                            <td> 123456789</td>
-                            <td>1398/03/21</td>
-                            <td>موفق</td>
-                        </tr>
-                        <tr>
-                            <td>3 </td>
-                            <td>123456789</td>
-                            <td>1398/02/27</td>
-                            <td>نا موفق</td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
+            <div class="form-group">
+                <label asp-for="NumReceipt" class="control-label"></label>
+                <input asp-for="NumReceipt" class="form-control" />
+                <span asp-validation-for="NumReceipt" class="text-danger"></span>
             </div>
-
-        </div>
-        <!-- end::main-content -->
-
+            <div class="form-group">
+                <label asp-for="DatePayment" class="control-label"></label>
+                <input asp-for="DatePayment" class="form-control" />
+                <span asp-validation-for="DatePayment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
 
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>
