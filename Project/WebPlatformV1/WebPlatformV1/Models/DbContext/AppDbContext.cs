@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace WebPlatformV1.Models.DbContext
 {
-    public class AppDbContext: IdentityDbContext
+    public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions dbContextOptions)
        : base(dbContextOptions)
@@ -18,7 +18,7 @@ namespace WebPlatformV1.Models.DbContext
 
     }
     public class Tbl_Blog
-    {   [Key]
+    {[Key]
         public int ID { get; set; }
         public int IDConsultant { get; set; }
         public int IDAttach { get; set; }
@@ -86,19 +86,38 @@ namespace WebPlatformV1.Models.DbContext
         [Required]
         public int NationalCode { get; set; }
         [Required]
+        public string State { get; set; }
         public int Tell { get; set; }
         [Required]
         public string Address { get; set; }
     }
     public class Tbl_Tasks
     {
+        [Key]
         public int IDTasks { get; set; }
         public int IDCansoltant { get; set; }
-        public int IDTeachers { get; set; }
         public int IDStudent { get; set; }
         public int IDido { get; set; }
         public string NameTasks { get; set; }
         public DateTime SendDelivery { get; set; }
     }
+    public class Tbl_AddPanel
+    {
+        [Key]
+        public int IDAddPanel { get; set; }
+        public int IDStudent { get; set; }
+        public int IDConsultant { get; set; }
+        [Required]
+        public int Date { get; set; }
+        [Required]
+        public int Price { get; set; }
 
+    }
+    public class Tbl_TasksCourse
+    {
+        [Key]
+        public int IDTasksCourse { get; set; }
+        public int IDCourse { get; set; }
+        public int IDTasks { get; set; }
+    }
 }
