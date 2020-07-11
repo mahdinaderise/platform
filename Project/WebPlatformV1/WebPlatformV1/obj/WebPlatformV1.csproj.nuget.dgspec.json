@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\gitp\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {}
+    "E:\\GitHub\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {}
   },
   "projects": {
-    "C:\\gitp\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {
+    "E:\\GitHub\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\gitp\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
+        "projectUniqueName": "E:\\GitHub\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
         "projectName": "WebPlatformV1",
-        "projectPath": "C:\\gitp\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
-        "packagesPath": "C:\\Users\\pasargad\\.nuget\\packages\\",
-        "outputPath": "C:\\gitp\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\obj\\",
+        "projectPath": "E:\\GitHub\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
+        "packagesPath": "C:\\Users\\Mahdi\\.nuget\\packages\\",
+        "outputPath": "E:\\GitHub\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pasargad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mahdi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -50,10 +53,6 @@
               "target": "Package",
               "version": "[3.1.5, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[3.1.5, )"
-            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -83,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
