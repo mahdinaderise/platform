@@ -53,6 +53,8 @@
               "target": "Package",
               "version": "[3.1.5, )"
             },
+<<<<<<< HEAD
+=======
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -67,6 +69,7 @@
               "target": "Package",
               "version": "[3.1.5, )"
             },
+>>>>>>> bd060f17faa49c3ffd095c53b2e35ef998576220
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
