@@ -1,17 +1,11 @@
 ﻿@model WebPlatformV1.Models.DbContext.Tbl_Tasks
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
+<h1>Edit</h1>
 
 <h4>Tbl_Tasks</h4>
 <hr />
@@ -24,16 +18,6 @@
                 <label asp-for="IDCansoltant" class="control-label"></label>
                 <input asp-for="IDCansoltant" class="form-control" />
                 <span asp-validation-for="IDCansoltant" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IDStudent" class="control-label"></label>
-                <input asp-for="IDStudent" class="form-control" />
-                <span asp-validation-for="IDStudent" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IDido" class="control-label"></label>
-                <input asp-for="IDido" class="form-control" />
-                <span asp-validation-for="IDido" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NameTasks" class="control-label"></label>
@@ -56,5 +40,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-</body>
-</html>

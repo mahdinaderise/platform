@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 
@@ -23,10 +24,16 @@ namespace WebPlatformV1.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index(ConsultantDashboardViewModel model)
-        {
-           ViewBag.S= _userManager.GetUserId(User);
+        //public IActionResult Index(ConsultantDashboardViewModel model)
+        //{
+        //   ViewBag.S= _userManager.GetUserId(User);
 
+        //    return View();
+        //}
+        public async Task<IActionResult> Index()
+        {
+            var result = _context.studentOfCansultants.Where(p => p.Cansultant.Equals(_userManager.GetUserId(User)));
+           
             return View();
         }
         public IActionResult blog()
@@ -34,6 +41,14 @@ namespace WebPlatformV1.Controllers
             return View();
         }
         public IActionResult paymanagment()
+        {
+            return View();
+        }
+        public IActionResult students()
+        {
+            return View();
+        }
+        public IActionResult Tasks()
         {
             return View();
         }
