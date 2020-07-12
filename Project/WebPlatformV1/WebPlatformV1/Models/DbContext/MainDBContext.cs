@@ -23,7 +23,7 @@ namespace WebPlatformV1.Models.DbContext
             builder.Entity<Tbl_Student>()
           .HasMany(p =>p.addPanels)
           .WithOne(e => e.students);           
-           //base.OnModelCreating(builder);
+           base.OnModelCreating(builder);
 
 
         }
@@ -74,6 +74,7 @@ namespace WebPlatformV1.Models.DbContext
     public class Tbl_Consultant
     {
         [Key]
+        public int ID { get; set; }
         public ApplicationUsers Cansultant { get; set; }
         public string NameConsultant { get; set; }
         public string FamilyConsultant { get; set; }
