@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    partial class MainDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200714232442_Main")]
+    partial class Main
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -401,9 +403,14 @@ namespace WebPlatformV1.Migrations
                     b.Property<int?>("studentID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("taskIDTasks")
+                        .HasColumnType("int");
+
                     b.HasKey("IDdo");
 
                     b.HasIndex("studentID");
+
+                    b.HasIndex("taskIDTasks");
 
                     b.ToTable("tbl_Dos");
                 });
@@ -508,9 +515,6 @@ namespace WebPlatformV1.Migrations
                     b.Property<int?>("CansultantID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DoIDdo")
-                        .HasColumnType("int");
-
                     b.Property<int>("IDCansoltant")
                         .HasColumnType("int");
 
@@ -520,9 +524,6 @@ namespace WebPlatformV1.Migrations
                     b.Property<DateTime>("SendDelivery")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("StudentID")
-                        .HasColumnType("int");
-
                     b.Property<int?>("courseIDCourse")
                         .HasColumnType("int");
 
@@ -530,13 +531,36 @@ namespace WebPlatformV1.Migrations
 
                     b.HasIndex("CansultantID");
 
+                    b.HasIndex("courseIDCourse");
+
+                    b.ToTable("tbl_Tasks");
+                });
+
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_TasksOfStudent", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("DoIDdo")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("StudentID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TasksIDTasks")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
                     b.HasIndex("DoIDdo");
 
                     b.HasIndex("StudentID");
 
-                    b.HasIndex("courseIDCourse");
+                    b.HasIndex("TasksIDTasks");
 
-                    b.ToTable("tbl_Tasks");
+                    b.ToTable("Tbl_TasksOfStudents");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -638,6 +662,10 @@ namespace WebPlatformV1.Migrations
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Student", "student")
                         .WithMany("dos")
                         .HasForeignKey("studentID");
+
+                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Tasks", "task")
+                        .WithMany()
+                        .HasForeignKey("taskIDTasks");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_FinnialManegment", b =>
@@ -671,17 +699,24 @@ namespace WebPlatformV1.Migrations
                         .WithMany("tasks")
                         .HasForeignKey("CansultantID");
 
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Do", "Do")
-                        .WithMany("task")
-                        .HasForeignKey("DoIDdo");
-
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Student", "Student")
-                        .WithMany("tasks")
-                        .HasForeignKey("StudentID");
-
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Course", "course")
                         .WithMany("tasks")
                         .HasForeignKey("courseIDCourse");
+                });
+
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_TasksOfStudent", b =>
+                {
+                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Do", "Do")
+                        .WithMany()
+                        .HasForeignKey("DoIDdo");
+
+                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentID");
+
+                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Tasks", "Tasks")
+                        .WithMany()
+                        .HasForeignKey("TasksIDTasks");
                 });
 #pragma warning restore 612, 618
         }

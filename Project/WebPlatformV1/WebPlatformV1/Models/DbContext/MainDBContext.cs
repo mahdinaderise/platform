@@ -24,6 +24,7 @@ namespace WebPlatformV1.Models.DbContext
           .HasMany(p =>p.addPanels)
           .WithOne(e => e.students);           
            base.OnModelCreating(builder);
+           
 
 
         }
@@ -39,7 +40,6 @@ namespace WebPlatformV1.Models.DbContext
         public DbSet<Tbl_Headline> tbl_Headlines { get; set; }
         public DbSet<Tbl_Tasks> tbl_Tasks { get; set; }
         //public DbSet<Tbl_TasksCourse> tbl_TasksCourses { get; set; }
-        public DbSet<Tbl_TasksOfStudent> Tbl_TasksOfStudents { get; set; }
 
     }
     public class StudentOfCansultant
@@ -87,6 +87,7 @@ namespace WebPlatformV1.Models.DbContext
     public class Tbl_Student 
     {
         [Key]
+        public int ID { get; set; }
         public  ApplicationUsers Student { get; set; }
         [Required]
         public string NameStudent { get; set; }
@@ -99,6 +100,7 @@ namespace WebPlatformV1.Models.DbContext
         public Tbl_AddPanel addPanel { get; set; }
         public ICollection<Tbl_Do> dos { get; set; }
         public ICollection<Tbl_AddPanel> addPanels { get; set; }
+        public ICollection<Tbl_Tasks> tasks { get; set; }
     }
     public class Tbl_Course
     {
@@ -121,8 +123,22 @@ namespace WebPlatformV1.Models.DbContext
         public int CountTest { get; set; }
         [Required]
         public int TimeStudy { get; set; }
-        public Tbl_Tasks task { get; set; }
-        public Tbl_Student student { get; set; }
+        public ICollection<Tbl_Tasks> task { get; set; }
+        public virtual Tbl_Student student { get; set; }
+    }
+    public class Tbl_Tasks
+    {
+        [Key]
+        public int IDTasks { get; set; }
+        public int IDCansoltant { get; set; }
+        public string NameTasks { get; set; }
+        public DateTime SendDelivery { get; set; }
+        //public IList<Tbl_TasksCourse> Tbl_TasksCourses { get; set; }
+        public virtual Tbl_Course course { get; set; }
+        public virtual Tbl_Consultant Cansultant { get; set; }
+        public virtual Tbl_Student Student { get; set; }
+        public virtual Tbl_Do Do { get; set; }
+
     }
     public class Tbl_FinnialManegment
     {
@@ -151,30 +167,18 @@ namespace WebPlatformV1.Models.DbContext
     //    public string type { get; set; }
     //}
     
-    public class Tbl_Tasks
-    {
-        [Key]
-        public int IDTasks { get; set; }
-        public int IDCansoltant { get; set; }
-        public string NameTasks { get; set; }
-        public DateTime SendDelivery { get; set; }
-        //public IList<Tbl_TasksCourse> Tbl_TasksCourses { get; set; }
-        public Tbl_Course course { get; set; }
-        public Tbl_Consultant Cansultant { get; set; }
-        
+   
+    //public class Tbl_TasksOfStudent
+    //{
+    //    [Key]
+    //    public int ID { get; set; }
+    //    //Navigation Property
+    //    public virtual Tbl_Tasks Tasks { get; set; }
+    //    public virtual Tbl_Do Do { get; set; }
 
-    }
-    public class Tbl_TasksOfStudent
-    {
-        [Key]
-        public int ID { get; set; }
-        //Navigation Property
-        public virtual Tbl_Tasks Tasks { get; set; }
-        public virtual Tbl_Do Do { get; set; }
+    //    public virtual Tbl_Student  Student{ get; set; } 
 
-        public virtual Tbl_Student  Student{ get; set; } 
-
-    }
+    //}
     public class Tbl_AddPanel
     {
         [Key]
