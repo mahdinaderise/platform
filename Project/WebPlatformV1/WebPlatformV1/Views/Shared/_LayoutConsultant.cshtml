@@ -455,7 +455,11 @@
                                     </a>
                                     <a href="#" class="list-group-item" data-sidebar-target="#settings">صورتحساب</a>
                                     <a href="#" class="list-group-item" data-sidebar-target="#settings">راهنمایی?</a>
-                                    <a href="#" class="list-group-item text-danger" data-sidebar-target="#settings">خروج</a>
+                                    <form asp-action="LogOutConsultant" asp-controller="Account" method="post">
+                                        <button class="list-group-item text-danger" type="submit" data-sidebar-target="#settings"> خروج</button>
+                                        @*<a class="list-group-item text-danger" data-sidebar-target="#settings" >خروج</a>*@
+
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -491,11 +495,7 @@
                                 <i data-feather="settings"></i>
                             </a>
                         </li>
-                        <li>
-                            <a href="login.html" data-toggle="tooltip" data-placement="right" title="خروج">
-                                <i data-feather="log-out"></i>
-                            </a>
-                        </li>
+                  
                     </ul>
                 </div>
             </div>
