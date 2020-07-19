@@ -40,7 +40,7 @@ namespace WebPlatformV1.Controllers
             bool x = await _roleManager.RoleExistsAsync("Student");
             if (!x)
             {
-                // first we create Admin rool    
+                // first we create Student rool    
                 var role = new IdentityRole();
                 role.Name = "Student";
                 await _roleManager.CreateAsync(role);
