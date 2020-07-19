@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    partial class MainDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200711234654_TasksStudent")]
+    partial class TasksStudent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -256,6 +258,9 @@ namespace WebPlatformV1.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("CansultantId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("Date")
                         .HasColumnType("int");
 
@@ -268,12 +273,14 @@ namespace WebPlatformV1.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int?>("studentsID")
-                        .HasColumnType("int");
+                    b.Property<string>("StudentId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("IDAddPanel");
 
-                    b.HasIndex("studentsID");
+                    b.HasIndex("CansultantId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("tbl_AddPanels");
                 });
@@ -308,6 +315,9 @@ namespace WebPlatformV1.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("CansultantId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("IDAttach")
                         .HasColumnType("int");
 
@@ -317,45 +327,11 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("consultantID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("consultantID");
-
-                    b.ToTable("tbl_Blogs");
-                });
-
-            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Consultant", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CansultantId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("FamilyConsultant")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameConsultant")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NationlCode")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("addPanelIDAddPanel")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
 
                     b.HasIndex("CansultantId");
 
-                    b.HasIndex("addPanelIDAddPanel");
-
-                    b.ToTable("consultants");
+                    b.ToTable("tbl_Blogs");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Course", b =>
@@ -395,15 +371,15 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TimeStudy")
+                    b.Property<int?>("Tbl_TasksIDTasks")
                         .HasColumnType("int");
 
-                    b.Property<int?>("studentID")
+                    b.Property<int>("TimeStudy")
                         .HasColumnType("int");
 
                     b.HasKey("IDdo");
 
-                    b.HasIndex("studentID");
+                    b.HasIndex("Tbl_TasksIDTasks");
 
                     b.ToTable("tbl_Dos");
                 });
@@ -451,51 +427,14 @@ namespace WebPlatformV1.Migrations
                     b.Property<int>("IDCourse")
                         .HasColumnType("int");
 
-                    b.Property<int?>("coursesIDCourse")
+                    b.Property<int?>("Tbl_CourseIDCourse")
                         .HasColumnType("int");
 
                     b.HasKey("IDHeadline");
 
-                    b.HasIndex("coursesIDCourse");
+                    b.HasIndex("Tbl_CourseIDCourse");
 
                     b.ToTable("tbl_Headlines");
-                });
-
-            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Student", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FamilyStudent")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameStudent")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NationalCode")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StudentId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int?>("addPanelIDAddPanel")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex("addPanelIDAddPanel");
-
-                    b.ToTable("students");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Tasks", b =>
@@ -505,13 +444,16 @@ namespace WebPlatformV1.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CansultantID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DoIDdo")
-                        .HasColumnType("int");
+                    b.Property<string>("CansultantId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("IDCansoltant")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDStudent")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDido")
                         .HasColumnType("int");
 
                     b.Property<string>("NameTasks")
@@ -520,23 +462,39 @@ namespace WebPlatformV1.Migrations
                     b.Property<DateTime>("SendDelivery")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("StudentID")
+                    b.HasKey("IDTasks");
+
+                    b.HasIndex("CansultantId");
+
+                    b.ToTable("tbl_Tasks");
+                });
+
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_TasksCourse", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IDCourse")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDTasks")
                         .HasColumnType("int");
 
                     b.Property<int?>("courseIDCourse")
                         .HasColumnType("int");
 
-                    b.HasKey("IDTasks");
+                    b.Property<int?>("tasksIDTasks")
+                        .HasColumnType("int");
 
-                    b.HasIndex("CansultantID");
-
-                    b.HasIndex("DoIDdo");
-
-                    b.HasIndex("StudentID");
+                    b.HasKey("ID");
 
                     b.HasIndex("courseIDCourse");
 
-                    b.ToTable("tbl_Tasks");
+                    b.HasIndex("tasksIDTasks");
+
+                    b.ToTable("tbl_TasksCourses");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -603,9 +561,13 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_AddPanel", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Student", "students")
-                        .WithMany("addPanels")
-                        .HasForeignKey("studentsID");
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Cansultant")
+                        .WithMany()
+                        .HasForeignKey("CansultantId");
+
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Attach", b =>
@@ -617,27 +579,16 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Blog", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Consultant", "consultant")
-                        .WithMany("blogs")
-                        .HasForeignKey("consultantID");
-                });
-
-            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Consultant", b =>
-                {
                     b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Cansultant")
                         .WithMany()
                         .HasForeignKey("CansultantId");
-
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_AddPanel", "addPanel")
-                        .WithMany("Consultantes")
-                        .HasForeignKey("addPanelIDAddPanel");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Do", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Student", "student")
-                        .WithMany("dos")
-                        .HasForeignKey("studentID");
+                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Tasks", "Tbl_Tasks")
+                        .WithMany()
+                        .HasForeignKey("Tbl_TasksIDTasks");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_FinnialManegment", b =>
@@ -649,39 +600,27 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Headline", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Course", "courses")
-                        .WithMany("headlines")
-                        .HasForeignKey("coursesIDCourse");
-                });
-
-            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Student", b =>
-                {
-                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Student")
-                        .WithMany()
-                        .HasForeignKey("StudentId");
-
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_AddPanel", "addPanel")
-                        .WithMany()
-                        .HasForeignKey("addPanelIDAddPanel");
+                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Course", null)
+                        .WithMany("tbl_Headlines")
+                        .HasForeignKey("Tbl_CourseIDCourse");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Tasks", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Consultant", "Cansultant")
-                        .WithMany("tasks")
-                        .HasForeignKey("CansultantID");
+                    b.HasOne("WebPlatformV1.Models.ApplicationUsers", "Cansultant")
+                        .WithMany()
+                        .HasForeignKey("CansultantId");
+                });
 
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Do", "Do")
-                        .WithMany("task")
-                        .HasForeignKey("DoIDdo");
-
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Student", "Student")
-                        .WithMany("tasks")
-                        .HasForeignKey("StudentID");
-
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_TasksCourse", b =>
+                {
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Course", "course")
-                        .WithMany("tasks")
+                        .WithMany("Tbl_TasksCourses")
                         .HasForeignKey("courseIDCourse");
+
+                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Tasks", "tasks")
+                        .WithMany("Tbl_TasksCourses")
+                        .HasForeignKey("tasksIDTasks");
                 });
 #pragma warning restore 612, 618
         }

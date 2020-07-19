@@ -1,17 +1,12 @@
 ﻿@model IEnumerable<WebPlatformV1.Models.DbContext.Tbl_Tasks>
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
 }
 
-<!DOCTYPE html>
+<h1>Index</h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -20,12 +15,6 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.IDCansoltant)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IDStudent)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IDido)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NameTasks)
@@ -43,12 +32,6 @@
                 @Html.DisplayFor(modelItem => item.IDCansoltant)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IDStudent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDido)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.NameTasks)
             </td>
             <td>
@@ -63,5 +46,3 @@
 }
     </tbody>
 </table>
-</body>
-</html>
