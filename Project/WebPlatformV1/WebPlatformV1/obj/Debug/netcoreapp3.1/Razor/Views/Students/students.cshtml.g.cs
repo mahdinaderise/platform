@@ -33,8 +33,15 @@ using WebPlatformV1.ViewModels.Account;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\Views\_ViewImports.cshtml"
+using WebPlatformV1.ViewModels.Consultant;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c4349eda0781a4c23ba59b7832310144534271c5", @"/Views/Students/students.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"17d42d13855fed4fcb8a6eb7e8fd11f22129ff3a", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9e891dc01b2ad2dd83768b6bbd65f5d1b5b520d0", @"/Views/_ViewImports.cshtml")]
     public class Views_Students_students : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "France", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -126,7 +133,7 @@ using WebPlatformV1.ViewModels.Account;
                                 <div>
                                     <select class=""select2-example"">
                                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c58546", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c58751", async() => {
                 WriteLiteral("انتخاب پایه");
             }
             );
@@ -140,7 +147,7 @@ using WebPlatformV1.ViewModels.Account;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c59549", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c59754", async() => {
                 WriteLiteral("پایه اول  ");
             }
             );
@@ -156,7 +163,7 @@ using WebPlatformV1.ViewModels.Account;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c510752", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c510957", async() => {
                 WriteLiteral("پایه دوم  ");
             }
             );
@@ -172,7 +179,7 @@ using WebPlatformV1.ViewModels.Account;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c511956", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c512161", async() => {
                 WriteLiteral("  پایه سوم  ");
             }
             );
@@ -188,7 +195,7 @@ using WebPlatformV1.ViewModels.Account;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c513162", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c513367", async() => {
                 WriteLiteral("پایه چهارم ");
             }
             );
@@ -204,7 +211,7 @@ using WebPlatformV1.ViewModels.Account;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c514367", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c514572", async() => {
                 WriteLiteral("پایه پنجم ");
             }
             );
@@ -220,7 +227,7 @@ using WebPlatformV1.ViewModels.Account;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c515571", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c515776", async() => {
                 WriteLiteral("پایه ششم ");
             }
             );
@@ -236,7 +243,7 @@ using WebPlatformV1.ViewModels.Account;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c516774", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c516979", async() => {
                 WriteLiteral("پایه هفتم");
             }
             );

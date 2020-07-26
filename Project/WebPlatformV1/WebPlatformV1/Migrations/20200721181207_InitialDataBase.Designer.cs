@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    partial class MainDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200721181207_InitialDataBase")]
+    partial class InitialDataBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -231,6 +233,12 @@ namespace WebPlatformV1.Migrations
                     b.Property<int>("Date")
                         .HasColumnType("int");
 
+                    b.Property<int>("IDConsultant")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDStudent")
+                        .HasColumnType("int");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
@@ -277,6 +285,9 @@ namespace WebPlatformV1.Migrations
                     b.Property<int>("IDAttach")
                         .HasColumnType("int");
 
+                    b.Property<int>("IDConsultant")
+                        .HasColumnType("int");
+
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
@@ -318,6 +329,9 @@ namespace WebPlatformV1.Migrations
                     b.Property<int>("CountTest")
                         .HasColumnType("int");
 
+                    b.Property<int>("IDStudent")
+                        .HasColumnType("int");
+
                     b.Property<int>("IDTasks")
                         .HasColumnType("int");
 
@@ -356,17 +370,12 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("consultantId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("studentId")
+                    b.Property<string>("StudentId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("IDFinancial");
 
-                    b.HasIndex("consultantId");
-
-                    b.HasIndex("studentId");
+                    b.HasIndex("StudentId");
 
                     b.ToTable("tbl_FinnialManegments");
                 });
@@ -405,10 +414,10 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("CansultantId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Descibtion")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("DoIDdo")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDCansoltant")
                         .HasColumnType("int");
 
                     b.Property<string>("NameTasks")
@@ -422,9 +431,6 @@ namespace WebPlatformV1.Migrations
 
                     b.Property<int?>("courseIDCourse")
                         .HasColumnType("int");
-
-                    b.Property<bool>("isDo")
-                        .HasColumnType("bit");
 
                     b.HasKey("IDTasks");
 
@@ -570,13 +576,9 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_FinnialManegment", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.Consultant", "consultant")
+                    b.HasOne("WebPlatformV1.Models.Student", "Student")
                         .WithMany()
-                        .HasForeignKey("consultantId");
-
-                    b.HasOne("WebPlatformV1.Models.Student", "student")
-                        .WithMany()
-                        .HasForeignKey("studentId");
+                        .HasForeignKey("StudentId");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Headline", b =>

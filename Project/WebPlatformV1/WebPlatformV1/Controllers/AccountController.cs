@@ -35,12 +35,12 @@ namespace WebPlatformV1.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> RegisterStudent(RegisterViewModel model,string? IdConsultnt)
+        public async Task<IActionResult> RegisterStudent(RegisterViewModel model)
         {
             bool x = await _roleManager.RoleExistsAsync("Student");
             if (!x)
             {
-                // first we create Student rool    
+                // first we create Admin rool    
                 var role = new IdentityRole();
                 role.Name = "Student";
                 await _roleManager.CreateAsync(role);
@@ -48,12 +48,12 @@ namespace WebPlatformV1.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUsers()
+                var user = new Student()
                 {
                     UserName = model.UserName,
                     Email = model.Email,
                     NationalCode = model.NationalCode,
-                    State = true,
+                    State = false,
                     EmailConfirmed = true
                 };
 
@@ -93,7 +93,7 @@ namespace WebPlatformV1.Controllers
 
                 if (ModelState.IsValid)
             {
-                var user = new ApplicationUsers()
+                var user = new Consultant()
                 {
                     UserName = model.UserName,
                     Email = model.Email,
@@ -145,6 +145,44 @@ namespace WebPlatformV1.Controllers
                         return Redirect(returnUrl);
 
                     return RedirectToAction("Index", "Consultant");
+                }
+
+                if (result.IsLockedOut)
+                {
+                    ViewData["ErrorMessage"] = "اکانت شما به دلیل پنج بار ورود ناموفق به مدت پنج دقیق قفل شده است";
+                    return View(model);
+                }
+
+                ModelState.AddModelError("", "رمزعبور یا نام کاربری اشتباه است");
+            }
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult LoginStudent(string returnUrl = null)
+        {
+            if (_signInManager.IsSignedIn(User))
+                return RedirectToAction("Index", "Student");
+
+            ViewData["returnUrl"] = returnUrl;
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> LoginStudent(LoginViewModel model, string returnUrl = null)
+        {
+            if (_signInManager.IsSignedIn(User))
+                return RedirectToAction("Index", "Student");
+
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(
+                    model.UserName, model.Password, model.RememberMe, true);
+
+                if (result.Succeeded)
+                {
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        return Redirect(returnUrl);
+
+                    return RedirectToAction("Index", "Student");
                 }
 
                 if (result.IsLockedOut)

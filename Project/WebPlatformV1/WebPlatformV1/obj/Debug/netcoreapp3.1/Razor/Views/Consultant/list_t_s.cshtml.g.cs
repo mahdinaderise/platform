@@ -33,8 +33,15 @@ using WebPlatformV1.ViewModels.Account;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\Views\_ViewImports.cshtml"
+using WebPlatformV1.ViewModels.Consultant;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cd20f6c931e7a79465b65387d48f8abf19a684d7", @"/Views/Consultant/list_t_s.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"17d42d13855fed4fcb8a6eb7e8fd11f22129ff3a", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9e891dc01b2ad2dd83768b6bbd65f5d1b5b520d0", @"/Views/_ViewImports.cshtml")]
     public class Views_Consultant_list_t_s : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

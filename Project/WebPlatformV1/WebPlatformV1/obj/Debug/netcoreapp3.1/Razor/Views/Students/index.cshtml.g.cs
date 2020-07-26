@@ -33,8 +33,15 @@ using WebPlatformV1.ViewModels.Account;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\Views\_ViewImports.cshtml"
+using WebPlatformV1.ViewModels.Consultant;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b1db2d68f1a791137b41a5770b992fe6d6554d7f", @"/Views/Students/index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"17d42d13855fed4fcb8a6eb7e8fd11f22129ff3a", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9e891dc01b2ad2dd83768b6bbd65f5d1b5b520d0", @"/Views/_ViewImports.cshtml")]
     public class Views_Students_index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("mt-4"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -314,7 +321,7 @@ using WebPlatformV1.ViewModels.Account;
                                     <span class=""text-muted"">13 فروردین 1399</span>
                        ");
             WriteLiteral("         </label>\r\n                            </div>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b1db2d68f1a791137b41a5770b992fe6d6554d7f19265", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b1db2d68f1a791137b41a5770b992fe6d6554d7f19470", async() => {
                 WriteLiteral(@"
                                 <div class=""input-group"">
                                     <input type=""text"" class=""form-control""

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 namespace WebPlatformV1.Models.DbContext
 {
@@ -20,17 +21,23 @@ namespace WebPlatformV1.Models.DbContext
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Tbl_Student>()
-          .HasMany(p =>p.addPanels)
-          .WithOne(e => e.students);           
+          //  builder.Entity<Tbl_Student>()
+          //.HasMany(p =>p.addPanels)
+          //.WithOne(e => e.students);
+            
+            //builder.Entity<Tbl_Consultant>().HasNoKey();
+            //builder.Entity<Tbl_Student>().HasNoKey();
+           
            base.OnModelCreating(builder);
            
 
 
         }
-        public DbSet<Tbl_Consultant> consultants { get; set; }
-        public DbSet<Tbl_Student> students { get; set; }
-        public DbSet<StudentOfCansultant> studentOfCansultants { get; set; }
+        public DbSet<Student> students { get; set; }
+        public DbSet<Consultant> consultants { get; set; }
+        //public DbSet<Tbl_Consultant> consultants { get; set; }
+        //public DbSet<Tbl_Student> students { get; set; }
+        //public DbSet<StudentsOfConsultant> studentOfCansultants { get; set; }
         public DbSet<Tbl_AddPanel> tbl_AddPanels { get; set; }
         public DbSet<Tbl_Attach> tbl_Attaches { get; set; }
         public DbSet<Tbl_Blog> tbl_Blogs { get; set; }
@@ -42,25 +49,16 @@ namespace WebPlatformV1.Models.DbContext
         //public DbSet<Tbl_TasksCourse> tbl_TasksCourses { get; set; }
 
     }
-    public class StudentOfCansultant
-    {
-        [Key]
-        public int ID { get; set; }
-        [MaxLength(450)]
-        //public string IDStudent { get; set; }
-        public virtual ApplicationUsers Cansultant { get; set; }
-        public virtual ApplicationUsers Student { get; set; }
-
-    }
+ 
+    
     public class Tbl_Blog
     {
         [Key]
         public int ID { get; set; }
-        public int IDConsultant { get; set; }
         public int IDAttach { get; set; }
         public string Note { get; set; }
         public ICollection<Tbl_Attach> tbl_Attaches { get; set; }
-        public Tbl_Consultant consultant { get; set; }
+        public Consultant consultant { get; set; }
     }
 
     public class Tbl_Attach
@@ -70,37 +68,6 @@ namespace WebPlatformV1.Models.DbContext
         public string Link { get; set; }
         public string Type { get; set; }
         public Tbl_Blog blog { get; set; }   
-    }
-    public class Tbl_Consultant
-    {
-        [Key]
-        public int ID { get; set; }
-        public ApplicationUsers Cansultant { get; set; }
-        public string NameConsultant { get; set; }
-        public string FamilyConsultant { get; set; }
-        public int NationlCode { get; set; }
-        public Tbl_AddPanel addPanel { get; set; }
-        public ICollection<Tbl_Tasks> tasks { get; set; }
-        public ICollection<Tbl_Blog> blogs { get; set; }
-
-    }
-    public class Tbl_Student 
-    {
-        [Key]
-        public int ID { get; set; }
-        public  ApplicationUsers Student { get; set; }
-        [Required]
-        public string NameStudent { get; set; }
-        [Required]
-        public string FamilyStudent { get; set; }
-        [Required]
-        public int NationalCode { get; set; }
-        [Required]
-        public string Address { get; set; }
-        public Tbl_AddPanel addPanel { get; set; }
-        public ICollection<Tbl_Do> dos { get; set; }
-        public ICollection<Tbl_AddPanel> addPanels { get; set; }
-        public ICollection<Tbl_Tasks> tasks { get; set; }
     }
     public class Tbl_Course
     {
@@ -116,7 +83,6 @@ namespace WebPlatformV1.Models.DbContext
     {
         [Key]
         public int IDdo { get; set; }
-        public int IDStudent { get; set; }
         public int IDTasks { get; set; }
         public string Note { get; set; }
         [Required]
@@ -124,19 +90,20 @@ namespace WebPlatformV1.Models.DbContext
         [Required]
         public int TimeStudy { get; set; }
         public ICollection<Tbl_Tasks> task { get; set; }
-        public virtual Tbl_Student student { get; set; }
+        public virtual Student student { get; set; }
     }
     public class Tbl_Tasks
     {
         [Key]
         public int IDTasks { get; set; }
-        public int IDCansoltant { get; set; }
         public string NameTasks { get; set; }
         public DateTime SendDelivery { get; set; }
-        //public IList<Tbl_TasksCourse> Tbl_TasksCourses { get; set; }
+        public string Descibtion { get; set; }
+        public bool isDo { get; set; } = false;
+        // Navigation 
         public virtual Tbl_Course course { get; set; }
-        public virtual Tbl_Consultant Cansultant { get; set; }
-        public virtual Tbl_Student Student { get; set; }
+        public virtual Consultant Cansultant { get; set; }
+        public virtual Student Student { get; set; }
         public virtual Tbl_Do Do { get; set; }
 
     }
@@ -148,7 +115,9 @@ namespace WebPlatformV1.Models.DbContext
         public int NumReceipt { get; set; }
         public int DatePayment { get; set; }
         public string State { get; set; }
-        public ApplicationUsers Student { get; set; }
+        public Consultant consultant { get; set; }
+        public Student student { get; set; }
+
     }
     public class Tbl_Headline
     {
@@ -183,14 +152,13 @@ namespace WebPlatformV1.Models.DbContext
     {
         [Key]
         public int IDAddPanel { get; set; }
-        public int IDStudent { get; set; }
-        public int IDConsultant { get; set; }
+    
         [Required]
         public int Date { get; set; }
         [Required]
         public int Price { get; set; }
-        public ICollection<Tbl_Consultant> Consultantes { get; set; }
-        public Tbl_Student students { get; set; }
+        public ICollection<Consultant> Consultantes { get; set; }
+        public Student students { get; set; }
 
 
 

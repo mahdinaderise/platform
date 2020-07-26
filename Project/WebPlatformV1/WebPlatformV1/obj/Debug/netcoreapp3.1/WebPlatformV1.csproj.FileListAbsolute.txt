@@ -1287,8 +1287,5 @@ E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\r
 E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
 E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Account\RegisterStudent.cshtml.g.cs
-E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Tbl_Tasks\Create.cshtml.g.cs
-E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Tbl_Tasks\Delete.cshtml.g.cs
-E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Tbl_Tasks\Details.cshtml.g.cs
-E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Tbl_Tasks\Edit.cshtml.g.cs
-E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Tbl_Tasks\Index.cshtml.g.cs
+E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Account\LoginStudent.cshtml.g.cs
+E:\Naderi\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\StudentPage.cshtml.g.cs
