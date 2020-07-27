@@ -71,8 +71,9 @@
             </div>
         </div>
         <div class="row" style="margin-bottom:5px;width:30%;">
-            <input type="text" data-input-mask="date" class="form-control" placeholder="1399/04/29">
-
+            <div class="form-group">
+                <input type="text" class="form-control" data-mddatetimepicker="true" value="۱۳۹۲/۰۱/۰۱" data-placement="right" data-mdpersiandatetimepicker="" data-trigger="focus" data-enabletimepicker="false" data-mdpersiandatetimepickerselecteddatetime="{&quot;Year&quot;:1392,&quot;Month&quot;:1,&quot;Day&quot;:1,&quot;Hour&quot;:0,&quot;Minute&quot;:0,&quot;Second&quot;:0}" data-original-title="" title="" data-mdpersiandatetimepickershowing="true" aria-describedby="popover308426">
+            </div>
         </div>
         <div class="row">
             <div class="table-responsive">
@@ -86,17 +87,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.tasks )
+                        @foreach (var item in Model.tasks)
                         {
                             <tr>
 
                                 <td> @item.NameTasks</td>
                                 <td> @item.Descibtion</td>
                                 <td>
-                                                                @Html.CheckBoxFor(m => item.isDo)
-                                                            </td>
+                                    @Html.CheckBoxFor(m => item.isDo)
+                                </td>
                                 <td>
-                                   
+
                                     <button type="button" class="btn btn-primary" title="حذف" data-toggle="tooltip" data-placement="bottom">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     </button>
@@ -116,9 +117,13 @@
 
 
 </div>
-<script>
-    $('[data-input-mask="date"]').mask('0000/00/00/');
-</script>
+@section MyScripts{
+    <script src="~/persianDatePicker/calendar.js"></script>
+    <script src="~/persianDatePicker/jquery.Bootstrap-PersianDateTimePicker.js"></script>
+    <div class="popover fade left in" role="tooltip" id="popover308426" style="top: 44.5px; left: 915px; display: block;"><div class="arrow" style="top: 50%;"></div><h3 class="popover-title" data-name="Md-DateTimePicker-Title">پنج شنبه، ۰۱ فروردین ۱۳۹۲</h3><div class="popover-content" data-name="Md-DateTimePicker-PopoverContent"><div data-name="Md-PersianDateTimePicker"><table class="table table-striped"><tbody><tr><td colspan="100" style="padding:5px;"><table class="table" data-name="Md-PersianDateTimePicker-HeaderTable"><tbody><tr><td><button type="button" class="btn btn-default btn-xs" title="سال بعد" data-name="Md-PersianDateTimePicker-NextYear">&lt;&lt;</button></td><td><button type="button" class="btn btn-default btn-xs" title="ماه بعد" data-name="Md-PersianDateTimePicker-NextMonth">&lt;</button></td><td data-name="Md-PersianDateTimePicker-TitleYear">۱۳۹۲</td><td data-name="Md-PersianDateTimePicker-TitleMonth">فروردین</td><td><button type="button" class="btn btn-default btn-xs" title="ماه قبل" data-name="Md-PersianDateTimePicker-PreviousMonth">&gt;</button></td><td><button type="button" class="btn btn-default btn-xs" title="سال قبل" data-name="Md-PersianDateTimePicker-PreviousYear">&gt;&gt;</button></td></tr></tbody></table></td></tr><tr data-name="Md-PersianDateTimePicker-WeekDaysNames"><td>ش</td><td>ی</td><td>د</td><td>س</td><td>چ</td><td>پ</td><td class="text-danger">ج</td></tr><tr><td data-name="disabled-day">۲۷</td><td data-name="disabled-day">۲۸</td><td data-name="disabled-day">۲۹</td><td data-name="disabled-day">۳۰</td><td data-name="disabled-day">۳۱</td><td data-name="day" class="bg-info">۰۱</td><td data-name="day" class="text-danger">۰۲</td></tr><tr><td data-name="day">۰۳</td><td data-name="day">۰۴</td><td data-name="day">۰۵</td><td data-name="day">۰۶</td><td data-name="day">۰۷</td><td data-name="day">۰۸</td><td data-name="day" class="text-danger">۰۹</td></tr><tr><td data-name="day">۱۰</td><td data-name="day">۱۱</td><td data-name="day">۱۲</td><td data-name="day">۱۳</td><td data-name="day">۱۴</td><td data-name="day">۱۵</td><td data-name="day" class="text-danger">۱۶</td></tr><tr><td data-name="day">۱۷</td><td data-name="day">۱۸</td><td data-name="day">۱۹</td><td data-name="day">۲۰</td><td data-name="day">۲۱</td><td data-name="day">۲۲</td><td data-name="day" class="text-danger">۲۳</td></tr><tr><td data-name="day">۲۴</td><td data-name="day">۲۵</td><td data-name="day">۲۶</td><td data-name="day">۲۷</td><td data-name="day">۲۸</td><td data-name="day">۲۹</td><td data-name="day" class="text-danger">۳۰</td></tr><tr><td colspan="100"><button class="btn btn-default btn-xs" data-name="go-today">امروز</button></td></tr></tbody></table></div></div></div>
+
+}
+
 
 
 

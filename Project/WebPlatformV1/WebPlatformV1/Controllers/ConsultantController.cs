@@ -40,10 +40,14 @@ namespace WebPlatformV1.Controllers
         public IActionResult StudentPage(string id,TasksStudent model)
         {
 
-            model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id ).ToList();
             return View(model);
         }
         public IActionResult blog()
+        {
+            return View();
+        }
+        public IActionResult CreateTask()
         {
             return View();
         }

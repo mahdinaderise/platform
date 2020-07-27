@@ -26,6 +26,8 @@
 
     <!-- App styles -->
     <link href="~/assets/css/app.min.css" rel="stylesheet" />
+
+    <link href="~/persianDatePicker/jquery.Bootstrap-PersianDateTimePicker.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -60,14 +62,14 @@
                         <a href="#" class="dropdown-item">گزارش</a>
                     </div>
                 </li>
-               
+
             </ul>
         </div>
 
         <div>
             <ul class="navbar-nav">
 
-              
+
                 <!-- begin::header search -->
                 <li class="nav-item">
                     <a href="#" class="nav-link" title="جست‌و‌جو" data-toggle="dropdown">
@@ -485,7 +487,7 @@
 
                             </a>
                         </li>
-                        
+
                     </ul>
                 </div>
                 <div>
@@ -495,7 +497,7 @@
                                 <i data-feather="settings"></i>
                             </a>
                         </li>
-                  
+
                     </ul>
                 </div>
             </div>
@@ -552,7 +554,7 @@
                                     </a>
                                 </div>
                             </li>
-                           
+
                         </ul>
                     </div>
                     <div id="apps">
@@ -579,7 +581,7 @@
 
                         </ul>
                     </div>
-                  
+
                 </div>
             </div>
             <!-- end::navigation menu -->
@@ -587,60 +589,61 @@
         </div>
         <!-- end::navigation -->
         <!-- begin::main-content -->
-            @RenderBody()       
-        </div>
-            <!-- end::main -->
-            <!-- Plugin scripts -->
-            <script src="~/vendors/bundle.js"></script>
-            <!-- Chartjs -->
-            <script src="~/vendors/charts/chartjs/chart.min.js"></script>
-            <!-- Apex chart -->
-            <script src="~/vendors/charts/apex/apexcharts.min.js"></script>
-            <!-- Circle progress -->
-            <script src="~/vendors/circle-progress/circle-progress.min.js"></script>
-            <!-- Peity -->
-            <script src="~/vendors/charts/peity/jquery.peity.min.js"></script>
-            <script src="~/assets/js/examples/charts/peity.js"></script>
-            <!-- Datepicker -->
-            <script src="~/vendors/datepicker/daterangepicker.js"></script>
-            <script src="~/assets/Datepiker/persian-datepicker.js"></script>
-            <script src="vendors/datepicker/bootstrap-datepicker.fa.min.js"></script>
+        @RenderBody()
+    </div>
+    <!-- end::main -->
+    <!-- Plugin scripts -->
+    <script src="~/vendors/bundle.js"></script>
+    <!-- Chartjs -->
+    <script src="~/vendors/charts/chartjs/chart.min.js"></script>
+    <!-- Apex chart -->
+    <script src="~/vendors/charts/apex/apexcharts.min.js"></script>
+    <!-- Circle progress -->
+    <script src="~/vendors/circle-progress/circle-progress.min.js"></script>
+    <!-- Peity -->
+    <script src="~/vendors/charts/peity/jquery.peity.min.js"></script>
+    <script src="~/assets/js/examples/charts/peity.js"></script>
+    <!-- Datepicker -->
+    <script src="~/vendors/datepicker/daterangepicker.js"></script>
+    <script src="~/assets/Datepiker/persian-datepicker.js"></script>
+    <script src="vendors/datepicker/bootstrap-datepicker.fa.min.js"></script>
 
-            <!-- Slick -->
-            <script src="~/vendors/slick/slick.min.js"></script>
-            <!-- Vamp -->
-            <script src="~/vendors/vmap/jquery.vmap.min.js"></script>
-            <script src="vendors/vmap/maps/jquery.vmap.usa.js"></script>
-            <script src="~/assets/js/examples/vmap.js"></script>
-
-
-            <!-- a -->
-            <script src="~/assets/Cal/moment.js"></script>
-            <script src="~/assets/Cal/moment-jalaali.js"></script>
-            <script src="~/assets/Cal/fullcalendar.js"></script>
-            <script src="~/assets/Cal/fa.js"></script>
-
-            <!-- Dashboard scripts -->
-            <script src="~/assets/js/examples/dashboard.js"></script>
-            <div class="colors">
-                <!-- To use theme colors with Javascript -->
-                <div class="bg-primary"></div>
-                <div class="bg-primary-bright"></div>
-                <div class="bg-secondary"></div>
-                <div class="bg-secondary-bright"></div>
-                <div class="bg-info"></div>
-                <div class="bg-info-bright"></div>
-                <div class="bg-success"></div>
-                <div class="bg-success-bright"></div>
-                <div class="bg-danger"></div>
-                <div class="bg-danger-bright"></div>
-                <div class="bg-warning"></div>
-                <div class="bg-warning-bright"></div>
-            </div>
+    <!-- Slick -->
+    <script src="~/vendors/slick/slick.min.js"></script>
+    <!-- Vamp -->
+    <script src="~/vendors/vmap/jquery.vmap.min.js"></script>
+    <script src="vendors/vmap/maps/jquery.vmap.usa.js"></script>
+    <script src="~/assets/js/examples/vmap.js"></script>
 
 
-            <!-- App scripts -->
-            <script src="~/assets/js/app.min.js"></script>
+    <!-- a -->
+    <script src="~/assets/Cal/moment.js"></script>
+    <script src="~/assets/Cal/moment-jalaali.js"></script>
+    <script src="~/assets/Cal/fullcalendar.js"></script>
+    <script src="~/assets/Cal/fa.js"></script>
+
+    <!-- Dashboard scripts -->
+    <script src="~/assets/js/examples/dashboard.js"></script>
+    <div class="colors">
+        <!-- To use theme colors with Javascript -->
+        <div class="bg-primary"></div>
+        <div class="bg-primary-bright"></div>
+        <div class="bg-secondary"></div>
+        <div class="bg-secondary-bright"></div>
+        <div class="bg-info"></div>
+        <div class="bg-info-bright"></div>
+        <div class="bg-success"></div>
+        <div class="bg-success-bright"></div>
+        <div class="bg-danger"></div>
+        <div class="bg-danger-bright"></div>
+        <div class="bg-warning"></div>
+        <div class="bg-warning-bright"></div>
+    </div>
+
+
+    <!-- App scripts -->
+    <script src="~/assets/js/app.min.js"></script>
+    @RenderSection("MyScripts", required: false)
 </body>
 
 </html>
