@@ -420,6 +420,9 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("StudentId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime>("SubmitDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("courseIDCourse")
                         .HasColumnType("int");
 

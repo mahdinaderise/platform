@@ -37,12 +37,30 @@ namespace WebPlatformV1.Controllers
            
             return View();
         }
+        
         public IActionResult StudentPage(string id,TasksStudent model)
         {
-
-            model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id ).ToList();
+            model.Students = _context.students.Where(p => p.Id == id).ToList();
+            var NowDateTime = DateTime.Today;
+            var StartDate = model.StartDate;
+            var EndDate = model.EndDate;
+            model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id &&(p.SendDelivery == NowDateTime || p.SendDelivery == StartDate )).ToList();
             return View(model);
         }
+
+        public IActionResult Save(TasksStudent model)
+        {
+            return View();
+        }
+        //[HttpPost]
+        //public IActionResult StudentPage(string id, TasksStudent model)
+        //{
+        //    model.Students = _context.students.Where(p => p.Id == id).ToList();
+        //    var NowDateTime = DateTime.Today;
+
+        //    model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id && p.SendDelivery == NowDateTime).ToList();
+        //    return View(model);
+        //}
         public IActionResult blog()
         {
             return View();

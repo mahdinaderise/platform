@@ -98,6 +98,7 @@ namespace WebPlatformV1.Models.DbContext
         public int IDTasks { get; set; }
         public string NameTasks { get; set; }
         public DateTime SendDelivery { get; set; }
+        public DateTime SubmitDate { get; set; }
         public string Descibtion { get; set; }
         public bool isDo { get; set; } = false;
         // Navigation 

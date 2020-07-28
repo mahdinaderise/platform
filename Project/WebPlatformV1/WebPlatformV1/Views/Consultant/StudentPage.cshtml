@@ -13,6 +13,14 @@
     </div>
     <div class="container-fluid">
         <h5>نام و نام خانوادگی دانش آموز</h5>
+        @foreach (var item in Model.Students)
+        {
+            <h5>
+                @item.Name
+            </h5>
+
+        }
+
         <div style="margin-bottom: 20px;">
             <button type="button" class="btn btn-success btn-uppercase" data-toggle="modal" data-target="#exampleModal">
                 <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
@@ -70,26 +78,41 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-bottom:5px;width:30%;">
-            <div class="form-group">
-                <input id="DateTime1" name="DateTime1" />
-                <input type="hidden" id="DateTime" name="DateTime" />
-                <script>
-                    $('#DateTime1').persianDatepicker({
+        <form asp-action="save" asp-controller="Consultant">
+            <div class="row" style="margin-bottom:5px;width:30%;">
+                @*<div class="form-group">
+            <input id="StartDate1" name="StartDate1" class=" form-control" />
+            <input type="hidden" id="StartDate" name="StartDate" />
+            <script>
+                $('#StartDate1').persianDatepicker({
 
-                        format: 'YYYY-MM-DD',
-                        onSelect: function (code) {
-                            var date = new Date(code);
-                            var year = date.getFullYear();
-                            var month = date.getMonth() + 1;
-                            var day = date.getDay();
-                            var str = year + '/' + month + '/' + day;
-                            $("#DateTime").val(str);
-                        }
-                    })
-                </script>
+                    format: 'YYYY-MM-DD',
+                    onSelect: function (code) {
+                        var date = new Date(code);
+                        var year = date.getFullYear();
+                        var month = date.getMonth() + 1;
+                        var day = date.getDay();
+                        var str = year + '/' + month + '/' + day;
+                        alert(year);
+                        alert(month);
+                        alert(day)
+                        $("#StartDate").val(str);
+
+                    }
+                })
+            </script>
+        </div>*@
+                <persian-date asp-for="StartDate"></persian-date>
+                <button type="submit">جست و جو</button>
+
             </div>
-        </div>
+            <div class="row" style="margin-bottom:5px;width:30%;">
+                <button type="submit" class="btn btn-success btn-uppercase">
+                    <i class="ti-check-box mr-2"></i>  ایجاد گزارش هفتگی
+                </button>
+            </div>
+        </form>
+
         <div class="row">
             <div class="table-responsive">
                 <table class="table table-hover bg-white text-center">
