@@ -72,7 +72,22 @@
         </div>
         <div class="row" style="margin-bottom:5px;width:30%;">
             <div class="form-group">
-                <input type="text" class="form-control" data-mddatetimepicker="true" value="۱۳۹۲/۰۱/۰۱" data-placement="right" data-mdpersiandatetimepicker="" data-trigger="focus" data-enabletimepicker="false" data-mdpersiandatetimepickerselecteddatetime="{&quot;Year&quot;:1392,&quot;Month&quot;:1,&quot;Day&quot;:1,&quot;Hour&quot;:0,&quot;Minute&quot;:0,&quot;Second&quot;:0}" data-original-title="" title="" data-mdpersiandatetimepickershowing="true" aria-describedby="popover308426">
+                <input id="DateTime1" name="DateTime1" />
+                <input type="hidden" id="DateTime" name="DateTime" />
+                <script>
+                    $('#DateTime1').persianDatepicker({
+
+                        format: 'YYYY-MM-DD',
+                        onSelect: function (code) {
+                            var date = new Date(code);
+                            var year = date.getFullYear();
+                            var month = date.getMonth() + 1;
+                            var day = date.getDay();
+                            var str = year + '/' + month + '/' + day;
+                            $("#DateTime").val(str);
+                        }
+                    })
+                </script>
             </div>
         </div>
         <div class="row">
