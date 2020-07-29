@@ -1,4 +1,5 @@
-﻿
+﻿@model CreateTask
+
 @{
     ViewData["Title"] = "CreateTask";
     Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
@@ -10,36 +11,43 @@
 
         <div class="card-body">
             <h5 class="card-title"> ایجاد وظیفه</h5>
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" novalidate asp-action="Create" asp-controller="Consultant" method="post">
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="validationTooltip01"> نام وظیفه</label>
-                        <input type="text" class="form-control" id="validationTooltip01" placeholder="نام" value="باران" required>
+                        <input type="text" class="form-control" id="validationTooltip01" placeholder="نام" value="" required asp-for="NameTasks">
                         <div class="valid-tooltip">
                             عالی!
                         </div>
                     </div>
-
+                    <div class="col-md-4 mb-3">
+                        <label for="validationTooltip01"> مبحث </label>
+                        <input type="text" class="form-control" id="validationTooltip01" placeholder="مبحث" value="" required asp-for="Subject">
+                        <div class="valid-tooltip">
+                            عالی!
+                        </div>
+                    </div>
+                    @*<select asp-for=""></select>*@
 
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="validationTooltip03">توضیحات</label>
-                        <input type="text" class="form-control" id="validationTooltip03" placeholder="شرح وظیفه" required>
+                        <input type="text" class="form-control" id="validationTooltip03" placeholder="شرح وظیفه" required asp-for="Descibtion" />
                         <div class="invalid-tooltip">
                             شرح وظیفه را وارد کنید.
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="validationTooltip04">زمان</label>
-                        <input type="text" class="form-control" id="validationTooltip04" placeholder="زمان مطالعه" required>
+                        <input type="number" class="form-control" id="validationTooltip04" placeholder="زمان مطالعه" asp-for="TimeStudy" required >
                         <div class="invalid-tooltip">
                             زمان مطالعه را مشخص کنید
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="validationTooltip05">تاریخ</label>
-                        <input type="text" class="form-control" id="validationTooltip05" placeholder="تاریخ" required>
+                        <persian-date asp-for="SendDelivery"></persian-date>
                         <div class="invalid-tooltip">
                             لطفا یک تاریخ معتبر انتخاب کنید
                         </div>
@@ -62,9 +70,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                     
+                        @foreach (var item in Model.tasks)
+                        {
+                            <tr>
 
+                                <td> @item.NameTasks</td>
+                                <td> @item.Descibtion</td>
+                                <td>
+                                    @Html.CheckBoxFor(m => item.isDo)
+                                </td>
+                                <td>
 
+                                    <button type="button" class="btn btn-primary" title="حذف" data-toggle="tooltip" data-placement="bottom">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;">
+                                        <i class="fa fa-info" aria-hidden="true"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        }
                     </tbody>
                 </table>
             </div>

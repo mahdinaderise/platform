@@ -17,68 +17,22 @@
         {
             <h5>
                 @item.Name
+               
             </h5>
 
         }
 
-        <div style="margin-bottom: 20px;">
-            <button type="button" class="btn btn-success btn-uppercase" data-toggle="modal" data-target="#exampleModal">
-                <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
-            </button>
+       <div style="margin-bottom: 20px;">
+           <form asp-action="CreateTask" asp-controller="Consultant" >
+               <button type="submit" class="btn btn-success btn-uppercase">
+                   <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
+               </button>
 
-            <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class=""> ایجاد وظیفه برای دانش آموز</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body">
-
-                            <p style="margin-bottom: 2px;"> درس : </p>
-                            <div>
-                                <select class="select2-example">
-                                    <option>انتخاب درس</option>
-                                    <option value="France">داده کاوی </option>
-                                    <option value="Brazil">ریاضی مهندسی </option>
-                                    <option value="Yemen">آمار  و احتمالات </option>
-                                    <option value="United States">فیزیک </option>
-                                    <option value="China">علوم </option>
-                                    <option value="Argentina">شیمی </option>
-                                    <option value="Bulgaria">نرم افزار  مهندسی </option>
-                                </select>
-                            </div>
-
-                            <div class="form-group wd-xs-300">
-                                <label class="form-control-label">نام موضوع :</label>
-                                <input id="state" class="form-control" name="name_state">
-                                <div class="valid-feedback">
-                                    عالی!
-                                </div>
-                            </div>
-
-
-
-                            <!-- Textarea -->
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1"> شرح توضیحات</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
-                        <button type="button" class="btn btn-primary">اعمال تغییرات</button>
-                    </div>
-                </div>
-            </div>
+           </form>
+        
+            
         </div>
-        <form asp-action="save" asp-controller="Consultant">
+        <form asp-action="StudentPage" asp-controller="Consultant" method="post">
             <div class="row" style="margin-bottom:5px;width:30%;">
                 @*<div class="form-group">
             <input id="StartDate1" name="StartDate1" class=" form-control" />
@@ -102,7 +56,7 @@
                 })
             </script>
         </div>*@
-                <persian-date asp-for="StartDate"></persian-date>
+                <persian-date asp-for="StartDate"> </persian-date>
                 <button type="submit">جست و جو</button>
 
             </div>

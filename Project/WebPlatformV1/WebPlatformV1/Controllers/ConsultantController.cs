@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -40,18 +42,28 @@ namespace WebPlatformV1.Controllers
         
         public IActionResult StudentPage(string id,TasksStudent model)
         {
+            
             model.Students = _context.students.Where(p => p.Id == id).ToList();
+            TempData["mydata"] = id;
+            HttpContext.Session.SetString("id",id );
+
             var NowDateTime = DateTime.Today;
             var StartDate = model.StartDate;
             var EndDate = model.EndDate;
-            model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id &&(p.SendDelivery == NowDateTime || p.SendDelivery == StartDate )).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id && p.SendDelivery==NowDateTime ).ToList();
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult StudentPage(TasksStudent model)
+        {
+            var id = HttpContext.Session.GetString("id");
+            model.Students = _context.students.Where(p => p.Id == id).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id && p.SendDelivery == model.StartDate).ToList();
+
             return View(model);
         }
 
-        public IActionResult Save(TasksStudent model)
-        {
-            return View();
-        }
+     
         //[HttpPost]
         //public IActionResult StudentPage(string id, TasksStudent model)
         //{
@@ -65,10 +77,27 @@ namespace WebPlatformV1.Controllers
         {
             return View();
         }
-        public IActionResult CreateTask()
+        [HttpGet]
+        public IActionResult Create( CreateTask model)
         {
-            return View();
+            var NowDateTime = DateTime.Today;
+            var id = HttpContext.Session.GetString("id");
+            model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id && p.SubmitDate == NowDateTime).ToList();
+
+            return View(model);
         }
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("IDTasks,NameTasks,SendDelivery,Descibtion,TimeStudy,Subject,Studentid,courseid")] CreateTask model)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(model);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(CreateTask));
+            }
+            return View(model);
+        }
+
         public IActionResult paymanagment()
         {
             return View();
