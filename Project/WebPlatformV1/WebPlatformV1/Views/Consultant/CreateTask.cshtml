@@ -11,7 +11,7 @@
 
         <div class="card-body">
             <h5 class="card-title"> ایجاد وظیفه</h5>
-            <form class="needs-validation" novalidate asp-action="Create" asp-controller="Consultant" method="post">
+            <form class="needs-validation" novalidate asp-action="CreateTask" asp-controller="Consultant" method="post">
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="validationTooltip01"> نام وظیفه</label>
@@ -27,6 +27,7 @@
                             عالی!
                         </div>
                     </div>
+                
                     @*<select asp-for=""></select>*@
 
                 </div>
@@ -66,7 +67,7 @@
                             <th scope="col">نام وظیفه </th>
                             <th scope="col"> نوضیحات  </th>
                             <th scope="col">  زمان مطالعه </th>
-                            <th scope="col">تاریخ</th>
+                            <th scope="col">مبحث</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,16 +78,10 @@
                                 <td> @item.NameTasks</td>
                                 <td> @item.Descibtion</td>
                                 <td>
-                                    @Html.CheckBoxFor(m => item.isDo)
+                                  @item.TimeStudy
                                 </td>
                                 <td>
-
-                                    <button type="button" class="btn btn-primary" title="حذف" data-toggle="tooltip" data-placement="bottom">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;">
-                                        <i class="fa fa-info" aria-hidden="true"></i>
-                                    </button>
+                                    @item.Subject
                                 </td>
                             </tr>
 

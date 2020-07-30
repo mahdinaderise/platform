@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
@@ -50,7 +51,7 @@ namespace WebPlatformV1.Controllers
             var NowDateTime = DateTime.Today;
             var StartDate = model.StartDate;
             var EndDate = model.EndDate;
-            model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id && p.SendDelivery==NowDateTime ).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == id && p.SendDelivery== DateTime.Today ).ToList();
             return View(model);
         }
         [HttpPost]
@@ -58,7 +59,7 @@ namespace WebPlatformV1.Controllers
         {
             var id = HttpContext.Session.GetString("id");
             model.Students = _context.students.Where(p => p.Id == id).ToList();
-            model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id && p.SendDelivery == model.StartDate).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == id && p.SendDelivery == model.StartDate ).ToList();
 
             return View(model);
         }
@@ -78,20 +79,31 @@ namespace WebPlatformV1.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Create( CreateTask model)
+        public IActionResult CreateTask( CreateTask model)
         {
             var NowDateTime = DateTime.Today;
             var id = HttpContext.Session.GetString("id");
-            model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id && p.SubmitDate == NowDateTime).ToList();
+            ViewData["course"] = new SelectList(_context.tbl_Courses, "IDCourse", "NameCourse");
+
+            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == id && p.SubmitDate == NowDateTime).ToList();
 
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("IDTasks,NameTasks,SendDelivery,Descibtion,TimeStudy,Subject,Studentid,courseid")] CreateTask model)
+        public async Task<IActionResult> CreateTask(CreateTask model, Tbl_Tasks tasks)
         {
+            var id = HttpContext.Session.GetString("id");
             if (ModelState.IsValid)
             {
-                _context.Add(model);
+                tasks.Descibtion = model.Descibtion;
+                tasks.NameTasks = model.NameTasks;
+                tasks.Subject = model.Subject;
+                tasks.IdConsultant= _userManager.GetUserId(User);
+                tasks.IdStudent = id;
+                tasks.Idcourse = 1;
+                tasks.SendDelivery = model.SendDelivery;
+                tasks.SubmitDate = DateTime.Today;
+                await _context.AddAsync(tasks);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(CreateTask));
             }
