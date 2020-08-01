@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebPlatformV1.Migrations
 {
-    public partial class InitialDataBase : Migration
+    public partial class New : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -144,8 +144,6 @@ namespace WebPlatformV1.Migrations
                 {
                     IDAddPanel = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IDStudent = table.Column<int>(nullable: false),
-                    IDConsultant = table.Column<int>(nullable: false),
                     Date = table.Column<int>(nullable: false),
                     Price = table.Column<int>(nullable: false),
                     studentsId = table.Column<string>(nullable: true)
@@ -203,7 +201,6 @@ namespace WebPlatformV1.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IDConsultant = table.Column<int>(nullable: false),
                     IDAttach = table.Column<int>(nullable: false),
                     Note = table.Column<string>(nullable: true),
                     consultantId = table.Column<string>(nullable: true)
@@ -225,7 +222,6 @@ namespace WebPlatformV1.Migrations
                 {
                     IDdo = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IDStudent = table.Column<int>(nullable: false),
                     IDTasks = table.Column<int>(nullable: false),
                     Note = table.Column<string>(nullable: true),
                     CountTest = table.Column<int>(nullable: false),
@@ -253,14 +249,21 @@ namespace WebPlatformV1.Migrations
                     NumReceipt = table.Column<int>(nullable: false),
                     DatePayment = table.Column<int>(nullable: false),
                     State = table.Column<string>(nullable: true),
-                    StudentId = table.Column<string>(nullable: true)
+                    consultantId = table.Column<string>(nullable: true),
+                    studentId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tbl_FinnialManegments", x => x.IDFinancial);
                     table.ForeignKey(
-                        name: "FK_tbl_FinnialManegments_AspNetUsers_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_tbl_FinnialManegments_AspNetUsers_consultantId",
+                        column: x => x.consultantId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_tbl_FinnialManegments_AspNetUsers_studentId",
+                        column: x => x.studentId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -293,9 +296,11 @@ namespace WebPlatformV1.Migrations
                 {
                     IDTasks = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IDCansoltant = table.Column<int>(nullable: false),
                     NameTasks = table.Column<string>(nullable: true),
                     SendDelivery = table.Column<DateTime>(nullable: false),
+                    SubmitDate = table.Column<DateTime>(nullable: false),
+                    Descibtion = table.Column<string>(nullable: true),
+                    isDo = table.Column<bool>(nullable: false),
                     courseIDCourse = table.Column<int>(nullable: true),
                     CansultantId = table.Column<string>(nullable: true),
                     StudentId = table.Column<string>(nullable: true),
@@ -395,9 +400,14 @@ namespace WebPlatformV1.Migrations
                 column: "studentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_FinnialManegments_StudentId",
+                name: "IX_tbl_FinnialManegments_consultantId",
                 table: "tbl_FinnialManegments",
-                column: "StudentId");
+                column: "consultantId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tbl_FinnialManegments_studentId",
+                table: "tbl_FinnialManegments",
+                column: "studentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tbl_Headlines_coursesIDCourse",

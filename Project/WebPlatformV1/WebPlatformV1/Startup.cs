@@ -28,6 +28,7 @@ namespace WebPlatformV1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSession();
             services.AddDbContextPool<MainDBContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("SqlServer"));
@@ -55,6 +56,7 @@ namespace WebPlatformV1
             app.UseAuthentication();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

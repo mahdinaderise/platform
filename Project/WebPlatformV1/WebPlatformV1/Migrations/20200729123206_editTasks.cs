@@ -2,30 +2,30 @@
 
 namespace WebPlatformV1.Migrations
 {
-    public partial class EditTsks : Migration
+    public partial class editTasks : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "Descibtion",
+                name: "Subject",
                 table: "tbl_Tasks",
                 nullable: true);
 
-            migrationBuilder.AddColumn<bool>(
-                name: "isDo",
+            migrationBuilder.AddColumn<int>(
+                name: "TimeStudy",
                 table: "tbl_Tasks",
                 nullable: false,
-                defaultValue: false);
+                defaultValue: 0);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Descibtion",
+                name: "Subject",
                 table: "tbl_Tasks");
 
             migrationBuilder.DropColumn(
-                name: "isDo",
+                name: "TimeStudy",
                 table: "tbl_Tasks");
         }
     }

@@ -411,6 +411,15 @@ namespace WebPlatformV1.Migrations
                     b.Property<int?>("DoIDdo")
                         .HasColumnType("int");
 
+                    b.Property<string>("IdConsultant")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdStudent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Idcourse")
+                        .HasColumnType("int");
+
                     b.Property<string>("NameTasks")
                         .HasColumnType("nvarchar(max)");
 
@@ -419,6 +428,15 @@ namespace WebPlatformV1.Migrations
 
                     b.Property<string>("StudentId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("SubmitDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TimeStudy")
+                        .HasColumnType("int");
 
                     b.Property<int?>("courseIDCourse")
                         .HasColumnType("int");

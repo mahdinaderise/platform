@@ -13,83 +13,60 @@
     </div>
     <div class="container-fluid">
         <h5>نام و نام خانوادگی دانش آموز</h5>
-        <div style="margin-bottom: 20px;">
-            <button type="button" class="btn btn-success btn-uppercase" data-toggle="modal" data-target="#exampleModal">
-                <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
-            </button>
+        @foreach (var item in Model.Students)
+        {
+            <h5>
+                @item.Name
+               
+            </h5>
 
-            <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class=""> ایجاد وظیفه برای دانش آموز</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
+        }
 
-                        <div class="modal-body">
+       <div style="margin-bottom: 20px;">
+           <form asp-action="CreateTask" asp-controller="Consultant"  method="get">
+               <button type="submit" class="btn btn-success btn-uppercase">
+                   <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
+               </button>
 
-                            <p style="margin-bottom: 2px;"> درس : </p>
-                            <div>
-                                <select class="select2-example">
-                                    <option>انتخاب درس</option>
-                                    <option value="France">داده کاوی </option>
-                                    <option value="Brazil">ریاضی مهندسی </option>
-                                    <option value="Yemen">آمار  و احتمالات </option>
-                                    <option value="United States">فیزیک </option>
-                                    <option value="China">علوم </option>
-                                    <option value="Argentina">شیمی </option>
-                                    <option value="Bulgaria">نرم افزار  مهندسی </option>
-                                </select>
-                            </div>
-
-                            <div class="form-group wd-xs-300">
-                                <label class="form-control-label">نام موضوع :</label>
-                                <input id="state" class="form-control" name="name_state">
-                                <div class="valid-feedback">
-                                    عالی!
-                                </div>
-                            </div>
-
-
-
-                            <!-- Textarea -->
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1"> شرح توضیحات</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
-                        <button type="button" class="btn btn-primary">اعمال تغییرات</button>
-                    </div>
-                </div>
-            </div>
+           </form>
+        
+            
         </div>
-        <div class="row" style="margin-bottom:5px;width:30%;">
-            <div class="form-group">
-                <input id="DateTime1" name="DateTime1" />
-                <input type="hidden" id="DateTime" name="DateTime" />
-                <script>
-                    $('#DateTime1').persianDatepicker({
+        <form asp-action="StudentPage" asp-controller="Consultant" method="post">
+            <div class="row" style="margin-bottom:5px;width:30%;">
+                @*<div class="form-group">
+            <input id="StartDate1" name="StartDate1" class=" form-control" />
+            <input type="hidden" id="StartDate" name="StartDate" />
+            <script>
+                $('#StartDate1').persianDatepicker({
 
-                        format: 'YYYY-MM-DD',
-                        onSelect: function (code) {
-                            var date = new Date(code);
-                            var year = date.getFullYear();
-                            var month = date.getMonth() + 1;
-                            var day = date.getDay();
-                            var str = year + '/' + month + '/' + day;
-                            $("#DateTime").val(str);
-                        }
-                    })
-                </script>
+                    format: 'YYYY-MM-DD',
+                    onSelect: function (code) {
+                        var date = new Date(code);
+                        var year = date.getFullYear();
+                        var month = date.getMonth() + 1;
+                        var day = date.getDay();
+                        var str = year + '/' + month + '/' + day;
+                        alert(year);
+                        alert(month);
+                        alert(day)
+                        $("#StartDate").val(str);
+
+                    }
+                })
+            </script>
+        </div>*@
+                <persian-date asp-for="StartDate"> </persian-date>
+                <button type="submit">جست و جو</button>
+
             </div>
-        </div>
+            <div class="row" style="margin-bottom:5px;width:30%;">
+                <button type="submit" class="btn btn-success btn-uppercase">
+                    <i class="ti-check-box mr-2"></i>  ایجاد گزارش هفتگی
+                </button>
+            </div>
+        </form>
+
         <div class="row">
             <div class="table-responsive">
                 <table class="table table-hover bg-white text-center">

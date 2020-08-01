@@ -10,8 +10,8 @@ using WebPlatformV1.Models.DbContext;
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    [Migration("20200726100226_MEdit")]
-    partial class MEdit
+    [Migration("20200729123206_editTasks")]
+    partial class editTasks
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -407,6 +407,9 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("CansultantId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Descibtion")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("DoIDdo")
                         .HasColumnType("int");
 
@@ -419,8 +422,20 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("StudentId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("SubmitDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TimeStudy")
+                        .HasColumnType("int");
+
                     b.Property<int?>("courseIDCourse")
                         .HasColumnType("int");
+
+                    b.Property<bool>("isDo")
+                        .HasColumnType("bit");
 
                     b.HasKey("IDTasks");
 

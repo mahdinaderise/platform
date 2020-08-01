@@ -98,8 +98,15 @@ namespace WebPlatformV1.Models.DbContext
         public int IDTasks { get; set; }
         public string NameTasks { get; set; }
         public DateTime SendDelivery { get; set; }
+        public DateTime SubmitDate { get; set; }
         public string Descibtion { get; set; }
+        public int TimeStudy { get; set; }
+        public string Subject { get; set; }
         public bool isDo { get; set; } = false;
+        public string IdStudent { get; set; }
+        public string IdConsultant { get; set; }
+        public int Idcourse { get; set; } 
+
         // Navigation 
         public virtual Tbl_Course course { get; set; }
         public virtual Consultant Cansultant { get; set; }
