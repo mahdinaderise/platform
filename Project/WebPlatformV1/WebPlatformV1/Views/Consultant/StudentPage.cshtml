@@ -1,4 +1,4 @@
-﻿@model TasksStudent
+﻿@model TasksStudents
 @{
     ViewData["Title"] = "StudentPage";
     Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
@@ -17,47 +17,64 @@
         {
             <h5>
                 @item.Name
-               
+
             </h5>
 
         }
 
-       <div style="margin-bottom: 20px;">
-           <form asp-action="CreateTask" asp-controller="Consultant"  method="get">
-               <button type="submit" class="btn btn-success btn-uppercase">
-                   <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
-               </button>
+        <div style="margin-bottom: 20px;">
+            <form asp-action="CreateTask" asp-controller="Consultant" method="get">
+                <button type="submit" class="btn btn-success btn-uppercase">
+                    <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
+                </button>
 
-           </form>
-        
-            
+            </form>
+
+
         </div>
+        <form class="form-inline">
+         
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="inputPassword2" class="sr-only">تاریخ</label>
+                <persian-date asp-for="StartDate"></persian-date>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2 ">جست و جو</button>
+        </form>
         <form asp-action="StudentPage" asp-controller="Consultant" method="post">
             <div class="row" style="margin-bottom:5px;width:30%;">
                 @*<div class="form-group">
-            <input id="StartDate1" name="StartDate1" class=" form-control" />
-            <input type="hidden" id="StartDate" name="StartDate" />
-            <script>
-                $('#StartDate1').persianDatepicker({
+                    <input id="StartDate1" name="StartDate1" class=" form-control" />
+                    <input type="hidden" id="StartDate" name="StartDate" />
+                    <script>
+                        $('#StartDate1').persianDatepicker({
 
-                    format: 'YYYY-MM-DD',
-                    onSelect: function (code) {
-                        var date = new Date(code);
-                        var year = date.getFullYear();
-                        var month = date.getMonth() + 1;
-                        var day = date.getDay();
-                        var str = year + '/' + month + '/' + day;
-                        alert(year);
-                        alert(month);
-                        alert(day)
-                        $("#StartDate").val(str);
+                            format: 'YYYY-MM-DD',
+                            onSelect: function (code) {
+                                var date = new Date(code);
+                                var year = date.getFullYear();
+                                var month = date.getMonth() + 1;
+                                var day = date.getDay();
+                                var str = year + '/' + month + '/' + day;
+                                alert(year);
+                                alert(month);
+                                alert(day)
+                                $("#StartDate").val(str);
 
-                    }
-                })
-            </script>
-        </div>*@
-                <persian-date asp-for="StartDate"> </persian-date>
-                <button type="submit">جست و جو</button>
+                            }
+                        })
+                    </script>
+                </div>*@
+                @*<div class="form-inline">
+                    <div class="col">
+                    </div>
+                    <div class="col">
+                        <button type="submit">جست و جو</button>
+
+                    </div>
+                </div>*@
+
+             
+
 
             </div>
             <div class="row" style="margin-bottom:5px;width:30%;">

@@ -41,7 +41,7 @@ namespace WebPlatformV1.Controllers
             return View();
         }
         
-        public IActionResult StudentPage(string id,TasksStudent model)
+        public IActionResult StudentPage(string id,TasksStudents model)
         {
             
             model.Students = _context.students.Where(p => p.Id == id).ToList();
@@ -55,7 +55,7 @@ namespace WebPlatformV1.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult StudentPage(TasksStudent model)
+        public IActionResult StudentPage(TasksStudents model)
         {
             var id = HttpContext.Session.GetString("id");
             model.Students = _context.students.Where(p => p.Id == id).ToList();

@@ -8,22 +8,22 @@
     <title>  صفحه اصلی - داشبرد دانش آموزان</title>
 
     <!-- Favicon -->
-    <link rel="~/assets/media/image/favicon.png" />
+    <img src="~/assets/media/image/favicon.png" />
     <!-- Plugin styles -->
     <link href="~/vendors/bundle.css" rel="stylesheet" />
+
     <!-- Datepicker -->
-    @*<link rel="stylesheet" href="vendors/datepicker/daterangepicker.css">
-        <link rel="stylesheet" href="assets/Datepiker/persian-datepicker.css">*@
+    <script src="~/vendors/datepicker/daterangepicker.js"></script>
+    <link rel="stylesheet" href="assets/Datepiker/persian-datepicker.css">
 
 
     <!-- Fullcalendar -->
-    <link href="~/vendors/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
+    <script src="~/vendors/fullcalendar/fullcalendar.min.js"></script>
     <link href="~/assets/Cal/fullcalendar.css" rel="stylesheet" />
     <link href='assets/Cal/fullcalendar.print.css' rel='stylesheet' media='print' />
 
     <!-- Vmap -->
     <link href="~/vendors/vmap/jqvmap.min.css" rel="stylesheet" />
-
     <!-- App styles -->
     <link href="~/assets/css/app.min.css" rel="stylesheet" />
 </head>
@@ -455,16 +455,11 @@
         </div>
         <!-- end::navigation -->
         <!-- begin::main-content -->
-        <div class="main-content">
+        @RenderBody()
 
-            <div class="container-fluid">
-                <!-- اینجا ساخته شود -->
-                <!-- end::main-content -->
-
-            </div>
-        </div>
         <!-- end::main -->
         <!-- Plugin scripts -->
+        
         <script src="~/vendors/bundle.js"></script>
         <!-- Chartjs -->
         <script src="~/vendors/charts/chartjs/chart.min.js"></script>
@@ -475,24 +470,27 @@
         <!-- Peity -->
         <script src="~/vendors/charts/peity/jquery.peity.min.js"></script>
         <script src="~/assets/js/examples/charts/peity.js"></script>
+
         <!-- Datepicker -->
         <script src="~/vendors/datepicker/daterangepicker.js"></script>
         <script src="~/assets/Datepiker/persian-datepicker.js"></script>
-        <script src="vendors/datepicker/bootstrap-datepicker.fa.min.js"></script>
+        <script src="~/vendors/datepicker/bootstrap-datepicker.fa.js"></script>
+
 
         <!-- Slick -->
         <script src="~/vendors/slick/slick.min.js"></script>
+
         <!-- Vamp -->
         <script src="~/vendors/vmap/jquery.vmap.min.js"></script>
-        <script src="vendors/vmap/maps/jquery.vmap.usa.js"></script>
+        <script src="~/vendors/vmap/maps/jquery.vmap.usa.js"></script>
         <script src="~/assets/js/examples/vmap.js"></script>
-
 
         <!-- a -->
         <script src="~/assets/Cal/moment.js"></script>
         <script src="~/assets/Cal/moment-jalaali.js"></script>
         <script src="~/assets/Cal/fullcalendar.js"></script>
         <script src="~/assets/Cal/fa.js"></script>
+
 
         <!-- Dashboard scripts -->
         <script src="~/assets/js/examples/dashboard.js"></script>
@@ -514,7 +512,7 @@
 
 
         <!-- App scripts -->
-        <script src="assets/js/app.min.js"></script>
+        <script src="~/assets/js/app.min.js"></script>
 </body>
 
 </html>
