@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels;
+using WebPlatformV1.ViewModels.Consultant;
 
 namespace WebPlatformV1.Controllers
 {
@@ -30,6 +31,7 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult ido()
         {
+            //مهدی نادری سیمیرمی
             return View();
         }
         public IActionResult index()
@@ -37,13 +39,23 @@ namespace WebPlatformV1.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult studenttask()
+        public IActionResult studenttask(TasksStudents model)
         { 
-        //{var IdStudent = _userManager.GetUserId(User);
-        //    var NowDateTime = DateTime.Today;
-        //    var StartDate = model.StartDate;
-            //model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == IdStudent && p.SendDelivery == DateTime.Today).ToList();
-            return View();
+        var IdStudent = _userManager.GetUserId(User);
+            var NowDateTime = DateTime.Today;
+            var StartDate = model.StartDate;
+            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == IdStudent && p.SendDelivery == DateTime.Today).ToList();
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult studenttask(TasksStudents model,string? id)
+        {
+            var IdStudent = _userManager.GetUserId(User);
+
+            model.Students = _context.students.Where(p => p.Id == IdStudent).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == IdStudent && p.SendDelivery == model.StartDate).ToList();
+
+            return View(model);
         }
         public IActionResult students()
         {
