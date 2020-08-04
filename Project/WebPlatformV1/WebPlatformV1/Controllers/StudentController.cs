@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels;
 using WebPlatformV1.ViewModels.Consultant;
+using WebPlatformV1.ViewModels.StudentViewModel;
 
 namespace WebPlatformV1.Controllers
 {
@@ -29,10 +31,37 @@ namespace WebPlatformV1.Controllers
         {
             return View();
         }
-        public IActionResult ido()
+        [HttpGet]
+        public IActionResult ido(int id)
         {
-            //مهدی نادری سیمیرمی
+            HttpContext.Session.SetInt32("id", id);
+
             return View();
+        }
+        [HttpPost]
+        public async Task< IActionResult> ido(Tbl_Do _Do , DoTask model,Tbl_Tasks tasks)
+        { var id= HttpContext.Session.GetInt32("id");
+            //var tasks = _context.tbl_Tasks.Where(p => p.IDTasks == (int)id).ToList();
+            tasks = _context.Find<Tbl_Tasks>((int)id);
+            tasks.isDo = true;
+            _context.tbl_Tasks.Update(tasks);
+            
+            if (ModelState.IsValid)
+            {
+                _Do.IDTasks = (int)id;
+                _Do.DiscriptiveTime = model.DiscriptiveTime;
+                _Do.Note = model.Note;
+                _Do.TrueTest = model.TrueTest;
+                _Do.falseTest = model.falseTest;
+                _Do.NullTest = model.NullTest;
+                _Do.TestTime = model.TestTime;
+                _Do.RevisionTime = model.RevisionTime;
+              
+                await _context.AddAsync(_Do);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(studenttask));
+            }
+                return View();
         }
         public IActionResult index()
         {

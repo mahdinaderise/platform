@@ -40,8 +40,15 @@ using WebPlatformV1.ViewModels.Consultant;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\Views\_ViewImports.cshtml"
+using WebPlatformV1.ViewModels.StudentViewModel;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"04938f6c5df9dec792b89f42c7f664cbe6bca5bf", @"/Views/Consultant/CreateTask.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ff32afada450f7f1f93ecfbde765105a74752662", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8db76787fbf33d9986710adc22c8a6b542f110a1", @"/Views/_ViewImports.cshtml")]
     public class Views_Consultant_CreateTask : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<CreateTask>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "text", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -97,9 +104,9 @@ using WebPlatformV1.ViewModels.Consultant;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<div class=\"main-content\">\r\n\r\n    <div class=\"container-fluid\">\r\n\r\n        <div class=\"card-body\">\r\n            <h5 class=\"card-title\"> ایجاد وظیفه</h5>\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "04938f6c5df9dec792b89f42c7f664cbe6bca5bf9459", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "04938f6c5df9dec792b89f42c7f664cbe6bca5bf9679", async() => {
                 WriteLiteral("\r\n                <div class=\"form-row\">\r\n                    <div class=\"col-md-4 mb-3\">\r\n                        <label for=\"validationTooltip01\"> نام وظیفه</label>\r\n                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "04938f6c5df9dec792b89f42c7f664cbe6bca5bf9919", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "04938f6c5df9dec792b89f42c7f664cbe6bca5bf10139", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -137,7 +144,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                     <div class=""col-md-4 mb-3"">
                         <label for=""validationTooltip01""> مبحث </label>
                         ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "04938f6c5df9dec792b89f42c7f664cbe6bca5bf12734", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "04938f6c5df9dec792b89f42c7f664cbe6bca5bf12955", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -169,7 +176,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                        <div class=\"valid-tooltip\">\r\n                            عالی!\r\n                        </div>\r\n                    </div>\r\n                \r\n");
                 WriteLiteral("\r\n                </div>\r\n                <div class=\"form-row\">\r\n                    <div class=\"col-md-6 mb-3\">\r\n                        <label for=\"validationTooltip03\">توضیحات</label>\r\n                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "04938f6c5df9dec792b89f42c7f664cbe6bca5bf15691", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "04938f6c5df9dec792b89f42c7f664cbe6bca5bf15912", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -205,7 +212,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                     <div class=""col-md-3 mb-3"">
                         <label for=""validationTooltip04"">زمان</label>
                         ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "04938f6c5df9dec792b89f42c7f664cbe6bca5bf18317", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "04938f6c5df9dec792b89f42c7f664cbe6bca5bf18538", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -241,7 +248,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                     <div class=""col-md-3 mb-3"">
                         <label for=""validationTooltip05"">تاریخ</label>
                         ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("persian-date", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "04938f6c5df9dec792b89f42c7f664cbe6bca5bf20946", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("persian-date", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "04938f6c5df9dec792b89f42c7f664cbe6bca5bf21167", async() => {
                 }
                 );
                 __WebPlatformV1_TagHelpers_PersianDateTagHelper = CreateTagHelper<global::WebPlatformV1.TagHelpers.PersianDateTagHelper>();
