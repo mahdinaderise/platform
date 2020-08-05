@@ -104,6 +104,7 @@ namespace WebPlatformV1.Models.DbContext
     {
         [Key]
         public int IDTasks { get; set; }
+        public int IdoId { get; set; }
         public string NameTasks { get; set; }
         public DateTime SendDelivery { get; set; }
         public DateTime SubmitDate { get; set; }

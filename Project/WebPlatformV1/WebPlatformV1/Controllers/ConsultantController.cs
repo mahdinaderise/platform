@@ -64,7 +64,17 @@ namespace WebPlatformV1.Controllers
             return View(model);
         }
 
-     
+        public IActionResult detaildo(int id,detaildo model)
+        {
+            var result = _context.Find<Tbl_Do>(id);
+            model.DiscriptiveTime = result.DiscriptiveTime;
+            model.falseTest = result.falseTest;
+            model.TrueTest = result.TrueTest;
+            model.NullTest = result.NullTest;
+            model.RevisionTime = result.RevisionTime;
+            model.TestTime = result.TestTime;
+            return View(model);
+        }
         //[HttpPost]
         //public IActionResult StudentPage(string id, TasksStudent model)
         //{

@@ -16,9 +16,10 @@
         @foreach (var item in Model.Students)
         {
             <h5>
-                @item.Name
+                @item.Name+" "+@item.Family
 
             </h5>
+
 
         }
 
@@ -32,51 +33,19 @@
 
 
         </div>
-        <form class="form-inline">
-         
-            <div class="form-group mx-sm-3 mb-2">
-                <label for="inputPassword2" class="sr-only">تاریخ</label>
-                <persian-date asp-for="StartDate"></persian-date>
-            </div>
-            <button type="submit" class="btn btn-primary mb-2 ">جست و جو</button>
-        </form>
+        <div class="d-flex justify-content-end">
+            <form class="form-inline" asp-action="StudentPage" asp-controller="consultant" method="post" style="margin-left:0px">
+
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="inputPassword2" class="sr-only">تاریخ</label>
+                    <persian-date asp-for="StartDate"></persian-date>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2 ">جست و جو</button>
+            </form>
+
+        </div>     
         <form asp-action="StudentPage" asp-controller="Consultant" method="post">
-            <div class="row" style="margin-bottom:5px;width:30%;">
-                @*<div class="form-group">
-                    <input id="StartDate1" name="StartDate1" class=" form-control" />
-                    <input type="hidden" id="StartDate" name="StartDate" />
-                    <script>
-                        $('#StartDate1').persianDatepicker({
 
-                            format: 'YYYY-MM-DD',
-                            onSelect: function (code) {
-                                var date = new Date(code);
-                                var year = date.getFullYear();
-                                var month = date.getMonth() + 1;
-                                var day = date.getDay();
-                                var str = year + '/' + month + '/' + day;
-                                alert(year);
-                                alert(month);
-                                alert(day)
-                                $("#StartDate").val(str);
-
-                            }
-                        })
-                    </script>
-                </div>*@
-                @*<div class="form-inline">
-                    <div class="col">
-                    </div>
-                    <div class="col">
-                        <button type="submit">جست و جو</button>
-
-                    </div>
-                </div>*@
-
-             
-
-
-            </div>
             <div class="row" style="margin-bottom:5px;width:30%;">
                 <button type="submit" class="btn btn-success btn-uppercase">
                     <i class="ti-check-box mr-2"></i>  ایجاد گزارش هفتگی
@@ -110,9 +79,11 @@
                                     <button type="button" class="btn btn-primary" title="حذف" data-toggle="tooltip" data-placement="bottom">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     </button>
-                                    <button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;">
+                                    
+                                    <a class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;" asp-action="detaildo" asp-controller="consultant" asp-route-id="@item.IdoId"> 
                                         <i class="fa fa-info" aria-hidden="true"></i>
-                                    </button>
+
+                                    </a>
                                 </td>
                             </tr>
 

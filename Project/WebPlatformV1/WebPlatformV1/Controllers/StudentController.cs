@@ -42,8 +42,7 @@ namespace WebPlatformV1.Controllers
         public async Task< IActionResult> ido(Tbl_Do _Do , DoTask model,Tbl_Tasks tasks)
         { var id= HttpContext.Session.GetInt32("id");
             //var tasks = _context.tbl_Tasks.Where(p => p.IDTasks == (int)id).ToList();
-            tasks = _context.Find<Tbl_Tasks>((int)id);
-            tasks.isDo = true;
+          
             _context.tbl_Tasks.Update(tasks);
             
             if (ModelState.IsValid)
@@ -59,9 +58,15 @@ namespace WebPlatformV1.Controllers
               
                 await _context.AddAsync(_Do);
                 await _context.SaveChangesAsync();
+                tasks = _context.Find<Tbl_Tasks>((int)id);
+                tasks.isDo = true;
+                tasks.IdoId = _Do.IDdo;
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(studenttask));
             }
-                return View();
+          
+
+            return View();
         }
         public IActionResult index()
         {
