@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -90,6 +91,7 @@ namespace WebPlatformV1.Controllers
         {
             var consultantId = _userManager.GetUserId(User);
             var result = _context.consultants.Find(consultantId);
+            model.blog = _context.tbl_Blogs.Where(p => p.ConsultantId == consultantId).ToList();
             model.Name = result.Name;
             model.Family = result.Family;
             model.Email = result.Email;
@@ -107,6 +109,17 @@ namespace WebPlatformV1.Controllers
                 blogs.ConsultantId = consultantId;
                 await _context.AddAsync(blogs);
                 await _context.SaveChangesAsync();
+                if (model.Picture?.Length > 0)
+                {
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        "images",
+                        blogs.ID + Path.GetExtension(model.Picture.FileName));
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Picture.CopyTo(stream);
+                    }
+                }
                 return RedirectToAction(nameof(blog));
             }
             return View();

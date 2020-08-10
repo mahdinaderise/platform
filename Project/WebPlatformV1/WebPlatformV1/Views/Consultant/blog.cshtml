@@ -97,19 +97,20 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <form asp-controller="Consultant"  asp-action="Blog" method="post">
+                        <form asp-controller="Consultant"  asp-action="Blog" method="post"  enctype="multipart/form-data">
                             <div class="form-group">
                                 <textarea rows="2" class="form-control" placeholder="چیزی بنویسید" asp-for="Note"></textarea>
                             </div>
                             <div class="text-right">
                                 <ul class="list-inline">
-                                    @*<li class="list-inline-item">
+                                    <li class="list-inline-item">
                                         <a href="#" data-toggle="tooltip" title="افزودن تصویر"
                                            class="btn btn-outline-light">
+                                            <input asp-for="Picture"  accept=".jpg"/>
                                             <i data-feather="image"></i>
                                         </a>
                                     </li>
-                                    <li class="list-inline-item">
+                                    @*<li class="list-inline-item">
                                         <a href="#" data-toggle="tooltip" title="افزودن ویدئو"
                                            class="btn btn-outline-light">
                                             <i data-feather="video"></i>
@@ -145,52 +146,53 @@
 
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel">
-
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <figure class="avatar avatar-sm mr-3">
-                                            <img src="assets/media/image/user/man_avatar3.jpg"
-                                                 class="rounded-circle" alt="...">
-                                        </figure>
-                                        <div class="d-inline-block">
-                                            <div>آناهیتا ارباب</div>
-                                            <small class="text-muted">7 ساعت قبل</small>
+                        @foreach (var item in Model.blog)
+                        {
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <figure class="avatar avatar-sm mr-3">
+                                                <img src="assets/media/image/user/man_avatar3.jpg"
+                                                     class="rounded-circle" alt="...">
+                                            </figure>
+                                            <div class="d-inline-block">
+                                                <div> @Model.Name @Model.Family</div>
+                                                @*<small class="text-muted">7 ساعت قبل</small>*@
+                                            </div>
+                                        </div>
+                                        <div class="dropdown ml-auto">
+                                            <a href="#" data-toggle="dropdown">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a href="#" class="dropdown-item">ویرایش</a>
+                                                <a href="#" class="dropdown-item">حذف</a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="dropdown ml-auto">
-                                        <a href="#" data-toggle="dropdown">
-                                            <i class="fa fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="#" class="dropdown-item">ویرایش</a>
-                                            <a href="#" class="dropdown-item">حذف</a>
+                                    <p>@item.Note</p>
+                                    <div class="row row-xs">
+                                        <div class="col-12">
+                                            <img src="/images/@(item.ID).JPG" class="w-100 border-radius-1"
+                                                 alt="image">
                                         </div>
-                                    </div>
-                                </div>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است?</p>
-                                <div class="row row-xs">
-                                    <div class="col-6">
-                                        <img src="assets/media/image/photo9.jpg" class="w-100 border-radius-1"
-                                             alt="image">
-                                    </div>
-                                    <div class="col-6">
-                                        <img src="assets/media/image/photo10.jpg" class="w-100 border-radius-1"
-                                             alt="image">
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-4">
-                                    <div>
-                                        <a href="#" title="لایک" data-toggle="tooltip">
-                                            <i data-feather="heart"
-                                               class="width-17 height-17 mr-1"></i> 311
-                                        </a>
-                                    </div>
 
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mt-4">
+                                        @*<div>
+                                            <a href="#" title="لایک" data-toggle="tooltip">
+                                                <i data-feather="heart"
+                                                   class="width-17 height-17 mr-1"></i> 311
+                                            </a>
+                                        </div>*@
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                        }
+
                     </div>
 
 
