@@ -1795,3 +1795,5 @@ E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcor
 E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\students.cshtml.g.cs
 E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\studenttask.cshtml.g.cs
 E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\detaildo.cshtml.g.cs
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\Profile.cshtml.g.cs
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\EditPost.cshtml.g.cs

@@ -12,9 +12,19 @@
 
                 <div class="card">
                     <div class="card-body text-center">
-                        <figure class="avatar avatar-lg m-b-20">
-                            <img src="assets/media/image/user/man_avatar1.jpg" class="rounded-circle" alt="...">
-                        </figure>
+                        @if (Model.ProfilePicUrl == null)
+                        {
+                            <figure class="avatar">
+                                <span class="avatar-title rounded-circle">@ViewBag.fristCharecter</span>
+                            </figure>
+                        }
+                        else
+                        {
+                            <figure class="avatar avatar-sm mr-3">
+                                <img src="@Model.ProfilePicUrl"
+                                     class="rounded-circle" alt="...">
+                            </figure>
+                        }
                         <h5 class="mb-1">@Model.Name @Model.Family</h5>
                         <a href="#" class="btn btn-outline-primary">
                             <i data-feather="edit-2" class="mr-2"></i> ویرایش پروفایل
@@ -31,7 +41,7 @@
                                 <h4 class="font-weight-bold">@Model.CountStudent</h4>
                                 <span>دانش آموزان</span>
                             </div>
-                          
+
                         </div>
                     </div>
                 </div>
@@ -56,48 +66,48 @@
                             <div class="col-6 text-muted">سن:</div>
                             <div class="col-6">@Model.Age</div>
                         </div>
-                       
-                      
+
+
                         <div class="row mb-2">
                             <div class="col-6 text-muted">آدرس:</div>
                             <div class="col-6">@Model.Address</div>
                         </div>
-                        
+
                     </div>
                 </div>
 
 
 
                 @*<div class="card">
-                    <div class="card-body">
-                        <h6 class="card-title">مهارت‌ها</h6>
+                        <div class="card-body">
+                            <h6 class="card-title">مهارت‌ها</h6>
 
-                        <div class="mb-4">
-                            <div class="text-muted mb-2">
-                                <div class="icon-block icon-block-sm icon-block-floating icon-block-outline-danger text-danger m-r-10">
-                                    <i class="fa fa-star"></i>
+                            <div class="mb-4">
+                                <div class="text-muted mb-2">
+                                    <div class="icon-block icon-block-sm icon-block-floating icon-block-outline-danger text-danger m-r-10">
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <span class="text-uppercase font-size-11">رضایت از شما</span>
                                 </div>
-                                <span class="text-uppercase font-size-11">رضایت از شما</span>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <div class="progress flex-grow-1" style="height: 5px">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 75%;"
-                                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="d-flex align-items-center">
+                                    <div class="progress flex-grow-1" style="height: 5px">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 75%;"
+                                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <span class="h6 mb-0 ml-3">75%</span>
                                 </div>
-                                <span class="h6 mb-0 ml-3">75%</span>
                             </div>
+
+
                         </div>
-
-
-                    </div>
-                </div>*@
+                    </div>*@
 
             </div>
             <div class="col-md-8">
 
                 <div class="card">
                     <div class="card-body">
-                        <form asp-controller="Consultant"  asp-action="Blog" method="post"  enctype="multipart/form-data">
+                        <form asp-controller="Consultant" asp-action="Blog" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <textarea rows="2" class="form-control" placeholder="چیزی بنویسید" asp-for="Note"></textarea>
                             </div>
@@ -106,22 +116,22 @@
                                     <li class="list-inline-item">
                                         <a href="#" data-toggle="tooltip" title="افزودن تصویر"
                                            class="btn btn-outline-light">
-                                            <input asp-for="Picture"  accept=".jpg"/>
+                                            <input asp-for="Picture" accept=".jpg"  required />
                                             <i data-feather="image"></i>
                                         </a>
                                     </li>
                                     @*<li class="list-inline-item">
-                                        <a href="#" data-toggle="tooltip" title="افزودن ویدئو"
-                                           class="btn btn-outline-light">
-                                            <i data-feather="video"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#" data-toggle="tooltip" title="افزودن فایل"
-                                           class="btn btn-outline-light">
-                                            <i data-feather="file"></i>
-                                        </a>
-                                    </li>*@
+                                            <a href="#" data-toggle="tooltip" title="افزودن ویدئو"
+                                               class="btn btn-outline-light">
+                                                <i data-feather="video"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" data-toggle="tooltip" title="افزودن فایل"
+                                               class="btn btn-outline-light">
+                                                <i data-feather="file"></i>
+                                            </a>
+                                        </li>*@
                                     <li class="list-inline-item">
                                         <button class="btn btn-primary">ارسال</button>
                                     </li>
@@ -152,10 +162,20 @@
                                 <div class="card-body">
                                     <div class="d-flex mb-3">
                                         <div class="d-flex align-items-center">
-                                            <figure class="avatar avatar-sm mr-3">
-                                                <img src="assets/media/image/user/man_avatar3.jpg"
-                                                     class="rounded-circle" alt="...">
-                                            </figure>
+                                            @if (Model.ProfilePicUrl == null)
+                                            {
+                                                <figure class="avatar">
+                                                    <span class="avatar-title rounded-circle">@ViewBag.fristCharecter</span>
+                                                </figure>
+                                            }
+                                            else
+                                            {
+                                                <figure class="avatar avatar-sm mr-3">
+                                                    <img src="@Model.ProfilePicUrl"
+                                                         class="rounded-circle" alt="...">
+                                                </figure>
+                                            }
+
                                             <div class="d-inline-block">
                                                 <div> @Model.Name @Model.Family</div>
                                                 @*<small class="text-muted">7 ساعت قبل</small>*@
@@ -166,7 +186,7 @@
                                                 <i class="fa fa-ellipsis-v"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="#" class="dropdown-item">ویرایش</a>
+                                                <a  asp-action="EditPost" asp-controller="Consultant" asp-route-id="@item.ID" class="dropdown-item">ویرایش</a>
                                                 <a href="#" class="dropdown-item">حذف</a>
                                             </div>
                                         </div>
@@ -181,11 +201,11 @@
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center mt-4">
                                         @*<div>
-                                            <a href="#" title="لایک" data-toggle="tooltip">
-                                                <i data-feather="heart"
-                                                   class="width-17 height-17 mr-1"></i> 311
-                                            </a>
-                                        </div>*@
+                                                <a href="#" title="لایک" data-toggle="tooltip">
+                                                    <i data-feather="heart"
+                                                       class="width-17 height-17 mr-1"></i> 311
+                                                </a>
+                                            </div>*@
 
                                     </div>
                                 </div>

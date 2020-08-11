@@ -95,6 +95,10 @@ namespace WebPlatformV1.Controllers
             model.Name = result.Name;
             model.Family = result.Family;
             model.Email = result.Email;
+            string FristLast = result.Family;
+            string fristCharecter = result.Name;
+            ViewBag.fristCharecter = fristCharecter[0]+" " +FristLast[0].ToString();
+            model.ProfilePicUrl = result.ProfilePicUrl;
             model.CountPost = _context.tbl_Blogs.Where(p=>p.ConsultantId== consultantId).Count();
             model.CountStudent = _context.students.Where(p => p.ConsultantID == consultantId).Count();
             return View(model);
@@ -114,6 +118,7 @@ namespace WebPlatformV1.Controllers
                     string filePath = Path.Combine(Directory.GetCurrentDirectory(),
                         "wwwroot",
                         "images",
+                      
                         blogs.ID + Path.GetExtension(model.Picture.FileName));
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
@@ -123,6 +128,43 @@ namespace WebPlatformV1.Controllers
                 return RedirectToAction(nameof(blog));
             }
             return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> EditPost(int? id, Blog model)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            model.blog = _context.tbl_Blogs.Where(p=>p.ID==id).ToList();
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditPost(int id,[Bind("ID","Note") ] Tbl_Blog model)
+        {
+
+            if (id != model.ID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                
+               
+                    _context.Update(model);
+                    await _context.SaveChangesAsync();
+                
+              
+                return RedirectToAction(nameof(blog));
+            }
+            return View(model);
         }
         [HttpGet]
         public IActionResult CreateTask( CreateTask model,Tbl_Tasks tasks)
@@ -161,6 +203,10 @@ namespace WebPlatformV1.Controllers
             return View();
         }
         public IActionResult students()
+        {
+            return View();
+        }
+        public IActionResult Profile()
         {
             return View();
         }

@@ -18,6 +18,8 @@ namespace WebPlatformV1.Models
         public int NationalCode { get; set; }
         public bool State { get; set; }
         public string ConsultantID { get; set; }
+        public string ProfilePicUrl { get; set; }
+
 
     }
     public class Consultant : ApplicationUsers
@@ -26,6 +28,7 @@ namespace WebPlatformV1.Models
         public string Family { get; set; }
         public int NationalCode { get; set; }
         public bool State { get; set; }
+        public string ProfilePicUrl { get; set; }
         public Tbl_AddPanel addPanel { get; set; }
         public ICollection<Tbl_Tasks> tasks { get; set; }
         public ICollection<Tbl_Blog> blogs { get; set; }

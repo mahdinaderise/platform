@@ -21,6 +21,8 @@ namespace WebPlatformV1.ViewModels.Consultant
         public int CountStudent { get; set; }
         public int Age { get; set; }
         public string Address { get; set; }
+        public string ProfilePicUrl { get; set; }
+
         public string Tel { get; set; }
         public string Email { get; set; }
         public string Note { get; set; }
