@@ -57,6 +57,7 @@ namespace WebPlatformV1.Models.DbContext
         public int ID { get; set; }
         public int IDAttach { get; set; }
         public string Note { get; set; }
+        public string ConsultantId { get; set; }
         public ICollection<Tbl_Attach> tbl_Attaches { get; set; }
         public Consultant consultant { get; set; }
     }

@@ -27,7 +27,12 @@
                             عالی!
                         </div>
                     </div>
-                
+                    <div class="col-md-4 mb-3">
+
+                            <label asp-for="courseid" class="control-label">درس:</label>
+                            <select asp-for="courseid" class="form-control" asp-items="ViewBag.course" style="width:30%"></select>
+                    </div>
+
                     @*<select asp-for=""></select>*@
 
                 </div>
@@ -41,7 +46,7 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="validationTooltip04">زمان</label>
-                        <input type="number" class="form-control" id="validationTooltip04" placeholder="زمان مطالعه" asp-for="TimeStudy" required >
+                        <input type="number" class="form-control" id="validationTooltip04" placeholder="زمان مطالعه" asp-for="TimeStudy" required>
                         <div class="invalid-tooltip">
                             زمان مطالعه را مشخص کنید
                         </div>
@@ -53,6 +58,7 @@
                             لطفا یک تاریخ معتبر انتخاب کنید
                         </div>
                     </div>
+            
                 </div>
                 <button class="btn btn-primary" type="submit">ارسال</button>
 

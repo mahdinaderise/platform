@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGeneration;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels.Consultant;
@@ -84,23 +86,57 @@ namespace WebPlatformV1.Controllers
         //    model.tasks = _context.tbl_Tasks.Where(p => p.Student.Id == id && p.SendDelivery == NowDateTime).ToList();
         //    return View(model);
         //}
-        public IActionResult blog()
+        [HttpGet]
+        public IActionResult blog(Blog model)
         {
+            var consultantId = _userManager.GetUserId(User);
+            var result = _context.consultants.Find(consultantId);
+            model.blog = _context.tbl_Blogs.Where(p => p.ConsultantId == consultantId).ToList();
+            model.Name = result.Name;
+            model.Family = result.Family;
+            model.Email = result.Email;
+            model.CountPost = _context.tbl_Blogs.Where(p=>p.ConsultantId== consultantId).Count();
+            model.CountStudent = _context.students.Where(p => p.ConsultantID == consultantId).Count();
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> blog(Tbl_Blog blogs, Blog model)
+        {
+            var consultantId = _userManager.GetUserId(User);
+            if (ModelState.IsValid)
+            {
+                blogs.Note = model.Note;
+                blogs.ConsultantId = consultantId;
+                await _context.AddAsync(blogs);
+                await _context.SaveChangesAsync();
+                if (model.Picture?.Length > 0)
+                {
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        "images",
+                        blogs.ID + Path.GetExtension(model.Picture.FileName));
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Picture.CopyTo(stream);
+                    }
+                }
+                return RedirectToAction(nameof(blog));
+            }
             return View();
         }
         [HttpGet]
-        public IActionResult CreateTask( CreateTask model)
+        public IActionResult CreateTask( CreateTask model,Tbl_Tasks tasks)
         {
             var NowDateTime = DateTime.Today;
             var id = HttpContext.Session.GetString("id");
-            ViewData["course"] = new SelectList(_context.tbl_Courses, "IDCourse", "NameCourse");
+            ViewData["course"] = new SelectList(_context.tbl_Courses, "IDCourse", "NameCourse",tasks.Idcourse );
 
             model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == id && p.SubmitDate == NowDateTime).ToList();
 
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateTask(CreateTask model, Tbl_Tasks tasks)
+        public async Task<IActionResult> CreateTask(CreateTask model, Tbl_Tasks tasks,string? name)
         {
             var id = HttpContext.Session.GetString("id");
             if (ModelState.IsValid)
@@ -110,7 +146,7 @@ namespace WebPlatformV1.Controllers
                 tasks.Subject = model.Subject;
                 tasks.IdConsultant= _userManager.GetUserId(User);
                 tasks.IdStudent = id;
-                tasks.Idcourse = 1;
+                tasks.Idcourse = model.courseid;
                 tasks.SendDelivery = model.SendDelivery;
                 tasks.SubmitDate = DateTime.Today;
                 await _context.AddAsync(tasks);
