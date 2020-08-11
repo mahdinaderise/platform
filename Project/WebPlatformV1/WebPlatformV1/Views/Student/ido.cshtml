@@ -1,0 +1,91 @@
+﻿@model DoTask
+@{
+    ViewData["Title"] = "ido";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+<div class="main-content">
+    <div class="page-header">
+        <div class="container-fluid d-sm-flex justify-content-between">
+            <h4>لیست دانش آموزان</h4>
+            <nav aria-label="breadcrumb"/>
+                <!-- <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">داشبرد</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page"></li>
+                    </ol>
+                </nav> -->
+        </div>
+    </div>
+    <div class="container-fluid">
+        <!-- اینجا ساخته شود -->
+
+        <div class="card-body">
+            <h5 class="card-title">انجام وظیفه</h5>
+            <form class="needs-validation" novalidate asp-action="ido" asp-controller="Student" method="post">
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="validationTooltip01"> زمان تشریحی</label>
+                        <input type="number" class="form-control" id="validationTooltip01" placeholder="زمان تشریحی" value="" required asp-for="DiscriptiveTime">
+                        <div class="valid-tooltip">
+                            عالی!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationTooltip01"> زمان تستی </label>
+                        <input type="number" class="form-control" id="validationTooltip01" placeholder="زمان تستی" value="" required asp-for="TestTime">
+                        <div class="valid-tooltip">
+                            عالی!
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="validationTooltip04"> زمان بررسی</label>
+                        <input type="number" class="form-control" id="validationTooltip04" placeholder="زمان بررسی" asp-for="RevisionTime" required>
+                        <div class="invalid-tooltip">
+                            زمان بررسی را مشخص کنید
+                        </div>
+                    </div>
+                    @*<select asp-for=""></select>*@
+
+                </div>
+                <div class="form-row">
+                    <div class="col-md-3 mb-3">
+                        <label for="validationTooltip04">تعداد تست صحیح</label>
+                        <input type="number" class="form-control" id="validationTooltip04" placeholder="تعداد تست صحیح" asp-for="TrueTest" required>
+                        <div class="invalid-tooltip">
+                            تعداد تست صحیح را مشخص کنید
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="validationTooltip04">تعداد تست غلط</label>
+                        <input type="number" class="form-control" id="validationTooltip04" placeholder="تعداد تست غلط" asp-for="falseTest" required>
+                        <div class="invalid-tooltip">
+                            تعداد تست غلط را مشخص کنید
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="validationTooltip04">تعداد تست نزده</label>
+                        <input type="number" class="form-control" id="validationTooltip04" placeholder="تعداد تست نزده" asp-for="NullTest" required>
+                        <div class="invalid-tooltip">
+                            تعداد تست نزده را مشخص کنید
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-6">
+                        <label for="validationTooltip03">توضیحات</label>
+                        <textarea class="form-control" id="validationTooltip03" placeholder="شرح وظیفه" required asp-for="Note"></textarea>
+                        <div class="invalid-tooltip">
+                            شرح وظیفه را وارد کنید.
+                        </div>
+                    </div>
+                </div>
+                <button style="margin-top:10px" class="btn btn-primary" type="submit">ارسال</button>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- end::main-content -->
+
+</div>
+

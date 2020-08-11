@@ -84,11 +84,19 @@ namespace WebPlatformV1.Models.DbContext
         [Key]
         public int IDdo { get; set; }
         public int IDTasks { get; set; }
+        // مدت فعالیت
+        public int DiscriptiveTime { get; set; }
+        public int TestTime { get; set; }
+        public int RevisionTime { get; set; }
+        //توضیحات فعالیت
         public string Note { get; set; }
+        // تعداد تست ها
+
         [Required]
-        public int CountTest { get; set; }
-        [Required]
-        public int TimeStudy { get; set; }
+        public int TrueTest { get; set; }
+        public int falseTest { get; set; }
+        public int NullTest { get; set; }
+
         public ICollection<Tbl_Tasks> task { get; set; }
         public virtual Student student { get; set; }
     }
@@ -96,6 +104,7 @@ namespace WebPlatformV1.Models.DbContext
     {
         [Key]
         public int IDTasks { get; set; }
+        public int IdoId { get; set; }
         public string NameTasks { get; set; }
         public DateTime SendDelivery { get; set; }
         public DateTime SubmitDate { get; set; }
@@ -105,7 +114,8 @@ namespace WebPlatformV1.Models.DbContext
         public bool isDo { get; set; } = false;
         public string IdStudent { get; set; }
         public string IdConsultant { get; set; }
-        public int Idcourse { get; set; } 
+        public int Idcourse { get; set; }
+        //public bool isSpecial { get; set; }
 
         // Navigation 
         public virtual Tbl_Course course { get; set; }

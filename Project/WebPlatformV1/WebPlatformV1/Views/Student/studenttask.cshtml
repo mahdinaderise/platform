@@ -1,40 +1,21 @@
 ﻿@model TasksStudents
 @{
-    ViewData["Title"] = "StudentPage";
-    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
+    ViewData["Title"] = "studenttask";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 }
 
 <div class="main-content">
     <div class="page-header">
         <div class="container-fluid d-sm-flex justify-content-between">
-            <h4>شرح وظایف دانش آموز</h4>
+            <h4>شرح وظایف من</h4>
 
         </div>
     </div>
     <div class="container-fluid">
         <h5>نام و نام خانوادگی دانش آموز</h5>
-        @foreach (var item in Model.Students)
-        {
-            <h5>
-                @item.Name+" "+@item.Family
 
-            </h5>
-
-
-        }
-
-        <div style="margin-bottom: 20px;">
-            <form asp-action="CreateTask" asp-controller="Consultant" method="get">
-                <button type="submit" class="btn btn-success btn-uppercase">
-                    <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
-                </button>
-
-            </form>
-
-
-        </div>
         <div class="d-flex justify-content-end">
-            <form class="form-inline" asp-action="StudentPage" asp-controller="consultant" method="post" style="margin-left:0px">
+            <form class="form-inline" asp-action="studenttask" asp-controller="Student" method="post" style="margin-left:0px">
 
                 <div class="form-group mx-sm-3 mb-2">
                     <label for="inputPassword2" class="sr-only">تاریخ</label>
@@ -43,14 +24,45 @@
                 <button type="submit" class="btn btn-primary mb-2 ">جست و جو</button>
             </form>
 
-        </div>     
-        <form asp-action="StudentPage" asp-controller="Consultant" method="post">
-
+        </div>
+        <form  method="post">
             <div class="row" style="margin-bottom:5px;width:30%;">
-                <button type="submit" class="btn btn-success btn-uppercase">
-                    <i class="ti-check-box mr-2"></i>  ایجاد گزارش هفتگی
-                </button>
+                @*<div class="form-group">
+                        <input id="StartDate1" name="StartDate1" class=" form-control" />
+                        <input type="hidden" id="StartDate" name="StartDate" />
+                        <script>
+                            $('#StartDate1').persianDatepicker({
+
+                                format: 'YYYY-MM-DD',
+                                onSelect: function (code) {
+                                    var date = new Date(code);
+                                    var year = date.getFullYear();
+                                    var month = date.getMonth() + 1;
+                                    var day = date.getDay();
+                                    var str = year + '/' + month + '/' + day;
+                                    alert(year);
+                                    alert(month);
+                                    alert(day)
+                                    $("#StartDate").val(str);
+
+                                }
+                            })
+                        </script>
+                    </div>*@
+                @*<div class="form-inline">
+                        <div class="col">
+                        </div>
+                        <div class="col">
+                            <button type="submit">جست و جو</button>
+
+                        </div>
+                    </div>*@
+
+
+
+
             </div>
+          
         </form>
 
         <div class="row">
@@ -75,15 +87,13 @@
                                     @Html.CheckBoxFor(m => item.isDo)
                                 </td>
                                 <td>
-
-                                    <button type="button" class="btn btn-primary" title="حذف" data-toggle="tooltip" data-placement="bottom">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </button>
-                                    
-                                    <a class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;" asp-action="detaildo" asp-controller="consultant" asp-route-id="@item.IdoId"> 
-                                        <i class="fa fa-info" aria-hidden="true"></i>
-
+                                        @*<button type="submit" class="btn btn-primary" title="انجام" data-toggle="tooltip" data-placement="bottom" asp-route-id="@item.IDTasks" asp-action="ido" asp-controller="student">*@
+                                    <a class="btn btn-primary" title="انجام" data-toggle="tooltip" data-placement="bottom" asp-route-id="@item.IDTasks" asp-action="ido" asp-controller="student">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
                                     </a>
+                                        <button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;">
+                                            <i class="fa fa-info" aria-hidden="true"></i>
+                                        </button>
                                 </td>
                             </tr>
 
@@ -103,7 +113,3 @@
     <div class="popover fade left in" role="tooltip" id="popover308426" style="top: 44.5px; left: 915px; display: block;"><div class="arrow" style="top: 50%;"></div><h3 class="popover-title" data-name="Md-DateTimePicker-Title">پنج شنبه، ۰۱ فروردین ۱۳۹۲</h3><div class="popover-content" data-name="Md-DateTimePicker-PopoverContent"><div data-name="Md-PersianDateTimePicker"><table class="table table-striped"><tbody><tr><td colspan="100" style="padding:5px;"><table class="table" data-name="Md-PersianDateTimePicker-HeaderTable"><tbody><tr><td><button type="button" class="btn btn-default btn-xs" title="سال بعد" data-name="Md-PersianDateTimePicker-NextYear">&lt;&lt;</button></td><td><button type="button" class="btn btn-default btn-xs" title="ماه بعد" data-name="Md-PersianDateTimePicker-NextMonth">&lt;</button></td><td data-name="Md-PersianDateTimePicker-TitleYear">۱۳۹۲</td><td data-name="Md-PersianDateTimePicker-TitleMonth">فروردین</td><td><button type="button" class="btn btn-default btn-xs" title="ماه قبل" data-name="Md-PersianDateTimePicker-PreviousMonth">&gt;</button></td><td><button type="button" class="btn btn-default btn-xs" title="سال قبل" data-name="Md-PersianDateTimePicker-PreviousYear">&gt;&gt;</button></td></tr></tbody></table></td></tr><tr data-name="Md-PersianDateTimePicker-WeekDaysNames"><td>ش</td><td>ی</td><td>د</td><td>س</td><td>چ</td><td>پ</td><td class="text-danger">ج</td></tr><tr><td data-name="disabled-day">۲۷</td><td data-name="disabled-day">۲۸</td><td data-name="disabled-day">۲۹</td><td data-name="disabled-day">۳۰</td><td data-name="disabled-day">۳۱</td><td data-name="day" class="bg-info">۰۱</td><td data-name="day" class="text-danger">۰۲</td></tr><tr><td data-name="day">۰۳</td><td data-name="day">۰۴</td><td data-name="day">۰۵</td><td data-name="day">۰۶</td><td data-name="day">۰۷</td><td data-name="day">۰۸</td><td data-name="day" class="text-danger">۰۹</td></tr><tr><td data-name="day">۱۰</td><td data-name="day">۱۱</td><td data-name="day">۱۲</td><td data-name="day">۱۳</td><td data-name="day">۱۴</td><td data-name="day">۱۵</td><td data-name="day" class="text-danger">۱۶</td></tr><tr><td data-name="day">۱۷</td><td data-name="day">۱۸</td><td data-name="day">۱۹</td><td data-name="day">۲۰</td><td data-name="day">۲۱</td><td data-name="day">۲۲</td><td data-name="day" class="text-danger">۲۳</td></tr><tr><td data-name="day">۲۴</td><td data-name="day">۲۵</td><td data-name="day">۲۶</td><td data-name="day">۲۷</td><td data-name="day">۲۸</td><td data-name="day">۲۹</td><td data-name="day" class="text-danger">۳۰</td></tr><tr><td colspan="100"><button class="btn btn-default btn-xs" data-name="go-today">امروز</button></td></tr></tbody></table></div></div></div>
 
 }
-
-
-
-

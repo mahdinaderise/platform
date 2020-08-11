@@ -19,13 +19,51 @@
     <!-- Fullcalendar -->
     <link href="~/vendors/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
     <link href="~/assets/Cal/fullcalendar.css" rel="stylesheet" />
-    <link href='assets/Cal/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <link href='~/assets/Cal/fullcalendar.print.css' rel='stylesheet' media='print' />
+
+    <link href="~/persianDatePicker/persian-datepicker.min.css" rel="stylesheet" />
 
     <!-- Vmap -->
     <link href="~/vendors/vmap/jqvmap.min.css" rel="stylesheet" />
 
     <!-- App styles -->
     <link href="~/assets/css/app.min.css" rel="stylesheet" />
+
+    <link href="~/persianDatePicker/jquery.Bootstrap-PersianDateTimePicker.css" rel="stylesheet" />
+    <!-- Plugin scripts -->
+    <script src="~/vendors/bundle.js"></script>
+    <!-- Chartjs -->
+    <script src="~/vendors/charts/chartjs/chart.min.js"></script>
+    <!-- Apex chart -->
+    <script src="~/vendors/charts/apex/apexcharts.min.js"></script>
+    <!-- Circle progress -->
+    <script src="~/vendors/circle-progress/circle-progress.min.js"></script>
+    <!-- Peity -->
+    <script src="~/vendors/charts/peity/jquery.peity.min.js"></script>
+    <script src="~/assets/js/examples/charts/peity.js"></script>
+    <!-- Datepicker -->
+    @*<script src="~/vendors/datepicker/daterangepicker.js"></script>
+        <script src="~/assets/Datepiker/persian-datepicker.js"></script>
+        <script src="vendors/datepicker/bootstrap-datepicker.fa.min.js"></script>*@
+    <script src="~/persianDatePicker/js/persian-date.min.js"></script>
+    <script src="~/persianDatePicker/js/persian-datepicker.min.js"></script>
+    <!-- Slick -->
+    <script src="~/vendors/slick/slick.min.js"></script>
+    <!-- Vamp -->
+    <script src="~/vendors/vmap/jquery.vmap.min.js"></script>
+    <script src="~/vendors/vmap/maps/jquery.vmap.usa.js"></script>
+    <script src="~/assets/js/examples/vmap.js"></script>
+
+
+    <!-- a -->
+    <script src="~/assets/Cal/moment.js"></script>
+    <script src="~/assets/Cal/moment-jalaali.js"></script>
+    <script src="~/assets/Cal/fullcalendar.js"></script>
+    <script src="~/assets/Cal/fa.js"></script>
+
+    <!-- Dashboard scripts -->
+    <script src="~/assets/js/examples/dashboard.js"></script>
+
 </head>
 <body>
 
@@ -284,13 +322,13 @@
                     <div class="navigation-menu-tab-header" data-toggle="tooltip" title="مهدی نظری" data-placement="right">
                         <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
                             <figure class="avatar avatar-sm">
-                                <img src="assets/media/image/user/man_avatar5.jpg" class="rounded-circle" alt="avatar">
+                                <img src="~/assets/media/image/user/man_avatar5.jpg" class="rounded-circle" alt="avatar">
                             </figure>
                         </a>
                         <div class="dropdown-menu dropdown-menu-left dropdown-menu-big">
                             <div class="p-3 text-center" data-backround-image="assets/media/image/image1.jpg">
                                 <figure class="avatar mb-3">
-                                    <img src="assets/media/image/user/man_avatar5.jpg" class="rounded-circle" alt="image">
+                                    <img src="~/assets/media/image/user/man_avatar5.jpg" class="rounded-circle" alt="image">
                                 </figure>
                                 <h6 class="d-flex align-items-center justify-content-center">
 
@@ -350,16 +388,16 @@
                             </a>
                         </li>
                         <!-- <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="عناصر رابط کاربری"
-                           data-nav-target="#elements">
-                            <i data-feather="layers"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="صفحات" data-nav-target="#pages">
-                            <i data-feather="copy"></i>
-                        </a>
-                    </li> -->
+                            <a href="#" data-toggle="tooltip" data-placement="right" title="عناصر رابط کاربری"
+                               data-nav-target="#elements">
+                                <i data-feather="layers"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="tooltip" data-placement="right" title="صفحات" data-nav-target="#pages">
+                                <i data-feather="copy"></i>
+                            </a>
+                        </li> -->
                     </ul>
                 </div>
                 <div>
@@ -383,13 +421,13 @@
 
                 <!-- begin::navigation-logo -->
                 <!-- <div>
-                <div id="navigation-logo">
-                    <a href="index.html">
-                        <img class="logo" src="assets/media/image/logo-F.png" alt="logo">
-                        <img class="logo-light" src="assets/media/image/logo-light.png" alt="light logo">
-                    </a>
-                </div>
-            </div> -->
+                    <div id="navigation-logo">
+                        <a href="index.html">
+                            <img class="logo" src="assets/media/image/logo-F.png" alt="logo">
+                            <img class="logo-light" src="assets/media/image/logo-light.png" alt="light logo">
+                        </a>
+                    </div>
+                </div> -->
                 <!-- end::navigation-logo -->
 
                 <div class="navigation-menu-group">
@@ -402,25 +440,25 @@
                             <li><a href="Course.html"> لیست درس ها</a></li>
 
                             <!-- <li class="navigation-divider">دنبال‌کنندگان</li>
-                        <li>
-                            <div class="avatar-group ml-4">
-                                <a href="#" class="avatar">
-                                    <span class="avatar-title bg-success rounded-circle">آ</span>
-                                </a>
-                                <a href="#" class="avatar">
-                                    <img src="assets/media/image/user/women_avatar5.jpg" class="rounded-circle" alt="avatar">
-                                </a>
-                                <a href="#" class="avatar">
-                                    <img src="assets/media/image/user/women_avatar2.jpg" class="rounded-circle" alt="avatar">
-                                </a>
-                                <a href="#" class="avatar">
-                                    <span class="avatar-title bg-info rounded-circle">س</span>
-                                </a>
-                                <a href="#" class="avatar">
-                                    <span class="avatar-title bg-dark rounded-circle">+30</span>
-                                </a>
-                            </div>
-                        </li> -->
+                            <li>
+                                <div class="avatar-group ml-4">
+                                    <a href="#" class="avatar">
+                                        <span class="avatar-title bg-success rounded-circle">آ</span>
+                                    </a>
+                                    <a href="#" class="avatar">
+                                        <img src="assets/media/image/user/women_avatar5.jpg" class="rounded-circle" alt="avatar">
+                                    </a>
+                                    <a href="#" class="avatar">
+                                        <img src="assets/media/image/user/women_avatar2.jpg" class="rounded-circle" alt="avatar">
+                                    </a>
+                                    <a href="#" class="avatar">
+                                        <span class="avatar-title bg-info rounded-circle">س</span>
+                                    </a>
+                                    <a href="#" class="avatar">
+                                        <span class="avatar-title bg-dark rounded-circle">+30</span>
+                                    </a>
+                                </div>
+                            </li> -->
                         </ul>
                     </div>
                     <div id="apps">
@@ -436,17 +474,17 @@
                         </ul>
                     </div>
                     <!-- <div id="pages">
-                    <ul>
-                        <li class="navigation-divider">مدیریت مالی</li>
-                        <li>
-                            <a href="pay managment.html">
-                                <span> پرداخت های من</span>
-                                <span class="badge badge-danger">5</span>
-                            </a>
-                        </li>
+                        <ul>
+                            <li class="navigation-divider">مدیریت مالی</li>
+                            <li>
+                                <a href="pay managment.html">
+                                    <span> پرداخت های من</span>
+                                    <span class="badge badge-danger">5</span>
+                                </a>
+                            </li>
 
-                    </ul>
-                </div>  -->
+                        </ul>
+                    </div>  -->
 
                 </div>
             </div>
@@ -455,66 +493,34 @@
         </div>
         <!-- end::navigation -->
         <!-- begin::main-content -->
-        <div class="main-content">
 
-            <div class="container-fluid">
-                <!-- اینجا ساخته شود -->
-                <!-- end::main-content -->
+        @RenderBody()
+    </div>
+    <!-- end::main -->
+    <!-- Plugin scripts -->
 
-            </div>
-        </div>
-        <!-- end::main -->
-        <!-- Plugin scripts -->
-        <script src="~/vendors/bundle.js"></script>
-        <!-- Chartjs -->
-        <script src="~/vendors/charts/chartjs/chart.min.js"></script>
-        <!-- Apex chart -->
-        <script src="~/vendors/charts/apex/apexcharts.min.js"></script>
-        <!-- Circle progress -->
-        <script src="~/vendors/circle-progress/circle-progress.min.js"></script>
-        <!-- Peity -->
-        <script src="~/vendors/charts/peity/jquery.peity.min.js"></script>
-        <script src="~/assets/js/examples/charts/peity.js"></script>
-        <!-- Datepicker -->
-        <script src="~/vendors/datepicker/daterangepicker.js"></script>
-        <script src="~/assets/Datepiker/persian-datepicker.js"></script>
-        <script src="vendors/datepicker/bootstrap-datepicker.fa.min.js"></script>
+ 
+    <div class="colors">
+        <!-- To use theme colors with Javascript -->
+        <div class="bg-primary"></div>
+        <div class="bg-primary-bright"></div>
+        <div class="bg-secondary"></div>
+        <div class="bg-secondary-bright"></div>
+        <div class="bg-info"></div>
+        <div class="bg-info-bright"></div>
+        <div class="bg-success"></div>
+        <div class="bg-success-bright"></div>
+        <div class="bg-danger"></div>
+        <div class="bg-danger-bright"></div>
+        <div class="bg-warning"></div>
+        <div class="bg-warning-bright"></div>
+    </div>
 
-        <!-- Slick -->
-        <script src="~/vendors/slick/slick.min.js"></script>
-        <!-- Vamp -->
-        <script src="~/vendors/vmap/jquery.vmap.min.js"></script>
-        <script src="vendors/vmap/maps/jquery.vmap.usa.js"></script>
-        <script src="~/assets/js/examples/vmap.js"></script>
+    @RenderSection("MyScripts", required: false)
 
+    <!-- App scripts -->
+    <script src="~/assets/js/app.min.js"></script>
 
-        <!-- a -->
-        <script src="~/assets/Cal/moment.js"></script>
-        <script src="~/assets/Cal/moment-jalaali.js"></script>
-        <script src="~/assets/Cal/fullcalendar.js"></script>
-        <script src="~/assets/Cal/fa.js"></script>
-
-        <!-- Dashboard scripts -->
-        <script src="~/assets/js/examples/dashboard.js"></script>
-        <div class="colors">
-            <!-- To use theme colors with Javascript -->
-            <div class="bg-primary"></div>
-            <div class="bg-primary-bright"></div>
-            <div class="bg-secondary"></div>
-            <div class="bg-secondary-bright"></div>
-            <div class="bg-info"></div>
-            <div class="bg-info-bright"></div>
-            <div class="bg-success"></div>
-            <div class="bg-success-bright"></div>
-            <div class="bg-danger"></div>
-            <div class="bg-danger-bright"></div>
-            <div class="bg-warning"></div>
-            <div class="bg-warning-bright"></div>
-        </div>
-
-
-        <!-- App scripts -->
-        <script src="assets/js/app.min.js"></script>
 </body>
 
 </html>

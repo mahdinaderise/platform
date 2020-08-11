@@ -1,0 +1,46 @@
+﻿@model detaildo
+@{
+    ViewData["Title"] = "detaildo";
+    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
+}
+    <div class="main-content">
+        <div class="page-header">
+            <div class="container-fluid d-sm-flex justify-content-between">
+                <h4>گزارش اجرای دانش آموز</h4>
+
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-hover bg-white text-center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">تعداد تست غلط</th>
+                                <th scope="col">تعداد تست درست </th>
+                                <th scope="col"> تعداد تست خالی </th>
+                                <th scope="col">  زمان برای  تشریحی</th>
+                                <th scope="col">  زمان برای  تست</th>
+                                <th scope="col">  زمان برای  بررسی</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+
+                                <td> @Model.falseTest</td>
+                                <td> @Model.TrueTest</td>
+                                <td> @Model.NullTest</td>
+                                <td> @Model.DiscriptiveTime</td>
+                                <td> @Model.TestTime</td>
+                                <td> @Model.RevisionTime</td>
+
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+        </div>

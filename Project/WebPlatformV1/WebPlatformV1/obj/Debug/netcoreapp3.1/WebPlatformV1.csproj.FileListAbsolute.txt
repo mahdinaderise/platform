@@ -1712,11 +1712,6 @@ E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcor
 E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutConsultant.cshtml.g.cs
 E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutStudent.cshtml.g.cs
 E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Students\course.cshtml.g.cs
-E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Students\ido.cshtml.g.cs
-E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Students\index.cshtml.g.cs
-E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Students\students.cshtml.g.cs
-E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Students\studenttask.cshtml.g.cs
 E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
 E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.RazorTargetAssemblyInfo.cache
@@ -1794,3 +1789,9 @@ C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Raz
 C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\CreateTask.cshtml.g.cs
 C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\StudentPage.cshtml.g.cs
 C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutStudent.cshtml.g.cs
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\course.cshtml.g.cs
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\ido.cshtml.g.cs
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\index.cshtml.g.cs
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\students.cshtml.g.cs
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\studenttask.cshtml.g.cs
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\detaildo.cshtml.g.cs

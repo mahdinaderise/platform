@@ -42,7 +42,7 @@
         <h5>ورود مشاوران</h5>
 
         <!-- form -->
-        <form asp-controller="Account" asp-action="LoginConsultant" asp-route-returnUrl="@ViewData["returnUrl"]" method="post">
+        <form asp-controller="Account" asp-action="Loginstudent" asp-route-returnUrl="@ViewData["returnUrl"]" method="post">
             <div asp-validation-summary="ModelOnly"></div>
 
             @if (ViewData["ErrorMessage"] != null)

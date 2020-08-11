@@ -7,9 +7,9 @@ using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1.ViewModels.Consultant
 {
-    public class TasksStudents
+    public class TasksStudents2
     {
-        public TasksStudents()
+        public TasksStudents2()
         {
             tasks = new List<Tbl_Tasks>();
         }
