@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGeneration;
+using WebPlatformV1.Migrations;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels.Consultant;
@@ -91,7 +92,7 @@ namespace WebPlatformV1.Controllers
         {
             var consultantId = _userManager.GetUserId(User);
             var result = _context.consultants.Find(consultantId);
-            model.blog = _context.tbl_Blogs.Where(p => p.ConsultantId == consultantId).ToList();
+            model.blog = _context.tbl_Blogs.Where(p => p.ConsultantId == consultantId).OrderByDescending(P=>P.ID).ToList();
             model.Name = result.Name;
             model.Family = result.Family;
             model.Email = result.Email;
@@ -130,14 +131,14 @@ namespace WebPlatformV1.Controllers
             return View();
         }
         [HttpGet]
-        public async Task<IActionResult> EditPost(int? id, Blog model)
+        public async Task<IActionResult> EditPost(int? id, Tbl_Blog model)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            model.blog = _context.tbl_Blogs.Where(p=>p.ID==id).ToList();
+            model = _context.Find<Tbl_Blog>(id);
             if (model == null)
             {
                 return NotFound();
@@ -148,6 +149,8 @@ namespace WebPlatformV1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditPost(int id,[Bind("ID","Note") ] Tbl_Blog model)
         {
+            var consultantId = _userManager.GetUserId(User);
+
 
             if (id != model.ID)
             {
@@ -156,10 +159,10 @@ namespace WebPlatformV1.Controllers
 
             if (ModelState.IsValid)
             {
-                
-               
-                    _context.Update(model);
-                    await _context.SaveChangesAsync();
+                model.ConsultantId = consultantId;
+
+                 _context.Update(model);
+                await _context.SaveChangesAsync();
                 
               
                 return RedirectToAction(nameof(blog));
@@ -206,9 +209,25 @@ namespace WebPlatformV1.Controllers
         {
             return View();
         }
-        public IActionResult Profile()
+        [BindProperty]
+        public Profile Consultant { get; set; }
+        public   IActionResult Profile(Profile model)
         {
-            return View();
+            var consultantId = _userManager.GetUserId(User);
+
+
+            //var user = _context.consultants.Select(p=>p.Name  p.Family , p.PhoneNumber).Where(p => p.Id == consultantId).ToList();
+            model.Name = _context.Find<Consultant>(consultantId).Name;
+            model.Family= _context.Find<Consultant>(consultantId).Family;
+            model.Address = _context.Find<Consultant>(consultantId).Address;
+            model.CardNumber = _context.Find<Consultant>(consultantId).CardNumber;
+            model.PhoneNumber = _context.Find<Consultant>(consultantId).PhoneNumber;
+            model.Shaba = _context.Find<Consultant>(consultantId).Shaba;
+            model.State = _context.Find<Consultant>(consultantId).State;
+            //model.Consultants = _context.consultants.Where(p => p.Id == user).ToList();
+            //consultants = _context.consultants.Where(p=>p.Id==id).ToList();
+
+            return View(model);
         }
         public IActionResult Tasks(StudentsViewModel model)
         {

@@ -1,8 +1,78 @@
-﻿
+﻿@model Profile
 @{
     ViewData["Title"] = "Profile";
     Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
 }
 
-<h1>Profile</h1>
 
+<div class="main-content">
+
+    <div class="container-fluid">
+        <!-- اینجا ساخته شود -->
+        <div class="card">
+            <div class="card-body">
+                
+                    <form>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="exampleInputPassword1" asp-for="Name">نام</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1">
+
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="exampleInputPassword1" asp-for="Family">نام خانوادگی</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1">
+
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+
+                                    <label for="exampleInputPassword1">شماره کارت</label>
+                                    <input type="password" class="form-control" asp-for="CardNumber" id="exampleInputPassword1">
+
+                                </div>
+
+
+                                <div class="form-group col-md-3">
+
+                                    <label for="exampleInputPassword1">شماره شبا</label>
+                                    <input type="password" class="form-control" asp-for="Shaba" id="exampleInputPassword1">
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="exampleInputPassword1">شماره تلفن</label>
+                                    <input type="password" class="form-control" asp-for="PhoneNumber" id="exampleInputPassword1">
+
+                                </div>
+                                <div class="form-group col-md-9">
+                                    <label for="exampleInputPassword1"> آدرس</label>
+                                    <input type="password" class="form-control" asp-for="Address" id="exampleInputPassword1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label for="exampleFormControlFile1">آپلود عکس پروفایل  </label>
+                            <input type="file" class="form-control-file" asp-for="Picture" id="exampleFormControlFile1">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-success">ثبت</button>
+                            </div>
+
+                        </div>
+                    </form>
+                
+
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
