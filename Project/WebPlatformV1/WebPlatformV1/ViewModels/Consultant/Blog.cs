@@ -16,6 +16,7 @@ namespace WebPlatformV1.ViewModels.Consultant
         public List<Tbl_Blog> blog { get; set; }
 
         public string Name { get; set; }
+        public string id { get; set; }
         public string Family { get; set; }
         public int CountPost { get; set; }
         public int CountStudent { get; set; }

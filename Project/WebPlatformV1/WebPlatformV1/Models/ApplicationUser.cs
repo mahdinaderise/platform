@@ -29,7 +29,7 @@ namespace WebPlatformV1.Models
         public int NationalCode { get; set; }
         public bool State { get; set; }
         public string ProfilePicUrl { get; set; }
-        public int CardNumber { get; set; }
+        public string CardNumber { get; set; }
         public string Address { get; set; }
         public string Shaba { get; set; }
         public Tbl_AddPanel addPanel { get; set; }

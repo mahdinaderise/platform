@@ -96,6 +96,7 @@ namespace WebPlatformV1.Controllers
             model.Name = result.Name;
             model.Family = result.Family;
             model.Email = result.Email;
+            model.id = result.Id;
             string FristLast = result.Family;
             string fristCharecter = result.Name;
             ViewBag.fristCharecter = fristCharecter[0]+" " +FristLast[0].ToString();
@@ -111,6 +112,7 @@ namespace WebPlatformV1.Controllers
             if (ModelState.IsValid)
             {
                 blogs.Note = model.Note;
+                
                 blogs.ConsultantId = consultantId;
                 await _context.AddAsync(blogs);
                 await _context.SaveChangesAsync();
@@ -170,6 +172,32 @@ namespace WebPlatformV1.Controllers
             return View(model);
         }
         [HttpGet]
+        public async Task<IActionResult> DeletePost(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var Post = await _context.tbl_Blogs
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (Post == null)
+            {
+                return NotFound();
+            }
+
+            return View(Post);
+        }
+        [HttpPost, ActionName("DeletePost")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var Post = await _context.tbl_Blogs.FindAsync(id);
+            _context.tbl_Blogs.Remove(Post);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(blog));
+        }
+        [HttpGet]
         public IActionResult CreateTask( CreateTask model,Tbl_Tasks tasks)
         {
             var NowDateTime = DateTime.Today;
@@ -184,6 +212,7 @@ namespace WebPlatformV1.Controllers
         public async Task<IActionResult> CreateTask(CreateTask model, Tbl_Tasks tasks,string? name)
         {
             var id = HttpContext.Session.GetString("id");
+
             if (ModelState.IsValid)
             {
                 tasks.Descibtion = model.Descibtion;
@@ -209,27 +238,67 @@ namespace WebPlatformV1.Controllers
         {
             return View();
         }
-        [BindProperty]
-        public Profile Consultant { get; set; }
+   [HttpGet]
         public   IActionResult Profile(Profile model)
         {
+ 
             var consultantId = _userManager.GetUserId(User);
 
-
+          var C=  _context.Find<Consultant>(consultantId);
             //var user = _context.consultants.Select(p=>p.Name  p.Family , p.PhoneNumber).Where(p => p.Id == consultantId).ToList();
-            model.Name = _context.Find<Consultant>(consultantId).Name;
-            model.Family= _context.Find<Consultant>(consultantId).Family;
-            model.Address = _context.Find<Consultant>(consultantId).Address;
-            model.CardNumber = _context.Find<Consultant>(consultantId).CardNumber;
-            model.PhoneNumber = _context.Find<Consultant>(consultantId).PhoneNumber;
-            model.Shaba = _context.Find<Consultant>(consultantId).Shaba;
-            model.State = _context.Find<Consultant>(consultantId).State;
+            model.id = C.Id;
+            model.Name = C.Name;
+            model.Family = C.Family;
+            model.Address = C.Address;
+            model.CardNumber = C.CardNumber;
+            model.PhoneNumber = C.PhoneNumber;
+            model.Shaba = C.Shaba;
+            model.ProfilePicUrl = C.ProfilePicUrl;
             //model.Consultants = _context.consultants.Where(p => p.Id == user).ToList();
             //consultants = _context.consultants.Where(p=>p.Id==id).ToList();
+            string FristLast = model.Family;
+            string fristCharecter = model.Name;
+            ViewBag.fristCharecter = fristCharecter[0] + " " + FristLast[0].ToString();
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Profile(Profile model,Consultant consultant)
+        {
+            var consultantId = _userManager.GetUserId(User);
+            var c = _context.consultants.FirstOrDefault(p => p.Id == consultantId);
+            if (c != null)
+            {
+                c.Name = model.Name;
+                c.Family = model.Family;
+                c.Address = model.Address;
+                c.CardNumber = model.CardNumber;
+                c.PhoneNumber = model.PhoneNumber;
+                c.Shaba = model.Shaba;
+                await _context.SaveChangesAsync();
+                if (model.Picture?.Length > 0)
+                {
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        "images","Profile",
+
+                        c.Id + Path.GetExtension(model.Picture.FileName));
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Picture.CopyTo(stream);
+                        var test = filePath;
+                        c.ProfilePicUrl = filePath;
+                        await _context.SaveChangesAsync();
+
+                        consultant.ProfilePicUrl = model.Picture.ToString();                    }
+                }
+                return RedirectToAction(nameof(Profile));
+
+            }
+
 
             return View(model);
         }
-        public IActionResult Tasks(StudentsViewModel model)
+            public IActionResult Tasks(StudentsViewModel model)
         {
             var consultantId = _userManager.GetUserId(User);
             model.Students = _context.students.Where(p => p.ConsultantID == consultantId).ToList();
