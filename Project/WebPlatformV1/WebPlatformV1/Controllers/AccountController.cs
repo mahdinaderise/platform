@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebPlatformV1.Models;
+using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels.Account;
 
 namespace WebPlatformV1.Controllers
@@ -14,15 +15,18 @@ namespace WebPlatformV1.Controllers
     public class AccountController : Controller
 
     {
+        private readonly MainDBContext _context;
+
         private readonly UserManager<ApplicationUsers> _userManager;
         private readonly SignInManager<ApplicationUsers> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<ApplicationUsers> userManager, SignInManager<ApplicationUsers> signInManager,RoleManager<IdentityRole> roleManager)
+        public AccountController(MainDBContext context, UserManager<ApplicationUsers> userManager, SignInManager<ApplicationUsers> signInManager,RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _context = context;
         }
         [HttpGet]
         public IActionResult RegisterConsultant()
@@ -107,6 +111,7 @@ namespace WebPlatformV1.Controllers
                 if (result.Succeeded)
                 {
                     var result1 = await _userManager.AddToRoleAsync(user, "Consultant");
+                 
                     return RedirectToAction("Index", "Home");
                 }
 

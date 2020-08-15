@@ -39,8 +39,20 @@ namespace WebPlatformV1.Controllers
         //}
         public  IActionResult Index()
         {
-            //var result = _context.studentOfCansultants.Where(p => p.Cansultant.Equals(_userManager.GetUserId(User)));
+            var cId = _userManager.GetUserId(User);
+            
+            var w = _context.tbl_Wallets.Where(p => p.ConsultantId == cId).ToList();
+            if (w.Count == 0)
+            {
+                var Wallet = new Tbl_Wallet();
+                Wallet.ConsultantId = cId;
+                Wallet.Credit = 0;
+                _context.tbl_Wallets.Add(Wallet);
+                _context.SaveChanges();
+            }
            
+            //var result = _context.studentOfCansultants.Where(p => p.Cansultant.Equals(_userManager.GetUserId(User)));
+
             return View();
         }
         
