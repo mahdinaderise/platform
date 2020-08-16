@@ -4,5 +4,29 @@
     Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
 }
 
-<h1>haspanel</h1>
 
+
+<div class="main-content">
+
+    <div class="container-fluid">
+        <!-- اینجا ساخته شود -->
+        <div class="card">
+            <div class="card_body">
+
+                <div class="alert alert-success" role="alert" style="margin-top: 50px;">
+                    شما برای این دانش آموز پنل تعریف کرده اید
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a class="btn btn-light" asp-action="students" asp-controller="Consultant">بازگشت</a>
+                </div>
+                @*<form asp-action="haspanel" asp-controller="Consultant" method="post">
+                    <div class="d-flex justify-content-start">
+                        <button type="submit" class="btn btn-light" asp-route-id="@ViewBag.idstudent">ایجاد فاکتور جدید</button>
+                    </div>
+                </form>*@
+            </div>      
+        </div>
+    </div>
+    <!-- end::main-content -->
+
+</div>

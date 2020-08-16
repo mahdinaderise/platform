@@ -253,12 +253,29 @@ namespace WebPlatformV1.Controllers
             var r = _context.tbl_AddPanels.Where(p => p.StudentID == id).ToList();
             if (r.Count!=0)
             {
-                
+
+                return RedirectToAction(nameof(haspanel));
+
             }
             return View();
         }
+        [HttpGet]
         public IActionResult haspanel()
         {
+            ViewBag.idstudent = HttpContext.Session.GetString("IdStudentForPanel");
+
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> haspanel( string id)
+        {
+            id = HttpContext.Session.GetString("IdStudentForPanel");
+            var panel =  _context.tbl_AddPanels.Where(p=>p.StudentID==id);
+            
+            _context.tbl_AddPanels.Remove(panel);
+         await _context.SaveChangesAsync();
+         return RedirectToAction(nameof(AddPanel));
+
             return View();
         }
         [HttpPost]
@@ -294,6 +311,10 @@ namespace WebPlatformV1.Controllers
 
           var C=  _context.Find<Consultant>(consultantId);
             //var user = _context.consultants.Select(p=>p.Name  p.Family , p.PhoneNumber).Where(p => p.Id == consultantId).ToList();
+
+            #region view data in textbox
+
+
             model.id = C.Id;
             model.Name = C.Name;
             model.Family = C.Family;
@@ -302,11 +323,19 @@ namespace WebPlatformV1.Controllers
             model.PhoneNumber = C.PhoneNumber;
             model.Shaba = C.Shaba;
             model.ProfilePicUrl = C.ProfilePicUrl;
+
+            #endregion
+
+            #region get on char of name and family
+
             //model.Consultants = _context.consultants.Where(p => p.Id == user).ToList();
             //consultants = _context.consultants.Where(p=>p.Id==id).ToList();
             string FristLast = model.Family;
             string fristCharecter = model.Name;
             ViewBag.fristCharecter = fristCharecter[0] + " " + FristLast[0].ToString();
+
+            #endregion
+
             return View(model);
         }
         [HttpPost]
