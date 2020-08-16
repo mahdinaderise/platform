@@ -472,9 +472,35 @@ namespace WebPlatformV1.Migrations
                     b.ToTable("tbl_Tasks");
                 });
 
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Wallet", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ConsultantId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Credit")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ConsultantId");
+
+                    b.ToTable("tbl_Wallets");
+                });
+
             modelBuilder.Entity("WebPlatformV1.Models.Consultant", b =>
                 {
                     b.HasBaseType("WebPlatformV1.Models.ApplicationUsers");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Family")
                         .HasColumnType("nvarchar(max)");
@@ -486,6 +512,9 @@ namespace WebPlatformV1.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ProfilePicUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Shaba")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("State")
@@ -643,6 +672,13 @@ namespace WebPlatformV1.Migrations
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Course", "course")
                         .WithMany("tasks")
                         .HasForeignKey("courseIDCourse");
+                });
+
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Wallet", b =>
+                {
+                    b.HasOne("WebPlatformV1.Models.Consultant", "consultant")
+                        .WithMany()
+                        .HasForeignKey("ConsultantId");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.Consultant", b =>

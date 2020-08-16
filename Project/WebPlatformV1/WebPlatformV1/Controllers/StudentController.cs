@@ -26,7 +26,10 @@ namespace WebPlatformV1.Controllers
             _context = context;
             _userManager = userManager;
         }
-
+         public IActionResult PeyTest()
+        {
+            return View();
+        }
         public IActionResult course()
         {
             return View();

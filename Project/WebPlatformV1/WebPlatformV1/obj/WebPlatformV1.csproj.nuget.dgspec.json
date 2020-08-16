@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\gitp\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {}
+    "E:\\Naderi\\platform\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {}
   },
   "projects": {
-    "C:\\gitp\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {
+    "E:\\Naderi\\platform\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\gitp\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
+        "projectUniqueName": "E:\\Naderi\\platform\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
         "projectName": "WebPlatformV1",
-        "projectPath": "C:\\gitp\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
-        "packagesPath": "C:\\Users\\pasargad\\.nuget\\packages\\",
-        "outputPath": "C:\\gitp\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\obj\\",
+        "projectPath": "E:\\Naderi\\platform\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
+        "packagesPath": "C:\\Users\\aragrp.com\\.nuget\\packages\\",
+        "outputPath": "E:\\Naderi\\platform\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pasargad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\aragrp.com\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -73,6 +76,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "zarinpalsandbox": {
+              "target": "Package",
+              "version": "[2.0.4, )"
             }
           },
           "imports": [
@@ -93,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

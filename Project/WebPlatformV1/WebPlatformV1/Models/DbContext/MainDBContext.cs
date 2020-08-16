@@ -46,6 +46,7 @@ namespace WebPlatformV1.Models.DbContext
         public DbSet<Tbl_FinnialManegment> tbl_FinnialManegments { get; set; }
         public DbSet<Tbl_Headline> tbl_Headlines { get; set; }
         public DbSet<Tbl_Tasks> tbl_Tasks { get; set; }
+        public DbSet<Tbl_Wallet> tbl_Wallets { get; set; }
         //public DbSet<Tbl_TasksCourse> tbl_TasksCourses { get; set; }
 
     }
@@ -119,10 +120,10 @@ namespace WebPlatformV1.Models.DbContext
         //public bool isSpecial { get; set; }
 
         // Navigation 
-        public virtual Tbl_Course course { get; set; }
-        public virtual Consultant Cansultant { get; set; }
-        public virtual Student Student { get; set; }
-        public virtual Tbl_Do Do { get; set; }
+        public  Tbl_Course course { get; set; }
+        public  Consultant Cansultant { get; set; }
+        public  Student Student { get; set; }
+        public  Tbl_Do Do { get; set; }
 
     }
     public class Tbl_FinnialManegment
@@ -153,8 +154,8 @@ namespace WebPlatformV1.Models.DbContext
     //    public string link { get; set; }
     //    public string type { get; set; }
     //}
-    
-   
+
+
     //public class Tbl_TasksOfStudent
     //{
     //    [Key]
@@ -166,6 +167,14 @@ namespace WebPlatformV1.Models.DbContext
     //    public virtual Tbl_Student  Student{ get; set; } 
 
     //}
+    public class Tbl_Wallet
+    {
+        public int ID { get; set; }
+        public string ConsultantId { get; set; }
+        public int Credit { get; set; }
+
+        public Consultant consultant { get; set; }
+    }
     public class Tbl_AddPanel
     {
         [Key]

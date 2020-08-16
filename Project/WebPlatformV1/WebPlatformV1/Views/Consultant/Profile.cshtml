@@ -1,8 +1,106 @@
-﻿
+﻿@model Profile
 @{
     ViewData["Title"] = "Profile";
     Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
 }
 
-<h1>Profile</h1>
 
+<div class="main-content">
+
+    <div class="container-fluid">
+        <div class="Row">
+            <div class="col-md-4">
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        @if (Model.ProfilePicUrl == null)
+                        {
+                            <figure class="avatar">
+                                <span class="avatar-title rounded-circle">@ViewBag.fristCharecter</span>
+                            </figure>
+                        }
+                        else
+                        {
+                            <figure class="avatar avatar-xl">
+                                <img src="/images/Profile/@(Model.id).jpg"
+                                     class="rounded-circle bg-info" alt="...">
+                            </figure>
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <form asp-action="Profile" asp-controller="Consultant" method="post"  enctype="multipart/form-data">
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputPassword1" asp-for="Name">نام</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" asp-for="Name">
+
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputPassword1" asp-for="Family">نام خانوادگی</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" asp-for="Family">
+
+
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+
+                                        <label asp-for="CardNumber">شماره کارت</label>
+                                        <input type="number" class="form-control" asp-for="CardNumber" >
+
+                                    </div>
+
+
+                                    <div class="form-group col-md-3">
+
+                                        <label for="exampleInputPassword1">شماره شبا</label>
+                                        <input type="number" class="form-control" asp-for="Shaba" >
+
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label asp-for="PhoneNumber" >شماره تلفن</label>
+                                        <input type="number" class="form-control" asp-for="PhoneNumber" >
+
+                                    </div>
+                                    <div class="form-group col-md-9">
+                                        <label for="exampleInputPassword1"> آدرس</label>
+                                        <input type="text" class="form-control" asp-for="Address" id="exampleInputPassword1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <label for="exampleFormControlFile1">آپلود عکس پروفایل  </label>
+                                <input type="file" class="form-control-file" asp-for="Picture" id="exampleFormControlFile1">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-success">ثبت</button>
+                                </div>
+
+                            </div>
+                        </form>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+      
+        <!-- اینجا ساخته شود -->
+   
+    </div>
+
+</div>
