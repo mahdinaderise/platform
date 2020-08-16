@@ -179,9 +179,11 @@ namespace WebPlatformV1.Models.DbContext
     {
         [Key]
         public int IDAddPanel { get; set; }
-    
+        public string ConsultantID { get; set; }
+        public string StudentID { get; set; }
+
         [Required]
-        public int Date { get; set; }
+        public int Day { get; set; }
         [Required]
         public int Price { get; set; }
         public ICollection<Consultant> Consultantes { get; set; }

@@ -246,9 +246,45 @@ namespace WebPlatformV1.Controllers
         {
             return View();
         }
-        public IActionResult students()
+        [HttpGet]
+        public IActionResult AddPanel(string id)
+        {
+            HttpContext.Session.SetString("IdStudentForPanel", id);
+            var r = _context.tbl_AddPanels.Where(p => p.StudentID == id).ToList();
+            if (r.Count!=0)
+            {
+                
+            }
+            return View();
+        }
+        public IActionResult haspanel()
         {
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult>  AddPanel(Panel model,Tbl_AddPanel addPanel)
+        {
+            var id = HttpContext.Session.GetString("IdStudentForPanel");
+            if(ModelState.IsValid)
+            {
+                addPanel.ConsultantID = _userManager.GetUserId(User);
+                addPanel.Day = model.Day;
+                addPanel.Price = model.price;
+                addPanel.StudentID = id;
+                await _context.tbl_AddPanels.AddAsync(addPanel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(students));
+
+            }
+
+            return View();
+        }
+        public IActionResult students(StudentsViewModel model)
+        {
+            var consultantId = _userManager.GetUserId(User);
+            model.Students = _context.students.Where(p => p.ConsultantID == consultantId).ToList();
+
+            return View(model);
         }
    [HttpGet]
         public   IActionResult Profile(Profile model)

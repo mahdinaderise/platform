@@ -1,0 +1,44 @@
+﻿@model Panel
+@{
+    ViewData["Title"] = "AddPanel";
+    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
+}
+    <div class="main-content">
+
+        <div class="container-fluid">
+
+            <div class="card-body">
+                <h5 class="card-title"> ایجاد وظیفه</h5>
+                <form class="needs-validation" novalidate asp-action="addpanel" asp-controller="Consultant" method="post">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationTooltip01"> تعداد روز</label>
+                            <input type="number" class="form-control" id="validationTooltip01" placeholder="تعداد روز" value="" required asp-for="Day">
+                            <div class="valid-tooltip">
+                                عالی!
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationTooltip01"> قیمت به تومان </label>
+                            <input type="number" class="form-control" id="validationTooltip01" placeholder="مبحث" value="" required asp-for="price">
+                            <div class="valid-tooltip">
+                                عالی!
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            
+                        </div>
+
+                        @*<select asp-for=""></select>*@
+
+                    </div>
+                    <button class="btn btn-primary" type="submit">ارسال</button>
+
+                </form>
+            </div>
+            <!-- end::main-content -->
+
+        </div>
+
+    </div>
+
