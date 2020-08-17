@@ -98,5 +98,12 @@ namespace WebPlatformV1.Controllers
         {
             return View();
         }
+        public IActionResult MyPanel(Panel model)
+        {
+            var studentId = _userManager.GetUserId(User);
+           model.Panel1=   _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending().LastOrDefault();
+            model.price = model.Panel1.Price / model.Panel1.Day;
+            return View(model);
+        }
     }
 }

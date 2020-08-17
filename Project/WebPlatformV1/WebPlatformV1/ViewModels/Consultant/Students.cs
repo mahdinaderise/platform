@@ -13,6 +13,7 @@ namespace WebPlatformV1.ViewModels.Consultant
         public StudentsViewModel()
         {
             Students = new List<Student>();
+            student1 = new Student();
         }
         public string idStudent { get; set; }
         [Display(Name = "نام")]
@@ -21,7 +22,7 @@ namespace WebPlatformV1.ViewModels.Consultant
         public string LastName { get; set; }
         [Display(Name = "کدملی")]
         public int NationlCode { get; set; }
-
+        public Student student1 { get; set; }
         public List<Student> Students { get; set; }
     }
 }
