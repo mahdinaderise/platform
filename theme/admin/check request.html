@@ -469,21 +469,54 @@
 
     <!-- begin::main-content -->
  <div class="main-content">
-
+    
+        <div class="page-header">
+            <div class="container-fluid d-sm-flex justify-content-between">
+                <h4> رسیدگی به درخواست  مشاور</h4>
+                </div>
+                </div>
     <div class="container-fluid">
         <!-- اینجا ساخته شود -->
-        <div>
-            <table class="table table-hover bg-white text-center">
-               
-                  <tr>
-                <!-- <th><a href="#">لیست پرداخت های مشاورین</a></th> -->
-                <th><a href="pay request.html">  لیست درخواست های مالی مشاوران </a></th>
-                  </tr>
-                  <tr>
-                    <th><a href="#">تراز مالی</a></th>
-                  </tr>
-                  </table>
-        </div>
+
+        
+        <div class="card">
+            <div class="card-body">
+                <form class="needs-validation">
+                    
+                    <div class="custom-control custom-checkbox">
+                        <div class="col-md-4 mb-3">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" checked>
+                        <label class="custom-control-label" for="customCheck">پرداخت شد</label>
+                    </div>
+                </div>
+                   
+                  <div class="form-row">
+               <div class="col-md-4 mb-3">
+                  <label for="validationCustom01">کد پیگیری</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="" value="" required>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationCustom02">شماره شبا </label>
+              <input type="text" class="form-control" id="validationCustom02" placeholder=" " value="" required>
+              
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02"> شماره کارت  </label>
+                <input type="text" class="form-control" id="validationCustom02" placeholder=" " value="" required>
+                
+              </div>
+              
+                <label for="exampleFormControlTextarea1">توضیح کارشناس </label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                
+              
+            </div>
+            <div class="d-flex justify-content-end" style="margin-top: 20px;">
+            <button type="button" class="btn btn-success">ثبت</button></div>
+            
+</form>
+</div></div>
+
 
     <!-- end::main-content -->
 

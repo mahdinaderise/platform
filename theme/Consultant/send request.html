@@ -469,21 +469,35 @@
 
     <!-- begin::main-content -->
  <div class="main-content">
-
+    
+        <div class="page-header">
+            <div class="container-fluid d-sm-flex justify-content-between">
+                <h4> ارسال درخواست مالی</h4>
+                </div>
+                </div>
     <div class="container-fluid">
         <!-- اینجا ساخته شود -->
-        <div>
-            <table class="table table-hover bg-white text-center">
-               
-                  <tr>
-                <!-- <th><a href="#">لیست پرداخت های مشاورین</a></th> -->
-                <th><a href="pay request.html">  لیست درخواست های مالی مشاوران </a></th>
-                  </tr>
-                  <tr>
-                    <th><a href="#">تراز مالی</a></th>
-                  </tr>
-                  </table>
-        </div>
+
+        
+        <div class="card">
+            <div class="card-body">
+                <form class="needs-validation">
+   
+            <div class="col-md-3 mb-4" style="margin-right: -10px;">
+                <label for="validationCustom02">  مبلغ درخواستی  </label>
+                <input type="text" class="form-control" id="validationCustom02" placeholder=" " value="" required>
+                
+              </div>
+              
+                <label for="exampleFormControlTextarea1">توضیح من </label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                
+            <div class="d-flex justify-content-end" style="margin-top: 20px;">
+            <button type="button" class="btn btn-success">ثبت</button></div>
+            
+</form>
+</div></div>
+
 
     <!-- end::main-content -->
 
