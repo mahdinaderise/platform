@@ -1814,3 +1814,4 @@ E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcor
 E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\haspanel.cshtml.g.cs
 E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\AddNewPanel.cshtml.g.cs
 E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\MyPanel.cshtml.g.cs
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\OnlinePayment.cshtml.g.cs

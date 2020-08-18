@@ -20,7 +20,7 @@ namespace WebPlatformV1.Models
         public string ConsultantID { get; set; }
         public string ProfilePicUrl { get; set; }
 
-
+        public DateTime CreditTime { get; set; }
     }
     public class Consultant : ApplicationUsers
     {
@@ -32,6 +32,8 @@ namespace WebPlatformV1.Models
         public string CardNumber { get; set; }
         public string Address { get; set; }
         public string Shaba { get; set; }
+        public DateTime CreditTime { get; set; }
+
         public Tbl_AddPanel addPanel { get; set; }
         public ICollection<Tbl_Tasks> tasks { get; set; }
         public ICollection<Tbl_Blog> blogs { get; set; }

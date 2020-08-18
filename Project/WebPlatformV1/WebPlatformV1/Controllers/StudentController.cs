@@ -11,6 +11,7 @@ using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels;
 using WebPlatformV1.ViewModels.Consultant;
 using WebPlatformV1.ViewModels.StudentViewModel;
+using ZarinpalSandbox;
 
 namespace WebPlatformV1.Controllers
 {
@@ -98,10 +99,62 @@ namespace WebPlatformV1.Controllers
         {
             return View();
         }
+        public IActionResult Peyment()
+        {
+            var studentId = _userManager.GetUserId(User);
+            var panel = _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending(p => p.IDAddPanel).FirstOrDefault();
+            if (panel == null)
+                return NotFound();
+            var payment = new ZarinpalSandbox.Payment(panel.Price);
+            var res = payment.PaymentRequest($"پرداخت فاکتور شماره {panel.IDAddPanel}",
+               "http://localhost:5000/Student/OnlinePayment/" + panel.IDAddPanel, "Mahdinaderi.se@outlook.com", "09130087194");
+            if (res.Result.Status == 100)
+            {
+                return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Result.Authority);
+            }
+            else
+            {
+                return BadRequest();
+            }
+            return View();
+        }
+        public IActionResult OnlinePayment(int id)
+        {
+            var studentId = _userManager.GetUserId(User);
+
+            if (HttpContext.Request.Query["Status"] != "" &&
+                HttpContext.Request.Query["Status"].ToString().ToLower() == "ok" &&
+                HttpContext.Request.Query["Authority"] != "")
+            {
+                string authority = HttpContext.Request.Query["Authority"].ToString();
+                var panel = _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending(p => p.IDAddPanel).FirstOrDefault();
+                var student = _context.students.FirstOrDefault(p => p.Id == studentId);
+                var ConsultantWallet = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == student.ConsultantID);
+                DateTime today = DateTime.Today;
+              DateTime  CreditTime1= today.AddDays(panel.Day);
+                var payment = new Payment(panel.Price);
+                var res = payment.Verification(authority).Result;
+                if (res.Status == 100)
+                {
+                    ConsultantWallet.Credit = ConsultantWallet.Credit + panel.Price;
+                    student.CreditTime= CreditTime1;
+                    panel.Status = true;
+                    _context.students.Update(student);
+                    _context.tbl_Wallets.Update(ConsultantWallet);
+
+                    _context.tbl_AddPanels.Update(panel);
+                    _context.SaveChanges();
+                    ViewBag.code = res.RefId;
+                    return View();
+                }
+            }
+
+            return NotFound();
+        }
         public IActionResult MyPanel(Panel model)
         {
             var studentId = _userManager.GetUserId(User);
-           model.Panel1=   _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending().LastOrDefault();
+            model.Panel1 = _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending(p => p.IDAddPanel).FirstOrDefault();
             model.price = model.Panel1.Price / model.Panel1.Day;
             return View(model);
         }

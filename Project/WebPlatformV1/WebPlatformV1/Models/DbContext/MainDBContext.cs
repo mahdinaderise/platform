@@ -181,6 +181,7 @@ namespace WebPlatformV1.Models.DbContext
         public int IDAddPanel { get; set; }
         public string ConsultantID { get; set; }
         public string StudentID { get; set; }
+        public bool Status { get; set; } = false;
 
         [Required]
         public int Day { get; set; }
