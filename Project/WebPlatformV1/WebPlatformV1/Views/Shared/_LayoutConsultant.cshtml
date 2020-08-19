@@ -12,10 +12,6 @@
     <!-- Plugin styles -->
     <link href="~/vendors/bundle.css" rel="stylesheet" />
     <!-- Datepicker -->
-    @*<link rel="stylesheet" href="vendors/datepicker/daterangepicker.css">
-        <link rel="stylesheet" href="assets/Datepiker/persian-datepicker.css">*@
-
-
     <!-- Fullcalendar -->
     <link href="~/vendors/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
     <link href="~/assets/Cal/fullcalendar.css" rel="stylesheet" />
@@ -90,13 +86,7 @@
                 </li>
                 <!-- end::navigation-toggler -->
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ایجاد</a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#" class="dropdown-item">دانش آموز</a>
-                        <a href="#" class="dropdown-item">گزارش</a>
-                    </div>
-                </li>
+               
 
             </ul>
         </div>
@@ -133,300 +123,7 @@
                 </li>
                 <!-- end::header minimize/maximize -->
                 <!-- begin::header messages dropdown -->
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link nav-link-notify" title="گفت‌گوها" data-toggle="dropdown">
-                        <i data-feather="message-circle"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-left dropdown-menu-big">
-                        <div class="p-4 text-center d-flex justify-content-between"
-                             data-backround-image="assets/media/image/image1.jpg">
-                            <h6 class="mb-0">گفت‌گوها</h6>
-                            <small class="font-size-11 opacity-7">2 گفت‌گو خوانده نشده</small>
-                        </div>
-                        <div>
-                            <ul class="list-group list-group-flush">
-                                <li>
-                                    <a href="#" class="list-group-item d-flex hide-show-toggler">
-                                        <div>
-                                            <figure class="avatar avatar-sm m-r-15">
-                                                <img src="~/assets/media/image/user/man_avatar1.jpg"
-                                                     class="rounded-circle" alt="user">
-                                            </figure>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                علی احمدی
-                                                <i title="Mark as read" data-toggle="tooltip"
-                                                   class="hide-show-toggler-item fa fa-circle-o font-size-11"></i>
-                                            </p>
-                                            <div class="small text-muted">
-                                                <span class="mr-2">02:30 بعدازظهر</span>
-                                                <span>آخرین تغییر رو کامیت کردم</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                       class="list-group-item d-flex align-items-center hide-show-toggler">
-                                        <div>
-                                            <figure class="avatar avatar-sm m-r-15">
-                                                <img src="~/assets/media/image/user/women_avatar5.jpg"
-                                                     class="rounded-circle" alt="user">
-                                            </figure>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                صنم صفایی
-                                                <i title="Mark as read" data-toggle="tooltip"
-                                                   class="hide-show-toggler-item fa fa-circle-o font-size-11"></i>
-                                            </p>
-                                            <div class="small text-muted">
-                                                <span class="mr-2">08:36 بعدازظهر</span>
-                                                <span>فایل نهایی ارسال شد؟</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="text-divider small pb-2 pl-3 pt-3">
-                                    <span>گفت‌گوهای قدیمی</span>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                       class="list-group-item d-flex align-items-center hide-show-toggler">
-                                        <div>
-                                            <figure class="avatar avatar-sm m-r-15">
-                                                <img src="~/assets/media/image/user/man_avatar3.jpg"
-                                                     class="rounded-circle" alt="user">
-                                            </figure>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                احمد رضایی
-                                                <i title="Mark as unread" data-toggle="tooltip"
-                                                   class="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                            </p>
-                                            <div class="small text-muted">
-                                                <span class="mr-2">11:09 بعدازظهر</span>
-                                                <span>آخرین تغییر رو کامیت کردم</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="list-group-item d-flex hide-show-toggler">
-                                        <div>
-                                            <figure class="avatar avatar-sm m-r-15">
-                                                <img src="~/assets/media/image/user/man_avatar2.jpg"
-                                                     class="rounded-circle" alt="user">
-                                            </figure>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                الهه جم
-                                                <i title="Mark as unread" data-toggle="tooltip"
-                                                   class="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                            </p>
-                                            <div class="small text-muted">
-                                                <span class="mr-2">دیروز</span>
-                                                <span>فایل نهایی ارسال شد؟</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                       class="list-group-item d-flex align-items-center hide-show-toggler">
-                                        <div>
-                                            <figure class="avatar avatar-sm m-r-15">
-                                                <img src="~/assets/media/image/user/women_avatar1.jpg"
-                                                     class="rounded-circle" alt="user">
-                                            </figure>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                نیلوفر فروهر
-                                                <i title="Mark as unread" data-toggle="tooltip"
-                                                   class="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                            </p>
-                                            <div class="small text-muted">
-                                                <span class="mr-2">دیروز</span>
-                                                <span>فایل نهایی ارسال شد؟</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-2 text-right">
-                            <ul class="list-inline small">
-                                <li class="list-inline-item">
-                                    <a href="#">علامتگذاری به عنوان خوانده شده</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <!-- end::header messages dropdown -->
-                <!-- begin::header notification dropdown -->
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link nav-link-notify" title="اطلاعیه‌ها" data-toggle="dropdown">
-                        <i data-feather="bell"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-left dropdown-menu-big">
-                        <div class="p-4 text-center d-flex justify-content-between"
-                             data-backround-image="assets/media/image/image1.jpg">
-                            <h6 class="mb-0">اطلاعیه‌ها</h6>
-                            <small class="font-size-11 opacity-7">1 اطلاعیه خوانده نشده</small>
-                        </div>
-                        <div>
-                            <ul class="list-group list-group-flush">
-                                <li>
-                                    <a href="#" class="list-group-item d-flex hide-show-toggler">
-                                        <div>
-                                            <figure class="avatar avatar-sm m-r-15">
-                                                <span class="avatar-title bg-success-bright text-success rounded-circle">
-                                                    <i class="ti-user"></i>
-                                                </span>
-                                            </figure>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                ثبت نام خریدار جدید
-                                                <i title="Mark as read" data-toggle="tooltip"
-                                                   class="hide-show-toggler-item fa fa-circle-o font-size-11"></i>
-                                            </p>
-                                            <span class="text-muted small">20 دقیقه قبل</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="text-divider small pb-2 pl-3 pt-3">
-                                    <span>اطلاعیه‌های قبلی</span>
-                                </li>
-                                <li>
-                                    <a href="#" class="list-group-item d-flex hide-show-toggler">
-                                        <div>
-                                            <figure class="avatar avatar-sm m-r-15">
-                                                <span class="avatar-title bg-warning-bright text-warning rounded-circle">
-                                                    <i class="ti-package"></i>
-                                                </span>
-                                            </figure>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                سفارش جدید دریافت شد
-                                                <i title="Mark as unread" data-toggle="tooltip"
-                                                   class="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                            </p>
-                                            <span class="text-muted small">45 ثانیه قبل</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                       class="list-group-item d-flex align-items-center hide-show-toggler">
-                                        <div>
-                                            <figure class="avatar avatar-sm m-r-15">
-                                                <span class="avatar-title bg-danger-bright text-danger rounded-circle">
-                                                    <i class="ti-server"></i>
-                                                </span>
-                                            </figure>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                به سقف مجاز سرور نزدیک شده اید
-                                                <i title="Mark as unread" data-toggle="tooltip"
-                                                   class="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                            </p>
-                                            <span class="text-muted small">55 ثانیه قبل</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                       class="list-group-item d-flex align-items-center hide-show-toggler">
-                                        <div>
-                                            <figure class="avatar avatar-sm m-r-15">
-                                                <span class="avatar-title bg-info-bright text-info rounded-circle">
-                                                    <i class="ti-layers"></i>
-                                                </span>
-                                            </figure>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                اپ های دارای بروزسانی
-                                                <i title="Mark as unread" data-toggle="tooltip"
-                                                   class="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                            </p>
-                                            <span class="text-muted small">دیروز</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-2 text-right">
-                            <ul class="list-inline small">
-                                <li class="list-inline-item">
-                                    <a href="#">علامتگذاری به عنوان خوانده شده</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <!-- end::header notification dropdown -->
-                <!-- begin::user menu -->
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link" title="User menu" data-toggle="dropdown">
-                        <i data-feather="settings"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-left dropdown-menu-big">
-                        <div class="p-4 text-center d-flex justify-content-between"
-                             data-backround-image="assets/media/image/image1.jpg">
-                            <h6 class="mb-0">تنظیمات</h6>
-                        </div>
-                        <div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                                        <label class="custom-control-label" for="customSwitch1">مجوز ارسال اطلاعیه</label>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                                        <label class="custom-control-label" for="customSwitch2">پنهان کردن درخواست ها</label>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch3" checked>
-                                        <label class="custom-control-label" for="customSwitch3">افزایش سرعت انجام دستورات</label>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch4" checked>
-                                        <label class="custom-control-label" for="customSwitch4">پنهان کردن منو</label>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch5">
-                                        <label class="custom-control-label" for="customSwitch5">به خاطرسپاری بازدید</label>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch6">
-                                        <label class="custom-control-label" for="customSwitch6">فعالسازی تولید گزارش خودکار</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <!-- end::user menu -->
+             
             </ul>
 
             <!-- begin::mobile header toggler -->
@@ -464,34 +161,15 @@
                                 <h6 class="d-flex align-items-center justify-content-center">
 
                                     مهدی نظری
-                                    <a href="#" class="btn btn-primary btn-sm ml-2" data-toggle="tooltip" title="ویرایش پروفایل">
-                                        <i data-feather="edit-2"></i>
-                                    </a>
+                                   
                                 </h6>
                                 <small>شارژ: <strong>1000 تومان</strong></small>
                             </div>
                             <div class="dropdown-menu-body">
-                                <div class="border-bottom p-4">
-                                    <h6 class="text-uppercase font-size-11 d-flex justify-content-between">
-                                        حافظه
-                                        <span>%25</span>
-                                    </h6>
-                                    <div class="progress" style="height: 8px;">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 35%;"
-                                             aria-valuenow="35"
-                                             aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
+                               
                                 <div class="list-group list-group-flush">
-                                    <a href="#" class="list-group-item">پروفایل</a>
-                                    <a href="#" class="list-group-item d-flex">
-                                        دنبال‌کنندگان<span class="text-muted ml-auto">214</span>
-                                    </a>
-                                    <a href="#" class="list-group-item d-flex">
-                                        صندوق ورودی <span class="text-muted ml-auto">18</span>
-                                    </a>
-                                    <a href="#" class="list-group-item" data-sidebar-target="#settings">صورتحساب</a>
-                                    <a href="#" class="list-group-item" data-sidebar-target="#settings">راهنمایی?</a>
+                                    <a asp-action="Profile" class="list-group-item">پروفایل</a>
+                                   
                                     <form asp-action="LogOutConsultant" asp-controller="Account" method="post">
                                         <button class="list-group-item text-danger" type="submit" data-sidebar-target="#settings"> خروج</button>
                                         @*<a class="list-group-item text-danger" data-sidebar-target="#settings" >خروج</a>*@
@@ -505,7 +183,7 @@
                 <div class="flex-grow-1">
                     <ul>
                         <li>
-                            <a class="active" href="#" data-toggle="tooltip" data-placement="right" title="داشبرد"
+                            <a class="active"  data-toggle="tooltip" data-placement="right" title="داشبرد"
                                data-nav-target="#dashboards">
                                 <i data-feather="bar-chart-2"></i>
                             </a>
@@ -556,39 +234,10 @@
                     <div class="open" id="dashboards">
                         <ul>
                             <li class="navigation-divider">داشبردها</li>
-                            <li><a class="active" href="index.html">داشبرد</a></li>
-                            <li><a href="Tasks.html">لیست Task</a></li>
-                            <li><a href="Students.html">لیست دانش آموزان</a></li>
-                            <li><a href="Course.html"> لیست درس ها</a></li>
-                            <li class="navigation-divider">آخرین دانش آموزان</li>
-                            <li>
-                                <div class="list-group list-group-flush">
-                                    <a href="#" class="list-group-item d-flex align-items-center">
-                                        <div>
-                                            <div class="avatar avatar-sm m-r-10">
-                                                <img src="~/assets/media/image/user/man_avatar1.jpg" class="rounded-circle" alt="image">
-                                            </div>
-                                        </div>
-                                        <span>علی احمدی</span>
-                                    </a>
-                                    <a href="#" class="list-group-item d-flex align-items-center">
-                                        <div>
-                                            <div class="avatar avatar-sm m-r-10">
-                                                <img src="~/assets/media/image/user/man_avatar2.jpg" class="rounded-circle" alt="image">
-                                            </div>
-                                        </div>
-                                        <span> محمد رحیمی</span>
-                                    </a>
-                                    <a href="#" class="list-group-item d-flex align-items-center">
-                                        <div>
-                                            <div class="avatar avatar-sm m-r-10">
-                                                <img src="~/assets/media/image/user/man_avatar3.jpg" class="rounded-circle" alt="image">
-                                            </div>
-                                        </div>
-                                        <span>کریم محمدی</span>
-                                    </a>
-                                </div>
-                            </li>
+                            <li><a class="active" asp-action="index" asp-controller="consultant">داشبرد</a></li>
+                            <li><a asp-action="Tasks" asp-controller="consultant">ایجاد وظیفه برای دانش آموزان</a></li>
+                            
+                           
 
                         </ul>
                     </div>
@@ -596,7 +245,7 @@
                         <ul>
                             <li class="navigation-divider">وبلاگ</li>
                             <li>
-                                <a href="#">
+                                <a asp-action="Blog" asp-controller="consultant">
                                     <span>صفحه من</span>
                                     <span class="badge badge-danger">5</span>
                                 </a>
@@ -610,6 +259,12 @@
                             <li>
                                 <a href="pay managment.html">
                                     <span> پرداخت های من</span>
+                                    <span class="badge badge-danger">5</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="Students" asp-controller="consultant">
+                                    <span> ایجاد پنل برای دانش آموزان</span>
                                     <span class="badge badge-danger">5</span>
                                 </a>
                             </li>
@@ -628,21 +283,6 @@
     </div>
     <!-- end::main -->
 
-    <div class="colors">
-        <!-- To use theme colors with Javascript -->
-        <div class="bg-primary"></div>
-        <div class="bg-primary-bright"></div>
-        <div class="bg-secondary"></div>
-        <div class="bg-secondary-bright"></div>
-        <div class="bg-info"></div>
-        <div class="bg-info-bright"></div>
-        <div class="bg-success"></div>
-        <div class="bg-success-bright"></div>
-        <div class="bg-danger"></div>
-        <div class="bg-danger-bright"></div>
-        <div class="bg-warning"></div>
-        <div class="bg-warning-bright"></div>
-    </div>
 
 
     <!-- App scripts -->

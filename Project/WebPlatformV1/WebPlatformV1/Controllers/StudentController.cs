@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Internal;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels;
@@ -72,9 +73,38 @@ namespace WebPlatformV1.Controllers
 
             return View();
         }
-        public IActionResult index()
+        public IActionResult index(todoapp model)
         {
-            return View();
+            #region check credit
+            var IdStudent = _userManager.GetUserId(User);
+            var r = _context.students.Find(IdStudent);
+            ViewBag.myid = IdStudent;
+            if (r.CreditTime<DateTime.Today)
+            {
+                return RedirectToAction(nameof(MyPanel));
+
+            }
+            #endregion
+            #region count of credit
+            var credittime = r.CreditTime.DayOfYear;
+            var Today = DateTime.Today.DayOfYear;
+            ViewBag.credittime = credittime - Today;
+            #endregion
+            #region count of do task
+            var tasks = _context.tbl_Tasks.Where(p => p.IdStudent == IdStudent).Count();
+            var tasksdo = _context.tbl_Tasks.Where(p => p.IdStudent == IdStudent && p.isDo == true).Count();
+            var tasksNdo = _context.tbl_Tasks.Where(p => p.IdStudent == IdStudent && p.isDo == false).Count();
+            var todayTask= _context.tbl_Tasks.Where(p => p.SendDelivery == DateTime.Today).Count();
+            ViewBag.DoTest = (tasksdo * 100) / tasks;
+            ViewBag.NDoTest = ( tasksNdo * 100) / tasks;
+            ViewBag.Tasks = tasks;
+            ViewBag.tasksdo = tasksdo;
+            ViewBag.today = todayTask;
+            #endregion
+            model.Todo = _context.Tbl_TodoAppStudents.Where(p => p.STudentID == IdStudent).ToList();
+            //ViewBag.todoid = model.Todo.Where(p => p.STudentID == IdStudent).Select(p => p.Id);
+
+            return View(model);
         }
         [HttpGet]
         public IActionResult studenttask(TasksStudents model)
@@ -157,6 +187,29 @@ namespace WebPlatformV1.Controllers
             model.Panel1 = _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending(p => p.IDAddPanel).FirstOrDefault();
             model.price = model.Panel1.Price / model.Panel1.Day;
             return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> TodoApp(todoapp model,Tbl_TodoAppStudent todo)
+        {
+            var studentId = _userManager.GetUserId(User);
+            todo.Note = model.Note;
+            todo.STudentID = model.STudentID;
+            todo.IsFinally = model.IsFinally;
+            
+            await _context.Tbl_TodoAppStudents.AddAsync(todo);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(index));
+        }
+        public async Task<IActionResult> TodoAppupdate(todoapp model, Tbl_TodoAppStudent todo)
+        {
+            var studentId = _userManager.GetUserId(User);
+            todo.Note = model.Note;
+            todo.STudentID = model.STudentID;
+            todo.IsFinally = model.IsFinally;
+            todo.Id = model.id;
+             _context.Tbl_TodoAppStudents.Update(todo);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(index));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model todoapp
 @{
     ViewData["Title"] = "index";
     Layout = "~/Views/Shared/_LayoutStudent.cshtml";
@@ -40,19 +40,16 @@
                                            aria-expanded="false">
                                             <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                         </a>
-                                        <span class="dropdown-menu dropdown-menu-left">
-                                            <a href="#" class="dropdown-item">گزارش</a>
-                                            <a href="#" class="dropdown-item">دانلود</a>
-                                            <a href="#" class="dropdown-item">بستن</a>
-                                        </span>
+                                    
+
                                     </div>
                                 </div>
                             </div>
-                            <h2 class="mb-3 font-weight-bold">469,453</h2>
-                            <div class="progress mb-3" style="height: 10px">
-                                <div class="progress-bar w-25 bg-danger-gradient" role="progressbar"></div>
+                            <h2 class="mb-3 font-weight-bold">@ViewBag.Tasks</h2>
+                            <div class="progress md-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width:  @ViewBag.NDoTest%" aria-valuenow=" @ViewBag.NDoTest" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width: @ViewBag.DoTest%" aria-valuenow=" @ViewBag.DoTest" aria-valuemin="0" aria-valuemax="100"></div>
 
-                                <div class="progress-bar w-75 bg-success-gradient" role="progressbar"></div>
                             </div>
                             <div class="row">
                                 <div class="col">
@@ -60,7 +57,7 @@
                                         <span class="fa fa-circle text-danger mr-1"></span>
                                         تکلیف ها انجام نشده
                                     </p>
-                                    <h5 class="mt-2 mb-0">25%</h5>
+                                    <h5 class="mt-2 mb-0">@ViewBag.NDoTest %</h5>
                                 </div>
 
 
@@ -69,7 +66,7 @@
                                         <span class="fa fa-circle text-success mr-1"></span>
                                         تکلیف های انجام شده
                                     </p>
-                                    <h5 class="mt-2 mb-0">75%</h5>
+                                    <h5 class="mt-2 mb-0">@ViewBag.DoTest %</h5>
                                 </div>
                             </div>
                         </div>
@@ -84,9 +81,9 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
-                                            <h6 class="card-title mb-3"> وظیفه های منقضی شده</h6>
+                                            <h6 class="card-title mb-3"> روز تا پایان</h6>
                                             <div class="d-flex d-sm-block d-lg-flex align-items-end">
-                                                <h2 class="mb-0 mr-2 font-weight-bold">350</h2>
+                                                <h2 class="mb-0 mr-2 font-weight-bold">@ViewBag.credittime</h2>
                                                 <p class="small text-muted mb-0 line-height-20">
                                                 </p>
                                             </div>
@@ -109,7 +106,7 @@
                                         <div>
                                             <h6 class="card-title mb-3">وظیفه های انجام شده</h6>
                                             <div class="d-flex d-sm-block d-lg-flex align-items-end">
-                                                <h2 class="mb-0 mr-2 font-weight-bold">554</h2>
+                                                <h2 class="mb-0 mr-2 font-weight-bold">@ViewBag.tasksdo</h2>
                                                 <p class="small text-muted mb-0 line-height-20">
                                                 </p>
                                             </div>
@@ -132,7 +129,7 @@
                                         <div>
                                             <h6 class="card-title mb-3"> وظیفه های امروز</h6>
                                             <div class="d-flex d-sm-block d-lg-flex align-items-end">
-                                                <h2 class="mb-0 mr-2 font-weight-bold">900</h2>
+                                                <h2 class="mb-0 mr-2 font-weight-bold">@ViewBag.today</h2>
                                                 <p class="small text-muted mb-0 line-height-20">
                                                 </p>
                                             </div>
@@ -158,7 +155,7 @@
                             <div class="d-flex justify-content-between">
                                 <h6 class="card-title">کارهای روزانه</h6>
                                 <div>
-                                    <a href="#" class="mr-3">
+                                    <a asp-action="TodoAppupdate" asp-controller="Student"  class="mr-3">
                                         <i class="fa fa-refresh"></i>
                                     </a>
                                     <div class="dropdown">
@@ -166,156 +163,46 @@
                                            aria-expanded="false">
                                             <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                         </a>
-                                        <span class="dropdown-menu dropdown-menu-left">
-                                            <a href="#" class="dropdown-item">گزارش</a>
-                                            <a href="#" class="dropdown-item">دانلود</a>
-                                            <a href="#" class="dropdown-item">بستن</a>
-                                        </span>
+
                                     </div>
                                 </div>
                             </div>
                             <div class="custom-control custom-checkbox-success custom-checkbox todo-item">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label d-flex justify-content-between"
-                                       for="customCheck1">
-                                    صحبت با کاربران جدید
-                                    <span class="text-muted">13 فروردین 1399</span>
-                                </label>
-                            </div>
-                            <div class="custom-control custom-checkbox-success custom-checkbox-success custom-checkbox todo-item">
-                                <input type="checkbox" class="custom-control-input" id="customCheck2" checked>
-                                <label class="custom-control-label d-flex justify-content-between"
-                                       for="customCheck2">
-                                    کاربران قدیمی به زودی حذف میشوند
-                                    <span class="text-muted">20 فروردین 1399</span>
-                                </label>
-                            </div>
-                            <div class="custom-control custom-checkbox-success custom-checkbox todo-item">
-                                <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                <label class="custom-control-label d-flex justify-content-between"
-                                       for="customCheck3">
-                                    واگذاری
-                                    تکمیل شده
-                                    <span class="text-muted">13 فروردین 1399</span>
-                                </label>
-                            </div>
-                            <div class="custom-control custom-checkbox-success custom-checkbox todo-item">
-                                <input type="checkbox" class="custom-control-input" id="customCheck4" checked>
-                                <label class="custom-control-label d-flex justify-content-between"
-                                       for="customCheck4">
-                                    نظرات خریدار
-                                    <span class="text-muted">10 فروردین 1398</span>
-                                </label>
-                            </div>
-                            <div class="custom-control custom-checkbox-success custom-checkbox todo-item">
-                                <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                <label class="custom-control-label d-flex justify-content-between"
-                                       for="customCheck5">
-                                    حذف بک آپ های قبلی
-                                    <span class="text-muted">13 فروردین 1399</span>
-                                </label>
-                            </div>
-                            <div class="custom-control custom-checkbox custom-checkbox-success todo-item">
-                                <input type="checkbox" class="custom-control-input" id="customCheck6">
-                                <label class="custom-control-label d-flex justify-content-between"
-                                       for="customCheck6">
-                                    صحبت با کاربران جدید
-                                    <span class="text-muted">27 فروردین 1399</span>
-                                </label>
-                            </div>
-                            <div class="custom-control custom-checkbox-success custom-checkbox todo-item">
-                                <input type="checkbox" class="custom-control-input" id="customCheck7" checked>
-                                <label class="custom-control-label d-flex justify-content-between"
-                                       for="customCheck7">
-                                    کاربران قدیمی به زودی حذف میشوند
-                                    <span class="text-muted">13 فروردین 1399</span>
-                                </label>
-                            </div>
-                            <form class="mt-4">
+                                @foreach (var item in Model.Todo)
+                                {
+                                    @if (Model != null)
+                                    {
+                                <div>
+                                    <input class="custom-control-input" asp-for="@item.IsFinally" id="checkbox @item.Id">
+                                    <input type="hidden" asp-for="id"  value="@item.Id" >
+
+                                    <label class="custom-control-label d-flex justify-content-between"
+                                           for="checkbox @item.Id">
+                                        @item.Note
+                                    </label>
+                                </div>
+                                    }
+
+
+                                }
+
+                                </div>
+
+                            <form class="mt-4" method="post" asp-action="TodoApp" asp-controller="Student">
                                 <div class="input-group">
-                                    <input type="text" class="form-control"
+                                    <input type="hidden" class="form-control" asp-for="@Model.STudentID"
+                                           aria-label="Example text with button addon" value="@ViewBag.myid" />
+                                    <input type="text" class="form-control" asp-for="@Model.Note"
                                            aria-label="Example text with button addon"
                                            placeholder="کار جدید" aria-describedby="button-addon1">
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button" id="button-addon1">
+                                        <button class="btn btn-primary" type="submit" id="button-addon1">
                                             افزودن
                                         </button>
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="table-responsive">
-                                    <table class="table table-hover bg-white text-center">
-                                        <thead class="thead-dark">
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">نام وظیفه</th>
-                                                <th scope="col">شرح </th>
-                                                <th scope="col">تاریخ</th>
-                                                <th scope="col">عملیات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>وظیفه یک</td>
-                                                <td>توضیحات یک</td>
-                                                <td><a href="#">11/12/1398</a></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-primary" title="انجام" data-toggle="tooltip" data-placement="bottom">
-                                                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                                        <!-- مودال ویرایش اطلاعات -->
-
-
-                                                    </button>
-
-                                                    <button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;">
-                                                        <i class="fa fa-info" aria-hidden="true"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>وظیفه دو</td>
-                                                <td>توضیحات دو</td>
-                                                <td><a href="#">1/10/1398</a></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-primary" title="انجام" data-toggle="tooltip" data-placement="bottom">
-                                                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                                        <!-- مودال ویرایش اطلاعات -->
-
-                                                    </button>
-
-                                                    <button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;">
-                                                        <i class="fa fa-info" aria-hidden="true"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>وظیفه سه</td>
-                                                <td>توضیحات سه</td>
-                                                <td><a href="#">5/2/1399</a></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-primary" title="انجام" data-toggle="tooltip" data-placement="bottom">
-                                                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                                        <!-- مودال ویرایش اطلاعات -->
-
-                                                    </button>
-
-                                                    <button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;">
-                                                        <i class="fa fa-info" aria-hidden="true"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                          
                         </div>
                     </div>
                 </div>

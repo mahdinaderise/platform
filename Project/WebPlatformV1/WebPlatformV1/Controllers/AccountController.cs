@@ -200,6 +200,12 @@ namespace WebPlatformV1.Controllers
             }
             return View(model);
         }
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LogOutStudent()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("LoginStudent", "Account");
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LogOutConsultant()
