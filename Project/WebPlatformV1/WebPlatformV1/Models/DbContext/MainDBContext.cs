@@ -47,11 +47,15 @@ namespace WebPlatformV1.Models.DbContext
         public DbSet<Tbl_Headline> tbl_Headlines { get; set; }
         public DbSet<Tbl_Tasks> tbl_Tasks { get; set; }
         public DbSet<Tbl_Wallet> tbl_Wallets { get; set; }
+        public DbSet<Tbl_TodoAppStudent> Tbl_TodoAppStudents { get; set; }
+        public DbSet<Tbl_TodoAppConsultant> Tbl_TodoAppConsultant { get; set; }
+
+
         //public DbSet<Tbl_TasksCourse> tbl_TasksCourses { get; set; }
 
     }
- 
-    
+
+
     public class Tbl_Blog
     {
         [Key]
@@ -181,6 +185,7 @@ namespace WebPlatformV1.Models.DbContext
         public int IDAddPanel { get; set; }
         public string ConsultantID { get; set; }
         public string StudentID { get; set; }
+        public bool Status { get; set; } = false;
 
         [Required]
         public int Day { get; set; }
@@ -191,6 +196,22 @@ namespace WebPlatformV1.Models.DbContext
 
 
 
+    }
+    public class Tbl_TodoAppStudent
+    {
+        public int Id { get; set; }
+        public string STudentID { get; set; }
+        public string Note { get; set; }
+        public bool IsFinally { get; set; } = false;
+        public ICollection<Student> students { get; set; }
+    }
+    public class Tbl_TodoAppConsultant
+    {
+        public int Id { get; set; }
+        public string ConsultantID { get; set; }
+        public string Note { get; set; }
+        public bool IsFinally { get; set; } = false;
+        public ICollection<Consultant> Consultantes { get; set; }
     }
     //public class Tbl_TasksCourse
     //{

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    partial class MainDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200817221935_credittime")]
+    partial class credittime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -478,48 +480,6 @@ namespace WebPlatformV1.Migrations
                     b.ToTable("tbl_Tasks");
                 });
 
-            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_TodoAppConsultant", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ConsultantID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsFinally")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tbl_TodoAppConsultant");
-                });
-
-            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_TodoAppStudent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsFinally")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("STudentID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tbl_TodoAppStudents");
-                });
-
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Wallet", b =>
                 {
                     b.Property<int>("ID")
@@ -556,9 +516,6 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("Family")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsSendDegree")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -574,16 +531,8 @@ namespace WebPlatformV1.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("Tbl_TodoAppConsultantId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("addPanelIDAddPanel")
                         .HasColumnType("int");
-
-                    b.Property<bool>("isAcceptDegree")
-                        .HasColumnType("bit");
-
-                    b.HasIndex("Tbl_TodoAppConsultantId");
 
                     b.HasIndex("addPanelIDAddPanel");
 
@@ -620,11 +569,6 @@ namespace WebPlatformV1.Migrations
                     b.Property<bool>("State")
                         .HasColumnName("Student_State")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("Tbl_TodoAppStudentId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("Tbl_TodoAppStudentId");
 
                     b.HasDiscriminator().HasValue("Student");
                 });
@@ -754,20 +698,9 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("WebPlatformV1.Models.Consultant", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_TodoAppConsultant", null)
-                        .WithMany("Consultantes")
-                        .HasForeignKey("Tbl_TodoAppConsultantId");
-
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_AddPanel", "addPanel")
                         .WithMany("Consultantes")
                         .HasForeignKey("addPanelIDAddPanel");
-                });
-
-            modelBuilder.Entity("WebPlatformV1.Models.Student", b =>
-                {
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_TodoAppStudent", null)
-                        .WithMany("students")
-                        .HasForeignKey("Tbl_TodoAppStudentId");
                 });
 #pragma warning restore 612, 618
         }

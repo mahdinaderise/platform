@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\images\Degree\" />
     <Folder Include="wwwroot\images\Profile\" />
   </ItemGroup>
 
