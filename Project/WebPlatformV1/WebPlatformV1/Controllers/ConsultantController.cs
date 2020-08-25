@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -352,6 +353,8 @@ namespace WebPlatformV1.Controllers
 
             var C = _context.Find<Consultant>(consultantId);
             //var user = _context.consultants.Select(p=>p.Name  p.Family , p.PhoneNumber).Where(p => p.Id == consultantId).ToList();
+            model.Degree = _context.SendDegree.Where(p => p.ConsultantId == consultantId).ToList();
+            
 
             #region view data in textbox
 
@@ -430,35 +433,39 @@ namespace WebPlatformV1.Controllers
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> ProfileDegree(Profile model, Consultant consultant)
+
+        public async Task<IActionResult> ProfileDegree(Profile model, Consultant consultant,SendDegree degree)
         {
             var consultantId = _userManager.GetUserId(User);
+            degree.ConsultantId = consultantId;
+            degree.state = 1;
             var c = _context.consultants.FirstOrDefault(p => p.Id == consultantId);
-            if (c != null)
-            {
-                await _context.SaveChangesAsync();
-                if (model.DegreePic?.Length > 0)
+           
+                if (c != null)
                 {
-                    string filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                        "wwwroot",
-                        "images", "Degree",
-
-                        c.Id + Path.GetExtension(model.DegreePic.FileName));
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    await _context.SaveChangesAsync();
+                    if (model.DegreePic?.Length > 0)
                     {
-                        model.DegreePic.CopyTo(stream);
-                        c.IsSendDegree = true;
+                        string filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                            "wwwroot",
+                            "images", "Degree",
 
-                        await _context.SaveChangesAsync();
+                            c.Id + Path.GetExtension(model.DegreePic.FileName));
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            model.DegreePic.CopyTo(stream);
+                            degree.IsSend = true;
+                            await _context.SendDegree.AddAsync(degree);
+                            await _context.SaveChangesAsync();
 
+                        }
                     }
+                    return RedirectToAction(nameof(Profile));
+
                 }
-                return RedirectToAction(nameof(Profile));
+          
 
-            }
-
-
-            return View(model);
+            return RedirectToAction(nameof(Profile));
         }
         public IActionResult Tasks(StudentsViewModel model)
         {
@@ -481,10 +488,15 @@ namespace WebPlatformV1.Controllers
         }
         public async Task<IActionResult> TodoAppDelete(int id)
         {
-            var r = _context.Tbl_TodoAppStudents.Find(id);
+            var r = _context.Tbl_TodoAppConsultant.Find(id);
             r.IsFinally = true;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Report()
+        {
+            return View();
+        }
     }
+
 }

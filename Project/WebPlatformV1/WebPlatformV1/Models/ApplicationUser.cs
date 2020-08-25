@@ -36,7 +36,7 @@ namespace WebPlatformV1.Models
         public string Address { get; set; }
         public string Shaba { get; set; }
         public DateTime CreditTime { get; set; }
-
+        public SendDegree sendDegree { get; set; }
         public Tbl_AddPanel addPanel { get; set; }
         public ICollection<Tbl_Tasks> tasks { get; set; }
         public ICollection<Tbl_Blog> blogs { get; set; }

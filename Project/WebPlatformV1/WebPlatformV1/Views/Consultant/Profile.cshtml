@@ -8,11 +8,25 @@
 <div class="main-content">
 
     <div class="container-fluid">
-        <div class="Row">
-            <div class="col-md-4">
+        @if (ViewBag.ErrorMaxSize != null)
+        {
+            <div class="card">
+                <div class="card_body">
+
+                    <div class="alert alert-success" role="alert" style="margin-top: 50px;">
+                        @ViewBag.ErrorMaxSize
+                    </div>
+
+
+                </div>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-md-2">
 
                 <div class="card">
-                    <div class="card-body text-center">
+                    <div class="card-body text-center justify-content-center">
                         @if (Model.ProfilePicUrl == null)
                         {
                             <figure class="avatar">
@@ -31,11 +45,65 @@
 
                 </div>
             </div>
+            <div class="col-md-10">
+                <div class="table-responsive">
+                    <table class="table table-hover bg-white text-center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col"> کد ارسال</th>
+
+                                <th scope="col"> وضعیت</th>
+                                <th scope="col"> توضیحات </th>
+                                <th scope="col"> نمایش</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Degree)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    @if (item.state == 1)
+                                    {
+                                        <td> درحال بررسی</td>
+
+                                    }
+                                    @if (item.state == 2)
+                                    {
+                                        <td> رد شده</td>
+
+                                    }
+                                    @if (item.state == 3)
+                                    {
+                                        <td> تایید شده</td>
+
+                                    }
+                                    <td> @item.Description</td>
+                                    @if (item.state == 3 || item.state == 1)
+                                    {
+                                        <th scope="col"> <a href="~/images/Degree/@(Model.id).jpg"> نمایش تصویر ارسالی</a></th>
+
+                                    }
+
+                                </tr>
+
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="Row">
+
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
 
-                        <form asp-action="Profile" asp-controller="Consultant" method="post" enctype="multipart/form-data">
+                        <form asp-action="Profile" asp-controller="Consultant" method="post" enctype="multipart/form-data" onsubmit="return checkSizeprofile(1000000)">
+
                             <div class="form-group">
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
@@ -81,7 +149,7 @@
                             </div>
                             <div class="form-row">
                                 <label for="exampleFormControlFile1">آپلود عکس پروفایل  </label>
-                                <input type="file" class="form-control-file" asp-for="Picture" id="exampleFormControlFile1">
+                                <input type="file" class="form-control-file" asp-for="Picture" onclick="Upload()" accept=".jpg" id="fileUpload">
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="d-flex justify-content-end">
@@ -103,11 +171,12 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form asp-action="ProfileDegree" asp-controller="Consultant" method="post" enctype="multipart/form-data">
+                        <form asp-action="ProfileDegree" asp-controller="Consultant" method="post" enctype="multipart/form-data" onsubmit="return checkSize(1000000)">
+                            <input type="hidden" name="MAX_FILE_SIZE" asp-for="MAX_FILE_SIZE" value="1000000" />
 
                             <div class="form-row">
                                 <label for="exampleFormControlFile1">آپلود عکس مدرک شما   </label>
-                                <input type="file" class="form-control-file" asp-for="DegreePic" id="exampleFormControlFile1">
+                                <input type="file" class="form-control-file" asp-for="DegreePic" accept=".jpg" id="exampleFormControlFile1">
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="d-flex justify-content-end">
@@ -126,23 +195,35 @@
 
         </div>
         <!-- اینجا ساخته شود -->
-        <div class="Row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-header">
-                            <h5>عکس مدرک ارسالی شما</h5>
-                        </div>
-                        <h6>وضعیت:  @ViewBag.isAcceptDegree </h6>
-
-                            <img src="/images/Degree/@(Model.id).jpg" style="width:500px;height:700px" />
-                        </div>
-
-                    </div>
-            </div>
-
+        <div class="row">
         </div>
 
     </div>
 
 </div>
+<script type="text/javascript">
+    function checkSize(max_img_size) {
+        var input = document.getElementById("exampleFormControlFile1");
+        // check for browser support (may need to be modified)
+        if (input.files && input.files.length == 1) {
+            if (input.files[0].size > max_img_size) {
+                alert("حجم فایل انتخابی باید کمتر از یک مگابایت باشد.");
+                return false;
+            }
+        } 
+
+        return true;
+    }
+    function checkSizeprofile(max_img_size) {
+        var input = document.getElementById("fileUpload");
+        // check for browser support (may need to be modified)
+        if (input.files && input.files.length == 1) {
+            if (input.files[0].size > max_img_size) {
+                alert("حجم فایل انتخابی باید کمتر از یک مگابایت باشد.");
+                return false;
+            }
+        }
+
+        return true;
+    }
+</script>

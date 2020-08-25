@@ -115,7 +115,7 @@ namespace WebPlatformV1.Controllers
             var NowDateTime = DateTime.Today;
             var StartDate = model.StartDate;
             model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == IdStudent && p.SendDelivery == DateTime.Today).ToList();
-            return View(model);
+             return View(model);
         }
         [HttpPost]
         public IActionResult studenttask(TasksStudents model,string? id)

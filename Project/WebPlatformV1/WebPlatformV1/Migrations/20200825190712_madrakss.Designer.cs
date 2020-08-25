@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    partial class MainDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200825190712_madrakss")]
+    partial class madrakss
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -229,7 +231,7 @@ namespace WebPlatformV1.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ConsultantId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -241,6 +243,10 @@ namespace WebPlatformV1.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ConsultantId")
+                        .IsUnique()
+                        .HasFilter("[ConsultantId] IS NOT NULL");
 
                     b.ToTable("SendDegree");
                 });
@@ -607,14 +613,9 @@ namespace WebPlatformV1.Migrations
                     b.Property<bool>("isAcceptDegree")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("sendDegreeId")
-                        .HasColumnType("int");
-
                     b.HasIndex("Tbl_TodoAppConsultantId");
 
                     b.HasIndex("addPanelIDAddPanel");
-
-                    b.HasIndex("sendDegreeId");
 
                     b.HasDiscriminator().HasValue("Consultant");
                 });
@@ -709,6 +710,13 @@ namespace WebPlatformV1.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.SendDegree", b =>
+                {
+                    b.HasOne("WebPlatformV1.Models.Consultant", "consultant")
+                        .WithOne("sendDegree")
+                        .HasForeignKey("WebPlatformV1.Models.DbContext.SendDegree", "ConsultantId");
+                });
+
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_AddPanel", b =>
                 {
                     b.HasOne("WebPlatformV1.Models.Student", "students")
@@ -790,10 +798,6 @@ namespace WebPlatformV1.Migrations
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_AddPanel", "addPanel")
                         .WithMany("Consultantes")
                         .HasForeignKey("addPanelIDAddPanel");
-
-                    b.HasOne("WebPlatformV1.Models.DbContext.SendDegree", "sendDegree")
-                        .WithMany("consultant")
-                        .HasForeignKey("sendDegreeId");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.Student", b =>

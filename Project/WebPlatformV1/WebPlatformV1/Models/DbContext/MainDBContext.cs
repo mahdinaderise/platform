@@ -50,6 +50,7 @@ namespace WebPlatformV1.Models.DbContext
         public DbSet<Tbl_TodoAppStudent> Tbl_TodoAppStudents { get; set; }
         public DbSet<Tbl_TodoAppConsultant> Tbl_TodoAppConsultant { get; set; }
 
+        public DbSet<SendDegree> SendDegree { get; set; }
 
         //public DbSet<Tbl_TasksCourse> tbl_TasksCourses { get; set; }
 
@@ -66,7 +67,18 @@ namespace WebPlatformV1.Models.DbContext
         public ICollection<Tbl_Attach> tbl_Attaches { get; set; }
         public Consultant consultant { get; set; }
     }
+    public class SendDegree
+    {   [Key]
+        public int Id { get; set; }
+        public bool IsSend { get; set; }
+        public int state { get; set; }
+        public string Description { get; set; }
+        public string ConsultantId { get; set; }
+        public ICollection<Consultant> consultant { get; set; }
 
+
+
+    }
     public class Tbl_Attach
     {
         [Key]
