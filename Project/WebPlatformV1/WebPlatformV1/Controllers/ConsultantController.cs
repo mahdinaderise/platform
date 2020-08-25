@@ -15,7 +15,6 @@ using WebPlatformV1.Migrations;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels.Consultant;
-
 namespace WebPlatformV1.Controllers
 {
     [Authorize(Roles = "Consultant")]
@@ -37,10 +36,10 @@ namespace WebPlatformV1.Controllers
 
         //    return View();
         //}
-        public  IActionResult Index()
-        {
+        public IActionResult Index(todoappc model)
+        {   //get id
             var cId = _userManager.GetUserId(User);
-            
+            #region create wallet
             var w = _context.tbl_Wallets.Where(p => p.ConsultantId == cId).ToList();
             if (w.Count == 0)
             {
@@ -50,23 +49,39 @@ namespace WebPlatformV1.Controllers
                 _context.tbl_Wallets.Add(Wallet);
                 _context.SaveChanges();
             }
-           
+            #endregion
+            #region count of do task
+            var tasks = _context.tbl_Tasks.Where(p => p.IdConsultant == cId).Count();
+            var tasksdo = _context.tbl_Tasks.Where(p => p.IdConsultant == cId && p.isDo == true).Count();
+            var tasksNdo = _context.tbl_Tasks.Where(p => p.IdConsultant == cId && p.isDo == false).Count();
+            var todayTask = _context.tbl_Tasks.Where(p => p.SendDelivery == DateTime.Today).Count();
+            ViewBag.DoTest = (tasksdo * 100) / tasks;
+            ViewBag.NDoTest = (tasksNdo * 100) / tasks;
+            ViewBag.Tasks = tasks;
+            ViewBag.tasksdo = tasksdo;
+            ViewBag.today = todayTask;
+            #endregion
+            var wallet = _context.tbl_Wallets.Where(p => p.ConsultantId == cId).Select(p=>p.Credit).ToArray();
+            ViewBag.Credit = wallet[0];
             //var result = _context.studentOfCansultants.Where(p => p.Cansultant.Equals(_userManager.GetUserId(User)));
+            ViewBag.CountStudent = _context.students.Where(p => p.ConsultantID == cId).Count();
+            model.Todo = _context.Tbl_TodoAppConsultant.Where(p => p.ConsultantID == cId).ToList();
 
-            return View();
+
+            return View(model);
         }
-        
-        public IActionResult StudentPage(string id,TasksStudents model)
+
+        public IActionResult StudentPage(string id, TasksStudents model)
         {
-            
+
             model.Students = _context.students.Where(p => p.Id == id).ToList();
             TempData["mydata"] = id;
-            HttpContext.Session.SetString("id",id );
+            HttpContext.Session.SetString("id", id);
 
             var NowDateTime = DateTime.Today;
             var StartDate = model.StartDate;
             var EndDate = model.EndDate;
-            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == id && p.SendDelivery== DateTime.Today ).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == id && p.SendDelivery == DateTime.Today).ToList();
             return View(model);
         }
         [HttpPost]
@@ -74,12 +89,12 @@ namespace WebPlatformV1.Controllers
         {
             var id = HttpContext.Session.GetString("id");
             model.Students = _context.students.Where(p => p.Id == id).ToList();
-            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == id && p.SendDelivery == model.StartDate ).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == id && p.SendDelivery == model.StartDate).ToList();
 
             return View(model);
         }
 
-        public IActionResult detaildo(int id,detaildo model)
+        public IActionResult detaildo(int id, detaildo model)
         {
             var result = _context.Find<Tbl_Do>(id);
             model.DiscriptiveTime = result.DiscriptiveTime;
@@ -104,16 +119,16 @@ namespace WebPlatformV1.Controllers
         {
             var consultantId = _userManager.GetUserId(User);
             var result = _context.consultants.Find(consultantId);
-            model.blog = _context.tbl_Blogs.Where(p => p.ConsultantId == consultantId).OrderByDescending(P=>P.ID).ToList();
+            model.blog = _context.tbl_Blogs.Where(p => p.ConsultantId == consultantId).OrderByDescending(P => P.ID).ToList();
             model.Name = result.Name;
             model.Family = result.Family;
             model.Email = result.Email;
             model.id = result.Id;
             string FristLast = result.Family;
             string fristCharecter = result.Name;
-            ViewBag.fristCharecter = fristCharecter[0]+" " +FristLast[0].ToString();
+            ViewBag.fristCharecter = fristCharecter[0] + " " + FristLast[0].ToString();
             model.ProfilePicUrl = result.ProfilePicUrl;
-            model.CountPost = _context.tbl_Blogs.Where(p=>p.ConsultantId== consultantId).Count();
+            model.CountPost = _context.tbl_Blogs.Where(p => p.ConsultantId == consultantId).Count();
             model.CountStudent = _context.students.Where(p => p.ConsultantID == consultantId).Count();
             return View(model);
         }
@@ -124,7 +139,7 @@ namespace WebPlatformV1.Controllers
             if (ModelState.IsValid)
             {
                 blogs.Note = model.Note;
-                
+
                 blogs.ConsultantId = consultantId;
                 await _context.AddAsync(blogs);
                 await _context.SaveChangesAsync();
@@ -133,7 +148,7 @@ namespace WebPlatformV1.Controllers
                     string filePath = Path.Combine(Directory.GetCurrentDirectory(),
                         "wwwroot",
                         "images",
-                      
+
                         blogs.ID + Path.GetExtension(model.Picture.FileName));
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
@@ -161,7 +176,7 @@ namespace WebPlatformV1.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPost(int id,[Bind("ID","Note") ] Tbl_Blog model)
+        public async Task<IActionResult> EditPost(int id, [Bind("ID", "Note")] Tbl_Blog model)
         {
             var consultantId = _userManager.GetUserId(User);
 
@@ -175,10 +190,10 @@ namespace WebPlatformV1.Controllers
             {
                 model.ConsultantId = consultantId;
 
-                 _context.Update(model);
+                _context.Update(model);
                 await _context.SaveChangesAsync();
-                
-              
+
+
                 return RedirectToAction(nameof(blog));
             }
             return View(model);
@@ -210,18 +225,18 @@ namespace WebPlatformV1.Controllers
             return RedirectToAction(nameof(blog));
         }
         [HttpGet]
-        public IActionResult CreateTask( CreateTask model,Tbl_Tasks tasks)
+        public IActionResult CreateTask(CreateTask model, Tbl_Tasks tasks)
         {
             var NowDateTime = DateTime.Today;
             var id = HttpContext.Session.GetString("id");
-            ViewData["course"] = new SelectList(_context.tbl_Courses, "IDCourse", "NameCourse",tasks.Idcourse );
+            ViewData["course"] = new SelectList(_context.tbl_Courses, "IDCourse", "NameCourse", tasks.Idcourse);
 
             model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == id && p.SubmitDate == NowDateTime).ToList();
 
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateTask(CreateTask model, Tbl_Tasks tasks,string? name)
+        public async Task<IActionResult> CreateTask(CreateTask model, Tbl_Tasks tasks, string? name)
         {
             var id = HttpContext.Session.GetString("id");
 
@@ -230,7 +245,7 @@ namespace WebPlatformV1.Controllers
                 tasks.Descibtion = model.Descibtion;
                 tasks.NameTasks = model.NameTasks;
                 tasks.Subject = model.Subject;
-                tasks.IdConsultant= _userManager.GetUserId(User);
+                tasks.IdConsultant = _userManager.GetUserId(User);
                 tasks.IdStudent = id;
                 tasks.Idcourse = model.courseid;
                 tasks.SendDelivery = model.SendDelivery;
@@ -258,7 +273,7 @@ namespace WebPlatformV1.Controllers
         {
             HttpContext.Session.SetString("IdStudentForPanel", id);
             var r = _context.tbl_AddPanels.Where(p => p.StudentID == id).Count();
-            if (r!=0)
+            if (r != 0)
             {
                 return RedirectToAction(nameof(haspanel));
 
@@ -316,26 +331,26 @@ namespace WebPlatformV1.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> haspanel( string id)
+        public async Task<IActionResult> haspanel(string id)
         {
             id = HttpContext.Session.GetString("IdStudentForPanel");
-            var panel =  _context.tbl_AddPanels.Where(p=>p.StudentID==id);
-            
+            var panel = _context.tbl_AddPanels.Where(p => p.StudentID == id);
+
             //_context.tbl_AddPanels.Remove(panel);
-         await _context.SaveChangesAsync();
-         return RedirectToAction(nameof(AddPanel));
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(AddPanel));
 
             return View();
         }
-      
-      
-   [HttpGet]
-        public   IActionResult Profile(Profile model)
+
+
+        [HttpGet]
+        public IActionResult Profile(Profile model)
         {
- 
+
             var consultantId = _userManager.GetUserId(User);
 
-          var C=  _context.Find<Consultant>(consultantId);
+            var C = _context.Find<Consultant>(consultantId);
             //var user = _context.consultants.Select(p=>p.Name  p.Family , p.PhoneNumber).Where(p => p.Id == consultantId).ToList();
 
             #region view data in textbox
@@ -349,23 +364,35 @@ namespace WebPlatformV1.Controllers
             model.PhoneNumber = C.PhoneNumber;
             model.Shaba = C.Shaba;
             model.ProfilePicUrl = C.ProfilePicUrl;
+            if (C.isAcceptDegree==false)
+            {
+                ViewBag.isAcceptDegree = "تایید نشده";
+            }
+            else
+            {
+                ViewBag.isAcceptDegree = "تایید شده";
 
+            }
             #endregion
 
             #region get on char of name and family
 
             //model.Consultants = _context.consultants.Where(p => p.Id == user).ToList();
             //consultants = _context.consultants.Where(p=>p.Id==id).ToList();
-            string FristLast = model.Family;
-            string fristCharecter = model.Name;
-            ViewBag.fristCharecter = fristCharecter[0] + " " + FristLast[0].ToString();
+            if (model.Family !=null && model.Name !=null)
+            {
+                string FristLast = model.Family;
+                string fristCharecter = model.Name;
+                ViewBag.fristCharecter = fristCharecter[0] + " " + FristLast[0].ToString();
+            }
+            
 
             #endregion
 
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Profile(Profile model,Consultant consultant)
+        public async Task<IActionResult> Profile(Profile model, Consultant consultant)
         {
             var consultantId = _userManager.GetUserId(User);
             var c = _context.consultants.FirstOrDefault(p => p.Id == consultantId);
@@ -382,7 +409,7 @@ namespace WebPlatformV1.Controllers
                 {
                     string filePath = Path.Combine(Directory.GetCurrentDirectory(),
                         "wwwroot",
-                        "images","Profile",
+                        "images", "Profile",
 
                         c.Id + Path.GetExtension(model.Picture.FileName));
                     using (var stream = new FileStream(filePath, FileMode.Create))
@@ -392,7 +419,8 @@ namespace WebPlatformV1.Controllers
                         c.ProfilePicUrl = filePath;
                         await _context.SaveChangesAsync();
 
-                        consultant.ProfilePicUrl = model.Picture.ToString();                    }
+                        consultant.ProfilePicUrl = model.Picture.ToString();
+                    }
                 }
                 return RedirectToAction(nameof(Profile));
 
@@ -401,12 +429,62 @@ namespace WebPlatformV1.Controllers
 
             return View(model);
         }
-            public IActionResult Tasks(StudentsViewModel model)
+        [HttpPost]
+        public async Task<IActionResult> ProfileDegree(Profile model, Consultant consultant)
+        {
+            var consultantId = _userManager.GetUserId(User);
+            var c = _context.consultants.FirstOrDefault(p => p.Id == consultantId);
+            if (c != null)
+            {
+                await _context.SaveChangesAsync();
+                if (model.DegreePic?.Length > 0)
+                {
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        "images", "Degree",
+
+                        c.Id + Path.GetExtension(model.DegreePic.FileName));
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.DegreePic.CopyTo(stream);
+                        c.IsSendDegree = true;
+
+                        await _context.SaveChangesAsync();
+
+                    }
+                }
+                return RedirectToAction(nameof(Profile));
+
+            }
+
+
+            return View(model);
+        }
+        public IActionResult Tasks(StudentsViewModel model)
         {
             var consultantId = _userManager.GetUserId(User);
             model.Students = _context.students.Where(p => p.ConsultantID == consultantId).ToList();
 
             return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> TodoApp(todoappc model, Tbl_TodoAppConsultant todo)
+        {
+            var cid = _userManager.GetUserId(User);
+            todo.Note = model.Note;
+            todo.ConsultantID = cid;
+            todo.IsFinally = model.IsFinally;
+
+            await _context.Tbl_TodoAppConsultant.AddAsync(todo);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> TodoAppDelete(int id)
+        {
+            var r = _context.Tbl_TodoAppStudents.Find(id);
+            r.IsFinally = true;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

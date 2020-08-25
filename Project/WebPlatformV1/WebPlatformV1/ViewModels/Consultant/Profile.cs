@@ -20,6 +20,7 @@ namespace WebPlatformV1.ViewModels.Consultant
         public string Address { get; set; }
         public string Shaba { get; set; }
         public IFormFile Picture { get; set; }
+        public IFormFile DegreePic { get; set; }
 
     }
 }

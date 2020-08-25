@@ -28,6 +28,9 @@ namespace WebPlatformV1.Models
         public string Family { get; set; }
         public int NationalCode { get; set; }
         public bool State { get; set; }
+        public bool IsSendDegree { get; set; } = false;
+        public bool isAcceptDegree { get; set; } = false;
+
         public string ProfilePicUrl { get; set; }
         public string CardNumber { get; set; }
         public string Address { get; set; }
