@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebPlatformV1.Migrations
 {
-    public partial class New : Migration
+    public partial class delete : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,6 +22,22 @@ namespace WebPlatformV1.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SendDegree",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsSend = table.Column<bool>(nullable: false),
+                    state = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    ConsultantId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SendDegree", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "tbl_Courses",
                 columns: table => new
                 {
@@ -33,6 +49,36 @@ namespace WebPlatformV1.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tbl_Courses", x => x.IDCourse);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tbl_TodoAppConsultant",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ConsultantID = table.Column<string>(nullable: true),
+                    Note = table.Column<string>(nullable: true),
+                    IsFinally = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tbl_TodoAppConsultant", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tbl_TodoAppStudents",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    STudentID = table.Column<string>(nullable: true),
+                    Note = table.Column<string>(nullable: true),
+                    IsFinally = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tbl_TodoAppStudents", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -144,9 +190,11 @@ namespace WebPlatformV1.Migrations
                 {
                     IDAddPanel = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<int>(nullable: false),
-                    Price = table.Column<int>(nullable: false),
-                    studentsId = table.Column<string>(nullable: true)
+                    ConsultantID = table.Column<string>(nullable: true),
+                    StudentID = table.Column<string>(nullable: true),
+                    Status = table.Column<bool>(nullable: false),
+                    Day = table.Column<int>(nullable: false),
+                    Price = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -177,21 +225,51 @@ namespace WebPlatformV1.Migrations
                     Family = table.Column<string>(nullable: true),
                     NationalCode = table.Column<int>(nullable: true),
                     State = table.Column<bool>(nullable: true),
+                    IsSendDegree = table.Column<bool>(nullable: true),
+                    isAcceptDegree = table.Column<bool>(nullable: true),
+                    ProfilePicUrl = table.Column<string>(nullable: true),
+                    CardNumber = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    Shaba = table.Column<string>(nullable: true),
+                    CreditTime = table.Column<DateTime>(nullable: true),
+                    sendDegreeId = table.Column<int>(nullable: true),
                     addPanelIDAddPanel = table.Column<int>(nullable: true),
+                    Tbl_TodoAppConsultantId = table.Column<int>(nullable: true),
                     Student_Name = table.Column<string>(nullable: true),
                     Student_Family = table.Column<string>(nullable: true),
                     Student_NationalCode = table.Column<int>(nullable: true),
                     Student_State = table.Column<bool>(nullable: true),
-                    ConsultantID = table.Column<string>(nullable: true)
+                    ConsultantID = table.Column<string>(nullable: true),
+                    Student_ProfilePicUrl = table.Column<string>(nullable: true),
+                    Student_CreditTime = table.Column<DateTime>(nullable: true),
+                    Tbl_TodoAppStudentId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_AspNetUsers_Tbl_TodoAppConsultant_Tbl_TodoAppConsultantId",
+                        column: x => x.Tbl_TodoAppConsultantId,
+                        principalTable: "Tbl_TodoAppConsultant",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_AspNetUsers_tbl_AddPanels_addPanelIDAddPanel",
                         column: x => x.addPanelIDAddPanel,
                         principalTable: "tbl_AddPanels",
                         principalColumn: "IDAddPanel",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_SendDegree_sendDegreeId",
+                        column: x => x.sendDegreeId,
+                        principalTable: "SendDegree",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_Tbl_TodoAppStudents_Tbl_TodoAppStudentId",
+                        column: x => x.Tbl_TodoAppStudentId,
+                        principalTable: "Tbl_TodoAppStudents",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -203,14 +281,14 @@ namespace WebPlatformV1.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IDAttach = table.Column<int>(nullable: false),
                     Note = table.Column<string>(nullable: true),
-                    consultantId = table.Column<string>(nullable: true)
+                    ConsultantId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tbl_Blogs", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_tbl_Blogs_AspNetUsers_consultantId",
-                        column: x => x.consultantId,
+                        name: "FK_tbl_Blogs_AspNetUsers_ConsultantId",
+                        column: x => x.ConsultantId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -223,9 +301,13 @@ namespace WebPlatformV1.Migrations
                     IDdo = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IDTasks = table.Column<int>(nullable: false),
+                    DiscriptiveTime = table.Column<int>(nullable: false),
+                    TestTime = table.Column<int>(nullable: false),
+                    RevisionTime = table.Column<int>(nullable: false),
                     Note = table.Column<string>(nullable: true),
-                    CountTest = table.Column<int>(nullable: false),
-                    TimeStudy = table.Column<int>(nullable: false),
+                    TrueTest = table.Column<int>(nullable: false),
+                    falseTest = table.Column<int>(nullable: false),
+                    NullTest = table.Column<int>(nullable: false),
                     studentId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -270,6 +352,26 @@ namespace WebPlatformV1.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "tbl_Wallets",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ConsultantId = table.Column<string>(nullable: true),
+                    Credit = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tbl_Wallets", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_tbl_Wallets_AspNetUsers_ConsultantId",
+                        column: x => x.ConsultantId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "tbl_Attaches",
                 columns: table => new
                 {
@@ -296,42 +398,44 @@ namespace WebPlatformV1.Migrations
                 {
                     IDTasks = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    DoIDdo = table.Column<int>(nullable: false),
                     NameTasks = table.Column<string>(nullable: true),
                     SendDelivery = table.Column<DateTime>(nullable: false),
                     SubmitDate = table.Column<DateTime>(nullable: false),
                     Descibtion = table.Column<string>(nullable: true),
+                    TimeStudy = table.Column<int>(nullable: false),
+                    Subject = table.Column<string>(nullable: true),
                     isDo = table.Column<bool>(nullable: false),
-                    courseIDCourse = table.Column<int>(nullable: true),
-                    CansultantId = table.Column<string>(nullable: true),
                     StudentId = table.Column<string>(nullable: true),
-                    DoIDdo = table.Column<int>(nullable: true)
+                    ConsultantId = table.Column<string>(nullable: true),
+                    CourseIDCourse = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tbl_Tasks", x => x.IDTasks);
                     table.ForeignKey(
-                        name: "FK_tbl_Tasks_AspNetUsers_CansultantId",
-                        column: x => x.CansultantId,
+                        name: "FK_tbl_Tasks_AspNetUsers_ConsultantId",
+                        column: x => x.ConsultantId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_tbl_Tasks_tbl_Courses_CourseIDCourse",
+                        column: x => x.CourseIDCourse,
+                        principalTable: "tbl_Courses",
+                        principalColumn: "IDCourse",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_tbl_Tasks_tbl_Dos_DoIDdo",
                         column: x => x.DoIDdo,
                         principalTable: "tbl_Dos",
                         principalColumn: "IDdo",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_tbl_Tasks_AspNetUsers_StudentId",
                         column: x => x.StudentId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_tbl_Tasks_tbl_Courses_courseIDCourse",
-                        column: x => x.courseIDCourse,
-                        principalTable: "tbl_Courses",
-                        principalColumn: "IDCourse",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -375,14 +479,29 @@ namespace WebPlatformV1.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_Tbl_TodoAppConsultantId",
+                table: "AspNetUsers",
+                column: "Tbl_TodoAppConsultantId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_addPanelIDAddPanel",
                 table: "AspNetUsers",
                 column: "addPanelIDAddPanel");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_AddPanels_studentsId",
+                name: "IX_AspNetUsers_sendDegreeId",
+                table: "AspNetUsers",
+                column: "sendDegreeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_Tbl_TodoAppStudentId",
+                table: "AspNetUsers",
+                column: "Tbl_TodoAppStudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tbl_AddPanels_StudentID",
                 table: "tbl_AddPanels",
-                column: "studentsId");
+                column: "StudentID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tbl_Attaches_blogID",
@@ -390,9 +509,9 @@ namespace WebPlatformV1.Migrations
                 column: "blogID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_Blogs_consultantId",
+                name: "IX_tbl_Blogs_ConsultantId",
                 table: "tbl_Blogs",
-                column: "consultantId");
+                column: "ConsultantId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tbl_Dos_studentId",
@@ -415,9 +534,14 @@ namespace WebPlatformV1.Migrations
                 column: "coursesIDCourse");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_Tasks_CansultantId",
+                name: "IX_tbl_Tasks_ConsultantId",
                 table: "tbl_Tasks",
-                column: "CansultantId");
+                column: "ConsultantId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tbl_Tasks_CourseIDCourse",
+                table: "tbl_Tasks",
+                column: "CourseIDCourse");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tbl_Tasks_DoIDdo",
@@ -430,9 +554,9 @@ namespace WebPlatformV1.Migrations
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_Tasks_courseIDCourse",
-                table: "tbl_Tasks",
-                column: "courseIDCourse");
+                name: "IX_tbl_Wallets_ConsultantId",
+                table: "tbl_Wallets",
+                column: "ConsultantId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_AspNetUserRoles_AspNetUsers_UserId",
@@ -467,9 +591,9 @@ namespace WebPlatformV1.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_tbl_AddPanels_AspNetUsers_studentsId",
+                name: "FK_tbl_AddPanels_AspNetUsers_StudentID",
                 table: "tbl_AddPanels",
-                column: "studentsId",
+                column: "StudentID",
                 principalTable: "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
@@ -478,7 +602,7 @@ namespace WebPlatformV1.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_tbl_AddPanels_AspNetUsers_studentsId",
+                name: "FK_tbl_AddPanels_AspNetUsers_StudentID",
                 table: "tbl_AddPanels");
 
             migrationBuilder.DropTable(
@@ -509,22 +633,34 @@ namespace WebPlatformV1.Migrations
                 name: "tbl_Tasks");
 
             migrationBuilder.DropTable(
+                name: "tbl_Wallets");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "tbl_Blogs");
 
             migrationBuilder.DropTable(
-                name: "tbl_Dos");
+                name: "tbl_Courses");
 
             migrationBuilder.DropTable(
-                name: "tbl_Courses");
+                name: "tbl_Dos");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "Tbl_TodoAppConsultant");
+
+            migrationBuilder.DropTable(
                 name: "tbl_AddPanels");
+
+            migrationBuilder.DropTable(
+                name: "SendDegree");
+
+            migrationBuilder.DropTable(
+                name: "Tbl_TodoAppStudents");
         }
     }
 }
