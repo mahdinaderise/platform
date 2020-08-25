@@ -10,8 +10,8 @@ using WebPlatformV1.Models.DbContext;
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    [Migration("20200826193355_nullabeldo")]
-    partial class nullabeldo
+    [Migration("20200825222841_allDB")]
+    partial class allDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -338,6 +338,62 @@ namespace WebPlatformV1.Migrations
                     b.HasKey("IDCourse");
 
                     b.ToTable("tbl_Courses");
+
+                    b.HasData(
+                        new
+                        {
+                            IDCourse = 3,
+                            NameCourse = "ادبیات",
+                            grade = "3"
+                        },
+                        new
+                        {
+                            IDCourse = 4,
+                            NameCourse = "زبان فارسی",
+                            grade = "3"
+                        },
+                        new
+                        {
+                            IDCourse = 5,
+                            NameCourse = "عربی",
+                            grade = "3"
+                        },
+                        new
+                        {
+                            IDCourse = 6,
+                            NameCourse = "دین و زندگی",
+                            grade = "3"
+                        },
+                        new
+                        {
+                            IDCourse = 7,
+                            NameCourse = "زبان انگلیسی",
+                            grade = "3"
+                        },
+                        new
+                        {
+                            IDCourse = 8,
+                            NameCourse = "زمین",
+                            grade = "3"
+                        },
+                        new
+                        {
+                            IDCourse = 9,
+                            NameCourse = "زیست",
+                            grade = "3"
+                        },
+                        new
+                        {
+                            IDCourse = 10,
+                            NameCourse = "فیزیک",
+                            grade = "3"
+                        },
+                        new
+                        {
+                            IDCourse = 11,
+                            NameCourse = "شیمی",
+                            grade = "3"
+                        });
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Do", b =>
@@ -449,7 +505,7 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("ConsultantId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("CourseIDCourse")
+                    b.Property<int?>("CourseIDCourse")
                         .HasColumnType("int");
 
                     b.Property<string>("Descibtion")
@@ -753,9 +809,7 @@ namespace WebPlatformV1.Migrations
 
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Course", "Course")
                         .WithMany("tasks")
-                        .HasForeignKey("CourseIDCourse")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CourseIDCourse");
 
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Do", "Do")
                         .WithMany("task")

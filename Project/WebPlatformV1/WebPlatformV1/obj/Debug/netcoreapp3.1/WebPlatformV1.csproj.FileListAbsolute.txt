@@ -1838,3 +1838,4 @@ C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Raz
 C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\OnlinePayment.cshtml.g.cs
 C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\students.cshtml.g.cs
 C:\gitp\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\studenttask.cshtml.g.cs
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\wReport.cshtml.g.cs

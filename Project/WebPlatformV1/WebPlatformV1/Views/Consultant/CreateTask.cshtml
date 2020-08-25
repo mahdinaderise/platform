@@ -15,10 +15,30 @@
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="validationTooltip01"> نام وظیفه</label>
+                        <select asp-for="Grade">
+                            <option value="اول">اول</option>
+                            <option value="دوم">دوم</option>
+
+                            <option value="سوم">سوم</option>
+                            <option value="چهارم">چهارم</option>
+                            <option value="پنجم">پنجم</option>
+                            <option value="ششم">ششم</option>
+                            <option value="هفتم">هفتم</option>
+                            <option value="هشتم">هشتم</option>
+                            <option value="نهم">نهم</option>
+                            <option value="دهم">دهم</option>
+                            <option value="یازدهم">یازدهم</option>
+                            <option value="دوازدهم">دوازدهم</option>
+
+
+                        </select>
                         <input type="text" class="form-control" id="validationTooltip01" placeholder="نام" value="" required asp-for="NameTasks">
-                        <div class="valid-tooltip">
-                            عالی!
-                        </div>
+                      
+                    </div>
+                    <div class="col-md-4 mb-3">
+
+                        <label asp-for="courseid" class="control-label">درس:</label>
+                        <select asp-for="courseid" class="form-control" asp-items="ViewBag.course" style="width:30%"></select>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="validationTooltip01"> مبحث </label>
@@ -27,11 +47,7 @@
                             عالی!
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3">
 
-                            <label asp-for="courseid" class="control-label">درس:</label>
-                            <select asp-for="courseid" class="form-control" asp-items="ViewBag.course" style="width:30%"></select>
-                    </div>
 
                     @*<select asp-for=""></select>*@
 
@@ -53,7 +69,7 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="validationTooltip05">تاریخ</label>
-                        <persian-date asp-for="SendDelivery"></persian-date>
+                        <persian-date  asp-for="SendDelivery"></persian-date>
                         <div class="invalid-tooltip">
                             لطفا یک تاریخ معتبر انتخاب کنید
                         </div>

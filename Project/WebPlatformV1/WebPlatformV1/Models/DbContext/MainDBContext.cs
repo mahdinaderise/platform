@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using WebPlatformV1.ViewModels.Consultant;
+
 namespace WebPlatformV1.Models.DbContext
 {
     public class MainDBContext : IdentityDbContext<ApplicationUsers>
@@ -21,9 +23,7 @@ namespace WebPlatformV1.Models.DbContext
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            //  builder.Entity<Tbl_Student>()
-            //.HasMany(p =>p.addPanels)
-            //.WithOne(e => e.students);
+            
             #region seed data course
 
             builder.Entity<Tbl_Course>().HasData(new Tbl_Course()
@@ -85,8 +85,7 @@ namespace WebPlatformV1.Models.DbContext
                                     }
                                     );
             #endregion
-            //builder.Entity<Tbl_Consultant>().HasNoKey();
-            //builder.Entity<Tbl_Student>().HasNoKey();
+           
 
             base.OnModelCreating(builder);
           
@@ -94,9 +93,7 @@ namespace WebPlatformV1.Models.DbContext
         }
         public DbSet<Student> students { get; set; }
         public DbSet<Consultant> consultants { get; set; }
-        //public DbSet<Tbl_Consultant> consultants { get; set; }
-        //public DbSet<Tbl_Student> students { get; set; }
-        //public DbSet<StudentsOfConsultant> studentOfCansultants { get; set; }
+
         public DbSet<Tbl_AddPanel> tbl_AddPanels { get; set; }
         public DbSet<Tbl_Attach> tbl_Attaches { get; set; }
         public DbSet<Tbl_Blog> tbl_Blogs { get; set; }
@@ -108,14 +105,12 @@ namespace WebPlatformV1.Models.DbContext
         public DbSet<Tbl_Wallet> tbl_Wallets { get; set; }
         public DbSet<Tbl_TodoAppStudent> Tbl_TodoAppStudents { get; set; }
         public DbSet<Tbl_TodoAppConsultant> Tbl_TodoAppConsultant { get; set; }
-
         public DbSet<SendDegree> SendDegree { get; set; }
 
-        //public DbSet<Tbl_TasksCourse> tbl_TasksCourses { get; set; }
 
     }
 
-
+ 
     public class Tbl_Blog
     {
         [Key]
@@ -156,6 +151,14 @@ namespace WebPlatformV1.Models.DbContext
         //public IList<Tbl_TasksCourse> Tbl_TasksCourses { get; set; }
         public ICollection<Tbl_Headline>headlines { get; set; }
     }
+    public class Tbl_grade
+    {
+        [Key]
+        public int IDGrade { get; set; }
+        public string grade { get; set; }
+        public ICollection<Tbl_Tasks> tasks { get; set; }
+
+    }
     public class Tbl_Do
     {
         [Key]
@@ -192,7 +195,7 @@ namespace WebPlatformV1.Models.DbContext
         public string ConsultantId { get; set; }
         public int? CourseIDCourse { get; set; }
         public int? DoIDdo { get; set; }
-
+        public string MyGrade { get; set; }
         //public bool isSpecial { get; set; }
 
         // Navigation 

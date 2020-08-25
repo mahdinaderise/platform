@@ -10,8 +10,8 @@ using WebPlatformV1.Models.DbContext;
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    [Migration("20200827220447_seeddata")]
-    partial class seeddata
+    [Migration("20200825225550_mm")]
+    partial class mm
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

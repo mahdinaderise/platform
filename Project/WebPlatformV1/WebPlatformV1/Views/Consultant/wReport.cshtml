@@ -1,0 +1,288 @@
+﻿@{
+    ViewData["Title"] = "Report";
+    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
+}
+
+
+
+<div class="main-content">
+
+
+    <div class="page-header">
+        <div class="container-fluid d-sm-flex justify-content-between">
+            <h4>    گزارش ماهانه </h4>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <!-- اینجا ساخته شود -->
+
+
+
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-hover bg-white text-center">
+                    <thead class="thead-dark">
+                        <tr>
+
+                            <th scope="col">نام درس</th>
+                            <th scope="col">  زمان تخصیص داده شده توسط مشاوره  </th>
+                            <th scope="col">زمان انجام شده توسط دانش آموز  </th>
+                            <th scope="col">تعداد تست صحیح  </th>
+                            <th scope="col">تعداد تست غلط </th>
+                            <th scope="col">تعداد تست خالی  </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.timestudyMath != null && ViewBag.StimeStudyMath != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    ریاضی
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyMath
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyMath
+                                </td>
+                                <td>
+                                    @ViewBag.SMTrueTest
+                                </td>
+                                <td>
+                                    @ViewBag.SMFalseTest
+                                </td>
+                                <td>
+                                    @ViewBag.SMNullTest
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyadab != null && ViewBag.StimeStudyadab != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    ادبیات
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyadab
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyadab
+                                </td>
+                                <td>
+                                    @ViewBag.SATrueTest
+                                </td>
+                                <td>
+                                    @ViewBag.SAFalseTest
+                                </td>
+                                <td>
+                                    @ViewBag.SANullTest
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyzabanfarsi != null && ViewBag.StimeStudyzabanfarsi != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    زبان فارسی
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyzabanfarsi
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyzabanfarsi
+                                </td>
+                                <td>
+                                    @ViewBag.SZTrueTest
+                                </td>
+                                <td>
+                                    @ViewBag.SZFalseTest
+                                </td>
+                                <td>
+                                    @ViewBag.SZNullTest
+                                </td>
+                            </tr>
+                        }
+
+                        @if (ViewBag.timestudyarabi != null && ViewBag.StimeStudyarabi != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    عربی
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyarabi
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyarabi
+                                </td>
+                                <td>
+                                    @ViewBag.SaTrueTest
+                                </td>
+                                <td>
+                                    @ViewBag.SaFalseTest
+                                </td>
+                                <td>
+                                    @ViewBag.SaNullTest
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudydinzendegi != null && ViewBag.StimeStudydinzendegi != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    دین و زندگی
+                                </td>
+                                <td>
+                                    @ViewBag.timestudydinzendegi
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudydinzendegi
+                                </td>
+                                <td>
+                                    @ViewBag.SdTrueTest
+                                </td>
+                                <td>
+                                    @ViewBag.SdFalseTest
+                                </td>
+                                <td>
+                                    @ViewBag.SdNullTest
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyenglish != null && ViewBag.StimeStudyenglish != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    زبان انگلیسی
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyenglish
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyenglish
+                                </td>
+                                <td>
+                                    @ViewBag.SeTrueTest
+                                </td>
+                                <td>
+                                    @ViewBag.SeFalseTest
+                                </td>
+                                <td>
+                                    @ViewBag.SeNullTest
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyzamin != null && ViewBag.StimeStudyzamin != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    زمین
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyzamin
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyzamin
+                                </td>
+                                <td>
+                                    @ViewBag.SzTrueTest
+                                </td>
+                                <td>
+                                    @ViewBag.SzFalseTest
+                                </td>
+                                <td>
+                                    @ViewBag.SzNullTest
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyzist != null && ViewBag.StimeStudyzist != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    زیست
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyzist
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyzist
+                                </td>
+                                <td>
+                                    @ViewBag.SziTrueTest
+                                </td>
+                                <td>
+                                    @ViewBag.SziFalseTest
+                                </td>
+                                <td>
+                                    @ViewBag.SziNullTest
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyphizic != null && ViewBag.StimeStudyphizic != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    فیزیک
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyphizic
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyphizic
+                                </td>
+                                <td>
+                                    @ViewBag.SpTrueTest
+                                </td>
+                                <td>
+                                    @ViewBag.SpFalseTest
+                                </td>
+                                <td>
+                                    @ViewBag.SpNullTest
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyshimi != null && ViewBag.StimeStudyshimi != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    شیمی
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyshimi
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyshimi
+                                </td>
+                                <td>
+                                    @ViewBag.SshTrueTest
+                                </td>
+                                <td>
+                                    @ViewBag.SshFalseTest
+                                </td>
+                                <td>
+                                    @ViewBag.SshNullTest
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- end::main-content -->
+
+    </div>
+</div>
+

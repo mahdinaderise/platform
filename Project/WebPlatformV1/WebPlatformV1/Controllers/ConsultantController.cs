@@ -243,7 +243,7 @@ namespace WebPlatformV1.Controllers
             var NowDateTime = DateTime.Today;
             var id = HttpContext.Session.GetString("id");
             ViewData["course"] = new SelectList(_context.tbl_Courses, "IDCourse", "NameCourse", tasks.CourseIDCourse);
-
+            //ViewData["Grade"] = new SelectList(_context.Grades, "IDGrade", "grade", tasks.Grade);
             model.tasks = _context.tbl_Tasks.Where(p => p.StudentId == id && p.SubmitDate == NowDateTime).ToList();
 
             return View(model);
@@ -506,127 +506,448 @@ namespace WebPlatformV1.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        public IActionResult Report()
+        public IActionResult wReport(string id)
         {
+            if (id == null)
+            {
+                RedirectToAction(nameof(Tasks));
+            }
             var cid = _userManager.GetUserId(User);
+            var day = DateTime.Today;
+            var dayint = day.AddDays(-7);
+         
             #region get Report from Math
-            var Math = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 1).Include(o => o.Do).ToList();
+            var Math = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId==id && p.DoIDdo != null && p.CourseIDCourse == 1 &&p.SubmitDate>=dayint && p.SubmitDate<=DateTime.Today).Include(o => o.Do).ToList();
             var timestudyMath = 0;
             var StimeStudyMath = 0;
+            var SMTrueTest = 0;
+            var SMFalseTest = 0;
+            var SMNullTest = 0;
             foreach (var item in Math)
             {
                 timestudyMath = item.TimeStudy + timestudyMath;
                 StimeStudyMath = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyMath;
+                SMTrueTest = SMTrueTest + item.Do.TrueTest;
+                SMFalseTest = SMFalseTest + item.Do.falseTest;
+                SMNullTest = SMNullTest + item.Do.NullTest;
                 ViewBag.timestudyMath = timestudyMath;
                 ViewBag.StimeStudyMath = StimeStudyMath;
+                ViewBag.SMTrueTest = SMTrueTest;
+                ViewBag.SMFalseTest = SMFalseTest;
+                ViewBag.SMNullTest = SMNullTest;
             }
             #endregion
             #region get Report from adab
-            var adab = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 3).Include(o => o.Do).ToList();
+            var adab = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 3 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
             var timestudyadab = 0;
             var StimeStudyadab = 0;
+            var SATrueTest = 0;
+            var SAFalseTest = 0;
+            var SANullTest = 0;
             foreach (var item in adab)
             {
                 timestudyadab = item.TimeStudy + timestudyadab;
                 StimeStudyadab = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyadab;
                 ViewBag.timestudyadab = timestudyadab;
                 ViewBag.StimeStudyadab = StimeStudyadab;
+                SATrueTest = SATrueTest + item.Do.TrueTest;
+                SAFalseTest = SAFalseTest + item.Do.falseTest;
+                SANullTest = SANullTest + item.Do.NullTest;
+                ViewBag.SATrueTest = SATrueTest;
+                ViewBag.SAFalseTest = SAFalseTest;
+                ViewBag.SANullTest = SANullTest;
             }
+           
             #endregion
             #region  get Report from zabanfarsi
-            var zabanfarsi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 4).Include(o => o.Do).ToList();
+            var zabanfarsi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 4 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
             var timestudyzabanfarsi = 0;
             var StimeStudyzabanfarsi = 0;
+            var SZTrueTest = 0;
+            var SZFalseTest = 0;
+            var SZNullTest = 0;
             foreach (var item in zabanfarsi)
             {
                 timestudyzabanfarsi = item.TimeStudy + timestudyzabanfarsi;
                 StimeStudyzabanfarsi = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyzabanfarsi;
                 ViewBag.timestudyzabanfarsi = timestudyzabanfarsi;
                 ViewBag.StimeStudyzabanfarsi = StimeStudyzabanfarsi;
+                SZTrueTest = SZTrueTest + item.Do.TrueTest;
+                SZFalseTest = SZFalseTest + item.Do.falseTest;
+                SZNullTest = SZNullTest + item.Do.NullTest;
+                ViewBag.SZTrueTest = SZTrueTest;
+                ViewBag.SZFalseTest = SZFalseTest;
+                ViewBag.SZNullTest = SZNullTest;
             }
             #endregion
             #region get Report from arabi
-            var arabi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 5).Include(o => o.Do).ToList();
+            var arabi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 5 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
             var timestudyarabi = 0;
             var StimeStudyarabi = 0;
+            var SaTrueTest = 0;
+            var SaFalseTest = 0;
+            var SaNullTest = 0;
             foreach (var item in arabi)
             {
                 timestudyarabi = item.TimeStudy + timestudyarabi;
                 StimeStudyarabi = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyarabi;
                 ViewBag.timestudyarabi = timestudyarabi;
                 ViewBag.StimeStudyarabi = StimeStudyarabi;
+                SaTrueTest = SaTrueTest + item.Do.TrueTest;
+                SaFalseTest = SaFalseTest + item.Do.falseTest;
+                SaNullTest = SaNullTest + item.Do.NullTest;
+                ViewBag.SaTrueTest = SaTrueTest;
+                ViewBag.SaFalseTest = SaFalseTest;
+                ViewBag.SaNullTest = SaNullTest;
             }
             #endregion
             #region  get Report from dinzendegi
-            var dinzendegi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 6).Include(o => o.Do).ToList();
+            var dinzendegi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 6 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
             var timestudydinzendegi = 0;
             var StimeStudydinzendegi = 0;
+            var SdTrueTest = 0;
+            var SdFalseTest = 0;
+            var SdNullTest = 0;
             foreach (var item in dinzendegi)
             {
                 timestudydinzendegi = item.TimeStudy + timestudydinzendegi;
                 StimeStudydinzendegi = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudydinzendegi;
                 ViewBag.timestudydinzendegi = timestudydinzendegi;
                 ViewBag.StimeStudydinzendegi = StimeStudydinzendegi;
+                SdTrueTest = SdTrueTest + item.Do.TrueTest;
+                SdFalseTest = SdFalseTest + item.Do.falseTest;
+                SdNullTest = SdNullTest + item.Do.NullTest;
+                ViewBag.SdTrueTest = SdTrueTest;
+                ViewBag.SdFalseTest = SdFalseTest;
+                ViewBag.SdNullTest = SdNullTest;
             }
             #endregion
             #region  get Report from english
-            var english = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 7).Include(o => o.Do).ToList();
+            var english = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 7 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
             var timestudyenglish = 0;
             var StimeStudyenglish = 0;
+            var SeTrueTest = 0;
+            var SeFalseTest = 0;
+            var SeNullTest = 0;
             foreach (var item in english)
             {
                 timestudyenglish = item.TimeStudy + timestudyenglish;
                 StimeStudyenglish = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyenglish;
                 ViewBag.timestudyenglish = timestudyenglish;
                 ViewBag.StimeStudyenglish = StimeStudyenglish;
+                SeTrueTest = SeTrueTest + item.Do.TrueTest;
+                SeFalseTest = SeFalseTest + item.Do.falseTest;
+                SeNullTest = SeNullTest + item.Do.NullTest;
+                ViewBag.SeTrueTest = SeTrueTest;
+                ViewBag.SeFalseTest = SeFalseTest;
+                ViewBag.SeNullTest = SeNullTest;
             }
             #endregion
             #region  get Report from zamin
-            var zamin = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 8).Include(o => o.Do).ToList();
+            var zamin = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 8 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
             var timestudyzamin = 0;
             var StimeStudyzamin = 0;
+            var SzTrueTest = 0;
+            var SzFalseTest = 0;
+            var SzNullTest = 0;
             foreach (var item in zamin)
             {
                 timestudyzamin = item.TimeStudy + timestudyzamin;
                 StimeStudyzamin = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyzamin;
                 ViewBag.timestudyzamin = timestudyzamin;
                 ViewBag.StimeStudyzamin = StimeStudyzamin;
+                SzTrueTest = SzTrueTest + item.Do.TrueTest;
+                SzFalseTest = SzFalseTest + item.Do.falseTest;
+                SzNullTest = SzNullTest + item.Do.NullTest;
+                ViewBag.SzTrueTest = SzTrueTest;
+                ViewBag.SzFalseTest = SzFalseTest;
+                ViewBag.SzNullTest = SzNullTest;
             }
             #endregion
             #region  get Report from zist
-            var zist = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 9).Include(o => o.Do).ToList();
+            var zist = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 9 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
             var timestudyzist = 0;
             var StimeStudyzist = 0;
+            var SziTrueTest = 0;
+            var SziFalseTest = 0;
+            var SziNullTest = 0;
             foreach (var item in zist)
             {
                 timestudyzist = item.TimeStudy + timestudyzist;
                 StimeStudyzist = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyzist;
                 ViewBag.timestudyzist = timestudyzist;
                 ViewBag.StimeStudyzist = StimeStudyzist;
+                SziTrueTest = SziTrueTest + item.Do.TrueTest;
+                SziFalseTest = SziFalseTest + item.Do.falseTest;
+                SziNullTest = SziNullTest + item.Do.NullTest;
+                ViewBag.SziTrueTest = SziTrueTest;
+                ViewBag.SziFalseTest = SziFalseTest;
+                ViewBag.SziNullTest = SziNullTest;
             }
             #endregion
             #region  get Report from  phizic
-            var phizic = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 10).Include(o => o.Do).ToList();
+            var phizic = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 10 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
             var timestudyphizic = 0;
             var StimeStudyphizic = 0;
+            var SpTrueTest = 0;
+            var SpFalseTest = 0;
+            var SpNullTest = 0;
             foreach (var item in phizic)
             {
                 timestudyphizic = item.TimeStudy + timestudyzist;
                 StimeStudyphizic = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyphizic;
                 ViewBag.timestudyphizic = timestudyphizic;
                 ViewBag.StimeStudyphizic = StimeStudyphizic;
+                SpTrueTest = SpTrueTest + item.Do.TrueTest;
+                SpFalseTest = SpFalseTest + item.Do.falseTest;
+                SpNullTest = SpNullTest + item.Do.NullTest;
+                ViewBag.SpTrueTest = SpTrueTest;
+                ViewBag.SpFalseTest = SpFalseTest;
+                ViewBag.SpNullTest = SpNullTest;
             }
             #endregion
             #region  get Report from  shimi
-            var shimi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 11).Include(o => o.Do).ToList();
+            var shimi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 11 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
             var timestudyshimi = 0;
             var StimeStudyshimi = 0;
+            var SshTrueTest = 0;
+            var SshFalseTest = 0;
+            var SshNullTest = 0;
             foreach (var item in shimi)
             {
                 timestudyshimi = item.TimeStudy + timestudyshimi;
                 StimeStudyshimi = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyshimi;
                 ViewBag.timestudyshimi = timestudyshimi;
                 ViewBag.StimeStudyshimi = StimeStudyshimi;
+                SshTrueTest = SshTrueTest + item.Do.TrueTest;
+                SshFalseTest = SshFalseTest + item.Do.falseTest;
+                SshNullTest = SshNullTest + item.Do.NullTest;
+                ViewBag.SshTrueTest = SshTrueTest;
+                ViewBag.SshFalseTest = SshFalseTest;
+                ViewBag.SshNullTest = SshNullTest;
+            }
+            #endregion
+            return View();
+        }
+        public IActionResult mReport(string id)
+        {
+            if (id == null)
+            {
+                RedirectToAction(nameof(Tasks));
+            }
+            var cid = _userManager.GetUserId(User);
+            var day = DateTime.Today;
+            var dayint = day.AddDays(-30);
+
+            #region get Report from Math
+            var Math = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 1 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
+            var timestudyMath = 0;
+            var StimeStudyMath = 0;
+            var SMTrueTest = 0;
+            var SMFalseTest = 0;
+            var SMNullTest = 0;
+            foreach (var item in Math)
+            {
+                timestudyMath = item.TimeStudy + timestudyMath;
+                StimeStudyMath = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyMath;
+                SMTrueTest = SMTrueTest + item.Do.TrueTest;
+                SMFalseTest = SMFalseTest + item.Do.falseTest;
+                SMNullTest = SMNullTest + item.Do.NullTest;
+                ViewBag.timestudyMath = timestudyMath;
+                ViewBag.StimeStudyMath = StimeStudyMath;
+                ViewBag.SMTrueTest = SMTrueTest;
+                ViewBag.SMFalseTest = SMFalseTest;
+                ViewBag.SMNullTest = SMNullTest;
+            }
+            #endregion
+            #region get Report from adab
+            var adab = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 3 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
+            var timestudyadab = 0;
+            var StimeStudyadab = 0;
+            var SATrueTest = 0;
+            var SAFalseTest = 0;
+            var SANullTest = 0;
+            foreach (var item in adab)
+            {
+                timestudyadab = item.TimeStudy + timestudyadab;
+                StimeStudyadab = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyadab;
+                ViewBag.timestudyadab = timestudyadab;
+                ViewBag.StimeStudyadab = StimeStudyadab;
+                SATrueTest = SATrueTest + item.Do.TrueTest;
+                SAFalseTest = SAFalseTest + item.Do.falseTest;
+                SANullTest = SANullTest + item.Do.NullTest;
+                ViewBag.SATrueTest = SATrueTest;
+                ViewBag.SAFalseTest = SAFalseTest;
+                ViewBag.SANullTest = SANullTest;
+            }
+
+            #endregion
+            #region  get Report from zabanfarsi
+            var zabanfarsi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 4 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
+            var timestudyzabanfarsi = 0;
+            var StimeStudyzabanfarsi = 0;
+            var SZTrueTest = 0;
+            var SZFalseTest = 0;
+            var SZNullTest = 0;
+            foreach (var item in zabanfarsi)
+            {
+                timestudyzabanfarsi = item.TimeStudy + timestudyzabanfarsi;
+                StimeStudyzabanfarsi = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyzabanfarsi;
+                ViewBag.timestudyzabanfarsi = timestudyzabanfarsi;
+                ViewBag.StimeStudyzabanfarsi = StimeStudyzabanfarsi;
+                SZTrueTest = SZTrueTest + item.Do.TrueTest;
+                SZFalseTest = SZFalseTest + item.Do.falseTest;
+                SZNullTest = SZNullTest + item.Do.NullTest;
+                ViewBag.SZTrueTest = SZTrueTest;
+                ViewBag.SZFalseTest = SZFalseTest;
+                ViewBag.SZNullTest = SZNullTest;
+            }
+            #endregion
+            #region get Report from arabi
+            var arabi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 5 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
+            var timestudyarabi = 0;
+            var StimeStudyarabi = 0;
+            var SaTrueTest = 0;
+            var SaFalseTest = 0;
+            var SaNullTest = 0;
+            foreach (var item in arabi)
+            {
+                timestudyarabi = item.TimeStudy + timestudyarabi;
+                StimeStudyarabi = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyarabi;
+                ViewBag.timestudyarabi = timestudyarabi;
+                ViewBag.StimeStudyarabi = StimeStudyarabi;
+                SaTrueTest = SaTrueTest + item.Do.TrueTest;
+                SaFalseTest = SaFalseTest + item.Do.falseTest;
+                SaNullTest = SaNullTest + item.Do.NullTest;
+                ViewBag.SaTrueTest = SaTrueTest;
+                ViewBag.SaFalseTest = SaFalseTest;
+                ViewBag.SaNullTest = SaNullTest;
+            }
+            #endregion
+            #region  get Report from dinzendegi
+            var dinzendegi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 6 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
+            var timestudydinzendegi = 0;
+            var StimeStudydinzendegi = 0;
+            var SdTrueTest = 0;
+            var SdFalseTest = 0;
+            var SdNullTest = 0;
+            foreach (var item in dinzendegi)
+            {
+                timestudydinzendegi = item.TimeStudy + timestudydinzendegi;
+                StimeStudydinzendegi = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudydinzendegi;
+                ViewBag.timestudydinzendegi = timestudydinzendegi;
+                ViewBag.StimeStudydinzendegi = StimeStudydinzendegi;
+                SdTrueTest = SdTrueTest + item.Do.TrueTest;
+                SdFalseTest = SdFalseTest + item.Do.falseTest;
+                SdNullTest = SdNullTest + item.Do.NullTest;
+                ViewBag.SdTrueTest = SdTrueTest;
+                ViewBag.SdFalseTest = SdFalseTest;
+                ViewBag.SdNullTest = SdNullTest;
+            }
+            #endregion
+            #region  get Report from english
+            var english = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 7 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
+            var timestudyenglish = 0;
+            var StimeStudyenglish = 0;
+            var SeTrueTest = 0;
+            var SeFalseTest = 0;
+            var SeNullTest = 0;
+            foreach (var item in english)
+            {
+                timestudyenglish = item.TimeStudy + timestudyenglish;
+                StimeStudyenglish = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyenglish;
+                ViewBag.timestudyenglish = timestudyenglish;
+                ViewBag.StimeStudyenglish = StimeStudyenglish;
+                SeTrueTest = SeTrueTest + item.Do.TrueTest;
+                SeFalseTest = SeFalseTest + item.Do.falseTest;
+                SeNullTest = SeNullTest + item.Do.NullTest;
+                ViewBag.SeTrueTest = SeTrueTest;
+                ViewBag.SeFalseTest = SeFalseTest;
+                ViewBag.SeNullTest = SeNullTest;
+            }
+            #endregion
+            #region  get Report from zamin
+            var zamin = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 8 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
+            var timestudyzamin = 0;
+            var StimeStudyzamin = 0;
+            var SzTrueTest = 0;
+            var SzFalseTest = 0;
+            var SzNullTest = 0;
+            foreach (var item in zamin)
+            {
+                timestudyzamin = item.TimeStudy + timestudyzamin;
+                StimeStudyzamin = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyzamin;
+                ViewBag.timestudyzamin = timestudyzamin;
+                ViewBag.StimeStudyzamin = StimeStudyzamin;
+                SzTrueTest = SzTrueTest + item.Do.TrueTest;
+                SzFalseTest = SzFalseTest + item.Do.falseTest;
+                SzNullTest = SzNullTest + item.Do.NullTest;
+                ViewBag.SzTrueTest = SzTrueTest;
+                ViewBag.SzFalseTest = SzFalseTest;
+                ViewBag.SzNullTest = SzNullTest;
+            }
+            #endregion
+            #region  get Report from zist
+            var zist = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 9 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
+            var timestudyzist = 0;
+            var StimeStudyzist = 0;
+            var SziTrueTest = 0;
+            var SziFalseTest = 0;
+            var SziNullTest = 0;
+            foreach (var item in zist)
+            {
+                timestudyzist = item.TimeStudy + timestudyzist;
+                StimeStudyzist = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyzist;
+                ViewBag.timestudyzist = timestudyzist;
+                ViewBag.StimeStudyzist = StimeStudyzist;
+                SziTrueTest = SziTrueTest + item.Do.TrueTest;
+                SziFalseTest = SziFalseTest + item.Do.falseTest;
+                SziNullTest = SziNullTest + item.Do.NullTest;
+                ViewBag.SziTrueTest = SziTrueTest;
+                ViewBag.SziFalseTest = SziFalseTest;
+                ViewBag.SziNullTest = SziNullTest;
+            }
+            #endregion
+            #region  get Report from  phizic
+            var phizic = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 10 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
+            var timestudyphizic = 0;
+            var StimeStudyphizic = 0;
+            var SpTrueTest = 0;
+            var SpFalseTest = 0;
+            var SpNullTest = 0;
+            foreach (var item in phizic)
+            {
+                timestudyphizic = item.TimeStudy + timestudyzist;
+                StimeStudyphizic = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyphizic;
+                ViewBag.timestudyphizic = timestudyphizic;
+                ViewBag.StimeStudyphizic = StimeStudyphizic;
+                SpTrueTest = SpTrueTest + item.Do.TrueTest;
+                SpFalseTest = SpFalseTest + item.Do.falseTest;
+                SpNullTest = SpNullTest + item.Do.NullTest;
+                ViewBag.SpTrueTest = SpTrueTest;
+                ViewBag.SpFalseTest = SpFalseTest;
+                ViewBag.SpNullTest = SpNullTest;
+            }
+            #endregion
+            #region  get Report from  shimi
+            var shimi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 11 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
+            var timestudyshimi = 0;
+            var StimeStudyshimi = 0;
+            var SshTrueTest = 0;
+            var SshFalseTest = 0;
+            var SshNullTest = 0;
+            foreach (var item in shimi)
+            {
+                timestudyshimi = item.TimeStudy + timestudyshimi;
+                StimeStudyshimi = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyshimi;
+                ViewBag.timestudyshimi = timestudyshimi;
+                ViewBag.StimeStudyshimi = StimeStudyshimi;
+                SshTrueTest = SshTrueTest + item.Do.TrueTest;
+                SshFalseTest = SshFalseTest + item.Do.falseTest;
+                SshNullTest = SshNullTest + item.Do.NullTest;
+                ViewBag.SshTrueTest = SshTrueTest;
+                ViewBag.SshFalseTest = SshFalseTest;
+                ViewBag.SshNullTest = SshNullTest;
             }
             #endregion
             return View();
