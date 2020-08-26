@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    partial class MainDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200826193355_nullabeldo")]
+    partial class nullabeldo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -447,7 +449,7 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("ConsultantId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("CourseIDCourse")
+                    b.Property<int>("CourseIDCourse")
                         .HasColumnType("int");
 
                     b.Property<string>("Descibtion")
@@ -751,7 +753,9 @@ namespace WebPlatformV1.Migrations
 
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Course", "Course")
                         .WithMany("tasks")
-                        .HasForeignKey("CourseIDCourse");
+                        .HasForeignKey("CourseIDCourse")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_Do", "Do")
                         .WithMany("task")

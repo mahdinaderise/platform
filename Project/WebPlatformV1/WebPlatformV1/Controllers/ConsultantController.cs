@@ -55,13 +55,25 @@ namespace WebPlatformV1.Controllers
             var tasksdo = _context.tbl_Tasks.Where(p => p.ConsultantId == cId && p.isDo == true).Count();
             var tasksNdo = _context.tbl_Tasks.Where(p => p.ConsultantId == cId && p.isDo == false).Count();
             var todayTask = _context.tbl_Tasks.Where(p => p.SendDelivery == DateTime.Today).Count();
-            ViewBag.DoTest = (tasksdo * 100) / tasks;
-            ViewBag.NDoTest = (tasksNdo * 100) / tasks;
+
+            if (tasks != 0)
+            {
+                ViewBag.DoTest = (tasksdo * 100) / tasks;
+                ViewBag.NDoTest = (tasksNdo * 100) / tasks;
+            }
+            else
+            {
+                ViewBag.DoTest = 0;
+
+                ViewBag.NDoTest = 0;
+            }
+
             ViewBag.Tasks = tasks;
             ViewBag.tasksdo = tasksdo;
             ViewBag.today = todayTask;
+
             #endregion
-            var wallet = _context.tbl_Wallets.Where(p => p.ConsultantId == cId).Select(p=>p.Credit).ToArray();
+            var wallet = _context.tbl_Wallets.Where(p => p.ConsultantId == cId).Select(p => p.Credit).ToArray();
             ViewBag.Credit = wallet[0];
             //var result = _context.studentOfCansultants.Where(p => p.Cansultant.Equals(_userManager.GetUserId(User)));
             ViewBag.CountStudent = _context.students.Where(p => p.ConsultantID == cId).Count();
@@ -250,6 +262,7 @@ namespace WebPlatformV1.Controllers
                 tasks.CourseIDCourse = model.courseid;
                 tasks.SendDelivery = model.SendDelivery;
                 tasks.SubmitDate = DateTime.Today;
+                //tasks.DoIDdo = 2;
                 await _context.AddAsync(tasks);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(CreateTask));
@@ -353,7 +366,7 @@ namespace WebPlatformV1.Controllers
             var C = _context.Find<Consultant>(consultantId);
             //var user = _context.consultants.Select(p=>p.Name  p.Family , p.PhoneNumber).Where(p => p.Id == consultantId).ToList();
             model.Degree = _context.SendDegree.Where(p => p.ConsultantId == consultantId).ToList();
-            
+
 
             #region view data in textbox
 
@@ -366,7 +379,7 @@ namespace WebPlatformV1.Controllers
             model.PhoneNumber = C.PhoneNumber;
             model.Shaba = C.Shaba;
             model.ProfilePicUrl = C.ProfilePicUrl;
-            if (C.isAcceptDegree==false)
+            if (C.isAcceptDegree == false)
             {
                 ViewBag.isAcceptDegree = "تایید نشده";
             }
@@ -381,13 +394,13 @@ namespace WebPlatformV1.Controllers
 
             //model.Consultants = _context.consultants.Where(p => p.Id == user).ToList();
             //consultants = _context.consultants.Where(p=>p.Id==id).ToList();
-            if (model.Family !=null && model.Name !=null)
+            if (model.Family != null && model.Name != null)
             {
                 string FristLast = model.Family;
                 string fristCharecter = model.Name;
                 ViewBag.fristCharecter = fristCharecter[0] + " " + FristLast[0].ToString();
             }
-            
+
 
             #endregion
 
@@ -433,36 +446,36 @@ namespace WebPlatformV1.Controllers
         }
         [HttpPost]
 
-        public async Task<IActionResult> ProfileDegree(Profile model, Consultant consultant,SendDegree degree)
+        public async Task<IActionResult> ProfileDegree(Profile model, Consultant consultant, SendDegree degree)
         {
             var consultantId = _userManager.GetUserId(User);
             degree.ConsultantId = consultantId;
             degree.state = 1;
             var c = _context.consultants.FirstOrDefault(p => p.Id == consultantId);
-           
-                if (c != null)
+
+            if (c != null)
+            {
+                await _context.SaveChangesAsync();
+                if (model.DegreePic?.Length > 0)
                 {
-                    await _context.SaveChangesAsync();
-                    if (model.DegreePic?.Length > 0)
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        "images", "Degree",
+
+                        c.Id + Path.GetExtension(model.DegreePic.FileName));
+                    using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        string filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                            "wwwroot",
-                            "images", "Degree",
+                        model.DegreePic.CopyTo(stream);
+                        degree.IsSend = true;
+                        await _context.SendDegree.AddAsync(degree);
+                        await _context.SaveChangesAsync();
 
-                            c.Id + Path.GetExtension(model.DegreePic.FileName));
-                        using (var stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            model.DegreePic.CopyTo(stream);
-                            degree.IsSend = true;
-                            await _context.SendDegree.AddAsync(degree);
-                            await _context.SaveChangesAsync();
-
-                        }
                     }
-                    return RedirectToAction(nameof(Profile));
-
                 }
-          
+                return RedirectToAction(nameof(Profile));
+
+            }
+
 
             return RedirectToAction(nameof(Profile));
         }
@@ -492,13 +505,21 @@ namespace WebPlatformV1.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        public IActionResult Report()
+        public IActionResult Report(List<ReportViewModel> model)
         {
             var cid = _userManager.GetUserId(User);
+            //List<ReportViewModel> model = new List<ReportViewModel>();
 
-            var result = _context.tbl_Tasks.Where(p => p.ConsultantId == cid).Include(p => p.Course).Include(p => p.Do).ToList();
+            var result = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null).Include(p => p.Course).Include(p => p.Do).ToList();
+            foreach (var item in result)
+            {
+                model.Add(new ReportViewModel { CourseName = item.Course.NameCourse, CtimeStudy = item.TimeStudy, StimeStudy = item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime });
 
-            return View();
+
+            }
+           
+
+            return View(model);
         }
     }
 

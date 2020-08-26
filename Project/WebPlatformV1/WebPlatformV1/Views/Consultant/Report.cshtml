@@ -1,8 +1,10 @@
-﻿
+﻿@model IEnumerable< ReportViewModel>
 @{
     ViewData["Title"] = "Report";
     Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
 }
+
+
 
 <div class="main-content">
 
@@ -30,16 +32,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
 
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                                <td>
+                                    @item.CourseName
+                                </td>
+                                <td>
+                                    @item.CtimeStudy
+
+                                </td>
+                                <td>
+                                    @item.StimeStudy
+
+                                </td>
 
 
 
-                        </tr>
+                            </tr>
+                        }
 
+
+                        }
                     </tbody>
                 </table>
             </div>

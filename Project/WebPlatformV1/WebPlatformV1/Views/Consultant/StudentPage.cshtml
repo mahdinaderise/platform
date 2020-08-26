@@ -16,42 +16,44 @@
         @foreach (var item in Model.Students)
         {
             <h5>
-                @item.Name+" "+@item.Family
+                @item.Name @item.Family
 
             </h5>
 
 
         }
 
-        <div style="margin-bottom: 20px;">
-            <form asp-action="CreateTask" asp-controller="Consultant" method="get">
-                <button type="submit" class="btn btn-success btn-uppercase">
-                    <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
-                </button>
+        <div class="d-inline-flex p-3 bg-secondary text-white">
+            <div class="p-2">
+                <div style="margin-bottom: 20px;">
+                    <form asp-action="CreateTask" asp-controller="Consultant" method="get">
+                        <button type="submit" class="btn btn-success btn-uppercase">
+                            <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
+                        </button>
 
-            </form>
+                    </form>
 
 
-        </div>
-        <div class="d-flex justify-content-end">
-            <form class="form-inline" asp-action="StudentPage" asp-controller="consultant" method="post" style="margin-left:0px">
-
-                <div class="form-group mx-sm-3 mb-2">
-                    <label for="inputPassword2" class="sr-only">تاریخ</label>
-                    <persian-date asp-for="StartDate"></persian-date>
                 </div>
-                <button type="submit" class="btn btn-primary mb-2 ">جست و جو</button>
-            </form>
-
-        </div>     
-        <form asp-action="StudentPage" asp-controller="Consultant" method="post">
-
-            <div class="row" style="margin-bottom:5px;width:30%;">
-                <button type="submit" class="btn btn-success btn-uppercase">
-                    <i class="ti-check-box mr-2"></i>  ایجاد گزارش هفتگی
-                </button>
             </div>
-        </form>
+            <div class="p-2 ">
+                <div class="d-flex justify-content-end">
+                    <form class="form-inline" asp-action="StudentPage" asp-controller="consultant" method="post" style="margin-left:0px">
+
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="inputPassword2" class="sr-only">تاریخ</label>
+                            <persian-date asp-for="StartDate"></persian-date>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2 ">جست و جو</button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="p-2 bg-primary">Flex item 3</div>
+        </div>
+      
+       
+      
 
         <div class="row">
             <div class="table-responsive">
@@ -79,11 +81,14 @@
                                     <button type="button" class="btn btn-primary" title="حذف" data-toggle="tooltip" data-placement="bottom">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     </button>
-                                    
-                                    <a class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;" asp-action="detaildo" asp-controller="consultant" asp-route-id="@item.DoIDdo"> 
-                                        <i class="fa fa-info" aria-hidden="true"></i>
+                                    @if (item.DoIDdo != null)
+                                    {
+                                        <a class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;" asp-action="detaildo" asp-controller="consultant" asp-route-id="@item.DoIDdo">
+                                            <i class="fa fa-info" aria-hidden="true"></i>
 
-                                    </a>
+                                        </a>
+                                    }
+
                                 </td>
                             </tr>
 

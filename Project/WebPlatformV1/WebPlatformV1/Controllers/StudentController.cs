@@ -66,8 +66,18 @@ namespace WebPlatformV1.Controllers
             var tasksdo = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.isDo == true).Count();
             var tasksNdo = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.isDo == false).Count();
             var todayTask = _context.tbl_Tasks.Where(p => p.SendDelivery == DateTime.Today).Count();
-            ViewBag.DoTest = (tasksdo * 100) / tasks;
-            ViewBag.NDoTest = (tasksNdo * 100) / tasks;
+            if (tasks != 0 && tasksdo != 0 && tasksNdo != 0)
+            {
+                ViewBag.DoTest = (tasksdo * 100) / tasks;
+                ViewBag.NDoTest = (tasksNdo * 100) / tasks;
+            }
+            else
+            {
+                ViewBag.DoTest = 0;
+
+                ViewBag.NDoTest = 0;
+            }
+  
             ViewBag.Tasks = tasks;
             ViewBag.tasksdo = tasksdo;
             ViewBag.today = todayTask;
@@ -170,6 +180,7 @@ namespace WebPlatformV1.Controllers
                 {
                     ConsultantWallet.Credit = ConsultantWallet.Credit + panel.Price;
                     student.CreditTime= CreditTime1;
+                    student.State = true;
                     panel.Status = true;
                     _context.students.Update(student);
                     _context.tbl_Wallets.Update(ConsultantWallet);
@@ -187,7 +198,11 @@ namespace WebPlatformV1.Controllers
         {
             var studentId = _userManager.GetUserId(User);
             model.Panel1 = _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending(p => p.IDAddPanel).FirstOrDefault();
-            model.price = model.Panel1.Price / model.Panel1.Day;
+            if (model.Panel1 != null)
+            {
+                model.price = model.Panel1.Price / model.Panel1.Day;
+
+            }
             return View(model);
         }
         [HttpPost]

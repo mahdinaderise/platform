@@ -122,7 +122,6 @@ namespace WebPlatformV1.Models.DbContext
     {
         [Key]
         public int IDTasks { get; set; }
-        public int DoIDdo { get; set; }
         public string NameTasks { get; set; }
         public DateTime SendDelivery { get; set; }
         public DateTime SubmitDate { get; set; }
@@ -132,11 +131,13 @@ namespace WebPlatformV1.Models.DbContext
         public bool isDo { get; set; } = false;
         public string StudentId { get; set; }
         public string ConsultantId { get; set; }
-        public int CourseIDCourse { get; set; }
+        public int? CourseIDCourse { get; set; }
+        public int? DoIDdo { get; set; }
+
         //public bool isSpecial { get; set; }
 
         // Navigation 
-        public  Tbl_Course Course { get; set; }
+        public Tbl_Course Course { get; set; }
         public  Consultant Cansultant { get; set; }
         public  Student Student { get; set; }
         public  Tbl_Do Do { get; set; }
