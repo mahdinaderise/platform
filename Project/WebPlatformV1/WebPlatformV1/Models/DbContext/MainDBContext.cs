@@ -21,16 +21,80 @@ namespace WebPlatformV1.Models.DbContext
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-          //  builder.Entity<Tbl_Student>()
-          //.HasMany(p =>p.addPanels)
-          //.WithOne(e => e.students);
-            
+            //  builder.Entity<Tbl_Student>()
+            //.HasMany(p =>p.addPanels)
+            //.WithOne(e => e.students);
+            #region seed data course
+
+            builder.Entity<Tbl_Course>().HasData(new Tbl_Course()
+            {
+                IDCourse = 1,
+                NameCourse = "ادبیات",
+                grade = "3"
+
+            },
+            new Tbl_Course()
+            {
+                IDCourse = 2,
+                NameCourse = "زبان فارسی",
+                grade = "3"
+            },
+            new Tbl_Course()
+            {
+                IDCourse = 3,
+                NameCourse = "عربی",
+                grade = "3"
+            },
+                new Tbl_Course()
+                {
+                    IDCourse = 4,
+                    NameCourse = "دین و زندگی",
+                    grade = "3"
+                },
+                    new Tbl_Course()
+                    {
+                        IDCourse = 5,
+                        NameCourse = "زبان انگلیسی",
+                        grade = "3"
+                    },
+                        new Tbl_Course()
+
+                        {
+                            IDCourse = 6,
+                            NameCourse = "زمین",
+                            grade = "3"
+                        },
+                            new Tbl_Course()
+                            {
+                                IDCourse = 7,
+                                NameCourse = "زیست",
+                                grade = "3"
+                            },
+                                new Tbl_Course()
+                                {
+                                    IDCourse = 8,
+                                    NameCourse = "ریاضی",
+                                    grade = "3"
+                                },
+                                    new Tbl_Course()
+                                    {
+                                        IDCourse = 9,
+                                        NameCourse = "فیزیک",
+                                        grade = "3"
+                                    },
+                                    new Tbl_Course()
+                                    {
+                                        IDCourse = 10,
+                                        NameCourse = "شیمی",
+                                        grade = "3"
+                                    }
+                                    );
+            #endregion
             //builder.Entity<Tbl_Consultant>().HasNoKey();
             //builder.Entity<Tbl_Student>().HasNoKey();
-           
-           base.OnModelCreating(builder);
-           
 
+            base.OnModelCreating(builder);
+          
 
         }
         public DbSet<Student> students { get; set; }
