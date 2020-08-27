@@ -509,12 +509,18 @@ namespace WebPlatformV1.Controllers
         {
             var cid = _userManager.GetUserId(User);
             //List<ReportViewModel> model = new List<ReportViewModel>();
+            var result = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null).Include(p => p.Course).Include(p => p.Do).ToList().AsParallel();
 
-            var result = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null).Include(p => p.Course).Include(p => p.Do).ToList();
+            var Course = _context.tbl_Courses.ToList();
+
             foreach (var item in result)
             {
-                model.Add(new ReportViewModel { CourseName = item.Course.NameCourse, CtimeStudy = item.TimeStudy, StimeStudy = item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime });
+               var coursename= item.Course.NameCourse;
+                if (item.Course.NameCourse == coursename)
+                {
+                    model.Add(new ReportViewModel { CourseName = coursename, CtimeStudy = item.TimeStudy, StimeStudy = item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime });
 
+                }
 
             }
            
