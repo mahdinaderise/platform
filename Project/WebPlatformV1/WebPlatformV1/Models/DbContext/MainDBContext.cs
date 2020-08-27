@@ -28,63 +28,58 @@ namespace WebPlatformV1.Models.DbContext
 
             builder.Entity<Tbl_Course>().HasData(new Tbl_Course()
             {
-                IDCourse = 1,
+                IDCourse = 3,
                 NameCourse = "ادبیات",
                 grade = "3"
 
             },
             new Tbl_Course()
             {
-                IDCourse = 2,
+                IDCourse = 4,
                 NameCourse = "زبان فارسی",
                 grade = "3"
             },
             new Tbl_Course()
             {
-                IDCourse = 3,
+                IDCourse = 5,
                 NameCourse = "عربی",
                 grade = "3"
             },
                 new Tbl_Course()
                 {
-                    IDCourse = 4,
+                    IDCourse = 6,
                     NameCourse = "دین و زندگی",
                     grade = "3"
                 },
                     new Tbl_Course()
                     {
-                        IDCourse = 5,
+                        IDCourse = 7,
                         NameCourse = "زبان انگلیسی",
                         grade = "3"
                     },
                         new Tbl_Course()
 
                         {
-                            IDCourse = 6,
+                            IDCourse = 8,
                             NameCourse = "زمین",
                             grade = "3"
                         },
                             new Tbl_Course()
                             {
-                                IDCourse = 7,
+                                IDCourse = 9,
                                 NameCourse = "زیست",
                                 grade = "3"
                             },
-                                new Tbl_Course()
-                                {
-                                    IDCourse = 8,
-                                    NameCourse = "ریاضی",
-                                    grade = "3"
-                                },
+                              
                                     new Tbl_Course()
                                     {
-                                        IDCourse = 9,
+                                        IDCourse = 10,
                                         NameCourse = "فیزیک",
                                         grade = "3"
                                     },
                                     new Tbl_Course()
                                     {
-                                        IDCourse = 10,
+                                        IDCourse = 11,
                                         NameCourse = "شیمی",
                                         grade = "3"
                                     }

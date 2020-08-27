@@ -32,22 +32,157 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        @if (ViewBag.timestudyMath != null && ViewBag.StimeStudyMath != null)
                         {
                             <tr>
 
                                 <td>
-                                    @item.CourseName
+                                    ریاضی
                                 </td>
                                 <td>
-                                    @item.CtimeStudy
+                                    @ViewBag.timestudyMath
                                 </td>
                                 <td>
-                                    @item.StimeStudy
+                                    @ViewBag.StimeStudyMath
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyadab != null && ViewBag.StimeStudyadab != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    ادبیات
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyadab
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyadab
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyzabanfarsi != null && ViewBag.StimeStudyzabanfarsi != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    زبان فارسی
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyzabanfarsi
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyzabanfarsi
                                 </td>
                             </tr>
                         }
 
+                        @if (ViewBag.timestudyarabi != null && ViewBag.StimeStudyarabi != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    عربی
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyarabi
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyarabi
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudydinzendegi != null && ViewBag.StimeStudydinzendegi != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    دین و زندگی
+                                </td>
+                                <td>
+                                    @ViewBag.timestudydinzendegi
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudydinzendegi
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyenglish != null && ViewBag.StimeStudyenglish != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    زبان انگلیسی
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyenglish
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyenglish
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyzamin != null && ViewBag.StimeStudyzamin != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    زمین
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyzamin
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyzamin
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyzist != null && ViewBag.StimeStudyzist != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    زیست
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyzist
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyzist
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyphizic != null && ViewBag.StimeStudyphizic != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    فیزیک
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyphizic
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyphizic
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.timestudyshimi != null && ViewBag.StimeStudyshimi != null)
+                        {
+                            <tr>
+
+                                <td>
+                                    شیمی
+                                </td>
+                                <td>
+                                    @ViewBag.timestudyshimi
+                                </td>
+                                <td>
+                                    @ViewBag.StimeStudyshimi
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.Server.Circuits;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -505,27 +506,130 @@ namespace WebPlatformV1.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        public IActionResult Report(List<ReportViewModel> model)
+        public IActionResult Report()
         {
             var cid = _userManager.GetUserId(User);
-            //List<ReportViewModel> model = new List<ReportViewModel>();
-            var result = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null).Include(p => p.Course).Include(p => p.Do).ToList().AsParallel();
-
-            var Course = _context.tbl_Courses.ToList();
-
-            foreach (var item in result)
+            #region get Report from Math
+            var Math = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 1).Include(o => o.Do).ToList();
+            var timestudyMath = 0;
+            var StimeStudyMath = 0;
+            foreach (var item in Math)
             {
-               var coursename= item.Course.NameCourse;
-                if (item.Course.NameCourse == coursename)
-                {
-                    model.Add(new ReportViewModel { CourseName = coursename, CtimeStudy = item.TimeStudy, StimeStudy = item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime });
-
-                }
-
+                timestudyMath = item.TimeStudy + timestudyMath;
+                StimeStudyMath = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyMath;
+                ViewBag.timestudyMath = timestudyMath;
+                ViewBag.StimeStudyMath = StimeStudyMath;
             }
-           
-
-            return View(model);
+            #endregion
+            #region get Report from adab
+            var adab = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 3).Include(o => o.Do).ToList();
+            var timestudyadab = 0;
+            var StimeStudyadab = 0;
+            foreach (var item in adab)
+            {
+                timestudyadab = item.TimeStudy + timestudyadab;
+                StimeStudyadab = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyadab;
+                ViewBag.timestudyadab = timestudyadab;
+                ViewBag.StimeStudyadab = StimeStudyadab;
+            }
+            #endregion
+            #region  get Report from zabanfarsi
+            var zabanfarsi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 4).Include(o => o.Do).ToList();
+            var timestudyzabanfarsi = 0;
+            var StimeStudyzabanfarsi = 0;
+            foreach (var item in zabanfarsi)
+            {
+                timestudyzabanfarsi = item.TimeStudy + timestudyzabanfarsi;
+                StimeStudyzabanfarsi = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyzabanfarsi;
+                ViewBag.timestudyzabanfarsi = timestudyzabanfarsi;
+                ViewBag.StimeStudyzabanfarsi = StimeStudyzabanfarsi;
+            }
+            #endregion
+            #region get Report from arabi
+            var arabi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 5).Include(o => o.Do).ToList();
+            var timestudyarabi = 0;
+            var StimeStudyarabi = 0;
+            foreach (var item in arabi)
+            {
+                timestudyarabi = item.TimeStudy + timestudyarabi;
+                StimeStudyarabi = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyarabi;
+                ViewBag.timestudyarabi = timestudyarabi;
+                ViewBag.StimeStudyarabi = StimeStudyarabi;
+            }
+            #endregion
+            #region  get Report from dinzendegi
+            var dinzendegi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 6).Include(o => o.Do).ToList();
+            var timestudydinzendegi = 0;
+            var StimeStudydinzendegi = 0;
+            foreach (var item in dinzendegi)
+            {
+                timestudydinzendegi = item.TimeStudy + timestudydinzendegi;
+                StimeStudydinzendegi = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudydinzendegi;
+                ViewBag.timestudydinzendegi = timestudydinzendegi;
+                ViewBag.StimeStudydinzendegi = StimeStudydinzendegi;
+            }
+            #endregion
+            #region  get Report from english
+            var english = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 7).Include(o => o.Do).ToList();
+            var timestudyenglish = 0;
+            var StimeStudyenglish = 0;
+            foreach (var item in english)
+            {
+                timestudyenglish = item.TimeStudy + timestudyenglish;
+                StimeStudyenglish = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyenglish;
+                ViewBag.timestudyenglish = timestudyenglish;
+                ViewBag.StimeStudyenglish = StimeStudyenglish;
+            }
+            #endregion
+            #region  get Report from zamin
+            var zamin = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 8).Include(o => o.Do).ToList();
+            var timestudyzamin = 0;
+            var StimeStudyzamin = 0;
+            foreach (var item in zamin)
+            {
+                timestudyzamin = item.TimeStudy + timestudyzamin;
+                StimeStudyzamin = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyzamin;
+                ViewBag.timestudyzamin = timestudyzamin;
+                ViewBag.StimeStudyzamin = StimeStudyzamin;
+            }
+            #endregion
+            #region  get Report from zist
+            var zist = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 9).Include(o => o.Do).ToList();
+            var timestudyzist = 0;
+            var StimeStudyzist = 0;
+            foreach (var item in zist)
+            {
+                timestudyzist = item.TimeStudy + timestudyzist;
+                StimeStudyzist = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyzist;
+                ViewBag.timestudyzist = timestudyzist;
+                ViewBag.StimeStudyzist = StimeStudyzist;
+            }
+            #endregion
+            #region  get Report from  phizic
+            var phizic = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 10).Include(o => o.Do).ToList();
+            var timestudyphizic = 0;
+            var StimeStudyphizic = 0;
+            foreach (var item in phizic)
+            {
+                timestudyphizic = item.TimeStudy + timestudyzist;
+                StimeStudyphizic = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyphizic;
+                ViewBag.timestudyphizic = timestudyphizic;
+                ViewBag.StimeStudyphizic = StimeStudyphizic;
+            }
+            #endregion
+            #region  get Report from  shimi
+            var shimi = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.DoIDdo != null && p.CourseIDCourse == 11).Include(o => o.Do).ToList();
+            var timestudyshimi = 0;
+            var StimeStudyshimi = 0;
+            foreach (var item in shimi)
+            {
+                timestudyshimi = item.TimeStudy + timestudyshimi;
+                StimeStudyshimi = (item.Do.DiscriptiveTime + item.Do.RevisionTime + item.Do.TestTime) + StimeStudyshimi;
+                ViewBag.timestudyshimi = timestudyshimi;
+                ViewBag.StimeStudyshimi = StimeStudyshimi;
+            }
+            #endregion
+            return View();
         }
     }
 
