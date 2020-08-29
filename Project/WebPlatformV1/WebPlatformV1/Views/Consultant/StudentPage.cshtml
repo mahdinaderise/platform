@@ -16,14 +16,14 @@
         @foreach (var item in Model.Students)
         {
             <h5>
-                @item.Name+" "+@item.Family
+                @item.Name @item.Family
 
             </h5>
 
 
         }
 
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px; " class="d-flex justify-content-end">
             <form asp-action="CreateTask" asp-controller="Consultant" method="get">
                 <button type="submit" class="btn btn-success btn-uppercase">
                     <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
@@ -44,15 +44,11 @@
             </form>
 
         </div>     
-        <form asp-action="StudentPage" asp-controller="Consultant" method="post">
-
-            <div class="row" style="margin-bottom:5px;width:30%;">
-                <button type="submit" class="btn btn-success btn-uppercase">
-                    <i class="ti-check-box mr-2"></i>  ایجاد گزارش هفتگی
-                </button>
-            </div>
-        </form>
-
+       
+        @if (Model == null)
+        {
+            <h1>برای امروز وظیفه ای ایجاد نکردی</h1>
+        }
         <div class="row">
             <div class="table-responsive">
                 <table class="table table-hover bg-white text-center">
@@ -67,25 +63,32 @@
                     <tbody>
                         @foreach (var item in Model.tasks)
                         {
-                            <tr>
+                            if (item != null)
+                            {
+                                <tr>
 
-                                <td> @item.NameTasks</td>
-                                <td> @item.Descibtion</td>
-                                <td>
-                                    @Html.CheckBoxFor(m => item.isDo)
-                                </td>
-                                <td>
+                                    <td> @item.NameTasks</td>
+                                    <td> @item.Descibtion</td>
+                                    <td>
+                                        @Html.CheckBoxFor(m => item.isDo)
+                                    </td>
+                                    <td>
 
-                                    <button type="button" class="btn btn-primary" title="حذف" data-toggle="tooltip" data-placement="bottom">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </button>
-                                    
-                                    <a class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;" asp-action="detaildo" asp-controller="consultant" asp-route-id="@item.IdoId"> 
-                                        <i class="fa fa-info" aria-hidden="true"></i>
+                                        <button type="button" class="btn btn-primary" title="حذف" data-toggle="tooltip" data-placement="bottom">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </button>
 
-                                    </a>
-                                </td>
-                            </tr>
+                                        <a class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;" asp-action="detaildo" asp-controller="consultant" asp-route-id="@item.IdoId">
+                                            <i class="fa fa-info" aria-hidden="true"></i>
+
+                                        </a>
+                                    </td>
+                                </tr>
+
+
+                            }
+                            
+                        
 
                         }
                     </tbody>

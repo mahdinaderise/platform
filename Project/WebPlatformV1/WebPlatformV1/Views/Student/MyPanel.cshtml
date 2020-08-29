@@ -24,44 +24,48 @@
 
 
         <div class="row">
-            @if (Model.Panel1.Status == false)
+            @if (Model.Panel1 != null)
             {
-                <div class="table-responsive">
-                    <table class="table table-hover bg-white text-center">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">تعداد روز اعتبار </th>
-                                <th scope="col"> مبلغ پرداختی </th>
-                                <th scope="col"> مبلغ پرداختی به ازای هر روز </th>
+                @if (Model.Panel1.Status == false)
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover bg-white text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">تعداد روز اعتبار </th>
+                                    <th scope="col"> مبلغ پرداختی </th>
+                                    <th scope="col"> مبلغ پرداختی به ازای هر روز </th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                            <tr>
+                                <tr>
 
-                                <td>@Model.Panel1.Day </td>
-                                <td> @Model.Panel1.Price</td>
-                                <td>@Model.price</td>
-                                <td>
-                                    <a class="btn btn-primary" title="ایجاد پنل" data-toggle="tooltip" data-placement="bottom" asp-action="Peyment" asp-controller="student" > <i class="fa fa-check" aria-hidden="true"></i> </a>
-                                    @*<button type="button" class="btn btn-primary" title="ویرایش" data-toggle="tooltip" data-placement="bottom">*@
-                                    @*<i class="fa fa-pencil-square-o" aria-hidden="true"></i>*@
-                                    <!-- مودال ویرایش اطلاعات -->
-                                    @*</button>*@
+                                    <td>@Model.Panel1.Day </td>
+                                    <td> @Model.Panel1.Price</td>
+                                    <td>@Model.price</td>
+                                    <td>
+                                        <a class="btn btn-primary" title="ایجاد پنل" data-toggle="tooltip" data-placement="bottom" asp-action="Peyment" asp-controller="student"> <i class="fa fa-check" aria-hidden="true"></i> </a>
+                                        @*<button type="button" class="btn btn-primary" title="ویرایش" data-toggle="tooltip" data-placement="bottom">*@
+                                        @*<i class="fa fa-pencil-square-o" aria-hidden="true"></i>*@
+                                        <!-- مودال ویرایش اطلاعات -->
+                                        @*</button>*@
 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p>
+                        شما پنلی برای پرداخت ندارید
+                    </p>
+                }
             }
-            else
-            {
-        <p>
-            شما پنلی برای پرداخت ندارید
-        </p>
-            }
+
 
         </div>
     </div>

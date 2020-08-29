@@ -356,9 +356,13 @@ namespace WebPlatformV1.Controllers
 
             //model.Consultants = _context.consultants.Where(p => p.Id == user).ToList();
             //consultants = _context.consultants.Where(p=>p.Id==id).ToList();
-            string FristLast = model.Family;
-            string fristCharecter = model.Name;
-            ViewBag.fristCharecter = fristCharecter[0] + " " + FristLast[0].ToString();
+            if (model.Name!=null && model.Family!= null)
+            {
+                string FristLast = model.Family;
+                string fristCharecter = model.Name;
+                ViewBag.fristCharecter = fristCharecter[0] + " " + FristLast[0].ToString();
+            }
+           
 
             #endregion
 

@@ -185,7 +185,11 @@ namespace WebPlatformV1.Controllers
         {
             var studentId = _userManager.GetUserId(User);
             model.Panel1 = _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending(p => p.IDAddPanel).FirstOrDefault();
-            model.price = model.Panel1.Price / model.Panel1.Day;
+            if (model.Panel1!=null)
+            {
+                model.price = model.Panel1.Price / model.Panel1.Day;
+
+            }
             return View(model);
         }
         [HttpPost]
