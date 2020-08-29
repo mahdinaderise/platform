@@ -1,16 +1,25 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebPlatformV1.Models;
+using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1.ViewModels.Consultant
 {
     public class Profile
     {
-     
+        public Profile()
+        {
+            Degree = new List<SendDegree>();
+        }
+        public List<SendDegree> Degree { get; set; }
+
         public string id { get; set; }
+        public int MAX_FILE_SIZE { get; set; }
+
         public string Name { get; set; }
         public string Family { get; set; }
         public string PhoneNumber { get; set; }
@@ -20,6 +29,7 @@ namespace WebPlatformV1.ViewModels.Consultant
         public string Address { get; set; }
         public string Shaba { get; set; }
         public IFormFile Picture { get; set; }
+        public IFormFile DegreePic { get; set; }
 
     }
 }

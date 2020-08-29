@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using WebPlatformV1.ViewModels.Consultant;
+
 namespace WebPlatformV1.Models.DbContext
 {
     public class MainDBContext : IdentityDbContext<ApplicationUsers>
@@ -21,23 +23,77 @@ namespace WebPlatformV1.Models.DbContext
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-          //  builder.Entity<Tbl_Student>()
-          //.HasMany(p =>p.addPanels)
-          //.WithOne(e => e.students);
             
-            //builder.Entity<Tbl_Consultant>().HasNoKey();
-            //builder.Entity<Tbl_Student>().HasNoKey();
-           
-           base.OnModelCreating(builder);
+            #region seed data course
+
+            builder.Entity<Tbl_Course>().HasData(new Tbl_Course()
+            {
+                IDCourse = 3,
+                NameCourse = "ادبیات",
+                grade = "3"
+
+            },
+            new Tbl_Course()
+            {
+                IDCourse = 4,
+                NameCourse = "زبان فارسی",
+                grade = "3"
+            },
+            new Tbl_Course()
+            {
+                IDCourse = 5,
+                NameCourse = "عربی",
+                grade = "3"
+            },
+                new Tbl_Course()
+                {
+                    IDCourse = 6,
+                    NameCourse = "دین و زندگی",
+                    grade = "3"
+                },
+                    new Tbl_Course()
+                    {
+                        IDCourse = 7,
+                        NameCourse = "زبان انگلیسی",
+                        grade = "3"
+                    },
+                        new Tbl_Course()
+
+                        {
+                            IDCourse = 8,
+                            NameCourse = "زمین",
+                            grade = "3"
+                        },
+                            new Tbl_Course()
+                            {
+                                IDCourse = 9,
+                                NameCourse = "زیست",
+                                grade = "3"
+                            },
+                              
+                                    new Tbl_Course()
+                                    {
+                                        IDCourse = 10,
+                                        NameCourse = "فیزیک",
+                                        grade = "3"
+                                    },
+                                    new Tbl_Course()
+                                    {
+                                        IDCourse = 11,
+                                        NameCourse = "شیمی",
+                                        grade = "3"
+                                    }
+                                    );
+            #endregion
            
 
+            base.OnModelCreating(builder);
+          
 
         }
         public DbSet<Student> students { get; set; }
         public DbSet<Consultant> consultants { get; set; }
-        //public DbSet<Tbl_Consultant> consultants { get; set; }
-        //public DbSet<Tbl_Student> students { get; set; }
-        //public DbSet<StudentsOfConsultant> studentOfCansultants { get; set; }
+
         public DbSet<Tbl_AddPanel> tbl_AddPanels { get; set; }
         public DbSet<Tbl_Attach> tbl_Attaches { get; set; }
         public DbSet<Tbl_Blog> tbl_Blogs { get; set; }
@@ -48,12 +104,13 @@ namespace WebPlatformV1.Models.DbContext
         public DbSet<Tbl_Tasks> tbl_Tasks { get; set; }
         public DbSet<Tbl_Wallet> tbl_Wallets { get; set; }
         public DbSet<Tbl_TodoAppStudent> Tbl_TodoAppStudents { get; set; }
+        public DbSet<Tbl_TodoAppConsultant> Tbl_TodoAppConsultant { get; set; }
+        public DbSet<SendDegree> SendDegree { get; set; }
 
-        //public DbSet<Tbl_TasksCourse> tbl_TasksCourses { get; set; }
 
     }
 
-
+ 
     public class Tbl_Blog
     {
         [Key]
@@ -64,7 +121,18 @@ namespace WebPlatformV1.Models.DbContext
         public ICollection<Tbl_Attach> tbl_Attaches { get; set; }
         public Consultant consultant { get; set; }
     }
+    public class SendDegree
+    {   [Key]
+        public int Id { get; set; }
+        public bool IsSend { get; set; }
+        public int state { get; set; }
+        public string Description { get; set; }
+        public string ConsultantId { get; set; }
+        public ICollection<Consultant> consultant { get; set; }
 
+
+
+    }
     public class Tbl_Attach
     {
         [Key]
@@ -82,6 +150,14 @@ namespace WebPlatformV1.Models.DbContext
         public ICollection<Tbl_Tasks> tasks { get; set; }
         //public IList<Tbl_TasksCourse> Tbl_TasksCourses { get; set; }
         public ICollection<Tbl_Headline>headlines { get; set; }
+    }
+    public class Tbl_grade
+    {
+        [Key]
+        public int IDGrade { get; set; }
+        public string grade { get; set; }
+        public ICollection<Tbl_Tasks> tasks { get; set; }
+
     }
     public class Tbl_Do
     {
@@ -108,7 +184,6 @@ namespace WebPlatformV1.Models.DbContext
     {
         [Key]
         public int IDTasks { get; set; }
-        public int IdoId { get; set; }
         public string NameTasks { get; set; }
         public DateTime SendDelivery { get; set; }
         public DateTime SubmitDate { get; set; }
@@ -116,13 +191,15 @@ namespace WebPlatformV1.Models.DbContext
         public int TimeStudy { get; set; }
         public string Subject { get; set; }
         public bool isDo { get; set; } = false;
-        public string IdStudent { get; set; }
-        public string IdConsultant { get; set; }
-        public int Idcourse { get; set; }
+        public string StudentId { get; set; }
+        public string ConsultantId { get; set; }
+        public int? CourseIDCourse { get; set; }
+        public int? DoIDdo { get; set; }
+        public string MyGrade { get; set; }
         //public bool isSpecial { get; set; }
 
         // Navigation 
-        public  Tbl_Course course { get; set; }
+        public Tbl_Course Course { get; set; }
         public  Consultant Cansultant { get; set; }
         public  Student Student { get; set; }
         public  Tbl_Do Do { get; set; }
@@ -202,6 +279,14 @@ namespace WebPlatformV1.Models.DbContext
         public string Note { get; set; }
         public bool IsFinally { get; set; } = false;
         public ICollection<Student> students { get; set; }
+    }
+    public class Tbl_TodoAppConsultant
+    {
+        public int Id { get; set; }
+        public string ConsultantID { get; set; }
+        public string Note { get; set; }
+        public bool IsFinally { get; set; } = false;
+        public ICollection<Consultant> Consultantes { get; set; }
     }
     //public class Tbl_TasksCourse
     //{

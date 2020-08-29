@@ -2,7 +2,7 @@
 
 namespace WebPlatformV1.Migrations
 {
-    public partial class NewEdits : Migration
+    public partial class mm : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

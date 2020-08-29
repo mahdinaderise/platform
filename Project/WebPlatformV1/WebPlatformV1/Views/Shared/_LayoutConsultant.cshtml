@@ -163,19 +163,24 @@
                                     مهدی نظری
                                    
                                 </h6>
-                                <small>شارژ: <strong>1000 تومان</strong></small>
+                                <small>شارژ: <strong>@ViewBag.credit تومان</strong></small>
                             </div>
                             <div class="dropdown-menu-body">
-                               
+
                                 <div class="list-group list-group-flush">
                                     <a asp-action="Profile" class="list-group-item">پروفایل</a>
-                                   
+                                    <div class="list-group list-group-flush">
+                                        <a href="#" class="list-group-item">ارسال مدرک</a>
+
+                                    </div>
+
                                     <form asp-action="LogOutConsultant" asp-controller="Account" method="post">
                                         <button class="list-group-item text-danger" type="submit" data-sidebar-target="#settings"> خروج</button>
                                         @*<a class="list-group-item text-danger" data-sidebar-target="#settings" >خروج</a>*@
 
                                     </form>
                                 </div>
+                              
                             </div>
                         </div>
                     </div>
