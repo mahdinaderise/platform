@@ -15,7 +15,7 @@ namespace WebPlatformV1.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.5")
+                .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -512,6 +512,9 @@ namespace WebPlatformV1.Migrations
                     b.Property<int?>("DoIDdo")
                         .HasColumnType("int");
 
+                    b.Property<string>("MyGrade")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NameTasks")
                         .HasColumnType("nvarchar(max)");
 
@@ -526,6 +529,9 @@ namespace WebPlatformV1.Migrations
 
                     b.Property<DateTime>("SubmitDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("Tbl_gradeIDGrade")
+                        .HasColumnType("int");
 
                     b.Property<int>("TimeStudy")
                         .HasColumnType("int");
@@ -542,6 +548,8 @@ namespace WebPlatformV1.Migrations
                     b.HasIndex("DoIDdo");
 
                     b.HasIndex("StudentId");
+
+                    b.HasIndex("Tbl_gradeIDGrade");
 
                     b.ToTable("tbl_Tasks");
                 });
@@ -606,6 +614,21 @@ namespace WebPlatformV1.Migrations
                     b.HasIndex("ConsultantId");
 
                     b.ToTable("tbl_Wallets");
+                });
+
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_grade", b =>
+                {
+                    b.Property<int>("IDGrade")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("grade")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IDGrade");
+
+                    b.ToTable("grades");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.Consultant", b =>
@@ -816,6 +839,10 @@ namespace WebPlatformV1.Migrations
                     b.HasOne("WebPlatformV1.Models.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId");
+
+                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_grade", null)
+                        .WithMany("tasks")
+                        .HasForeignKey("Tbl_gradeIDGrade");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Wallet", b =>

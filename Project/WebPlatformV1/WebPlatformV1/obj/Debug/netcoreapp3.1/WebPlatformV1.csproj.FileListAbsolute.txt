@@ -2238,9 +2238,6 @@ E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.csprojAssemblyReference.cache
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.AssemblyInfoInputs.cache
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.AssemblyInfo.cs
-E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.csproj.CoreCompileInputs.cache
-E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.MvcApplicationPartsAssemblyInfo.cs
-E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.MvcApplicationPartsAssemblyInfo.cache
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.RazorAssemblyInfo.cache
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.RazorAssemblyInfo.cs
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.TagHelpers.input.cache
@@ -2294,3 +2291,14 @@ E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.dll
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.pdb
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.genruntimeconfig.cache
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\Report.cshtml.g.cs
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\wReport.cshtml.g.cs
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.csproj.CoreCompileInputs.cache
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.MvcApplicationPartsAssemblyInfo.cs
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.MvcApplicationPartsAssemblyInfo.cache
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll

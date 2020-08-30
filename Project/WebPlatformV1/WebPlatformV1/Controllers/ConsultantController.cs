@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGeneration;
-using WebPlatformV1.Migrations;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels.Consultant;
@@ -66,7 +65,7 @@ namespace WebPlatformV1.Controllers
             var NowDateTime = DateTime.Today;
             var StartDate = model.StartDate;
             var EndDate = model.EndDate;
-            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == id && p.SendDelivery== DateTime.Today ).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.StudentId == id && p.SendDelivery== DateTime.Today ).ToList();
             return View(model);
         }
         [HttpPost]
@@ -74,7 +73,7 @@ namespace WebPlatformV1.Controllers
         {
             var id = HttpContext.Session.GetString("id");
             model.Students = _context.students.Where(p => p.Id == id).ToList();
-            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == id && p.SendDelivery == model.StartDate ).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.StudentId == id && p.SendDelivery == model.StartDate ).ToList();
 
             return View(model);
         }
@@ -214,9 +213,9 @@ namespace WebPlatformV1.Controllers
         {
             var NowDateTime = DateTime.Today;
             var id = HttpContext.Session.GetString("id");
-            ViewData["course"] = new SelectList(_context.tbl_Courses, "IDCourse", "NameCourse",tasks.Idcourse );
+            ViewData["course"] = new SelectList(_context.tbl_Courses, "IDCourse", "NameCourse",tasks.StudentId);
 
-            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == id && p.SubmitDate == NowDateTime).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.StudentId == id && p.SubmitDate == NowDateTime).ToList();
 
             return View(model);
         }
@@ -230,9 +229,9 @@ namespace WebPlatformV1.Controllers
                 tasks.Descibtion = model.Descibtion;
                 tasks.NameTasks = model.NameTasks;
                 tasks.Subject = model.Subject;
-                tasks.IdConsultant= _userManager.GetUserId(User);
-                tasks.IdStudent = id;
-                tasks.Idcourse = model.courseid;
+                tasks.ConsultantId= _userManager.GetUserId(User);
+                tasks.StudentId = id;
+                tasks.CourseIDCourse= model.courseid;
                 tasks.SendDelivery = model.SendDelivery;
                 tasks.SubmitDate = DateTime.Today;
                 await _context.AddAsync(tasks);

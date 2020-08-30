@@ -65,7 +65,7 @@ namespace WebPlatformV1.Controllers
                 await _context.SaveChangesAsync();
                 tasks = _context.Find<Tbl_Tasks>((int)id);
                 tasks.isDo = true;
-                tasks.IdoId = _Do.IDdo;
+                tasks.DoIDdo = _Do.IDdo;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(studenttask));
             }
@@ -91,9 +91,9 @@ namespace WebPlatformV1.Controllers
             ViewBag.credittime = credittime - Today;
             #endregion
             #region count of do task
-            var tasks = _context.tbl_Tasks.Where(p => p.IdStudent == IdStudent).Count();
-            var tasksdo = _context.tbl_Tasks.Where(p => p.IdStudent == IdStudent && p.isDo == true).Count();
-            var tasksNdo = _context.tbl_Tasks.Where(p => p.IdStudent == IdStudent && p.isDo == false).Count();
+            var tasks = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent).Count();
+            var tasksdo = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.isDo == true).Count();
+            var tasksNdo = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.isDo == false).Count();
             var todayTask= _context.tbl_Tasks.Where(p => p.SendDelivery == DateTime.Today).Count();
             ViewBag.DoTest = (tasksdo * 100) / tasks;
             ViewBag.NDoTest = ( tasksNdo * 100) / tasks;
@@ -112,7 +112,7 @@ namespace WebPlatformV1.Controllers
         var IdStudent = _userManager.GetUserId(User);
             var NowDateTime = DateTime.Today;
             var StartDate = model.StartDate;
-            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == IdStudent && p.SendDelivery == DateTime.Today).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.SendDelivery == DateTime.Today).ToList();
             return View(model);
         }
         [HttpPost]
@@ -121,7 +121,7 @@ namespace WebPlatformV1.Controllers
             var IdStudent = _userManager.GetUserId(User);
 
             model.Students = _context.students.Where(p => p.Id == IdStudent).ToList();
-            model.tasks = _context.tbl_Tasks.Where(p => p.IdStudent == IdStudent && p.SendDelivery == model.StartDate).ToList();
+            model.tasks = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.SendDelivery == model.StartDate).ToList();
 
             return View(model);
         }

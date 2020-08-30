@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.Models;
-using WebPlatformV1.Migrations;
 
 namespace WebPlatformV1.ViewModels.Consultant
 {
@@ -15,9 +14,9 @@ namespace WebPlatformV1.ViewModels.Consultant
             course = new List<Tbl_Course>();
             tasks = new List<Tbl_Tasks>();
             Students = new List<Student>();
-            Grades = new List<Grade>();
+            Grades = new List<Tbl_grade>();
         }
-        public List<Grade> Grades { get; set; }
+        public List<Tbl_grade> Grades { get; set; }
         public List<Tbl_Tasks> tasks { get; set; }
         public List<Tbl_Course> course { get; set; }
         public List<Student> Students { get; set;}

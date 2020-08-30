@@ -106,7 +106,7 @@ namespace WebPlatformV1.Models.DbContext
         public DbSet<Tbl_TodoAppStudent> Tbl_TodoAppStudents { get; set; }
         public DbSet<Tbl_TodoAppConsultant> Tbl_TodoAppConsultant { get; set; }
         public DbSet<SendDegree> SendDegree { get; set; }
-
+        public DbSet<Tbl_grade> grades { get; set; }
 
     }
 
