@@ -95,6 +95,7 @@ namespace WebPlatformV1.Controllers
             var tasksdo = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.isDo == true).Count();
             var tasksNdo = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.isDo == false).Count();
             var todayTask= _context.tbl_Tasks.Where(p => p.SendDelivery == DateTime.Today).Count();
+      
             ViewBag.DoTest = (tasksdo * 100) / tasks;
             ViewBag.NDoTest = ( tasksNdo * 100) / tasks;
             ViewBag.Tasks = tasks;

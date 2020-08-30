@@ -14,25 +14,8 @@
             <form class="needs-validation" novalidate asp-action="CreateTask" asp-controller="Consultant" method="post">
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
-                        <label for="validationTooltip01"> نام وظیفه</label>
-                        <select>
-                            <option value="اول">اول</option>
-                            <option value="دوم">دوم</option>
-
-                            <option value="سوم">سوم</option>
-                            <option value="چهارم">چهارم</option>
-                            <option value="پنجم">پنجم</option>
-                            <option value="ششم">ششم</option>
-                            <option value="هفتم">هفتم</option>
-                            <option value="هشتم">هشتم</option>
-                            <option value="نهم">نهم</option>
-                            <option value="دهم">دهم</option>
-                            <option value="یازدهم">یازدهم</option>
-                            <option value="دوازدهم">دوازدهم</option>
-
-
-                        </select>
-                        <input type="text" class="form-control" id="validationTooltip01" placeholder="نام" value="" required asp-for="NameTasks">
+                        <label for="validationTooltip01" asp-for="Gradeid"> پایه:</label>
+                        <select asp-for="Gradeid"  asp-items="ViewBag.Grade" class="form-control" ></select>
                       
                     </div>
                     <div class="col-md-4 mb-3">
@@ -40,6 +23,13 @@
                         <label asp-for="courseid" class="control-label">درس:</label>
                         <select asp-for="courseid" class="form-control" asp-items="ViewBag.course" style="width:30%"></select>
                     </div>
+                  
+
+
+                    @*<select asp-for=""></select>*@
+
+                </div>
+                <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="validationTooltip01"> مبحث </label>
                         <input type="text" class="form-control" id="validationTooltip01" placeholder="مبحث" value="" required asp-for="Subject">
@@ -47,12 +37,6 @@
                             عالی!
                         </div>
                     </div>
-
-
-                    @*<select asp-for=""></select>*@
-
-                </div>
-                <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="validationTooltip03">توضیحات</label>
                         <input type="text" class="form-control" id="validationTooltip03" placeholder="شرح وظیفه" required asp-for="Descibtion" />
@@ -60,6 +44,9 @@
                             شرح وظیفه را وارد کنید.
                         </div>
                     </div>
+                </div>
+                <div class="form-row">
+                   
                     <div class="col-md-3 mb-3">
                         <label for="validationTooltip04">زمان</label>
                         <input type="number" class="form-control" id="validationTooltip04" placeholder="زمان مطالعه" asp-for="TimeStudy" required>

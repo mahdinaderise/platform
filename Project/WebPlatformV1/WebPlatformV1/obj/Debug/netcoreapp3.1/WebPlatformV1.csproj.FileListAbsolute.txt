@@ -2302,3 +2302,12 @@ E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\Report.cshtml.g.cs
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\wReport.cshtml.g.cs
+E:\Naderi\platform\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\PanelConsultant.cshtml.g.cs
