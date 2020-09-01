@@ -23,15 +23,30 @@
 
         }
 
-        <div style="margin-bottom: 20px; " class="d-flex justify-content-end">
-            <form asp-action="CreateTask" asp-controller="Consultant" method="get">
-                <button type="submit" class="btn btn-success btn-uppercase">
-                    <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
-                </button>
 
-            </form>
+        <div class="d-flex flex-row ">
+            <div class="p-2">
+                <div style="margin-bottom: 20px; " class="d-flex justify-content-end">
+                    <form asp-action="CreateTask" asp-controller="Consultant" method="get">
+                        <button type="submit" class="btn btn-success btn-uppercase">
+                            <i class="ti-check-box mr-2"></i>  ایجاد وظیفه برای دانش آموز
+                        </button>
+
+                    </form>
 
 
+                </div>
+            </div>
+            <div class="p-2">
+                <a asp-action="Report" class="btn btn-success btn-uppercase">
+                    <i class="ti-check-box mr-2"></i>  گزارش ماهانه
+                </a>
+            </div>
+            <div class="p-2 ">
+                <a asp-action="Report" class="btn btn-success btn-uppercase">
+                    <i class="ti-check-box mr-2"></i>  گزارش هفتگی
+                </a>
+            </div>
         </div>
         <div class="d-flex justify-content-end">
             <form class="form-inline" asp-action="StudentPage" asp-controller="consultant" method="post" style="margin-left:0px">
@@ -43,8 +58,8 @@
                 <button type="submit" class="btn btn-primary mb-2 ">جست و جو</button>
             </form>
 
-        </div>     
-       
+        </div>
+
         @if (Model == null)
         {
             <h1>برای امروز وظیفه ای ایجاد نکردی</h1>
@@ -87,8 +102,8 @@
 
 
                             }
-                            
-                        
+
+
 
                         }
                     </tbody>
@@ -103,7 +118,6 @@
 @section MyScripts{
     <script src="~/persianDatePicker/calendar.js"></script>
     <script src="~/persianDatePicker/jquery.Bootstrap-PersianDateTimePicker.js"></script>
-    <div class="popover fade left in" role="tooltip" id="popover308426" style="top: 44.5px; left: 915px; display: block;"><div class="arrow" style="top: 50%;"></div><h3 class="popover-title" data-name="Md-DateTimePicker-Title">پنج شنبه، ۰۱ فروردین ۱۳۹۲</h3><div class="popover-content" data-name="Md-DateTimePicker-PopoverContent"><div data-name="Md-PersianDateTimePicker"><table class="table table-striped"><tbody><tr><td colspan="100" style="padding:5px;"><table class="table" data-name="Md-PersianDateTimePicker-HeaderTable"><tbody><tr><td><button type="button" class="btn btn-default btn-xs" title="سال بعد" data-name="Md-PersianDateTimePicker-NextYear">&lt;&lt;</button></td><td><button type="button" class="btn btn-default btn-xs" title="ماه بعد" data-name="Md-PersianDateTimePicker-NextMonth">&lt;</button></td><td data-name="Md-PersianDateTimePicker-TitleYear">۱۳۹۲</td><td data-name="Md-PersianDateTimePicker-TitleMonth">فروردین</td><td><button type="button" class="btn btn-default btn-xs" title="ماه قبل" data-name="Md-PersianDateTimePicker-PreviousMonth">&gt;</button></td><td><button type="button" class="btn btn-default btn-xs" title="سال قبل" data-name="Md-PersianDateTimePicker-PreviousYear">&gt;&gt;</button></td></tr></tbody></table></td></tr><tr data-name="Md-PersianDateTimePicker-WeekDaysNames"><td>ش</td><td>ی</td><td>د</td><td>س</td><td>چ</td><td>پ</td><td class="text-danger">ج</td></tr><tr><td data-name="disabled-day">۲۷</td><td data-name="disabled-day">۲۸</td><td data-name="disabled-day">۲۹</td><td data-name="disabled-day">۳۰</td><td data-name="disabled-day">۳۱</td><td data-name="day" class="bg-info">۰۱</td><td data-name="day" class="text-danger">۰۲</td></tr><tr><td data-name="day">۰۳</td><td data-name="day">۰۴</td><td data-name="day">۰۵</td><td data-name="day">۰۶</td><td data-name="day">۰۷</td><td data-name="day">۰۸</td><td data-name="day" class="text-danger">۰۹</td></tr><tr><td data-name="day">۱۰</td><td data-name="day">۱۱</td><td data-name="day">۱۲</td><td data-name="day">۱۳</td><td data-name="day">۱۴</td><td data-name="day">۱۵</td><td data-name="day" class="text-danger">۱۶</td></tr><tr><td data-name="day">۱۷</td><td data-name="day">۱۸</td><td data-name="day">۱۹</td><td data-name="day">۲۰</td><td data-name="day">۲۱</td><td data-name="day">۲۲</td><td data-name="day" class="text-danger">۲۳</td></tr><tr><td data-name="day">۲۴</td><td data-name="day">۲۵</td><td data-name="day">۲۶</td><td data-name="day">۲۷</td><td data-name="day">۲۸</td><td data-name="day">۲۹</td><td data-name="day" class="text-danger">۳۰</td></tr><tr><td colspan="100"><button class="btn btn-default btn-xs" data-name="go-today">امروز</button></td></tr></tbody></table></div></div></div>
 
 }
 

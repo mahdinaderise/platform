@@ -1,0 +1,28 @@
+﻿@model IEnumerable< WebPlatformV1.Models.DbContext.Tbl_AddPanelConsultant>
+@{
+    ViewData["Title"] = "PanelConsultant";
+    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
+}
+<div class="main-content">
+<div class="page-header">
+    <div class="container-fluid d-sm-flex justify-content-between">
+        <h4>شرح وظایف دانش آموز</h4>
+
+    </div>
+</div>
+</div>
+<div class="container-fluid">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <div class="card text-white bg-primary">
+                <div class="card-header">پنل @item.Day روزه</div>
+                <div class="card-body">
+                    <h5 class="card-title">قیمت: @item.Price</h5>
+                    <a asp-action="Peyment" asp-controller="Consultant" class="btn btn-success" asp-route-id="@item.ID" >پرداخت</a>
+                </div>
+            </div>
+        </div>
+    }
+  
+</div>

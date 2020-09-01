@@ -148,24 +148,28 @@
                            
                         </div>
                         <div class="custom-control custom-checkbox-success custom-checkbox todo-item">
-                            @foreach (var item in Model.Todo)
+                            @if (Model.Todo != null)
                             {
-                                @if (Model != null && item.IsFinally == false)
+                                @foreach (var item in Model.Todo)
                                 {
-                                    <div class="form-group d-flex flex-row">
-                                        <form>
-                                            <button type="submit" class=" btn btn-success small p-2" style="height:35px;" title="انجام کار" data-toggle="tooltip" data-placement="bottom" id="checkbox @item.Id" asp-action="TodoAppDelete" asp-controller="consultant" asp-route-id="@item.Id">
-                                                <i class="fa fa-check" aria-hidden="true"></i>
+                                    @if (Model != null && item.IsFinally == false)
+                                    {
+                                        <div class="form-group d-flex flex-row">
+                                            <form>
+                                                <button type="submit" class=" btn btn-success small p-2" style="height:35px;" title="انجام کار" data-toggle="tooltip" data-placement="bottom" id="checkbox @item.Id" asp-action="TodoAppDelete" asp-controller="consultant" asp-route-id="@item.Id">
+                                                    <i class="fa fa-check" aria-hidden="true"></i>
 
-                                            </button>
-                                        </form>
-                                        <label class="p-2"
-                                               for="checkbox @item.Id">
-                                            @item.Note
-                                        </label>
-                                    </div>
+                                                </button>
+                                            </form>
+                                            <label class="p-2"
+                                                   for="checkbox @item.Id">
+                                                @item.Note
+                                            </label>
+                                        </div>
+                                    }
+
+
                                 }
-
 
                             }
 

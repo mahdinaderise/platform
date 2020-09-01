@@ -21,6 +21,8 @@ namespace WebPlatformV1.ViewModels.Consultant
         public List<Tbl_Course> course { get; set; }
         public List<Student> Students { get; set;}
         public int courseid { get; set; }
+        public int Gradeid { get; set; }
+
         public string NameTasks { get; set; }
         public DateTime SendDelivery { get; set; }
         public int TimeStudy { get; set; }

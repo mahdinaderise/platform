@@ -107,10 +107,11 @@ namespace WebPlatformV1.Models.DbContext
         public DbSet<Tbl_TodoAppConsultant> Tbl_TodoAppConsultant { get; set; }
         public DbSet<SendDegree> SendDegree { get; set; }
         public DbSet<Tbl_grade> grades { get; set; }
+        public DbSet<Tbl_AddPanelConsultant> PanelConsultant { get; set; }
 
     }
 
- 
+
     public class Tbl_Blog
     {
         [Key]
@@ -268,9 +269,16 @@ namespace WebPlatformV1.Models.DbContext
         public int Price { get; set; }
         public ICollection<Consultant> Consultantes { get; set; }
         public Student students { get; set; }
+    }
+    public class Tbl_AddPanelConsultant
+    {
+        [Key]
+        public int ID { get; set; }
 
-
-
+        [Required]
+        public int Day { get; set; }
+        [Required]
+        public int Price { get; set; }
     }
     public class Tbl_TodoAppStudent
     {
