@@ -85,7 +85,69 @@ namespace WebPlatformV1.Models.DbContext
                                     }
                                     );
             #endregion
-           
+            #region seed data Paye
+            builder.Entity<Tbl_grade>().HasData(new Tbl_grade()
+            {
+                IDGrade = 1,
+                grade = "اول"
+
+            },
+          new Tbl_grade()
+          {
+              IDGrade = 2,
+              grade = "دوم"
+          },
+          new Tbl_grade()
+          {
+              IDGrade = 3,
+              grade = "سوم"
+          },
+              new Tbl_grade()
+              {
+                  IDGrade = 4,
+                  grade = "چهارم"
+              },
+                  new Tbl_grade()
+                  {
+                      IDGrade = 5,
+                      grade = "پنجم"
+                  },
+                      new Tbl_grade()
+
+                      {
+                          IDGrade = 6,
+                          grade = "ششم"
+                      },
+                          new Tbl_grade()
+                          {
+                              IDGrade = 7,
+                              grade = "هفتم"
+                          },
+
+                                  new Tbl_grade()
+                                  {
+                                      IDGrade = 8,
+                                      grade = "هشتم"
+                                  },
+                                  new Tbl_grade()
+                                  {
+                                      IDGrade = 9,
+                                      grade = "نهم"
+                                  }, new Tbl_grade()
+                                  {
+                                      IDGrade = 10,
+                                      grade = "دهم"
+                                  }, new Tbl_grade()
+                                  {
+                                      IDGrade = 11,
+                                      grade = "یازدهم"
+                                  }, new Tbl_grade()
+                                  {
+                                      IDGrade = 12,
+                                      grade = "دوازدهم"
+                                  }
+                                  );
+            #endregion
 
             base.OnModelCreating(builder);
           
@@ -100,6 +162,8 @@ namespace WebPlatformV1.Models.DbContext
         public DbSet<Tbl_Course> tbl_Courses { get; set; }
         public DbSet<Tbl_Do> tbl_Dos { get; set; }
         public DbSet<Tbl_FinnialManegment> tbl_FinnialManegments { get; set; }
+        public DbSet<Tbl_Finnial> Tbl_Finnials { get; set; }
+
         public DbSet<Tbl_Headline> tbl_Headlines { get; set; }
         public DbSet<Tbl_Tasks> tbl_Tasks { get; set; }
         public DbSet<Tbl_Wallet> tbl_Wallets { get; set; }
@@ -212,11 +276,21 @@ namespace WebPlatformV1.Models.DbContext
         public int IDFinancial { get; set; }
         public string IDConsultant { get; set; }
         public long NumReceipt { get; set; }
-        public DateTime DatePayment { get; set; }
         public bool State { get; set; }
+        public DateTime DatePey { get; set; }
         public Consultant consultant { get; set; }
         public Student student { get; set; }
 
+    }
+    public class Tbl_Finnial
+    {
+        [Key]
+        public int IDFinancial { get; set; }
+        public string IDConsultant { get; set; }
+        public long NumReceipt { get; set; }
+        public bool State { get; set; }
+        public DateTime DatePey { get; set; }
+        public Consultant consultant { get; set; }
     }
     public class Tbl_Headline
     {

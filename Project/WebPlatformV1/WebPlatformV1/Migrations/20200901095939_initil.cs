@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebPlatformV1.Migrations
 {
-    public partial class initial : Migration
+    public partial class initil : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,6 +32,20 @@ namespace WebPlatformV1.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_grades", x => x.IDGrade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PanelConsultant",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Day = table.Column<int>(nullable: false),
+                    Price = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PanelConsultant", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -340,10 +354,10 @@ namespace WebPlatformV1.Migrations
                 {
                     IDFinancial = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IDConsultant = table.Column<int>(nullable: false),
-                    NumReceipt = table.Column<int>(nullable: false),
-                    DatePayment = table.Column<int>(nullable: false),
-                    State = table.Column<string>(nullable: true),
+                    IDConsultant = table.Column<string>(nullable: true),
+                    NumReceipt = table.Column<long>(nullable: false),
+                    State = table.Column<bool>(nullable: false),
+                    DatePey = table.Column<DateTime>(nullable: false),
                     consultantId = table.Column<string>(nullable: true),
                     studentId = table.Column<string>(nullable: true)
                 },
@@ -359,6 +373,29 @@ namespace WebPlatformV1.Migrations
                     table.ForeignKey(
                         name: "FK_tbl_FinnialManegments_AspNetUsers_studentId",
                         column: x => x.studentId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tbl_Finnials",
+                columns: table => new
+                {
+                    IDFinancial = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IDConsultant = table.Column<string>(nullable: true),
+                    NumReceipt = table.Column<long>(nullable: false),
+                    State = table.Column<bool>(nullable: false),
+                    DatePey = table.Column<DateTime>(nullable: false),
+                    consultantId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tbl_Finnials", x => x.IDFinancial);
+                    table.ForeignKey(
+                        name: "FK_Tbl_Finnials_AspNetUsers_consultantId",
+                        column: x => x.consultantId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -566,6 +603,11 @@ namespace WebPlatformV1.Migrations
                 column: "studentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Tbl_Finnials_consultantId",
+                table: "Tbl_Finnials",
+                column: "consultantId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_tbl_Headlines_coursesIDCourse",
                 table: "tbl_Headlines",
                 column: "coursesIDCourse");
@@ -663,10 +705,16 @@ namespace WebPlatformV1.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "PanelConsultant");
+
+            migrationBuilder.DropTable(
                 name: "tbl_Attaches");
 
             migrationBuilder.DropTable(
                 name: "tbl_FinnialManegments");
+
+            migrationBuilder.DropTable(
+                name: "Tbl_Finnials");
 
             migrationBuilder.DropTable(
                 name: "tbl_Headlines");

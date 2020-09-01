@@ -10,8 +10,8 @@ using WebPlatformV1.Models.DbContext;
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    [Migration("20200829152236_initial")]
-    partial class initial
+    [Migration("20200901110224_seedGrade")]
+    partial class seedGrade
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -276,6 +276,24 @@ namespace WebPlatformV1.Migrations
                     b.ToTable("tbl_AddPanels");
                 });
 
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_AddPanelConsultant", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Day")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PanelConsultant");
+                });
+
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Attach", b =>
                 {
                     b.Property<int>("IDAttach")
@@ -437,6 +455,35 @@ namespace WebPlatformV1.Migrations
                     b.ToTable("tbl_Dos");
                 });
 
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Finnial", b =>
+                {
+                    b.Property<int>("IDFinancial")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DatePey")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IDConsultant")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("NumReceipt")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("consultantId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("IDFinancial");
+
+                    b.HasIndex("consultantId");
+
+                    b.ToTable("Tbl_Finnials");
+                });
+
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_FinnialManegment", b =>
                 {
                     b.Property<int>("IDFinancial")
@@ -444,17 +491,17 @@ namespace WebPlatformV1.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DatePayment")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DatePey")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("IDConsultant")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumReceipt")
-                        .HasColumnType("int");
-
-                    b.Property<string>("State")
+                    b.Property<string>("IDConsultant")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("NumReceipt")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
 
                     b.Property<string>("consultantId")
                         .HasColumnType("nvarchar(450)");
@@ -631,6 +678,68 @@ namespace WebPlatformV1.Migrations
                     b.HasKey("IDGrade");
 
                     b.ToTable("grades");
+
+                    b.HasData(
+                        new
+                        {
+                            IDGrade = 1,
+                            grade = "اول"
+                        },
+                        new
+                        {
+                            IDGrade = 2,
+                            grade = "دوم"
+                        },
+                        new
+                        {
+                            IDGrade = 3,
+                            grade = "سوم"
+                        },
+                        new
+                        {
+                            IDGrade = 4,
+                            grade = "چهارم"
+                        },
+                        new
+                        {
+                            IDGrade = 5,
+                            grade = "پنجم"
+                        },
+                        new
+                        {
+                            IDGrade = 6,
+                            grade = "ششم"
+                        },
+                        new
+                        {
+                            IDGrade = 7,
+                            grade = "هفتم"
+                        },
+                        new
+                        {
+                            IDGrade = 8,
+                            grade = "هشتم"
+                        },
+                        new
+                        {
+                            IDGrade = 9,
+                            grade = "نهم"
+                        },
+                        new
+                        {
+                            IDGrade = 10,
+                            grade = "دهم"
+                        },
+                        new
+                        {
+                            IDGrade = 11,
+                            grade = "یازدهم"
+                        },
+                        new
+                        {
+                            IDGrade = 12,
+                            grade = "دوازدهم"
+                        });
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.Consultant", b =>
@@ -804,6 +913,13 @@ namespace WebPlatformV1.Migrations
                     b.HasOne("WebPlatformV1.Models.Student", "student")
                         .WithMany()
                         .HasForeignKey("studentId");
+                });
+
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Finnial", b =>
+                {
+                    b.HasOne("WebPlatformV1.Models.Consultant", "consultant")
+                        .WithMany()
+                        .HasForeignKey("consultantId");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_FinnialManegment", b =>

@@ -10,8 +10,8 @@ using WebPlatformV1.Models.DbContext;
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    [Migration("20200830231055_panel")]
-    partial class panel
+    [Migration("20200901095939_initil")]
+    partial class initil
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -455,6 +455,35 @@ namespace WebPlatformV1.Migrations
                     b.ToTable("tbl_Dos");
                 });
 
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Finnial", b =>
+                {
+                    b.Property<int>("IDFinancial")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DatePey")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IDConsultant")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("NumReceipt")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("consultantId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("IDFinancial");
+
+                    b.HasIndex("consultantId");
+
+                    b.ToTable("Tbl_Finnials");
+                });
+
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_FinnialManegment", b =>
                 {
                     b.Property<int>("IDFinancial")
@@ -462,17 +491,17 @@ namespace WebPlatformV1.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DatePayment")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DatePey")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("IDConsultant")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumReceipt")
-                        .HasColumnType("int");
-
-                    b.Property<string>("State")
+                    b.Property<string>("IDConsultant")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("NumReceipt")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
 
                     b.Property<string>("consultantId")
                         .HasColumnType("nvarchar(450)");
@@ -822,6 +851,13 @@ namespace WebPlatformV1.Migrations
                     b.HasOne("WebPlatformV1.Models.Student", "student")
                         .WithMany()
                         .HasForeignKey("studentId");
+                });
+
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Finnial", b =>
+                {
+                    b.HasOne("WebPlatformV1.Models.Consultant", "consultant")
+                        .WithMany()
+                        .HasForeignKey("consultantId");
                 });
 
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_FinnialManegment", b =>
