@@ -457,9 +457,10 @@ namespace WebPlatformV1.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        public IActionResult PanelConsultant(Tbl_AddPanelConsultant panel)
+        public IActionResult PanelConsultant(consultantpanel model)
         {
-            return View(panel);
+            model.Panel = _context.PanelConsultant.ToList();
+            return View(model);
         }
         public IActionResult Peyment(int id)
         {
@@ -482,29 +483,32 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult OnlinePayment(int id)
         {
-            var studentId = _userManager.GetUserId(User);
+            var cid = _userManager.GetUserId(User);
 
             if (HttpContext.Request.Query["Status"] != "" &&
                 HttpContext.Request.Query["Status"].ToString().ToLower() == "ok" &&
                 HttpContext.Request.Query["Authority"] != "")
             {
                 string authority = HttpContext.Request.Query["Authority"].ToString();
-                var panel = _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending(p => p.IDAddPanel).FirstOrDefault();
-                var student = _context.students.FirstOrDefault(p => p.Id == studentId);
-                var ConsultantWallet = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == student.ConsultantID);
+                var panel = _context.PanelConsultant.FirstOrDefault(p => p.ID == id);
+
+                var consultant = _context.consultants.FirstOrDefault(p => p.Id == cid);
                 DateTime today = DateTime.Today;
                 DateTime CreditTime1 = today.AddDays(panel.Day);
                 var payment = new Payment(panel.Price);
                 var res = payment.Verification(authority).Result;
                 if (res.Status == 100)
                 {
-                    ConsultantWallet.Credit = ConsultantWallet.Credit + panel.Price;
-                    student.CreditTime = CreditTime1;
-                    panel.Status = true;
-                    _context.students.Update(student);
-                    _context.tbl_Wallets.Update(ConsultantWallet);
+                    Tbl_FinnialManegment savepeyhistory = new Tbl_FinnialManegment();
+                    savepeyhistory.DatePayment = DateTime.Today;
+                    savepeyhistory.IDConsultant = cid;
+                    savepeyhistory.NumReceipt = res.RefId;
+                    savepeyhistory.State = true;
+                    _context.tbl_FinnialManegments.Add(savepeyhistory);
+                    consultant.CreditTime = CreditTime1;
+                    
+                    _context.consultants.Update(consultant);
 
-                    _context.tbl_AddPanels.Update(panel);
                     _context.SaveChanges();
                     ViewBag.code = res.RefId;
                     return View();

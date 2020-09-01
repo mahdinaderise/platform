@@ -210,10 +210,10 @@ namespace WebPlatformV1.Models.DbContext
     {
         [Key]
         public int IDFinancial { get; set; }
-        public int IDConsultant { get; set; }
-        public int NumReceipt { get; set; }
-        public int DatePayment { get; set; }
-        public string State { get; set; }
+        public string IDConsultant { get; set; }
+        public long NumReceipt { get; set; }
+        public DateTime DatePayment { get; set; }
+        public bool State { get; set; }
         public Consultant consultant { get; set; }
         public Student student { get; set; }
 

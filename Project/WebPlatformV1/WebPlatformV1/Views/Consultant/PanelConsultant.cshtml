@@ -1,4 +1,4 @@
-﻿@model IEnumerable< WebPlatformV1.Models.DbContext.Tbl_AddPanelConsultant>
+﻿@model IEnumerable< consultantpanel>
 @{
     ViewData["Title"] = "PanelConsultant";
     Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
@@ -14,15 +14,19 @@
 <div class="container-fluid">
     @foreach (var item in Model)
     {
-        <div class="col-md-3">
-            <div class="card text-white bg-primary">
-                <div class="card-header">پنل @item.Day روزه</div>
-                <div class="card-body">
-                    <h5 class="card-title">قیمت: @item.Price</h5>
-                    <a asp-action="Peyment" asp-controller="Consultant" class="btn btn-success" asp-route-id="@item.ID" >پرداخت</a>
+        @foreach (var items in item.Panel)
+        {
+            <div class="col-md-3">
+                <div class="card text-white bg-primary">
+                    <div class="card-header">پنل @items.Day روزه</div>
+                    <div class="card-body">
+                        <h5 class="card-title">قیمت: @items.Price</h5>
+                        <a asp-action="Peyment" asp-controller="Consultant" class="btn btn-success" asp-route-id="@items.ID">پرداخت</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
+
     }
-  
+
 </div>
