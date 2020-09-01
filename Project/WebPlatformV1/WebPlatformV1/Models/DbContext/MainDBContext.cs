@@ -17,13 +17,13 @@ namespace WebPlatformV1.Models.DbContext
         public MainDBContext(DbContextOptions dbContextOptions)
       : base(dbContextOptions)
         {
-            
+
 
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            
+
             #region seed data course
 
             builder.Entity<Tbl_Course>().HasData(new Tbl_Course()
@@ -70,7 +70,7 @@ namespace WebPlatformV1.Models.DbContext
                                 NameCourse = "زیست",
                                 grade = "3"
                             },
-                              
+
                                     new Tbl_Course()
                                     {
                                         IDCourse = 10,
@@ -148,9 +148,19 @@ namespace WebPlatformV1.Models.DbContext
                                   }
                                   );
             #endregion
+            builder.Entity<Tbl_Balance>().HasData(new Tbl_Balance()
+            {
+                Id = 1,
+                SumComosion = 0,
+            });
+            builder.Entity<Tbl_Comision>().HasData(new Tbl_Comision()
+            {
+                Id = 1,
+                percent=5,
+            });
 
             base.OnModelCreating(builder);
-          
+
 
         }
         public DbSet<Student> students { get; set; }
@@ -172,6 +182,12 @@ namespace WebPlatformV1.Models.DbContext
         public DbSet<SendDegree> SendDegree { get; set; }
         public DbSet<Tbl_grade> grades { get; set; }
         public DbSet<Tbl_AddPanelConsultant> PanelConsultant { get; set; }
+        public DbSet<Tbl_Balance> Tbl_Balances { get; set; }
+        public DbSet<Tbl_HistoryPey> Tbl_HistoryPeys { get; set; }
+        public DbSet<Tbl_Comision> Tbl_Comisions { get; set; }
+
+
+
 
     }
 
@@ -187,7 +203,8 @@ namespace WebPlatformV1.Models.DbContext
         public Consultant consultant { get; set; }
     }
     public class SendDegree
-    {   [Key]
+    {
+        [Key]
         public int Id { get; set; }
         public bool IsSend { get; set; }
         public int state { get; set; }
@@ -204,7 +221,7 @@ namespace WebPlatformV1.Models.DbContext
         public int IDAttach { get; set; }
         public string Link { get; set; }
         public string Type { get; set; }
-        public Tbl_Blog blog { get; set; }   
+        public Tbl_Blog blog { get; set; }
     }
     public class Tbl_Course
     {
@@ -214,7 +231,7 @@ namespace WebPlatformV1.Models.DbContext
         public string grade { get; set; }
         public ICollection<Tbl_Tasks> tasks { get; set; }
         //public IList<Tbl_TasksCourse> Tbl_TasksCourses { get; set; }
-        public ICollection<Tbl_Headline>headlines { get; set; }
+        public ICollection<Tbl_Headline> headlines { get; set; }
     }
     public class Tbl_grade
     {
@@ -265,9 +282,9 @@ namespace WebPlatformV1.Models.DbContext
 
         // Navigation 
         public Tbl_Course Course { get; set; }
-        public  Consultant Cansultant { get; set; }
-        public  Student Student { get; set; }
-        public  Tbl_Do Do { get; set; }
+        public Consultant Cansultant { get; set; }
+        public Student Student { get; set; }
+        public Tbl_Do Do { get; set; }
 
     }
     public class Tbl_FinnialManegment
@@ -291,6 +308,30 @@ namespace WebPlatformV1.Models.DbContext
         public bool State { get; set; }
         public DateTime DatePey { get; set; }
         public Consultant consultant { get; set; }
+    }
+    public class Tbl_HistoryPey
+    {
+        public int Id { get; set; }
+        public long RefId { get; set; }
+        public int Peyamount { set; get; }
+        public int comision { set; get; }
+        public string ConsultantId { get; set; }
+        public DateTime DatePey { get; set; }
+
+        public ICollection< Consultant> consultants { get; set; }
+
+    }
+    public class Tbl_Comision
+    {
+        [Key]
+        public int Id { get; set; }
+        public int percent { get; set; }
+    }
+    public class Tbl_Balance
+    {
+        [Key]
+        public int Id { get; set; }
+        public int SumComosion { get; set; }
     }
     public class Tbl_Headline
     {
