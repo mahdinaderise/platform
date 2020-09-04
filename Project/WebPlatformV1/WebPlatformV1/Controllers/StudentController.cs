@@ -88,16 +88,31 @@ namespace WebPlatformV1.Controllers
             #region count of credit
             var credittime = r.CreditTime.DayOfYear;
             var Today = DateTime.Today.DayOfYear;
-            ViewBag.credittime = credittime - Today;
+            if (credittime - Today>0)
+            {
+                ViewBag.credittime = credittime - Today;
+
+            }
+            else
+            {
+                ViewBag.credittime = 0;
+            }
             #endregion
             #region count of do task
             var tasks = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent).Count();
             var tasksdo = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.isDo == true).Count();
             var tasksNdo = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.isDo == false).Count();
             var todayTask= _context.tbl_Tasks.Where(p => p.SendDelivery == DateTime.Today).Count();
-      
-            ViewBag.DoTest = (tasksdo * 100) / tasks;
-            ViewBag.NDoTest = ( tasksNdo * 100) / tasks;
+            if (tasks !=0)
+            {
+                ViewBag.DoTest = (tasksdo * 100) / tasks;
+                ViewBag.NDoTest = (tasksNdo * 100) / tasks;
+            }
+            else
+            {
+                ViewBag.DoTest = 0;
+                ViewBag.NDoTest = 0;
+            }
             ViewBag.Tasks = tasks;
             ViewBag.tasksdo = tasksdo;
             ViewBag.today = todayTask;

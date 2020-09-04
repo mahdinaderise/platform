@@ -86,7 +86,21 @@ namespace WebPlatformV1.Controllers
             var NowDateTime = DateTime.Today;
             var StartDate = model.StartDate;
             var EndDate = model.EndDate;
+            var r = _context.students.Find(id);
+
             model.tasks = _context.tbl_Tasks.Where(p => p.StudentId == id && p.SendDelivery == DateTime.Today).ToList();
+            ViewBag.tasksdo = _context.tbl_Tasks.Where(p => p.StudentId == id && p.isDo == true).Count();
+            var credittime = r.CreditTime.DayOfYear;
+            var Today = DateTime.Today.DayOfYear;
+            if (credittime - Today > 0)
+            {
+                ViewBag.credittime = credittime - Today;
+
+            }
+            else
+            {
+                ViewBag.credittime = 0;
+            }
             return View(model);
         }
         [HttpPost]
@@ -95,6 +109,7 @@ namespace WebPlatformV1.Controllers
             var id = HttpContext.Session.GetString("id");
             model.Students = _context.students.Where(p => p.Id == id).ToList();
             model.tasks = _context.tbl_Tasks.Where(p => p.StudentId == id && p.SendDelivery == model.StartDate).ToList();
+           
 
             return View(model);
         }
@@ -499,12 +514,12 @@ namespace WebPlatformV1.Controllers
                 var res = payment.Verification(authority).Result;
                 if (res.Status == 100)
                 {
-                    Tbl_FinnialManegment savepeyhistory = new Tbl_FinnialManegment();
-                    savepeyhistory.DatePayment = DateTime.Today;
+                    Tbl_Finnial savepeyhistory = new Tbl_Finnial();
+                    savepeyhistory.DatePey = DateTime.Today;
                     savepeyhistory.IDConsultant = cid;
                     savepeyhistory.NumReceipt = res.RefId;
                     savepeyhistory.State = true;
-                    _context.tbl_FinnialManegments.Add(savepeyhistory);
+                    _context.Tbl_Finnials.Add(savepeyhistory);
                     consultant.CreditTime = CreditTime1;
                     
                     _context.consultants.Update(consultant);
