@@ -33,6 +33,9 @@ namespace WebPlatformV1.Models
 
         public string ProfilePicUrl { get; set; }
         public string CardNumber { get; set; }
+        public string Province { get; set; }
+        public string city { get; set; }
+        public string telephone { get; set; }
         public string Address { get; set; }
         public string Shaba { get; set; }
         public DateTime CreditTime { get; set; }

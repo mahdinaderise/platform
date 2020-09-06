@@ -21,7 +21,7 @@ namespace WebPlatformV1.Controllers
         private readonly SignInManager<ApplicationUsers> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(MainDBContext context, UserManager<ApplicationUsers> userManager, SignInManager<ApplicationUsers> signInManager,RoleManager<IdentityRole> roleManager)
+        public AccountController(MainDBContext context, UserManager<ApplicationUsers> userManager, SignInManager<ApplicationUsers> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -58,7 +58,9 @@ namespace WebPlatformV1.Controllers
                     Email = model.Email,
                     NationalCode = model.NationalCode,
                     State = false,
-                    EmailConfirmed = true
+                    EmailConfirmed = true,
+                    Name = model.Name,
+                    Family = model.Family
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
@@ -95,15 +97,17 @@ namespace WebPlatformV1.Controllers
                 await _roleManager.CreateAsync(role);
             }
 
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = new Consultant()
                 {
                     UserName = model.UserName,
                     Email = model.Email,
                     NationalCode = model.NationalCode,
-                   State=true,
-                    EmailConfirmed = true
+                    State = true,
+                    EmailConfirmed = true,
+                    Name = model.Name,
+                    Family = model.Family
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
@@ -111,7 +115,7 @@ namespace WebPlatformV1.Controllers
                 if (result.Succeeded)
                 {
                     var result1 = await _userManager.AddToRoleAsync(user, "Consultant");
-                 
+
                     return RedirectToAction("Index", "Home");
                 }
 
@@ -200,7 +204,7 @@ namespace WebPlatformV1.Controllers
             }
             return View(model);
         }
-      
+
         public async Task<IActionResult> LogOutStudent()
         {
             await _signInManager.SignOutAsync();
@@ -215,5 +219,5 @@ namespace WebPlatformV1.Controllers
         }
     }
 
-    
+
 }
