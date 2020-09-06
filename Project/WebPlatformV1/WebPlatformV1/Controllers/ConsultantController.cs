@@ -383,7 +383,9 @@ namespace WebPlatformV1.Controllers
             model.PhoneNumber = C.PhoneNumber;
             model.Shaba = C.Shaba;
             model.ProfilePicUrl = C.ProfilePicUrl;
-
+            model.telephone = C.telephone;
+            model.Province = C.Province;
+            model.city = C.city;
             #endregion
 
             #region get on char of name and family
@@ -415,6 +417,9 @@ namespace WebPlatformV1.Controllers
                 c.CardNumber = model.CardNumber;
                 c.PhoneNumber = model.PhoneNumber;
                 c.Shaba = model.Shaba;
+                c.city = model.city;
+                c.Province = model.Province;
+                c.telephone = model.telephone;
                 await _context.SaveChangesAsync();
                 if (model.Picture?.Length > 0)
                 {
