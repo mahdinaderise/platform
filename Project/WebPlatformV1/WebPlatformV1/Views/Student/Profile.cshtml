@@ -36,62 +36,14 @@
                         else
                         {
                             <figure class="avatar avatar-xl">
-                                      class="rounded-circle bg-info" alt="...">
+                                <img src="/images/Profile/@(Model.id).jpg"
+                                     class="rounded-circle bg-info" alt="...">
                             </figure>
                         }
 
                     </div>
 
                 </div>
-            </div>
-            <div class="col-md-10">
-                <div class="table-responsive">
-                    <table class="table table-hover bg-white text-center">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col"> کد ارسال</th>
-
-                                <th scope="col"> وضعیت</th>
-                                <th scope="col"> توضیحات </th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.Degree)
-                            {
-                                <tr>
-                                    <td>@item.Id</td>
-                                    @if (item.state == 1)
-                                    {
-                                        <td> درحال بررسی</td>
-
-                                    }
-                                    @if (item.state == 2)
-                                    {
-                                        <td> رد شده</td>
-
-                                    }
-                                    @if (item.state == 3)
-                                    {
-                                        <td> تایید شده</td>
-
-                                    }
-                                    @*<td> @item.Description</td>*@
-                                   @* @if (item.state == 3 || item.state == 1)*@
-                                    @*{
-                                        <th scope="col"> <a href="~/images/Degree/@(Model.id).jpg"> نمایش تصویر ارسالی</a></th>
-
-                                    }*@
-
-                                </tr>
-
-                            }
-
-
-                        </tbody>
-                    </table>
-                </div>
-
             </div>
         </div>
         <div class="Row">
@@ -117,32 +69,14 @@
 
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-3">
-
-                                        <label asp-for="CardNumber">شماره کارت</label>
-                                        <input type="number" class="form-control" asp-for="CardNumber">
-
-                                    </div>
-
-
-                                    <div class="form-group col-md-3">
-
-                                        <label for="exampleInputPassword1">شماره شبا</label>
-                                        <input type="number" class="form-control" asp-for="Shaba">
-
-                                    </div>
-                                </div>
+                              
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
                                         <label asp-for="PhoneNumber">شماره تلفن</label>
                                         <input type="number" class="form-control" asp-for="PhoneNumber">
 
                                     </div>
-                                    <div class="form-group col-md-9">
-                                        <label for="exampleInputPassword1"> آدرس</label>
-                                        <input type="text" class="form-control" asp-for="Address" id="exampleInputPassword1">
-                                    </div>
+                                  
                                 </div>
                             </div>
                             <div class="form-row">
@@ -164,7 +98,7 @@
                 </div>
             </div>
         </div>
-        <div class="Row">
+        @*<div class="Row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
@@ -194,7 +128,7 @@
                 </div>
             </div>
 
-        </div>
+        </div>*@
         <!-- اینجا ساخته شود -->
         <div class="row">
         </div>

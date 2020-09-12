@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+    <div class="main-content">
+        <h6> @ViewBag.s</h6>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="card bg-secondary-gradient">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-7">
+                                    <h6 class="card-title mb-3">خوش برگشتی (نام کاربر)</h6>
+                                    <p>با چک کردن قسمت های مختلف بیشتر با سایت آشنا شو لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                                    <ul class="mb-3">
+                                        <li>این قسمت ها را مشاهده کنید</li>
+                                        <li>مخاطبان خود را اضافه کنید</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-5">
+                                    <img src="/assets/media/svg/undraw_onboarding_o8mv.svg" alt="..." class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex justify-content-between">
+                                <h6 class="card-title">وضعیت مشاورین در سایت </h6>
+
+                            </div>
+                            <h2 class="mb-3 font-weight-bold">@ViewBag.consultant</h2>
+                            <div class="progress md-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width:  @ViewBag.DeAcriveConsultant%" aria-valuenow=" @ViewBag.DeAcriveConsultant" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width: @ViewBag.ActiveConsultant%" aria-valuenow=" @ViewBag.ActiveConsultant" aria-valuemin="0" aria-valuemax="100"></div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p class="mb-0">
+                                        <span class="fa fa-circle text-danger mr-1"></span>
+                                        پروفایل های غیرفعال
+                                    </p>
+                                    <h5 class="mt-2 mb-0">@ViewBag.DeAcriveConsultant%</h5>
+                                </div>
+
+
+                                <div class="col">
+                                    <p class="mb-0">
+                                        <span class="fa fa-circle text-success mr-1"></span>
+                                        پروفایل های فعال
+                                    </p>
+                                    <h5 class="mt-2 mb-0">@ViewBag.ActiveConsultant%</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h6 class="card-title mb-3">اعتبار مشاوران</h6>
+                                            <div class="d-flex d-sm-block d-lg-flex align-items-end">
+                                                <h2 class="mb-0 mr-2 font-weight-bold">@ViewBag.CreditConsultant</h2>
+                                                <p class="small text-muted mb-0 line-height-20">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="avatar avatar-lg">
+                                                <div class="avatar-title bg-success-bright text-success rounded-circle">
+                                                    <i class="fa fa-users"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h6 class="card-title mb-3">تعداد دانش اموزان </h6>
+                                            <div class="d-flex d-sm-block d-lg-flex align-items-end">
+                                                <h2 class="mb-0 mr-2 font-weight-bold">@ViewBag.CountStudent</h2>
+                                                <p class="small text-muted mb-0 line-height-20">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="avatar avatar-lg">
+                                                <div class="avatar-title bg-warning-bright text-warning rounded-circle">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h6 class="card-title mb-3">اعتبار مالی</h6>
+                                            <div class="d-flex d-sm-block d-lg-flex align-items-end">
+                                                <h2 class="mb-0 mr-2 font-weight-bold"> @ViewBag.Credit تومان</h2>
+                                                <p class="small text-muted mb-0 line-height-20">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="avatar avatar-lg">
+                                                <div class="avatar-title bg-info-bright text-info rounded-circle">
+                                                    <i class="fa fa-money"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+        <!-- end::main-content -->
+
+    </div>
+
