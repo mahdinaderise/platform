@@ -83,8 +83,14 @@
                 </div>
             </div>
         </div>
+        @if (Model.Degree==null)
+        {
+            <h3>تمام مدارک فرد تایید شده</h3>
+        }
         <!-- end::main-content -->
-        <div class="row">
+    <div class="row">
+        @if (Model.Degree.Count != 0)
+        {
             @foreach (var item in Model.Degree)
             {
 
@@ -113,7 +119,7 @@
                             <form asp-action="AcceptDeagre" asp-controller="admin" asp-route-id="@item.Id" method="post">
                                 <button type="submit" class="btn btn-success" style="margin:10px">تایید مدرک</button>
                             </form>
-                            <form asp-action="AcceptDeagre" asp-controller="admin" asp-route-id="@item.Id" method="post">
+                            <form asp-action="RejectDeagre" asp-controller="admin" asp-route-id="@item.Id" method="get">
                                 <button type="submit" class="btn btn-danger" style="margin:10px">رد مدرک</button>
                             </form>
                         </div>
@@ -121,18 +127,32 @@
                     </div>
                 </div>
                 @*<div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">تصویر مدرک</h6>
-                            </div>
-                            <img src="/images/Degree/@(ViewBag.id).jpg" class="card-img-top" alt="image">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">تصویر مدرک</h6>
                         </div>
-                    </div>*@
+                        <img src="/images/Degree/@(ViewBag.id).jpg" class="card-img-top" alt="image">
+                    </div>
+                </div>*@
 
 
             }
+        }
+        else
+        {
+            <h5>تمام مدارک مشاور تایید شده لطفا بر روی قسمت فعال سازی کلیک کنید.</h5>
+            <div class="col-12  bg-white">
+                <div class="d-flex justify-content-center">
+                    <form asp-action="ActiveAccount" asp-controller="admin" asp-route-id="@ViewBag.id" method="post">
+                        <button type="submit" class="btn btn-success" style="margin:10px">فعال سازی</button>
+                    </form>
+                   
+                </div>
 
-        </div>
+            </div>
+        }
+
+    </div>
 
     </div>
 </div>

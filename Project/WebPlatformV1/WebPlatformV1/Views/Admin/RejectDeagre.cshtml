@@ -1,0 +1,37 @@
+﻿@model DegreeCheck
+@{
+    ViewData["Title"] = "RejectDeagre";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main-content">
+
+    <div class="container-fluid">
+
+        <div class="card-body">
+            <h5 class="card-title"> رد مدرک انتخابی</h5>
+            <form class="needs-validation" novalidate asp-action="RejectDeagre" asp-controller="Admin" method="post">
+              
+                <div class="form-row">
+                   
+                    <div class="col-md-6 mb-3">
+                        <input type="hidden" asp-for="id" value="@ViewBag.id" />
+                        <label for="validationTooltip03">توضیحات</label>
+                        <input type="text" class="form-control" id="validationTooltip03" placeholder="شرح" required asp-for="Description" />
+                        <div class="invalid-tooltip">
+                            شرح وظیفه را وارد کنید.
+                        </div>
+                    </div>
+                </div>
+                 <button class="btn btn-primary" type="submit">ارسال</button>
+
+            </form>
+        </div>
+        <!-- end::main-content -->
+   
+
+    </div>
+
+</div>
+
+

@@ -13,5 +13,7 @@ namespace WebPlatformV1.ViewModels.Admin
             Degree = new List<SendDegree>();
         }
         public List<SendDegree> Degree { get; set; }
+        public int id { get; set; }
+        public string Description { get; set; }
     }
 }
