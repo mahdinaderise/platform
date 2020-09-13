@@ -240,6 +240,9 @@ namespace WebPlatformV1.Migrations
                     b.Property<int>("state")
                         .HasColumnType("int");
 
+                    b.Property<string>("type")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("SendDegree");
@@ -839,6 +842,9 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("ProfilePicUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Province")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Shaba")
                         .HasColumnType("nvarchar(max)");
 
@@ -854,11 +860,17 @@ namespace WebPlatformV1.Migrations
                     b.Property<int?>("addPanelIDAddPanel")
                         .HasColumnType("int");
 
+                    b.Property<string>("city")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("isAcceptDegree")
                         .HasColumnType("bit");
 
                     b.Property<int?>("sendDegreeId")
                         .HasColumnType("int");
+
+                    b.Property<string>("telephone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasIndex("Tbl_HistoryPeyId");
 

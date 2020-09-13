@@ -47,6 +47,7 @@ namespace WebPlatformV1.Controllers
                 var Wallet = new Tbl_Wallet();
                 Wallet.ConsultantId = cId;
                 Wallet.Credit = 0;
+               
                 _context.tbl_Wallets.Add(Wallet);
                 _context.SaveChanges();
             }
@@ -468,6 +469,7 @@ namespace WebPlatformV1.Controllers
                         sendDegree.IsSend = true;
                         sendDegree.ConsultantId = consultantId;
                         sendDegree.state = 1;
+                        sendDegree.type = "Degree";
                         _context.SendDegree.Add(sendDegree);
                         _context.SaveChanges();
 
@@ -487,6 +489,9 @@ namespace WebPlatformV1.Controllers
                         sendDegreemeli.IsSend = true;
                         sendDegreemeli.ConsultantId = consultantId;
                         sendDegreemeli.state = 1;
+                        sendDegreemeli.type = "Melli";
+                        var con = _context.consultants.Find(consultantId);
+                        con.IsSendDegree = true;
                         _context.SendDegree.Add(sendDegreemeli);
                         _context.SaveChanges();
 

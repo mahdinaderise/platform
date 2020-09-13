@@ -10,8 +10,8 @@ using WebPlatformV1.Models.DbContext;
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    [Migration("20200904111311_new")]
-    partial class @new
+    [Migration("20200913065947_type")]
+    partial class type
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -241,6 +241,9 @@ namespace WebPlatformV1.Migrations
 
                     b.Property<int>("state")
                         .HasColumnType("int");
+
+                    b.Property<string>("type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -841,6 +844,9 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("ProfilePicUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Province")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Shaba")
                         .HasColumnType("nvarchar(max)");
 
@@ -856,11 +862,17 @@ namespace WebPlatformV1.Migrations
                     b.Property<int?>("addPanelIDAddPanel")
                         .HasColumnType("int");
 
+                    b.Property<string>("city")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("isAcceptDegree")
                         .HasColumnType("bit");
 
                     b.Property<int?>("sendDegreeId")
                         .HasColumnType("int");
+
+                    b.Property<string>("telephone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasIndex("Tbl_HistoryPeyId");
 

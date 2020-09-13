@@ -47,8 +47,15 @@ using WebPlatformV1.ViewModels.StudentViewModel;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\Views\_ViewImports.cshtml"
+using WebPlatformV1.ViewModels.Admin;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c4349eda0781a4c23ba59b7832310144534271c5", @"/Views/Student/students.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8db76787fbf33d9986710adc22c8a6b542f110a1", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cb22dfadcffadcb5e8623a0efad498c6bfb74f15", @"/Views/_ViewImports.cshtml")]
     public class Views_Student_students : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "France", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -140,7 +147,7 @@ using WebPlatformV1.ViewModels.StudentViewModel;
                                 <div>
                                     <select class=""select2-example"">
                                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c58977", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c59180", async() => {
                 WriteLiteral("انتخاب پایه");
             }
             );
@@ -154,7 +161,7 @@ using WebPlatformV1.ViewModels.StudentViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c59980", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c510183", async() => {
                 WriteLiteral("پایه اول  ");
             }
             );
@@ -170,7 +177,7 @@ using WebPlatformV1.ViewModels.StudentViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c511183", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c511387", async() => {
                 WriteLiteral("پایه دوم  ");
             }
             );
@@ -186,7 +193,7 @@ using WebPlatformV1.ViewModels.StudentViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c512387", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c512591", async() => {
                 WriteLiteral("  پایه سوم  ");
             }
             );
@@ -202,7 +209,7 @@ using WebPlatformV1.ViewModels.StudentViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c513593", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c513797", async() => {
                 WriteLiteral("پایه چهارم ");
             }
             );
@@ -218,7 +225,7 @@ using WebPlatformV1.ViewModels.StudentViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c514798", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c515002", async() => {
                 WriteLiteral("پایه پنجم ");
             }
             );
@@ -234,7 +241,7 @@ using WebPlatformV1.ViewModels.StudentViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c516002", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c516206", async() => {
                 WriteLiteral("پایه ششم ");
             }
             );
@@ -250,7 +257,7 @@ using WebPlatformV1.ViewModels.StudentViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c517205", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4349eda0781a4c23ba59b7832310144534271c517409", async() => {
                 WriteLiteral("پایه هفتم");
             }
             );

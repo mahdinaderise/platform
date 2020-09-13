@@ -210,6 +210,8 @@ namespace WebPlatformV1.Models.DbContext
         public int state { get; set; }
         public string Description { get; set; }
         public string ConsultantId { get; set; }
+        public string type {get; set; }
+
         public ICollection<Consultant> consultant { get; set; }
 
 

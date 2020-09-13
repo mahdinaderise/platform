@@ -22,9 +22,9 @@
                         @foreach (var item in Model)
                         {
                         <tr>
-                            <td> @item.Name</td>
+                            <td> @item.Name @item.Family </td>
                             <td>@item.NationalCode</td>
-                            <a class="btn btn-primary" title="ویرایش" data-toggle="tooltip" data-placement="bottom" asp-action="StudentPage" asp-controller="Consultant" asp-route-id="@item.Id"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
+                        <td><a class="btn btn-primary" title="ویرایش" data-toggle="tooltip" data-placement="bottom" asp-action="AcceptDeagre" asp-controller="admin" asp-route-id="@item.Id"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a></td>    
 
                         </tr>
                         }

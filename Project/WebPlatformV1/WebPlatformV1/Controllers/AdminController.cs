@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
+using WebPlatformV1.ViewModels.Admin;
 
 namespace WebPlatformV1.Controllers
 {
@@ -42,6 +43,16 @@ namespace WebPlatformV1.Controllers
             var consultants = new List<Consultant>();
             consultants = _context.consultants.Where(p => p.State == false && p.IsSendDegree == true && p.isAcceptDegree == false).ToList();
             return View(consultants);
+        }
+        public IActionResult AcceptDeagre(string id,DegreeCheck model)
+        {
+            var Degree = new List<SendDegree>();
+            var consultant = _context.consultants.FirstOrDefault(p => p.Id == id);
+           model.Degree = _context.SendDegree.Where(p => p.ConsultantId == id && p.state == 1).ToList();
+            ViewBag.Namef = consultant.Name + " " + consultant.Family;
+            ViewBag.id = id;
+           
+            return View(model);
         }
     }
 }

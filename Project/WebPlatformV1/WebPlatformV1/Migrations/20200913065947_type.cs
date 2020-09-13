@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebPlatformV1.Migrations
 {
-    public partial class @new : Migration
+    public partial class type : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,7 +57,8 @@ namespace WebPlatformV1.Migrations
                     IsSend = table.Column<bool>(nullable: false),
                     state = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    ConsultantId = table.Column<string>(nullable: true)
+                    ConsultantId = table.Column<string>(nullable: true),
+                    type = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -299,6 +300,9 @@ namespace WebPlatformV1.Migrations
                     isAcceptDegree = table.Column<bool>(nullable: true),
                     ProfilePicUrl = table.Column<string>(nullable: true),
                     CardNumber = table.Column<string>(nullable: true),
+                    Province = table.Column<string>(nullable: true),
+                    city = table.Column<string>(nullable: true),
+                    telephone = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     Shaba = table.Column<string>(nullable: true),
                     CreditTime = table.Column<DateTime>(nullable: true),
