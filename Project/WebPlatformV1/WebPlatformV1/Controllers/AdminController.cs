@@ -44,6 +44,7 @@ namespace WebPlatformV1.Controllers
             consultants = _context.consultants.Where(p => p.State == false && p.IsSendDegree == true && p.isAcceptDegree == false).ToList();
             return View(consultants);
         }
+        [HttpGet]
         public IActionResult AcceptDeagre(string id,DegreeCheck model)
         {
             var Degree = new List<SendDegree>();
@@ -54,5 +55,16 @@ namespace WebPlatformV1.Controllers
            
             return View(model);
         }
+        [HttpPost]
+        public IActionResult AcceptDeagre(int id)
+        {
+            var Degree = _context.SendDegree.Find(id);
+            Degree.Id = id;
+            Degree.state = 3;
+            _context.SendDegree.Add(Degree);
+            _context.SaveChanges();
+            return View();
+        }
+
     }
 }
