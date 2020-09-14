@@ -2805,3 +2805,6 @@ C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.pdb
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.genruntimeconfig.cache
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RejectDeagre.cshtml.g.cs
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RejectDeagre.cshtml.g.cs
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\MyRequestList.cshtml.g.cs
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\SendRequest.cshtml.g.cs

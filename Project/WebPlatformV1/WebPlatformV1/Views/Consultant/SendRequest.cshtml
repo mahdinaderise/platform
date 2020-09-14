@@ -1,0 +1,57 @@
+﻿@model RequestListPey
+@{
+    ViewData["Title"] = "SendRequest";
+    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
+}
+
+<div class="main-content">
+
+    <div class="page-header">
+        <div class="container-fluid d-sm-flex justify-content-between">
+            <h4> ارسال درخواست مالی</h4>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <!-- اینجا ساخته شود -->
+
+
+        <div class="card">
+            <div class="card-body">
+                <form class="needs-validation" asp-action="SendRequest" asp-controller="Consultant" method="post">
+                    <div class="row">
+                     
+                        <div class="col-md-4 mb-3" style="margin-right: -10px;">
+                            <label for="validationCustom02">  مبلغ درخواستی  </label>
+                            <input type="text" class="form-control" id="validationCustom02" placeholder=" " value="" required asp-for="values1">
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom02">شماره شبا </label>
+                            <input type="text" class="form-control" id="validationCustom02" placeholder=" " value="@ViewBag.Shaba"  asp-for="Shaba">
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom02"> شماره کارت  </label>
+                            <input type="text" class="form-control" id="validationCustom02" placeholder=" " value="@ViewBag.CardNumber" required asp-for="CardNumber">
+
+                        </div>
+
+                    </div>
+
+                    @*<label for="exampleFormControlTextarea1">توضیح من </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>*@
+
+                    <div class="d-flex justify-content-end" style="margin-top: 20px;">
+                        <button type="submit" class="btn btn-success">ثبت</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+        <!-- end::main-content -->
+
+    </div>
+</div>
+

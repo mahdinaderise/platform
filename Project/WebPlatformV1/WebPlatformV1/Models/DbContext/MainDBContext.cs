@@ -156,7 +156,7 @@ namespace WebPlatformV1.Models.DbContext
             builder.Entity<Tbl_Comision>().HasData(new Tbl_Comision()
             {
                 Id = 1,
-                percent=5,
+                percent = 5,
             });
 
             base.OnModelCreating(builder);
@@ -185,7 +185,7 @@ namespace WebPlatformV1.Models.DbContext
         public DbSet<Tbl_Balance> Tbl_Balances { get; set; }
         public DbSet<Tbl_HistoryPey> Tbl_HistoryPeys { get; set; }
         public DbSet<Tbl_Comision> Tbl_Comisions { get; set; }
-
+        public DbSet<Tbl_RequestPeyment> Tbl_RequestPeyment { get; set; }
 
 
 
@@ -210,7 +210,7 @@ namespace WebPlatformV1.Models.DbContext
         public int state { get; set; }
         public string Description { get; set; }
         public string ConsultantId { get; set; }
-        public string type {get; set; }
+        public string type { get; set; }
 
         public ICollection<Consultant> consultant { get; set; }
 
@@ -320,7 +320,7 @@ namespace WebPlatformV1.Models.DbContext
         public string ConsultantId { get; set; }
         public DateTime DatePey { get; set; }
 
-        public ICollection< Consultant> consultants { get; set; }
+        public ICollection<Consultant> consultants { get; set; }
 
     }
     public class Tbl_Comision
@@ -412,6 +412,19 @@ namespace WebPlatformV1.Models.DbContext
         public string Note { get; set; }
         public bool IsFinally { get; set; } = false;
         public ICollection<Consultant> Consultantes { get; set; }
+    }
+    public class Tbl_RequestPeyment
+    {
+        public int id { get; set; }
+        public string CardNumber { get; set; }
+        public string Shaba { get; set; }
+        public bool IsPey { get; set; }
+        public string Descrontion { get; set; }
+        public long refid { get; set; }
+        public int value { get; set; }
+        public string ConsultantID { get; set; }
+
+        public ICollection<Consultant> consultants { get; set; }
     }
     //public class Tbl_TasksCourse
     //{

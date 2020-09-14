@@ -614,6 +614,39 @@ namespace WebPlatformV1.Migrations
                     b.ToTable("Tbl_HistoryPeys");
                 });
 
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_RequestPeyment", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CardNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConsultantID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Descrontion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsPey")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Shaba")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("refid")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("value")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Tbl_RequestPeyment");
+                });
+
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Tasks", b =>
                 {
                     b.Property<int>("IDTasks")
@@ -854,6 +887,9 @@ namespace WebPlatformV1.Migrations
                     b.Property<int?>("Tbl_HistoryPeyId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Tbl_RequestPeymentid")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Tbl_TodoAppConsultantId")
                         .HasColumnType("int");
 
@@ -873,6 +909,8 @@ namespace WebPlatformV1.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasIndex("Tbl_HistoryPeyId");
+
+                    b.HasIndex("Tbl_RequestPeymentid");
 
                     b.HasIndex("Tbl_TodoAppConsultantId");
 
@@ -1061,6 +1099,10 @@ namespace WebPlatformV1.Migrations
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_HistoryPey", null)
                         .WithMany("consultants")
                         .HasForeignKey("Tbl_HistoryPeyId");
+
+                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_RequestPeyment", null)
+                        .WithMany("consultants")
+                        .HasForeignKey("Tbl_RequestPeymentid");
 
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_TodoAppConsultant", null)
                         .WithMany("Consultantes")

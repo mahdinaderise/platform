@@ -13,13 +13,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGeneration;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
+using WebPlatformV1.ViewModels.Admin;
 using WebPlatformV1.ViewModels.Consultant;
 using ZarinpalSandbox;
 
 namespace WebPlatformV1.Controllers
 {
     [Authorize(Roles = "Consultant")]
-
     public class ConsultantController : Controller
     {
         private readonly MainDBContext _context;
@@ -593,6 +593,42 @@ namespace WebPlatformV1.Controllers
             }
 
             return NotFound();
+        }
+        public IActionResult MyRequestList(RequestListPey model)
+        {
+            var cid = _userManager.GetUserId(User);
+
+            model.Request = _context.Tbl_RequestPeyment.Where(p => p.ConsultantID == cid).ToList();
+            return View(model);
+        }
+      
+        public IActionResult SendRequest(RequestListPey model)
+        {
+            var cid = _userManager.GetUserId(User);
+
+            var consultant = _context.consultants.FirstOrDefault(p=>p.Id==cid);
+            ViewBag.CardNumber = consultant.CardNumber;
+            ViewBag.Shaba = consultant.Shaba;
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult SendRequest(RequestListPey model,int?id)
+        {
+            var cid = _userManager.GetUserId(User);
+            var req = new Tbl_RequestPeyment();
+            if (ModelState.IsValid)
+            {
+                req.CardNumber = model.CardNumber;
+                req.ConsultantID = cid;
+                req.Shaba = model.Shaba;
+                req.value = model.values1;
+                _context.Tbl_RequestPeyment.Add(req);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(MyRequestList));
+
+            }
+
+            return View(model);
         }
         public IActionResult Report(string id)
         {

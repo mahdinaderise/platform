@@ -1,0 +1,93 @@
+﻿@model RequestListPey
+@{
+    ViewData["Title"] = "MyRequestList";
+    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
+}
+
+<div class="main-content">
+    <div class="page-header">
+        <div class="container-fluid d-sm-flex justify-content-between">
+            <h4>  لیست درخواست های مالی من</h4>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <!-- اینجا ساخته شود -->
+
+        <div class="d-flex flex-row ">
+            <div class="p-2">
+                <div style="margin-bottom: 20px; " class="d-flex justify-content-end">
+                    <form asp-action="SendRequest" asp-controller="Consultant" method="get">
+                        <button type="submit" class="btn btn-success btn-uppercase">
+                            <i class="ti-check-box mr-2"></i>  درخواست جدید
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-hover bg-white text-center">
+                    <thead class="thead-dark">
+                        <tr>
+
+                            <th scope="col">مبلغ </th>
+                            <th scope="col"> وضعیت   </th>
+                            <th scope="col">کد پیگیری  </th>
+                            <th scope="col">توضیحات کارشناس</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Request.Count != 0)
+                        {
+                            @foreach (var item in Model.Request)
+                            {
+                                <tr>
+
+                                    <td>@item.value</td>
+                                    @if (item.IsPey == true)
+                                    {
+                                        <td>
+                                            پرداخت شده
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            پرداخت نشده
+                                        </td>
+                                    }
+
+                                    <td>@item.refid</td>
+                                    @if (item.Descrontion != null)
+                                    {
+                                        <td>
+                                            @item.Descrontion
+                                        </td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            توضیحی وجود ندارد.
+                                        </td>
+                                    }
+
+
+                                </tr>
+                            }
+                        }
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- end::main-content -->
+
+    </div>
+</div>
+
