@@ -176,15 +176,28 @@ namespace WebPlatformV1.Controllers
                 var panel = _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending(p => p.IDAddPanel).FirstOrDefault();
                 var student = _context.students.FirstOrDefault(p => p.Id == studentId);
                 var ConsultantWallet = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == student.ConsultantID);
+                var Balance = _context.Tbl_Balances.Find(1);
                 DateTime today = DateTime.Today;
               DateTime  CreditTime1= today.AddDays(panel.Day);
                 var payment = new Payment(panel.Price);
                 var res = payment.Verification(authority).Result;
                 if (res.Status == 100)
                 {
-                    ConsultantWallet.Credit = ConsultantWallet.Credit + panel.Price;
+                    Tbl_HistoryPey historyPey = new Tbl_HistoryPey();
+                    historyPey.DatePey = DateTime.Today;
+                    historyPey.Peyamount = panel.Price;
+                    var Darsad = (panel.Price * 5) / 100;
+                    var Result = panel.Price - Darsad;
+                    Balance.SumComosion = Balance.SumComosion + Darsad;
+
+                    historyPey.comision = Darsad;
+                    historyPey.RefId = res.RefId;
+                    historyPey.ConsultantId = ConsultantWallet.ConsultantId;
+                    ConsultantWallet.Credit = ConsultantWallet.Credit + Result;
                     student.CreditTime= CreditTime1;
                     panel.Status = true;
+                    _context.Tbl_Balances.Update(Balance);
+                    _context.Tbl_HistoryPeys.Add(historyPey);
                     _context.students.Update(student);
                     _context.tbl_Wallets.Update(ConsultantWallet);
 
