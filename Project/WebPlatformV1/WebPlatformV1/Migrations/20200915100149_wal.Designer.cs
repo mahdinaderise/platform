@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    partial class MainDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200915100149_wal")]
+    partial class wal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -373,9 +375,6 @@ namespace WebPlatformV1.Migrations
                     b.Property<int>("percent")
                         .HasColumnType("int");
 
-                    b.Property<int>("price")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Tbl_Comisions");
@@ -384,14 +383,7 @@ namespace WebPlatformV1.Migrations
                         new
                         {
                             Id = 1,
-                            percent = 5,
-                            price = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            percent = 0,
-                            price = 45000
+                            percent = 5
                         });
                 });
 
@@ -893,9 +885,6 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("Province")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RequestPeymentid")
-                        .HasColumnType("int");
-
                     b.Property<string>("Shaba")
                         .HasColumnType("nvarchar(max)");
 
@@ -903,6 +892,9 @@ namespace WebPlatformV1.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int?>("Tbl_HistoryPeyId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Tbl_RequestPeymentid")
                         .HasColumnType("int");
 
                     b.Property<int?>("Tbl_TodoAppConsultantId")
@@ -923,9 +915,9 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("telephone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("RequestPeymentid");
-
                     b.HasIndex("Tbl_HistoryPeyId");
+
+                    b.HasIndex("Tbl_RequestPeymentid");
 
                     b.HasIndex("Tbl_TodoAppConsultantId");
 
@@ -1111,13 +1103,13 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("WebPlatformV1.Models.Consultant", b =>
                 {
-                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_RequestPeyment", "RequestPeyment")
-                        .WithMany("consultants")
-                        .HasForeignKey("RequestPeymentid");
-
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_HistoryPey", null)
                         .WithMany("consultants")
                         .HasForeignKey("Tbl_HistoryPeyId");
+
+                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_RequestPeyment", null)
+                        .WithMany("consultants")
+                        .HasForeignKey("Tbl_RequestPeymentid");
 
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_TodoAppConsultant", null)
                         .WithMany("Consultantes")

@@ -1,0 +1,67 @@
+﻿@model RequestListPey
+@{
+    ViewData["Title"] = "RequestPeymentList";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main-content">
+
+
+    <div class="page-header">
+        <div class="container-fluid d-sm-flex justify-content-between">
+            <h4> لیست درخواست های مالی مشاوران</h4>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <!-- اینجا ساخته شود -->
+
+
+
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-hover bg-white text-center">
+                    <thead class="thead-dark">
+                        <tr>
+
+                            <th scope="col">شماره درخواست</th>
+                            <th scope="col">مبلغ درخواستی </th>
+
+                            <th scope="col">عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Request)
+                        {
+                          
+                           
+                        <tr>
+
+                            <td> @item.id</td>
+                            <td>@item.value</td>
+
+                            <td>
+                              
+                                  
+                                    <a class ="btn btn-primary" title="پرداخت" data-toggle="tooltip" data-placement="bottom" asp-controller="admin" asp-action="consultantPageForPey" asp-route-id="@item.id">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+
+                                    </a>
+                               
+                            </td>
+
+                        </tr>
+                            }
+
+                        
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- end::main-content -->
+
+    </div>
+</div>

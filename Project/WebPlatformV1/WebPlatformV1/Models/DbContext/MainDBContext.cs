@@ -157,7 +157,13 @@ namespace WebPlatformV1.Models.DbContext
             {
                 Id = 1,
                 percent = 5,
-            });
+                price=0
+            }, new Tbl_Comision
+            {
+                Id = 2,
+                price = 45000,
+                percent = 0
+            }) ;
 
             base.OnModelCreating(builder);
 
@@ -328,6 +334,7 @@ namespace WebPlatformV1.Models.DbContext
         [Key]
         public int Id { get; set; }
         public int percent { get; set; }
+        public int price { get; set; }
     }
     public class Tbl_Balance
     {
@@ -419,6 +426,9 @@ namespace WebPlatformV1.Models.DbContext
         public string CardNumber { get; set; }
         public string Shaba { get; set; }
         public bool IsPey { get; set; }
+
+        public bool IsStatus { get; set; } 
+
         public string Descrontion { get; set; }
         public long refid { get; set; }
         public int value { get; set; }

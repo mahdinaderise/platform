@@ -41,6 +41,8 @@ namespace WebPlatformV1.Models
         public DateTime CreditTime { get; set; }
         public SendDegree sendDegree { get; set; }
         public Tbl_AddPanel addPanel { get; set; }
+        public Tbl_Wallet Wallet { get; set; }
+        public Tbl_RequestPeyment RequestPeyment { get; set; }
         public ICollection<Tbl_Tasks> tasks { get; set; }
         public ICollection<Tbl_Blog> blogs { get; set; }
 

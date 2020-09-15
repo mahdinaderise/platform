@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebPlatformV1.Models.DbContext;
 
 namespace WebPlatformV1.Migrations
 {
     [DbContext(typeof(MainDBContext))]
-    partial class MainDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200915111955_somech")]
+    partial class somech
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -373,9 +375,6 @@ namespace WebPlatformV1.Migrations
                     b.Property<int>("percent")
                         .HasColumnType("int");
 
-                    b.Property<int>("price")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Tbl_Comisions");
@@ -384,14 +383,7 @@ namespace WebPlatformV1.Migrations
                         new
                         {
                             Id = 1,
-                            percent = 5,
-                            price = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            percent = 0,
-                            price = 45000
+                            percent = 5
                         });
                 });
 

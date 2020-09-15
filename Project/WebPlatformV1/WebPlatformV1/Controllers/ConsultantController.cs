@@ -50,6 +50,9 @@ namespace WebPlatformV1.Controllers
                
                 _context.tbl_Wallets.Add(Wallet);
                 _context.SaveChanges();
+                //var consul = new Consultant();
+                //consul.Id = cId;
+                //consul.WalletId = Wallet.ID;
             }
             var tasks = _context.tbl_Tasks.Where(p => p.ConsultantId == cId).Count();
             var tasksdo = _context.tbl_Tasks.Where(p => p.ConsultantId == cId && p.isDo == true).Count();
@@ -622,6 +625,7 @@ namespace WebPlatformV1.Controllers
                 req.ConsultantID = cid;
                 req.Shaba = model.Shaba;
                 req.value = model.values1;
+                req.IsStatus = true;
                 _context.Tbl_RequestPeyment.Add(req);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(MyRequestList));

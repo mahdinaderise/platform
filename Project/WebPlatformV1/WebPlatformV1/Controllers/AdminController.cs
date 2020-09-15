@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels.Admin;
@@ -105,6 +106,68 @@ namespace WebPlatformV1.Controllers
             _context.consultants.Update(consultant);
             _context.SaveChanges();
             return RedirectToAction(nameof(ConsultantManagement));
+        }
+        [HttpGet]
+        public IActionResult RequestPeymentList(RequestListPey model)
+        {
+            model.Request = _context.Tbl_RequestPeyment.Where(p => p.IsStatus == true && p.IsPey == false).Include(c=>c.consultants).ToList();
+
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult consultantPageForPey(int id , RequestListPey model)
+        {
+            model.SRequest = _context.Tbl_RequestPeyment.FirstOrDefault(p=>p.id==id);
+            var consultant = _context.consultants.FirstOrDefault(p => p.Id == model.SRequest.ConsultantID);
+            ViewBag.NameF = consultant.Name + " " + consultant.Family;
+            ViewBag.CountRequest = _context.Tbl_RequestPeyment.Where(p => p.ConsultantID == model.SRequest.ConsultantID).Count();
+            ViewBag.Creditc = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == model.SRequest.ConsultantID).Credit;
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult consultantPageForPey(int id, RequestListPey model, Tbl_RequestPeyment req)
+        {
+            
+            model.SRequest = _context.Tbl_RequestPeyment.FirstOrDefault(p => p.id == id);
+            var consultant = _context.consultants.FirstOrDefault(p => p.Id == model.SRequest.ConsultantID);
+            ViewBag.NameF = consultant.Name + " " + consultant.Family;
+            ViewBag.CountRequest = _context.Tbl_RequestPeyment.Where(p => p.ConsultantID == model.SRequest.ConsultantID).Count();
+            ViewBag.Creditc = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == model.SRequest.ConsultantID).Credit;
+            var Wallet = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == model.SRequest.ConsultantID);
+            if (Wallet.Credit>= model.SRequest.value)
+            {
+                Wallet.Credit = Wallet.Credit - model.SRequest.value;
+                req.id = id;
+                req.IsPey = true;
+                req.IsStatus = false;
+                req.Descrontion = "درخواست شما بررسی و مبلغ درخواستی از کیف پول شما به حساب شما واریز شد ";
+                req.refid = model.refid;
+                _context.Tbl_RequestPeyment.Update(req);
+                _context.tbl_Wallets.Update(Wallet);
+                _context.SaveChanges();
+            }
+            else
+            {
+                ViewBag.Error = "مقدار درخواستی بیشتر از میزان اعتبار است";
+            }
+          
+            return View(model);
+        }
+        public IActionResult RejectPeyRequest(int id, RequestListPey model, Tbl_RequestPeyment req)
+        {
+            req.id = id;
+            req.IsPey = false;
+            req.IsStatus = false;
+            req.Descrontion = model.Descrontion;
+            _context.Tbl_RequestPeyment.Update(req);
+            _context.SaveChanges();
+            return View();
+        }
+        public IActionResult ComisionManagement(Tbl_Comision model)
+        {
+            model.percent = _context.Tbl_Comisions.Find(1).percent;
+            model.price = _context.Tbl_Comisions.Find(2).price;
+            return View(model);
         }
     }
 }

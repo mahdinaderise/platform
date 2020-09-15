@@ -34,6 +34,7 @@
                             <th scope="col">مبلغ </th>
                             <th scope="col"> وضعیت   </th>
                             <th scope="col">کد پیگیری  </th>
+                            <th scope="col">موقعیت</th>
                             <th scope="col">توضیحات کارشناس</th>
                         </tr>
                     </thead>
@@ -42,39 +43,50 @@
                         {
                             @foreach (var item in Model.Request)
                             {
-                                <tr>
+                        <tr>
 
-                                    <td>@item.value</td>
-                                    @if (item.IsPey == true)
-                                    {
-                                        <td>
-                                            پرداخت شده
-                                        </td>
-                                    }
-                                    else
-                                    {
-                                        <td>
-                                            پرداخت نشده
-                                        </td>
-                                    }
+                            <td>@item.value</td>
+                            @if (item.IsPey == true)
+                            {
+                                <td>
+                                    پرداخت شده
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    پرداخت نشده
+                                </td>
+                            }
+                            @if (item.IsStatus == true)
+                            {
+                                <td>درحال رسیدگی</td>
+                            }
+                            @if (item.IsStatus == false && item.IsPey == true)
+                            {
+                                <td>تایید شده</td>
+                            }
+                            @if (item.IsStatus == false && item.IsPey == false)
+                            {
+                                <td>رد شده</td>
+                            }
+                            <td>@item.refid</td>
+                            @if (item.Descrontion != null)
+                            {
+                                <td>
+                                    @item.Descrontion
+                                </td>
 
-                                    <td>@item.refid</td>
-                                    @if (item.Descrontion != null)
-                                    {
-                                        <td>
-                                            @item.Descrontion
-                                        </td>
-
-                                    }
-                                    else
-                                    {
-                                        <td>
-                                            توضیحی وجود ندارد.
-                                        </td>
-                                    }
+                            }
+                            else
+                            {
+                                <td>
+                                    توضیحی وجود ندارد.
+                                </td>
+                            }
 
 
-                                </tr>
+                        </tr>
                             }
                         }
 
