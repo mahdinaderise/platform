@@ -1,0 +1,155 @@
+﻿@model requestforonline
+@{
+    ViewData["Title"] = "ConsultantPage";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+    <div class="main-content">
+
+        <div class="container-fluid">
+            @*@if (ViewBag.Error != null)
+            {
+                <div class="card">
+                    <h3 class="card-title"> خطا</h3>
+                    <div class="card_body">
+                        <div class="alert alert-danger " role="alert" style="margin-top: 50px;">
+                            <p>@ViewBag.Error</p>
+                        </div>
+
+                    </div>
+                </div>
+            }*@
+
+            <!-- اینجا ساخته شود -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h6 class="card-title mb-3">نام و نام خانوادگی مشاور</h6>
+                                            <div class="d-flex d-sm-block d-lg-flex align-items-end">
+                                                <h2 class="mb-0 mr-2 font-weight-bold">@ViewBag.NameF</h2>
+                                                <p class="small text-muted mb-0 line-height-20">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="avatar avatar-lg">
+                                                <div class="avatar-title bg-success-bright text-success rounded-circle">
+                                                    <i class="fa fa-users"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h6 class="card-title mb-3">تعداد دانش آموزان مشاور </h6>
+                                            <div class="d-flex d-sm-block d-lg-flex align-items-end">
+                                                <h2 class="mb-0 mr-2 font-weight-bold">@ViewBag.CountRequest</h2>
+                                                <p class="small text-muted mb-0 line-height-20">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="avatar avatar-lg">
+                                                <div class="avatar-title bg-warning-bright text-warning rounded-circle">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h6 class="card-title mb-3">اعتبار مشاوران</h6>
+                                            <div class="d-flex d-sm-block d-lg-flex align-items-end">
+                                                <h2 class="mb-0 mr-2 font-weight-bold"> @ViewBag.Creditc تومان</h2>
+                                                <p class="small text-muted mb-0 line-height-20">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="avatar avatar-lg">
+                                                <div class="avatar-title bg-info-bright text-info rounded-circle">
+                                                    <i class="fa fa-money"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">مشخصات کلی مشاور</h5>
+
+                            <div>
+                                <h6>بیوگرافی:</h6> <p>@Model.bio</p>
+                            </div>
+
+
+                            <div>
+                                <h6>چگونگی و زمان های برگزاری جلسات انلاین:</h6> <p>@Model.about</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12">
+            <div class="accordion custom-accordion">
+
+                <div class="accordion-row bg-white">
+                    <a href="#" class="accordion-header">
+                        <span>قبول درخواست</span>
+                        <i class="accordion-status-icon close fa fa-chevron-up"></i>
+                        <i class="accordion-status-icon open fa fa-chevron-down"></i>
+                    </a>
+                    <div class="accordion-body">
+                        <a asp-action="AcceptConsultant" asp-controller="Student" asp-route-id="@Model.id" class="btn btn-success"> انتخاب مشاور</a>
+
+
+                    </div>
+                </div>
+                <div class="accordion-row bg-white">
+                    <a href="#" class="accordion-header">
+                        <span>ایجاد درخواست کلاس آنلاین</span>
+                        <i class="accordion-status-icon close fa fa-chevron-up"></i>
+                        <i class="accordion-status-icon open fa fa-chevron-down"></i>
+                    </a>
+                    <div class="accordion-body">
+                        <form asp-action="RequestonlineClass" asp-controller="student" asp-route-id="@Model.id" method="post">
+                            <textarea asp-for="RequestText" class="form-control" placeholder="توضیحات و زمان پیشنهادی درخواست"></textarea>
+
+                            <button type="submit" class="btn btn-danger" style="margin:10px">ارسال درخواست</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+            </div>
+        </div>
+    </div>
+
+

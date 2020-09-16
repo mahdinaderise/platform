@@ -12,6 +12,7 @@ using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels;
 using WebPlatformV1.ViewModels.Consultant;
+using WebPlatformV1.ViewModels.ConsultantViewModel;
 using WebPlatformV1.ViewModels.StudentViewModel;
 using ZarinpalSandbox;
 
@@ -315,6 +316,28 @@ namespace WebPlatformV1.Controllers
             todo.Id = model.id;
              _context.Tbl_TodoAppStudents.Update(todo);
             await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(index));
+        }
+        public IActionResult SelectConsultant()
+        {
+            var consultants = new List<Consultant>();
+            consultants = _context.consultants.Where(p => p.State == true && p.IsSendDegree == true && p.isAcceptDegree == true).ToList();
+            return View(consultants);
+        }
+        public IActionResult ConsultantPage(string id, requestforonline model)
+        {
+          var  consultant = _context.consultants.FirstOrDefault(p => p.Id == id);
+            model.bio = consultant.Bio;
+            model.about = consultant.about;
+            model.id = consultant.Id;
+            return View(model);
+
+        }
+        public IActionResult AcceptConsultant(string id, requestforonline model)
+        {
+            var studentId = _userManager.GetUserId(User);
+            var student = _context.students.FirstOrDefault(p => p.Id == studentId);
+            student.ConsultantID = id;
             return RedirectToAction(nameof(index));
         }
     }

@@ -192,7 +192,7 @@ namespace WebPlatformV1.Models.DbContext
         public DbSet<Tbl_HistoryPey> Tbl_HistoryPeys { get; set; }
         public DbSet<Tbl_Comision> Tbl_Comisions { get; set; }
         public DbSet<Tbl_RequestPeyment> Tbl_RequestPeyment { get; set; }
-
+        public DbSet<Tbl_RequestonlineclassStudent> tbl_Requestonlineclasses { get; set; }
 
 
     }
@@ -435,6 +435,19 @@ namespace WebPlatformV1.Models.DbContext
         public string ConsultantID { get; set; }
 
         public ICollection<Consultant> consultants { get; set; }
+    }
+    public class Tbl_RequestonlineclassStudent
+    {[Key]
+        public int id { get; set; }
+        public string ConsultantID { get; set; }
+
+        public string StudentID { get; set; }
+        public bool status { get; set; }
+        public string RequestText { get; set; }
+        public ICollection<Consultant> consultants { get; set; }
+        public ICollection<Student> students { get; set; }
+
+
     }
     //public class Tbl_TasksCourse
     //{

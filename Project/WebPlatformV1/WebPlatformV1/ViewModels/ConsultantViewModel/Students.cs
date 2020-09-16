@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebPlatformV1.Models;
 
-namespace WebPlatformV1.ViewModels.Consultant
+namespace WebPlatformV1.ViewModels.ConsultantViewModel
 {
     public class StudentsViewModel
     {

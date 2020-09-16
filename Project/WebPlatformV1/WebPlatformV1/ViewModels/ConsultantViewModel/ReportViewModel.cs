@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebPlatformV1.ViewModels.Consultant
+namespace WebPlatformV1.ViewModels.ConsultantViewModel
 {
     public class ReportViewModel
     {

@@ -660,6 +660,30 @@ namespace WebPlatformV1.Migrations
                     b.ToTable("Tbl_RequestPeyment");
                 });
 
+            modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_RequestonlineclassStudent", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ConsultantID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequestText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StudentID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("id");
+
+                    b.ToTable("tbl_Requestonlineclasses");
+                });
+
             modelBuilder.Entity("WebPlatformV1.Models.DbContext.Tbl_Tasks", b =>
                 {
                     b.Property<int>("IDTasks")
@@ -869,6 +893,9 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Bio")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CardNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -905,8 +932,14 @@ namespace WebPlatformV1.Migrations
                     b.Property<int?>("Tbl_HistoryPeyId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Tbl_RequestonlineclassStudentid")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Tbl_TodoAppConsultantId")
                         .HasColumnType("int");
+
+                    b.Property<string>("about")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("addPanelIDAddPanel")
                         .HasColumnType("int");
@@ -926,6 +959,8 @@ namespace WebPlatformV1.Migrations
                     b.HasIndex("RequestPeymentid");
 
                     b.HasIndex("Tbl_HistoryPeyId");
+
+                    b.HasIndex("Tbl_RequestonlineclassStudentid");
 
                     b.HasIndex("Tbl_TodoAppConsultantId");
 
@@ -967,8 +1002,14 @@ namespace WebPlatformV1.Migrations
                         .HasColumnName("Student_State")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("Tbl_RequestonlineclassStudentid")
+                        .HasColumnName("Student_Tbl_RequestonlineclassStudentid")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Tbl_TodoAppStudentId")
                         .HasColumnType("int");
+
+                    b.HasIndex("Tbl_RequestonlineclassStudentid");
 
                     b.HasIndex("Tbl_TodoAppStudentId");
 
@@ -1119,6 +1160,10 @@ namespace WebPlatformV1.Migrations
                         .WithMany("consultants")
                         .HasForeignKey("Tbl_HistoryPeyId");
 
+                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_RequestonlineclassStudent", null)
+                        .WithMany("consultants")
+                        .HasForeignKey("Tbl_RequestonlineclassStudentid");
+
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_TodoAppConsultant", null)
                         .WithMany("Consultantes")
                         .HasForeignKey("Tbl_TodoAppConsultantId");
@@ -1134,6 +1179,10 @@ namespace WebPlatformV1.Migrations
 
             modelBuilder.Entity("WebPlatformV1.Models.Student", b =>
                 {
+                    b.HasOne("WebPlatformV1.Models.DbContext.Tbl_RequestonlineclassStudent", null)
+                        .WithMany("students")
+                        .HasForeignKey("Tbl_RequestonlineclassStudentid");
+
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_TodoAppStudent", null)
                         .WithMany("students")
                         .HasForeignKey("Tbl_TodoAppStudentId");

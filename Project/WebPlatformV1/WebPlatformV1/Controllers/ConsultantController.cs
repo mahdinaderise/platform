@@ -15,6 +15,7 @@ using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels.Admin;
 using WebPlatformV1.ViewModels.Consultant;
+using WebPlatformV1.ViewModels.ConsultantViewModel;
 using ZarinpalSandbox;
 
 namespace WebPlatformV1.Controllers

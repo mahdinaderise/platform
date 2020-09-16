@@ -1,0 +1,28 @@
+﻿@model List<Consultant>
+@{
+    ViewData["Title"] = "SelectConsultant";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+<div class="main-content">
+
+    <div class="container-fluid">
+        <!-- اینجا ساخته شود -->
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="card">
+                    <img src="/images/Profile/(@item.Id).jpg" class="card-img-top" alt="image">
+                    <div class="card-body">
+                        <p class="card-text">@item.Bio</p>
+                        <a href="#" class="btn btn-primary">مشاهده </a>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <!-- end::main-content -->
+
+    </div>
+</div>
+

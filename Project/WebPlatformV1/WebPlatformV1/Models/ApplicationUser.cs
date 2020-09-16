@@ -30,7 +30,8 @@ namespace WebPlatformV1.Models
         public bool State { get; set; }
         public bool IsSendDegree { get; set; } = false;
         public bool isAcceptDegree { get; set; } = false;
-
+        public string Bio { get; set; }
+        public string about { get; set; }
         public string ProfilePicUrl { get; set; }
         public string CardNumber { get; set; }
         public string Province { get; set; }
