@@ -8,6 +8,15 @@
 <div class="main-content">
     <h6> @ViewBag.s</h6>
     <div class="container-fluid">
+        @if (ViewBag.Request > 0)
+        {
+           
+                    <div class="alert alert-danger " role="alert" style="margin-top: 50px;">
+                        <p>شما @ViewBag.Request عدد درخواست برگزاری کلاس انلاین دارید..</p>
+                        <a class="btn btn-success" asp-action="AcriveRequestClass"  asp-controller="Consultant">مشاهده</a>
+                    </div>
+
+        }
         <div class="row">
             <div class="col-md-7">
                 <div class="card bg-secondary-gradient">
@@ -34,7 +43,7 @@
                     <div class="card-body">
                         <div class="card-title d-flex justify-content-between">
                             <h6 class="card-title">وضعیت دانش آموزان </h6>
-                           
+
                         </div>
                         <h2 class="mb-3 font-weight-bold">@ViewBag.Tasks</h2>
                         <div class="progress md-3">
@@ -145,7 +154,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h6 class="card-title">کارهای روزانه</h6>
-                           
+
                         </div>
                         <div class="custom-control custom-checkbox-success custom-checkbox todo-item">
                             @if (Model.Todo != null)

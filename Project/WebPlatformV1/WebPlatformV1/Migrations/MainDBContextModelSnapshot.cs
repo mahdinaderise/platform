@@ -392,6 +392,12 @@ namespace WebPlatformV1.Migrations
                             Id = 2,
                             percent = 0,
                             price = 45000
+                        },
+                        new
+                        {
+                            Id = 3,
+                            percent = 0,
+                            price = 5000
                         });
                 });
 
@@ -670,13 +676,22 @@ namespace WebPlatformV1.Migrations
                     b.Property<string>("ConsultantID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RequestText")
+                    b.Property<bool?>("DisplayForAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("RequestTextConsultant")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequestTextStudent")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("status")
+                    b.Property<bool?>("statusForAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("statusForConsultant")
                         .HasColumnType("bit");
 
                     b.HasKey("id");

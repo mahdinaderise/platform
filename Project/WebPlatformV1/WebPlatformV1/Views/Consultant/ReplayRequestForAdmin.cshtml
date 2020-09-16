@@ -1,0 +1,118 @@
+﻿@model RequestListClass
+@{
+    ViewData["Title"] = "ReplayRequestForAdmin";
+    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
+}
+
+<div class="main-content">
+
+        <div class="container-fluid">
+            @if (ViewBag.ErrorCredit != null)
+            {
+                
+                        <div class="alert alert-danger " role="alert" style="margin-top: 10px;">
+                            <p>@ViewBag.ErrorCredit</p>
+                            <p>میزان اعتبار برای ایجاد جلسه انلاین @ViewBag.Amount تومان</p>
+                        </div>
+
+               
+            }
+
+            <!-- اینجا ساخته شود -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h6 class="card-title mb-3">نام و نام خانوادگی دانش آموز</h6>
+                                            <div class="d-flex d-sm-block d-lg-flex align-items-end">
+                                                <h2 class="mb-0 mr-2 font-weight-bold">@ViewBag.NameF</h2>
+                                                <p class="small text-muted mb-0 line-height-20">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="avatar avatar-lg">
+                                                <div class="avatar-title bg-success-bright text-success rounded-circle">
+                                                    <i class="fa fa-users"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   
+                        @*<div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h6 class="card-title mb-3">اعتبار مشاوران</h6>
+                                            <div class="d-flex d-sm-block d-lg-flex align-items-end">
+                                                <h2 class="mb-0 mr-2 font-weight-bold"> @ViewBag.Creditc تومان</h2>
+                                                <p class="small text-muted mb-0 line-height-20">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="avatar avatar-lg">
+                                                <div class="avatar-title bg-info-bright text-info rounded-circle">
+                                                    <i class="fa fa-money"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">مشخصات کلی درخواست</h5>
+
+                            <div>
+                                <h6 style="font-weight: bold;">متن درخواست:</h6> <p>@Model.SRequest.RequestTextStudent</p>
+                            </div>
+
+
+                          
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12">
+            <div class="accordion custom-accordion">
+
+                <div class="accordion-row bg-white">
+                    <a href="#" class="accordion-header">
+                        <span>ارسال درخواست برای مدیر</span>
+                        <i class="accordion-status-icon close fa fa-chevron-up"></i>
+                        <i class="accordion-status-icon open fa fa-chevron-down"></i>
+                    </a>
+                    <div class="accordion-body">
+                        <form asp-action="ReplayRequestForAdmin" asp-controller="consultant" asp-route-id="@Model.SRequest.id" method="post">
+                            <textarea asp-for="@Model.SRequest.RequestTextConsultant" class="form-control" placeholder="توضیحات و زمان پیشنهادی درخواست"></textarea>
+
+                            <button type="submit" class="btn btn-danger" style="margin:10px">ارسال درخواست</button>
+                        </form>
+
+                    </div>
+                </div>
+           
+            </div>
+
+
+        </div>
+            </div>
+        </div>
+    </div>

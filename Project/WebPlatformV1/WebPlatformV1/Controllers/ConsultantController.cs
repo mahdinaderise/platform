@@ -41,7 +41,7 @@ namespace WebPlatformV1.Controllers
         public IActionResult Index(todoappc model)
         {
             var cId = _userManager.GetUserId(User);
-
+            ViewBag.Request = _context.tbl_Requestonlineclasses.Where(p => p.ConsultantID == cId && p.statusForConsultant == false).Count();
             var w = _context.tbl_Wallets.Where(p => p.ConsultantId == cId).ToList();
             if (w.Count == 0)
             {
@@ -633,6 +633,56 @@ namespace WebPlatformV1.Controllers
 
             }
 
+            return View(model);
+        }
+        public IActionResult AcriveRequestClass(RequestListClass model)
+        {
+            var cid = _userManager.GetUserId(User);
+
+            model.Request = _context.tbl_Requestonlineclasses.Where(p => p.statusForConsultant == false && p.ConsultantID == cid).ToList();
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult ReplayRequestForAdmin(int id, RequestListClass model)
+        {
+            var cid = _userManager.GetUserId(User);
+
+            model.SRequest = _context.tbl_Requestonlineclasses.FirstOrDefault(p => p.statusForConsultant == false && p.ConsultantID == cid &&p.id==id);
+            var student = _context.students.FirstOrDefault(p=>p.Id==model.SRequest.StudentID);
+            ViewBag.NameF = student.Name + " " + student.Family;
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult ReplayRequestForAdmin(int id, RequestListClass model,Tbl_RequestonlineclassStudent Req)
+        {
+            var cid = _userManager.GetUserId(User);
+            model.SRequest = _context.tbl_Requestonlineclasses.FirstOrDefault(p => p.statusForConsultant == false && p.ConsultantID == cid && p.id == id);
+
+            var student = _context.students.FirstOrDefault(p => p.Id == model.SRequest.StudentID);
+            ViewBag.NameF = student.Name + " " + student.Family;
+            var Wallet = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == cid);
+            var Comision = _context.Tbl_Comisions.FirstOrDefault(p => p.Id == 3);
+            var Balance = _context.Tbl_Balances.Find(1);
+            if (Wallet.Credit>=Comision.price)
+            {
+                Balance.SumComosion = Balance.SumComosion + Comision.price;
+                Wallet.ID = Wallet.ID;
+              Wallet.Credit=  Wallet.Credit - Comision.price;
+                Req.id = id;
+                Req.statusForConsultant = true;
+                Req.RequestTextConsultant = model.SRequest.RequestTextConsultant;
+                Req.DisplayForAdmin = true;
+                _context.Tbl_Balances.Update(Balance);
+                _context.tbl_Wallets.Update(Wallet);
+                _context.tbl_Requestonlineclasses.Update(Req);
+                _context.SaveChanges();
+            }
+            else
+            {
+                ViewBag.ErrorCredit = "کیف پول شما به مقدار کافی اعتبار ندارد.";
+                ViewBag.Amount = Comision.price;
+            }
+           
             return View(model);
         }
         public IActionResult Report(string id)

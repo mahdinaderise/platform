@@ -163,6 +163,11 @@ namespace WebPlatformV1.Models.DbContext
                 Id = 2,
                 price = 45000,
                 percent = 0
+            }, new Tbl_Comision
+            {
+                Id = 3,
+                price = 5000,
+                percent = 0
             }) ;
 
             base.OnModelCreating(builder);
@@ -442,8 +447,12 @@ namespace WebPlatformV1.Models.DbContext
         public string ConsultantID { get; set; }
 
         public string StudentID { get; set; }
-        public bool status { get; set; }
-        public string RequestText { get; set; }
+        public bool statusForConsultant { get; set; }
+        public string RequestTextStudent { get; set; }
+        public bool? statusForAdmin { get; set; }
+        public bool? DisplayForAdmin { get; set; }
+
+        public string RequestTextConsultant { get; set; }
         public ICollection<Consultant> consultants { get; set; }
         public ICollection<Student> students { get; set; }
 

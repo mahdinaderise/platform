@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Internal;
+using WebPlatformV1.Migrations;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels;
@@ -149,11 +150,19 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult index(todoapp model)
         {
+      
             #region check credit
             var IdStudent = _userManager.GetUserId(User);
             var r = _context.students.Find(IdStudent);
             ViewBag.myid = IdStudent;
-            if (r.CreditTime<DateTime.Today)
+
+            if (r.ConsultantID ==null)
+            {
+                return RedirectToAction(nameof(SelectConsultant));
+
+            }
+            
+           if (r.CreditTime<DateTime.Today)
             {
                 return RedirectToAction(nameof(MyPanel));
 
@@ -327,6 +336,8 @@ namespace WebPlatformV1.Controllers
         public IActionResult ConsultantPage(string id, requestforonline model)
         {
           var  consultant = _context.consultants.FirstOrDefault(p => p.Id == id);
+            ViewBag.NameF = consultant.Name + " " + consultant.Family;
+            ViewBag.CountRequest = _context.students.Where(p => p.ConsultantID == id).Count();
             model.bio = consultant.Bio;
             model.about = consultant.about;
             model.id = consultant.Id;
@@ -338,7 +349,29 @@ namespace WebPlatformV1.Controllers
             var studentId = _userManager.GetUserId(User);
             var student = _context.students.FirstOrDefault(p => p.Id == studentId);
             student.ConsultantID = id;
+            _context.students.Update(student);
+            _context.SaveChanges();
             return RedirectToAction(nameof(index));
+        }
+        [HttpPost]
+        public IActionResult ConsultantPage(string id, requestforonline model,Tbl_RequestonlineclassStudent Req)
+        {
+            var studentId = _userManager.GetUserId(User);
+            var consultant = _context.consultants.FirstOrDefault(p => p.Id == id);
+
+            ViewBag.NameF = consultant.Name + " " + consultant.Family;
+            ViewBag.CountRequest = _context.students.Where(p => p.ConsultantID == id).Count();
+            Req.ConsultantID = id;
+            Req.RequestTextStudent = model.RequestText;
+            Req.statusForConsultant = false;
+            Req.StudentID = studentId;
+            model.bio = consultant.Bio;
+            model.about = consultant.about;
+            model.id = consultant.Id;
+            _context.tbl_Requestonlineclasses.Add(Req);
+            _context.SaveChanges();
+            ViewBag.succeseReq = "درخواست شما با موفقیت ثبت شد زمان کلاس انلاین به شماره تلفن شما ارسال می شود.";
+            return View(model);
         }
     }
 }

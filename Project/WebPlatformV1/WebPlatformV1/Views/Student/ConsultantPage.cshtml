@@ -6,18 +6,18 @@
     <div class="main-content">
 
         <div class="container-fluid">
-            @*@if (ViewBag.Error != null)
+            @if (ViewBag.succeseReq != null)
             {
                 <div class="card">
-                    <h3 class="card-title"> خطا</h3>
+                    <h3 class="card-title"> موفقیت آمیزبود..</h3>
                     <div class="card_body">
-                        <div class="alert alert-danger " role="alert" style="margin-top: 50px;">
-                            <p>@ViewBag.Error</p>
+                        <div class="alert alert-success " role="alert" style="margin-top: 50px;">
+                            <p>@ViewBag.succeseReq</p>
                         </div>
 
                     </div>
                 </div>
-            }*@
+            }
 
             <!-- اینجا ساخته شود -->
             <div class="row">
@@ -53,7 +53,7 @@
                                         <div>
                                             <h6 class="card-title mb-3">تعداد دانش آموزان مشاور </h6>
                                             <div class="d-flex d-sm-block d-lg-flex align-items-end">
-                                                <h2 class="mb-0 mr-2 font-weight-bold">@ViewBag.CountRequest</h2>
+                                                <h2 class="mb-0 mr-2 font-weight-bold">@ViewBag.Countstudent</h2>
                                                 <p class="small text-muted mb-0 line-height-20">
                                                 </p>
                                             </div>
@@ -103,12 +103,12 @@
                             <h5 class="card-title">مشخصات کلی مشاور</h5>
 
                             <div>
-                                <h6>بیوگرافی:</h6> <p>@Model.bio</p>
+                                <h6 style="font-weight: bold;">بیوگرافی:</h6> <p>@Model.bio</p>
                             </div>
 
 
                             <div>
-                                <h6>چگونگی و زمان های برگزاری جلسات انلاین:</h6> <p>@Model.about</p>
+                                <h6 style="font-weight: bold;">چگونگی و زمان های برگزاری جلسات انلاین:</h6> <p>@Model.about</p>
                             </div>
 
                         </div>
@@ -120,7 +120,7 @@
 
                 <div class="accordion-row bg-white">
                     <a href="#" class="accordion-header">
-                        <span>قبول درخواست</span>
+                        <span>انتخاب مشاور</span>
                         <i class="accordion-status-icon close fa fa-chevron-up"></i>
                         <i class="accordion-status-icon open fa fa-chevron-down"></i>
                     </a>
@@ -137,7 +137,7 @@
                         <i class="accordion-status-icon open fa fa-chevron-down"></i>
                     </a>
                     <div class="accordion-body">
-                        <form asp-action="RequestonlineClass" asp-controller="student" asp-route-id="@Model.id" method="post">
+                        <form asp-action="ConsultantPage" asp-controller="student" asp-route-id="@Model.id" method="post">
                             <textarea asp-for="RequestText" class="form-control" placeholder="توضیحات و زمان پیشنهادی درخواست"></textarea>
 
                             <button type="submit" class="btn btn-danger" style="margin:10px">ارسال درخواست</button>
