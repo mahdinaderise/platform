@@ -538,22 +538,34 @@ namespace WebPlatformV1.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        public IActionResult PanelConsultant(consultantpanel model)
+        //public IActionResult PanelConsultant(consultantpanel model)
+        //{
+        //    model.Panel = _context.PanelConsultant.ToList();
+        //    return View(model);
+        //}
+        [HttpGet]
+        public IActionResult AddToWallet()
         {
-            model.Panel = _context.PanelConsultant.ToList();
-            return View(model);
+            return View();
         }
-        public IActionResult Peyment(int id)
+        [HttpPost]
+        public IActionResult AddToWallet(AddToWallet model)
         {
-            var studentId = _userManager.GetUserId(User);
-            var panel = _context.PanelConsultant.FirstOrDefault(p => p.ID == id);
-            if (panel == null)
-                return NotFound();
-            var payment = new ZarinpalSandbox.Payment(panel.Price);
-            var res = payment.PaymentRequest($"پرداخت فاکتور شماره {panel.ID}",
-               "http://localhost:5000/Student/OnlinePayment/" + panel.ID, "Mahdinaderi.se@outlook.com", "09130087194");
+            HttpContext.Session.SetInt32("Price", model.Price);
+
+            return RedirectToAction(nameof(Peyment));
+        }
+        public IActionResult Peyment()
+        {
+          var  price = HttpContext.Session.GetInt32("Price");
+
+            var payment = new Payment((int)price);
+            var res = payment.PaymentRequest($"پرداخت فاکتور",
+               "http://localhost:5000/Consultant/OnlinePayment/", "Mahdinaderi.se@outlook.com", "09130087194");
+
             if (res.Result.Status == 100)
             {
+
                 return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Result.Authority);
             }
             else
@@ -562,7 +574,7 @@ namespace WebPlatformV1.Controllers
             }
             return View();
         }
-        public IActionResult OnlinePayment(int id)
+        public IActionResult OnlinePayment()
         {
             var cid = _userManager.GetUserId(User);
 
@@ -571,23 +583,23 @@ namespace WebPlatformV1.Controllers
                 HttpContext.Request.Query["Authority"] != "")
             {
                 string authority = HttpContext.Request.Query["Authority"].ToString();
-                var panel = _context.PanelConsultant.FirstOrDefault(p => p.ID == id);
+                var price = HttpContext.Session.GetInt32("Price");
 
                 var consultant = _context.consultants.FirstOrDefault(p => p.Id == cid);
-                DateTime today = DateTime.Today;
-                DateTime CreditTime1 = today.AddDays(panel.Day);
-                var payment = new Payment(panel.Price);
+                var Wallet = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == cid);
+                var payment = new Payment((int)price);
                 var res = payment.Verification(authority).Result;
                 if (res.Status == 100)
                 {
+                    Wallet.Credit = Wallet.Credit+(int)price;
                     Tbl_Finnial savepeyhistory = new Tbl_Finnial();
                     savepeyhistory.DatePey = DateTime.Today;
                     savepeyhistory.IDConsultant = cid;
                     savepeyhistory.NumReceipt = res.RefId;
                     savepeyhistory.State = true;
                     _context.Tbl_Finnials.Add(savepeyhistory);
-                    consultant.CreditTime = CreditTime1;
-                    
+                    _context.tbl_Wallets.Update(Wallet);
+
                     _context.consultants.Update(consultant);
 
                     _context.SaveChanges();
