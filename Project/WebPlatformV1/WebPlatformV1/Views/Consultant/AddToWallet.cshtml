@@ -1,0 +1,39 @@
+﻿@model AddToWallet
+@{
+    ViewData["Title"] = "AddToWallet";
+    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
+}
+
+
+<div class="main-content">
+
+    <div class="container-fluid">
+
+        <div class="card-body">
+            <h5 class="card-title"> ایجاد وظیفه</h5>
+            <form class="needs-validation" novalidate asp-action="AddToWallet" asp-controller="Consultant" method="post">
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label for="validationTooltip01" asp-for="Price"> مبلغ :</label>
+                        <input asp-for="Price"  class="form-control"/>
+                    </div>
+              
+
+
+
+                    @*<select asp-for=""></select>*@
+
+                </div>
+       
+                <button class="btn btn-primary" type="submit">ارسال</button>
+
+            </form>
+        </div>
+        <!-- end::main-content -->
+  
+
+    </div>
+
+</div>
+
+

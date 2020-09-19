@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels.Admin;
+using WebPlatformV1.ViewModels.ConsultantViewModel;
 
 namespace WebPlatformV1.Controllers
 {
@@ -28,6 +29,8 @@ namespace WebPlatformV1.Controllers
             var ActiveConsultant = _context.consultants.Where(p => p.State == true).Count();
             var DeAcriveConsultant = _context.consultants.Where(p => p.State == false).Count();
             ViewBag.consultant = consultant;
+            ViewBag.Request = _context.tbl_Requestonlineclasses.Where(p=> p.DisplayForAdmin == true).Count();
+
             if (consultant != 0)
             {
                 ViewBag.ActiveConsultant = (ActiveConsultant * 100) / consultant;
@@ -168,6 +171,29 @@ namespace WebPlatformV1.Controllers
             model.percent = _context.Tbl_Comisions.Find(1).percent;
             model.price = _context.Tbl_Comisions.Find(2).price;
             return View(model);
+        }
+        public IActionResult AcriveRequestClassAdmin(RequestListClass model)
+        {
+            model.Request = _context.tbl_Requestonlineclasses.Where(p=>p.DisplayForAdmin==true).ToList();
+
+            return View(model);
+        }
+        public IActionResult ReplayRequest(int id,RequestListClass model)
+        {
+            model.SRequest = _context.tbl_Requestonlineclasses.FirstOrDefault(p => p.DisplayForAdmin == true && p.id==id);
+
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult ReplayRequest(int id)
+        {
+            var req= _context.tbl_Requestonlineclasses.FirstOrDefault(p => p.id == id);
+            req.statusForAdmin = true;
+            req.DisplayForAdmin = true;
+            req.id = id;
+            _context.tbl_Requestonlineclasses.Update(req);
+            _context.SaveChanges();
+            return View();
         }
     }
 }
