@@ -1,0 +1,36 @@
+﻿@model HistoryPey
+@{
+    ViewData["Title"] = "Historypay";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-hover bg-white text-center">
+            <thead class="thead-dark">
+                <tr>
+
+                    <th scope="col"> کد پیگیری </th>
+                    <th scope="col">مبلغ</th>
+                    <th scope="col"> میزان کمیسیون</th>
+                    <th scope="col"> مبلغ باقی مانده</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.HistoryPeys)
+                {
+                    <tr>
+                        <td> @item.RefId </td>
+                        <td>@item.Peyamount</td>
+                        <td>@item.comision</td>
+                        <td>@(item.Peyamount-item.comision)</td>
+
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

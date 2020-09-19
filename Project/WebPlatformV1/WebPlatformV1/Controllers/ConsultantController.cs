@@ -42,6 +42,7 @@ namespace WebPlatformV1.Controllers
         {
             var cId = _userManager.GetUserId(User);
             ViewBag.Request = _context.tbl_Requestonlineclasses.Where(p => p.ConsultantID == cId && p.statusForConsultant == false).Count();
+            ViewBag.NewStudent = _context.students.Where(p => p.State == false && p.ConsultantID == cId).Count();
             var w = _context.tbl_Wallets.Where(p => p.ConsultantId == cId).ToList();
             if (w.Count == 0)
             {
@@ -61,6 +62,16 @@ namespace WebPlatformV1.Controllers
             var todayTask = _context.tbl_Tasks.Where(p => p.SendDelivery == DateTime.Today).Count();
             ViewBag.CountStudent = _context.students.Where(p => p.ConsultantID == cId).Count();
             var c= _context.tbl_Wallets.Where(p => p.ConsultantId == cId).ToList();
+            #region menuDt
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
+
+
             foreach (var item in c)
             {
                 ViewBag.Credit = item.Credit;
@@ -83,7 +94,16 @@ namespace WebPlatformV1.Controllers
 
         public IActionResult StudentPage(string id, TasksStudents model)
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
 
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             model.Students = _context.students.Where(p => p.Id == id).ToList();
             TempData["mydata"] = id;
             HttpContext.Session.SetString("id", id);
@@ -121,6 +141,16 @@ namespace WebPlatformV1.Controllers
 
         public IActionResult detaildo(int id, detaildo model)
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
+
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             var result = _context.Find<Tbl_Do>(id);
             model.DiscriptiveTime = result.DiscriptiveTime;
             model.falseTest = result.falseTest;
@@ -142,6 +172,16 @@ namespace WebPlatformV1.Controllers
         [HttpGet]
         public IActionResult blog(Blog model)
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
+
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             var consultantId = _userManager.GetUserId(User);
             var result = _context.consultants.Find(consultantId);
             model.blog = _context.tbl_Blogs.Where(p => p.ConsultantId == consultantId).OrderByDescending(P => P.ID).ToList();
@@ -187,6 +227,16 @@ namespace WebPlatformV1.Controllers
         [HttpGet]
         public async Task<IActionResult> EditPost(int? id, Tbl_Blog model)
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
+
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             if (id == null)
             {
                 return NotFound();
@@ -226,6 +276,16 @@ namespace WebPlatformV1.Controllers
         [HttpGet]
         public async Task<IActionResult> DeletePost(int? id)
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
+
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             if (id == null)
             {
                 return NotFound();
@@ -252,6 +312,16 @@ namespace WebPlatformV1.Controllers
         [HttpGet]
         public IActionResult CreateTask(CreateTask model, Tbl_Tasks tasks, Tbl_grade grade)
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
+
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             var NowDateTime = DateTime.Today;
             var id = HttpContext.Session.GetString("id");
             ViewData["course"] = new SelectList(_context.tbl_Courses, "IDCourse", "NameCourse", tasks.StudentId);
@@ -289,14 +359,34 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult students(StudentsViewModel model)
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
+
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             var consultantId = _userManager.GetUserId(User);
-            model.Students = _context.students.Where(p => p.ConsultantID == consultantId).ToList();
+            model.Students = _context.students.Where(p => p.ConsultantID == consultantId && p.State == false).ToList();
 
             return View(model);
         }
         [HttpGet]
         public IActionResult AddPanel(string id)
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
+
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             HttpContext.Session.SetString("IdStudentForPanel", id);
             var r = _context.tbl_AddPanels.Where(p => p.StudentID == id).Count();
             if (r != 0)
@@ -327,6 +417,16 @@ namespace WebPlatformV1.Controllers
         [HttpGet]
         public IActionResult AddNewPanel(string id)
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
+
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             HttpContext.Session.SetString("IdStudentForNewPanel", id);
 
             return View();
@@ -352,6 +452,16 @@ namespace WebPlatformV1.Controllers
         [HttpGet]
         public IActionResult haspanel()
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
+
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             ViewBag.idstudent = HttpContext.Session.GetString("IdStudentForPanel");
 
             return View();
@@ -371,7 +481,16 @@ namespace WebPlatformV1.Controllers
         [HttpGet]
         public IActionResult Profile(Profile model)
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
 
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             var consultantId = _userManager.GetUserId(User);
 
             var C = _context.Find<Consultant>(consultantId);
@@ -510,8 +629,18 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult Tasks(StudentsViewModel model)
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
+
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             var consultantId = _userManager.GetUserId(User);
-            model.Students = _context.students.Where(p => p.ConsultantID == consultantId).ToList();
+            model.Students = _context.students.Where(p => p.ConsultantID == consultantId && p.State==true).ToList();
 
             return View(model);
         }
@@ -546,6 +675,16 @@ namespace WebPlatformV1.Controllers
         [HttpGet]
         public IActionResult AddToWallet()
         {
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
+
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             return View();
         }
         [HttpPost]
@@ -612,17 +751,32 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult MyRequestList(RequestListPey model)
         {
-            var cid = _userManager.GetUserId(User);
 
-            model.Request = _context.Tbl_RequestPeyment.Where(p => p.ConsultantID == cid).ToList();
+            var cId = _userManager.GetUserId(User);
+            #region menuDt
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
+            model.Request = _context.Tbl_RequestPeyment.Where(p => p.ConsultantID == cId).ToList();
             return View(model);
         }
       
         public IActionResult SendRequest(RequestListPey model)
         {
-            var cid = _userManager.GetUserId(User);
-
-            var consultant = _context.consultants.FirstOrDefault(p=>p.Id==cid);
+            var cId = _userManager.GetUserId(User);
+            #region menuDt
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
+            var consultant = _context.consultants.FirstOrDefault(p=>p.Id== cId);
             ViewBag.CardNumber = consultant.CardNumber;
             ViewBag.Shaba = consultant.Shaba;
             return View(model);
@@ -649,16 +803,32 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult AcriveRequestClass(RequestListClass model)
         {
-            var cid = _userManager.GetUserId(User);
-
-            model.Request = _context.tbl_Requestonlineclasses.Where(p => p.statusForConsultant == false && p.ConsultantID == cid).ToList();
+            var cId = _userManager.GetUserId(User);
+            #region menuDt
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
+            model.Request = _context.tbl_Requestonlineclasses.Where(p => p.statusForConsultant == false && p.ConsultantID == cId).ToList();
             return View(model);
         }
         [HttpGet]
         public IActionResult ReplayRequestForAdmin(int id, RequestListClass model)
         {
             var cid = _userManager.GetUserId(User);
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
 
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             model.SRequest = _context.tbl_Requestonlineclasses.FirstOrDefault(p => p.statusForConsultant == false && p.ConsultantID == cid &&p.id==id);
             var student = _context.students.FirstOrDefault(p=>p.Id==model.SRequest.StudentID);
             ViewBag.NameF = student.Name + " " + student.Family;
@@ -680,7 +850,7 @@ namespace WebPlatformV1.Controllers
                 Balance.SumComosion = Balance.SumComosion + Comision.price;
                 Wallet.ID = Wallet.ID;
               Wallet.Credit=  Wallet.Credit - Comision.price;
-                Req.id = id;
+                Req = _context.tbl_Requestonlineclasses.Find(id);
                 Req.statusForConsultant = true;
                 Req.RequestTextConsultant = model.SRequest.RequestTextConsultant;
                 Req.DisplayForAdmin = true;
@@ -694,7 +864,21 @@ namespace WebPlatformV1.Controllers
                 ViewBag.ErrorCredit = "کیف پول شما به مقدار کافی اعتبار ندارد.";
                 ViewBag.Amount = Comision.price;
             }
-           
+
+            return RedirectToAction(nameof(AcriveRequestClass));
+        }
+        public IActionResult Historypay(HistoryPey model)
+        {
+            var cId = _userManager.GetUserId(User);
+            #region menuDt
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
+            model.HistoryPeys   = _context.Tbl_HistoryPeys.Where(p => p.ConsultantId == cId).ToList();
             return View(model);
         }
         public IActionResult Report(string id)
@@ -706,7 +890,14 @@ namespace WebPlatformV1.Controllers
             var cid = _userManager.GetUserId(User);
             var day = DateTime.Today;
             var dayint = day.AddDays(-30);
-
+            #region menuDt
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cid);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             #region get Report from Math
             var Math = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 1 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
             var timestudyMath = 0;
@@ -928,8 +1119,15 @@ namespace WebPlatformV1.Controllers
             }
             var cid = _userManager.GetUserId(User);
             var day = DateTime.Today;
-            var dayint = day.AddDays(-30);
-
+            var dayint = day.AddDays(-7);
+            #region menuDt
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cid);
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             #region get Report from Math
             var Math = _context.tbl_Tasks.Where(p => p.ConsultantId == cid && p.StudentId == id && p.DoIDdo != null && p.CourseIDCourse == 1 && p.SubmitDate >= dayint && p.SubmitDate <= DateTime.Today).Include(o => o.Do).ToList();
             var timestudyMath = 0;

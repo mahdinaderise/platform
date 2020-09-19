@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels.Admin;
@@ -48,6 +49,47 @@ namespace WebPlatformV1.Controllers
             var consultants = new List<Consultant>();
             consultants = _context.consultants.Where(p => p.State == false && p.IsSendDegree == true && p.isAcceptDegree == false).ToList();
             return View(consultants);
+        }
+        public IActionResult ActiveConsultantManagement()
+        {
+            var consultants = new List<Consultant>();
+            consultants = _context.consultants.Where(p => p.State == true && p.IsSendDegree == true && p.isAcceptDegree == true).ToList();
+            return View(consultants);
+        }
+        public IActionResult ProfileOfConsultant(string id,ConsultantProfile model)
+        {
+            var consultant = _context.consultants.FirstOrDefault(p => p.Id == id);
+            ViewBag.Namef = consultant.Name + " " + consultant.Family;
+            ViewBag.CountStudent = _context.students.Where(p => p.ConsultantID == id).Count();
+            ViewBag.id = id;
+            model.HistoryPeys = _context.Tbl_HistoryPeys.Where(p=>p.ConsultantId==id).ToList();
+            model.Credit = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == id).Credit;
+
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult subasWallet(string id, ConsultantProfile model)
+        {
+            var Wallet = new Tbl_Wallet();
+            var consultant = _context.consultants.FirstOrDefault(p => p.Id == id);
+           
+            Wallet = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == id);
+            Wallet.Credit = Wallet.Credit - model.CreditforSub;
+            _context.tbl_Wallets.Update(Wallet);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(ActiveConsultantManagement));
+        }
+        [HttpPost]
+        public IActionResult AddToWallet(string id, ConsultantProfile model)
+        {
+            var Wallet = new Tbl_Wallet();
+            var consultant = _context.consultants.FirstOrDefault(p => p.Id == id);
+
+            Wallet = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == id);
+            Wallet.Credit = Wallet.Credit + model.Creditforadd;
+            _context.tbl_Wallets.Update(Wallet);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(ActiveConsultantManagement));
         }
         [HttpGet]
         public IActionResult AcceptDeagre(string id, DegreeCheck model)
@@ -181,19 +223,34 @@ namespace WebPlatformV1.Controllers
         public IActionResult ReplayRequest(int id,RequestListClass model)
         {
             model.SRequest = _context.tbl_Requestonlineclasses.FirstOrDefault(p => p.DisplayForAdmin == true && p.id==id);
-
+            var studentName = _context.students.FirstOrDefault(p => p.Id == model.SRequest.StudentID).Name;
+            var studentFamily = _context.students.FirstOrDefault(p => p.Id == model.SRequest.StudentID).Family;
+            ViewBag.NameF = studentName + " " + studentFamily;
+            var ConsultantName = _context.consultants.FirstOrDefault(p => p.Id == model.SRequest.ConsultantID).Name;
+            var ConsultantFamily = _context.consultants.FirstOrDefault(p => p.Id == model.SRequest.ConsultantID).Family;
+            ViewBag.NameFM = ConsultantName + " " + ConsultantFamily;
             return View(model);
         }
         [HttpPost]
         public IActionResult ReplayRequest(int id)
         {
+            //var model = new RequestListClass(); 
+            //model.SRequest = _context.tbl_Requestonlineclasses.FirstOrDefault(p => p.DisplayForAdmin == true && p.id == id);
+            //var studentName = _context.students.FirstOrDefault(p => p.Id == model.SRequest.StudentID).Name;
+            //var studentFamily = _context.students.FirstOrDefault(p => p.Id == model.SRequest.StudentID).Family;
+            //ViewBag.NameF = studentName + " " + studentFamily;
+            //var ConsultantName = _context.consultants.FirstOrDefault(p => p.Id == model.SRequest.ConsultantID).Name;
+            //var ConsultantFamily = _context.consultants.FirstOrDefault(p => p.Id == model.SRequest.ConsultantID).Family;
+            //ViewBag.NameFM = ConsultantName + " " + ConsultantFamily;
+
+
             var req= _context.tbl_Requestonlineclasses.FirstOrDefault(p => p.id == id);
             req.statusForAdmin = true;
-            req.DisplayForAdmin = true;
+            req.DisplayForAdmin = false;
             req.id = id;
             _context.tbl_Requestonlineclasses.Update(req);
             _context.SaveChanges();
-            return View();
+            return RedirectToAction(nameof(AcriveRequestClassAdmin));
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -164,8 +165,15 @@ namespace WebPlatformV1.Controllers
             
            if (r.CreditTime<DateTime.Today)
             {
+                if (r.State==true)
+                {
+                    r.State = false;
+                    _context.students.Update(r);
+                    _context.SaveChanges();
+                }
+               
                 return RedirectToAction(nameof(MyPanel));
-
+                
             }
             #endregion
             #region count of credit
@@ -272,7 +280,7 @@ namespace WebPlatformV1.Controllers
                     var Darsad = (panel.Price * 5) / 100;
                     var Result = panel.Price - Darsad;
                     Balance.SumComosion = Balance.SumComosion + Darsad;
-
+                    student.State = true;
                     historyPey.comision = Darsad;
                     historyPey.RefId = res.RefId;
                     historyPey.ConsultantId = ConsultantWallet.ConsultantId;
@@ -297,12 +305,23 @@ namespace WebPlatformV1.Controllers
         {
             var studentId = _userManager.GetUserId(User);
             model.Panel1 = _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending(p => p.IDAddPanel).FirstOrDefault();
+            ViewBag.hasconsultant = _context.students.FirstOrDefault(p => p.Id == studentId).ConsultantID;
             if (model.Panel1!=null)
             {
                 model.price = model.Panel1.Price / model.Panel1.Day;
 
             }
             return View(model);
+        }
+        public IActionResult DeleteConsultant()
+        {
+            var studentId = _userManager.GetUserId(User);
+            var student = _context.students.FirstOrDefault(p => p.Id == studentId);
+            student.State = false;
+            student.ConsultantID = null;
+            _context.students.Update(student);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(MyPanel));
         }
         [HttpPost]
         public async Task<IActionResult> TodoApp(todoapp model,Tbl_TodoAppStudent todo)
@@ -329,6 +348,10 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult SelectConsultant()
         {
+            var studentId = _userManager.GetUserId(User);
+
+            ViewBag.hasconsultant = _context.students.FirstOrDefault(p => p.Id == studentId).ConsultantID;
+            
             var consultants = new List<Consultant>();
             consultants = _context.consultants.Where(p => p.State == true && p.IsSendDegree == true && p.isAcceptDegree == true).ToList();
             return View(consultants);
@@ -343,6 +366,10 @@ namespace WebPlatformV1.Controllers
             model.id = consultant.Id;
             return View(model);
 
+        }
+        public IActionResult Blog()
+        {
+            return View();
         }
         public IActionResult AcceptConsultant(string id, requestforonline model)
         {

@@ -147,21 +147,40 @@
 
             <div class="navigation-menu-tab">
                 <div>
-                    <div class="navigation-menu-tab-header" data-toggle="tooltip" title="مهدی نظری" data-placement="right">
+                    <div class="navigation-menu-tab-header" data-toggle="tooltip" title="@ViewBag.NameAndFamily" data-placement="right">
                         <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
-                            <figure class="avatar avatar-sm">
-                                <img src="~/assets/media/image/user/man_avatar5.jpg" class="rounded-circle" alt="avatar">
-                            </figure>
+                            @if (ViewBag.hasP == null)
+                            {
+                                <figure class="avatar">
+                                    <span class="avatar-title rounded-circle">@ViewBag.fristCharecter</span>
+                                </figure>
+                            }
+                            else
+                            {
+                                <figure class=" avatar avatar-xl ">
+                                    <img src="/images/Profile/@(Model.id).jpg"
+                                         class="rounded-circle bg-info" alt="...">
+                                </figure>
+                            }
                         </a>
                         <div class="dropdown-menu dropdown-menu-left dropdown-menu-big">
-                            <div class="p-3 text-center" data-backround-image="assets/media/image/image1.jpg">
-                                <figure class="avatar mb-3">
-                                    <img src="~/assets/media/image/user/man_avatar5.jpg" class="rounded-circle" alt="image">
-                                </figure>
+                            <div class="p-3 text-center" data-backround-image="/assets/media/image/image1.jpg">
+                                @if (ViewBag.hasP == null)
+                                {
+                                    <figure class="avatar">
+                                        <span class="avatar-title rounded-circle">@ViewBag.fristCharecter</span>
+                                    </figure>
+                                }
+                                else
+                                {
+                                    <figure class=" avatar avatar-xl ">
+                                        <img src="/images/Profile/@(Model.id).jpg"
+                                             class="rounded-circle bg-info" alt="...">
+                                    </figure>
+                                }
                                 <h6 class="d-flex align-items-center justify-content-center">
 
-                                    مهدی نظری
-                                   
+                                    @ViewBag.NameAndFamily
                                 </h6>
                                 <small>شارژ: <strong>@ViewBag.credit تومان</strong></small>
                             </div>
@@ -169,10 +188,10 @@
 
                                 <div class="list-group list-group-flush">
                                     <a asp-action="Profile" class="list-group-item">پروفایل</a>
-                                    <div class="list-group list-group-flush">
+                                    @*<div class="list-group list-group-flush">
                                         <a href="#" class="list-group-item">ارسال مدرک</a>
 
-                                    </div>
+                                    </div>*@
 
                                     <form asp-action="LogOutConsultant" asp-controller="Account" method="post">
                                         <button class="list-group-item text-danger" type="submit" data-sidebar-target="#settings"> خروج</button>
@@ -262,9 +281,8 @@
                         <ul>
                             <li class="navigation-divider">مدیریت مالی</li>
                             <li>
-                                <a href="pay managment.html">
-                                    <span> پرداخت های من</span>
-                                    <span class="badge badge-danger">5</span>
+                                <a asp-controller="Consultnt" asp-action="Historypey">
+                                    <span> تراز مالی من</span>
                                 </a>
                             </li>
                             <li>

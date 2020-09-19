@@ -10,11 +10,20 @@
     <div class="container-fluid">
         @if (ViewBag.Request > 0)
         {
-           
-                    <div class="alert alert-danger " role="alert" style="margin-top: 50px;">
-                        <p>شما @ViewBag.Request عدد درخواست برگزاری کلاس انلاین دارید..</p>
-                        <a class="btn btn-success" asp-action="AcriveRequestClass"  asp-controller="Consultant">مشاهده</a>
-                    </div>
+
+            <div class="alert alert-danger " role="alert">
+                <p>شما @ViewBag.Request عدد درخواست برگزاری کلاس انلاین دارید..</p>
+                <a class="btn btn-success" asp-action="AcriveRequestClass" asp-controller="Consultant">مشاهده</a>
+            </div>
+
+        }
+        @if (ViewBag.NewStudent > 0)
+        {
+
+            <div class="alert alert-danger " role="alert">
+                <p>شما @ViewBag.NewStudent عدد دانش آموز غیرفعال دارید..</p>
+                <a class="btn btn-success" asp-action="students" asp-controller="Consultant">مشاهده</a>
+            </div>
 
         }
         <div class="row">

@@ -7,20 +7,32 @@
 <div class="main-content">
 
     <div class="container-fluid">
-        <!-- اینجا ساخته شود -->
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="card">
-                    <img src="/images/Profile/@(item.Id).jpg" class="card-img-top" alt="image" style="width:400px;height:400px">
-                    <div class="card-body">
-                        <p class="card-text">@item.Bio</p>
-                        <a asp-action="ConsultantPage" asp-controller="student" asp-route-id="@item.Id" class="btn btn-primary">مشاهده </a>
-                    </div>
-                </div>
-            }
+        @if (ViewBag.hasconsultant != null)
+        {
 
-        </div>
+            <div class="alert alert-danger " role="alert" style="margin-top: 50px;">
+                <p>شما تحت پوشش یک مشاور قرار دارید</p>
+                <a class="btn btn-success" asp-action="DeleteConsultant" asp-controller="Student">حذف مشاور</a>
+            </div>
+
+        }
+        else
+        {
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="card">
+                        <img src="/images/Profile/@(item.Id).jpg" class="card-img-top" alt="image" style="width:400px;height:400px">
+                        <div class="card-body">
+                            <p class="card-text">@item.Bio</p>
+                            <a asp-action="ConsultantPage" asp-controller="student" asp-route-id="@item.Id" class="btn btn-primary">مشاهده </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        }
+        <!-- اینجا ساخته شود -->
         <!-- end::main-content -->
 
     </div>

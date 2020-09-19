@@ -124,7 +124,7 @@
                     </div>
                 </li> -->
                 <!-- begin::header search -->
-                <li class="nav-item">
+                @*<li class="nav-item">
                     <a href="#" class="nav-link" title="جست‌و‌جو" data-toggle="dropdown">
                         <i data-feather="search"></i>
                     </a>
@@ -140,7 +140,7 @@
                             </div>
                         </form>
                     </div>
-                </li>
+                </li>*@
                 <!-- end::header search -->
                 <!-- begin::header minimize/maximize -->
                 <li class="nav-item dropdown">
@@ -287,29 +287,30 @@
                     <div class="open" id="dashboards">
                         <ul>
                             <li class="navigation-divider">داشبردها</li>
-                            <li><a class="active" href="index.html">داشبرد</a></li>
-                            <li><a href="consultant managment.html">  مدیریت مشاورین </a></li>
+                            <li><a class="active" asp-action="index" asp-controller="admin">داشبرد</a></li>
+                            <li><a asp-action="ConsultantManagement" asp-controller="admin">  مدیریت مشاورین غیر فعال </a></li>
+                            <li><a asp-action="ActiveConsultantManagement" asp-controller="admin">  مدیریت مشاورین  فعال </a></li>
 
                             <!-- <li class="navigation-divider">دنبال‌کنندگان</li>
-                            <li>
-                                <div class="avatar-group ml-4">
-                                    <a href="#" class="avatar">
-                                        <span class="avatar-title bg-success rounded-circle">آ</span>
-                                    </a>
-                                    <a href="#" class="avatar">
-                                        <img src="assets/media/image/user/women_avatar5.jpg" class="rounded-circle" alt="avatar">
-                                    </a>
-                                    <a href="#" class="avatar">
-                                        <img src="assets/media/image/user/women_avatar2.jpg" class="rounded-circle" alt="avatar">
-                                    </a>
-                                    <a href="#" class="avatar">
-                                        <span class="avatar-title bg-info rounded-circle">س</span>
-                                    </a>
-                                    <a href="#" class="avatar">
-                                        <span class="avatar-title bg-dark rounded-circle">+30</span>
-                                    </a>
-                                </div>
-                            </li> -->
+    <li>
+        <div class="avatar-group ml-4">
+            <a href="#" class="avatar">
+                <span class="avatar-title bg-success rounded-circle">آ</span>
+            </a>
+            <a href="#" class="avatar">
+                <img src="assets/media/image/user/women_avatar5.jpg" class="rounded-circle" alt="avatar">
+            </a>
+            <a href="#" class="avatar">
+                <img src="assets/media/image/user/women_avatar2.jpg" class="rounded-circle" alt="avatar">
+            </a>
+            <a href="#" class="avatar">
+                <span class="avatar-title bg-info rounded-circle">س</span>
+            </a>
+            <a href="#" class="avatar">
+                <span class="avatar-title bg-dark rounded-circle">+30</span>
+            </a>
+        </div>
+    </li> -->
                         </ul>
                     </div>
                     <div id="apps">
