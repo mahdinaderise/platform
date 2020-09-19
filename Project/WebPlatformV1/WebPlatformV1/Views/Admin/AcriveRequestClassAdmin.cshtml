@@ -1,0 +1,53 @@
+﻿@model RequestListClass
+@{
+    ViewData["Title"] = "AcriveRequestClassAdmin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main-content">
+
+    <div class="container-fluid">
+        <!-- اینجا ساخته شود -->
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-hover bg-white text-center">
+                    <thead class="thead-dark">
+                        <tr>
+
+                            <th scope="col">وضعیت درخواست </th>
+                            <th scope="col">توضیحات دانش آموز</th>
+                            <th scope="col">توضیحات مشاور</th>
+
+                            <th scope="col"> عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Request)
+                        {
+                        <tr>
+                            @if (item.statusForAdmin == false)
+                            {
+                                <td> پاسخ داده نشده </td>
+                            }
+                            else
+                            {
+                                <td> پاسخ داده شده </td>
+
+                            }
+                            <td>@item.RequestTextStudent</td>
+                            <td>@item.RequestTextConsultant</td>
+
+                            <td><a class="btn btn-primary" title="رسیدگی به درخواست" data-toggle="tooltip" data-placement="bottom" asp-action="ReplayRequest" asp-controller="admin" asp-route-id="@item.id"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a></td>
+
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- end::main-content -->
+
+    </div>
+</div>
+

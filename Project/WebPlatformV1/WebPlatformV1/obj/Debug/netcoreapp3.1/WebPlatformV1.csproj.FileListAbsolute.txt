@@ -2826,3 +2826,4 @@ E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\ReplayRequestForAdmin.cshtml.g.cs
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\AddToWallet.cshtml.g.cs
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\Peyment.cshtml.g.cs
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Admin\AcriveRequestClassAdmin.cshtml.g.cs
