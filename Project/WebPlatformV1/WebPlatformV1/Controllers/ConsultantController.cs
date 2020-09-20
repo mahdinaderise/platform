@@ -512,6 +512,8 @@ namespace WebPlatformV1.Controllers
             model.telephone = C.telephone;
             model.Province = C.Province;
             model.city = C.city;
+            model.about = C.about;
+            model.Bio = C.Bio;
             #endregion
 
             #region get on char of name and family
@@ -546,6 +548,8 @@ namespace WebPlatformV1.Controllers
                 c.city = model.city;
                 c.Province = model.Province;
                 c.telephone = model.telephone;
+                c.Bio = model.Bio;
+                c.about = model.about;
                 await _context.SaveChangesAsync();
                 if (model.Picture?.Length > 0)
                 {
@@ -658,12 +662,13 @@ namespace WebPlatformV1.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        [HttpPost]
         public async Task<IActionResult> TodoAppupdate(todoappc model, Tbl_TodoAppConsultant todo)
         {
             var studentId = _userManager.GetUserId(User);
             todo.Note = model.Note;
             todo.ConsultantID = model.consultantid;
-            todo.IsFinally = model.IsFinally;
+            todo.IsFinally = true;
             todo.Id = model.id;
             await _context.Tbl_TodoAppConsultant.AddAsync(todo);
             await _context.SaveChangesAsync();

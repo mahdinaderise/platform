@@ -1,23 +1,82 @@
-﻿@model WebPlatformV1.Models.DbContext.Tbl_Comision
+﻿@model ComisionManagement
 @{
     ViewData["Title"] = "ComisionManagement";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-    <div class="main-content">
-        <div class="page-header">
-            <div class="container-fluid d-sm-flex justify-content-between">
-                <h4>  مدیریت میزان کمیسیون ها</h4>
-            </div>
+<div class="main-content">
+    <div class="page-header">
+        <div class="container-fluid d-sm-flex justify-content-between">
+            <h4>  مدیریت میزان کمیسیون ها</h4>
         </div>
-        <div class="container-fluid">
-            <!-- اینجا ساخته شود -->
+    </div>
+    <div class="container-fluid">
+        <!-- اینجا ساخته شود -->
+        <div class="row">
+            <div class="col-md-12">
 
-            <h1>کمیسیون</h1><h3>@Model.percent</h3>
-            <h1>هزینه ثبت نام</h1><h3>@Model.price</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <h4>کمیسیون</h4><p>@Model.ComisionPercent درصد</p>
+                        <h4>هزینه ثبت نام</h4><p>@Model.peyforregister هزار تومان</p>
+                        <h4>هزینه برگزاری کلاس انلاین</h4><p>@Model.peyforonlineclass هزار تومان</p>
 
-
+                    </div>
+                </div>
+            </div>
 
             <!-- end::main-content -->
 
         </div>
+        <div class="col-12">
+            <div class="accordion custom-accordion">
+
+                <div class="accordion-row bg-white">
+                    <a href="#" class="accordion-header">
+                        <span>تغییر کمیسیون</span>
+                        <i class="accordion-status-icon close fa fa-chevron-up"></i>
+                        <i class="accordion-status-icon open fa fa-chevron-down"></i>
+                    </a>
+                    <div class="accordion-body">
+                        <form asp-action="chComisionPercent" asp-controller="admin"  method="post">
+                            <input asp-for="@Model.ComisionPercent" class="form-control" />
+
+                            <button type="submit" class="btn btn-success" style="margin:10px">انجام</button>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="accordion-row bg-white">
+                    <a href="#" class="accordion-header">
+                        <span>تغییر هزینه ثبت نام</span>
+                        <i class="accordion-status-icon close fa fa-chevron-up"></i>
+                        <i class="accordion-status-icon open fa fa-chevron-down"></i>
+                    </a>
+                    <div class="accordion-body">
+                        <form asp-action="chpeyforregister" asp-controller="admin"  method="post">
+                            <input asp-for="@Model.peyforregister" class="form-control" />
+
+                            <button type="submit" class="btn btn-success" style="margin:10px">انجام </button>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="accordion-row bg-white">
+                    <a href="#" class="accordion-header">
+                        <span>تغییر هزینه برگزاری کلاس انلاین</span>
+                        <i class="accordion-status-icon close fa fa-chevron-up"></i>
+                        <i class="accordion-status-icon open fa fa-chevron-down"></i>
+                    </a>
+                    <div class="accordion-body">
+                        <form asp-action="chpeyforonlineclass" asp-controller="admin"  method="post">
+                            <input asp-for="@Model.peyforonlineclass" class="form-control" />
+                            <button type="submit" class="btn btn-success" style="margin:10px">انجام </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
     </div>

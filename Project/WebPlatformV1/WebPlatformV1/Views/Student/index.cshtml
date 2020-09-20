@@ -14,13 +14,9 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-md-7">
-                                    <h6 class="card-title mb-3">خوش برگشتی (نام کاربر)</h6>
-                                    <p>با چک کردن قسمت های مختلف بیشتر با سایت آشنا شو لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                                    <ul class="mb-3">
-                                        <li>این قسمت ها را مشاهده کنید</li>
-                                        <li>مخاطبان خود را اضافه کنید</li>
-                                    </ul>
-                                    <a asp-controller="Student" asp-action="PeyTest" class="btn bg-white">پرداخت</a>
+                                    <h6 class="card-title mb-3">خوش برگشتی @ViewBag.NameAndFamily</h6>
+                                    <p>پروفایل شما فعال است و هم اکنون میتوانید از امکانات ما لذت ببرید..:) </p>
+                                
                                 </div>
                                 <div class="col-md-5">
                                     <img src="~/assets/media/svg/undraw_onboarding_o8mv.svg" alt="..." class="img-fluid">
@@ -154,18 +150,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <h6 class="card-title">کارهای روزانه</h6>
-                                <div>
-                                    <a asp-action="TodoAppupdate" asp-controller="Student"  class="mr-3">
-                                        <i class="fa fa-refresh"></i>
-                                    </a>
-                                    <div class="dropdown">
-                                        <a href="#" data-toggle="dropdown" aria-haspopup="true"
-                                           aria-expanded="false">
-                                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                        </a>
-
-                                    </div>
-                                </div>
+                               
                             </div>
                             <div class="custom-control custom-checkbox-success custom-checkbox todo-item">
                                 @foreach (var item in Model.Todo)
@@ -173,8 +158,8 @@
                                     @if (Model != null && item.IsFinally==false) 
                                     {
                                 <div class="form-group d-flex flex-row">
-                                    <form>
-                                        <button type="submit" class=" btn btn-success small p-2" style="height:35px;" title="انجام کار" data-toggle="tooltip" data-placement="bottom" id="checkbox @item.Id" asp-action="TodoAppDelete" asp-controller="student" asp-route-id="@item.Id">
+                                    <form asp-action="TodoAppupdate" asp-controller="student" asp-route-id="@item.Id" >
+                                        <button type="submit" class=" btn btn-success small p-2" style="height:35px;" title="انجام کار" data-toggle="tooltip" data-placement="bottom" id="checkbox @item.Id" >
                                             <i class="fa fa-check" aria-hidden="true"></i>
 
                                         </button>
@@ -191,7 +176,7 @@
 
                                 </div>
 
-                            <form class="mt-4" method="post" asp-action="TodoApp" asp-controller="Student">
+                            <form class="mt-4" method="post" asp-action="TodoApp" asp-controller="Student" >
                                 <div class="input-group">
                                     <input type="hidden" class="form-control" asp-for="@Model.STudentID"
                                            aria-label="Example text with button addon" value="@ViewBag.myid" />

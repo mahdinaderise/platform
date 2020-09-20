@@ -28,7 +28,8 @@ namespace WebPlatformV1.ViewModels.ConsultantViewModel
         public string city { get; set; }
         public string Province { get; set; }
         public string telephone { get; set; }
-
+        public string Bio { get; set; }
+        public string about { get; set; }
         public string Address { get; set; }
         public string Shaba { get; set; }
         public IFormFile Picture { get; set; }

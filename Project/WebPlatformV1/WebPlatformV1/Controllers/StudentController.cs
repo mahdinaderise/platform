@@ -32,13 +32,97 @@ namespace WebPlatformV1.Controllers
             _context = context;
             _userManager = userManager;
         }
-         public IActionResult PeyTest()
+        public IActionResult index(todoapp model)
+        {
+            #region menuDt
+            var sId = _userManager.GetUserId(User);
+
+            var students = _context.students.FirstOrDefault(p => p.Id == sId);
+            var name = students.Name;
+            var Family = students.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = students.ProfilePicUrl;
+            #endregion
+
+            #region check credit
+            var IdStudent = _userManager.GetUserId(User);
+            var r = _context.students.Find(IdStudent);
+            ViewBag.myid = IdStudent;
+
+            if (r.ConsultantID == null)
+            {
+                return RedirectToAction(nameof(SelectConsultant));
+
+            }
+
+            if (r.CreditTime < DateTime.Today)
+            {
+                if (r.State == true)
+                {
+                    r.State = false;
+                    _context.students.Update(r);
+                    _context.SaveChanges();
+                }
+
+                return RedirectToAction(nameof(MyPanel));
+
+            }
+            #endregion
+            #region count of credit
+            var credittime = r.CreditTime.DayOfYear;
+            var Today = DateTime.Today.DayOfYear;
+            if (credittime - Today > 0)
+            {
+                ViewBag.credittime = credittime - Today;
+
+            }
+            else
+            {
+                ViewBag.credittime = 0;
+            }
+            #endregion
+            #region count of do task
+            var tasks = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent).Count();
+            var tasksdo = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.isDo == true).Count();
+            var tasksNdo = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.isDo == false).Count();
+            var todayTask = _context.tbl_Tasks.Where(p => p.SendDelivery == DateTime.Today).Count();
+            if (tasks != 0)
+            {
+                ViewBag.DoTest = (tasksdo * 100) / tasks;
+                ViewBag.NDoTest = (tasksNdo * 100) / tasks;
+            }
+            else
+            {
+                ViewBag.DoTest = 0;
+                ViewBag.NDoTest = 0;
+            }
+            ViewBag.Tasks = tasks;
+            ViewBag.tasksdo = tasksdo;
+            ViewBag.today = todayTask;
+            #endregion
+            model.Todo = _context.Tbl_TodoAppStudents.Where(p => p.STudentID == IdStudent).ToList();
+            //ViewBag.todoid = model.Todo.Where(p => p.STudentID == IdStudent).Select(p => p.Id);
+
+            return View(model);
+        }
+        public IActionResult PeyTest()
         {
             return View();
         }
         [HttpGet]
         public IActionResult Profile(Profile model)
         {
+            #region menuDt
+            var sId = _userManager.GetUserId(User);
+
+            var students = _context.students.FirstOrDefault(p => p.Id == sId);
+            var name = students.Name;
+            var Family = students.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = students.ProfilePicUrl;
+            #endregion
 
             var studentid = _userManager.GetUserId(User);
 
@@ -115,6 +199,16 @@ namespace WebPlatformV1.Controllers
         [HttpGet]
         public IActionResult ido(int id)
         {
+            #region menuDt
+            var sId = _userManager.GetUserId(User);
+
+            var students = _context.students.FirstOrDefault(p => p.Id == sId);
+            var name = students.Name;
+            var Family = students.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = students.ProfilePicUrl;
+            #endregion
             HttpContext.Session.SetInt32("id", id);
 
             return View();
@@ -149,74 +243,21 @@ namespace WebPlatformV1.Controllers
 
             return View();
         }
-        public IActionResult index(todoapp model)
-        {
-      
-            #region check credit
-            var IdStudent = _userManager.GetUserId(User);
-            var r = _context.students.Find(IdStudent);
-            ViewBag.myid = IdStudent;
-
-            if (r.ConsultantID ==null)
-            {
-                return RedirectToAction(nameof(SelectConsultant));
-
-            }
-            
-           if (r.CreditTime<DateTime.Today)
-            {
-                if (r.State==true)
-                {
-                    r.State = false;
-                    _context.students.Update(r);
-                    _context.SaveChanges();
-                }
-               
-                return RedirectToAction(nameof(MyPanel));
-                
-            }
-            #endregion
-            #region count of credit
-            var credittime = r.CreditTime.DayOfYear;
-            var Today = DateTime.Today.DayOfYear;
-            if (credittime - Today>0)
-            {
-                ViewBag.credittime = credittime - Today;
-
-            }
-            else
-            {
-                ViewBag.credittime = 0;
-            }
-            #endregion
-            #region count of do task
-            var tasks = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent).Count();
-            var tasksdo = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.isDo == true).Count();
-            var tasksNdo = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.isDo == false).Count();
-            var todayTask= _context.tbl_Tasks.Where(p => p.SendDelivery == DateTime.Today).Count();
-            if (tasks !=0)
-            {
-                ViewBag.DoTest = (tasksdo * 100) / tasks;
-                ViewBag.NDoTest = (tasksNdo * 100) / tasks;
-            }
-            else
-            {
-                ViewBag.DoTest = 0;
-                ViewBag.NDoTest = 0;
-            }
-            ViewBag.Tasks = tasks;
-            ViewBag.tasksdo = tasksdo;
-            ViewBag.today = todayTask;
-            #endregion
-            model.Todo = _context.Tbl_TodoAppStudents.Where(p => p.STudentID == IdStudent).ToList();
-            //ViewBag.todoid = model.Todo.Where(p => p.STudentID == IdStudent).Select(p => p.Id);
-
-            return View(model);
-        }
+    
         [HttpGet]
         public IActionResult studenttask(TasksStudents model)
-        { 
-        var IdStudent = _userManager.GetUserId(User);
+        {
+            #region menuDt
+            var sId = _userManager.GetUserId(User);
+
+            var students = _context.students.FirstOrDefault(p => p.Id == sId);
+            var name = students.Name;
+            var Family = students.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = students.ProfilePicUrl;
+            #endregion
+            var IdStudent = _userManager.GetUserId(User);
             var NowDateTime = DateTime.Today;
             var StartDate = model.StartDate;
             model.tasks = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.SendDelivery == DateTime.Today).ToList();
@@ -257,6 +298,16 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult OnlinePayment(int id)
         {
+            #region menuDt
+            var sId = _userManager.GetUserId(User);
+
+            var students = _context.students.FirstOrDefault(p => p.Id == sId);
+            var name = students.Name;
+            var Family = students.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = students.ProfilePicUrl;
+            #endregion
             var studentId = _userManager.GetUserId(User);
 
             if (HttpContext.Request.Query["Status"] != "" &&
@@ -303,6 +354,16 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult MyPanel(Panel model)
         {
+            #region menuDt
+            var sId = _userManager.GetUserId(User);
+
+            var students = _context.students.FirstOrDefault(p => p.Id == sId);
+            var name = students.Name;
+            var Family = students.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = students.ProfilePicUrl;
+            #endregion
             var studentId = _userManager.GetUserId(User);
             model.Panel1 = _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending(p => p.IDAddPanel).FirstOrDefault();
             ViewBag.hasconsultant = _context.students.FirstOrDefault(p => p.Id == studentId).ConsultantID;
@@ -335,12 +396,13 @@ namespace WebPlatformV1.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(index));
         }
+        [HttpPost]
         public async Task<IActionResult> TodoAppupdate(todoapp model, Tbl_TodoAppStudent todo)
         {
             var studentId = _userManager.GetUserId(User);
             todo.Note = model.Note;
             todo.STudentID = model.STudentID;
-            todo.IsFinally = model.IsFinally;
+            todo.IsFinally = true;
             todo.Id = model.id;
              _context.Tbl_TodoAppStudents.Update(todo);
             await _context.SaveChangesAsync();
@@ -348,6 +410,16 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult SelectConsultant()
         {
+            #region menuDt
+            var sId = _userManager.GetUserId(User);
+
+            var students = _context.students.FirstOrDefault(p => p.Id == sId);
+            var name = students.Name;
+            var Family = students.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = students.ProfilePicUrl;
+            #endregion
             var studentId = _userManager.GetUserId(User);
 
             ViewBag.hasconsultant = _context.students.FirstOrDefault(p => p.Id == studentId).ConsultantID;
@@ -358,7 +430,17 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult ConsultantPage(string id, requestforonline model)
         {
-          var  consultant = _context.consultants.FirstOrDefault(p => p.Id == id);
+            #region menuDt
+            var sId = _userManager.GetUserId(User);
+
+            var students = _context.students.FirstOrDefault(p => p.Id == sId);
+            var name = students.Name;
+            var Family = students.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = students.ProfilePicUrl;
+            #endregion
+            var consultant = _context.consultants.FirstOrDefault(p => p.Id == id);
             ViewBag.NameF = consultant.Name + " " + consultant.Family;
             ViewBag.CountRequest = _context.students.Where(p => p.ConsultantID == id).Count();
             model.bio = consultant.Bio;
@@ -367,9 +449,31 @@ namespace WebPlatformV1.Controllers
             return View(model);
 
         }
-        public IActionResult Blog()
+        public IActionResult Blog(Blog model)
         {
-            return View();
+            #region menuDt
+            var sId = _userManager.GetUserId(User);
+
+            var students = _context.students.FirstOrDefault(p => p.Id == sId);
+            var name = students.Name;
+            var Family = students.Family;
+            ViewBag.NameAndFamily = name + " " + Family;
+            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            ViewBag.hasP = students.ProfilePicUrl;
+            #endregion
+            var result = _context.consultants.FirstOrDefault(p => p.Id == students.ConsultantID);
+            model.blog = _context.tbl_Blogs.Where(p => p.ConsultantId == result.Id).OrderByDescending(P => P.ID).ToList();
+            model.Name = result.Name;
+            model.Family = result.Family;
+            model.Email = result.Email;
+            model.id = result.Id;
+            string FristLast = result.Family;
+            string fristCharecter = result.Name;
+            ViewBag.fristCharecter = fristCharecter[0] + " " + FristLast[0].ToString();
+            model.ProfilePicUrl = result.ProfilePicUrl;
+            model.CountPost = _context.tbl_Blogs.Where(p => p.ConsultantId == result.Id).Count();
+            model.CountStudent = _context.students.Where(p => p.ConsultantID == result.Id).Count();
+            return View(model);
         }
         public IActionResult AcceptConsultant(string id, requestforonline model)
         {

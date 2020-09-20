@@ -213,10 +213,11 @@ namespace WebPlatformV1.Controllers
             _context.SaveChanges();
             return View();
         }
-        public IActionResult ComisionManagement(Tbl_Comision model)
+        public IActionResult ComisionManagement(ComisionManagement model)
         {
-            model.percent = _context.Tbl_Comisions.Find(1).percent;
-            model.price = _context.Tbl_Comisions.Find(2).price;
+            model.ComisionPercent = _context.Tbl_Comisions.Find(1).percent;
+            model.peyforregister = _context.Tbl_Comisions.Find(2).price;
+            model.peyforonlineclass=_context.Tbl_Comisions.Find(3).price;
             return View(model);
         }
         public IActionResult AcriveRequestClassAdmin(RequestListClass model)
@@ -256,6 +257,33 @@ namespace WebPlatformV1.Controllers
             _context.tbl_Requestonlineclasses.Update(req);
             _context.SaveChanges();
             return RedirectToAction(nameof(AcriveRequestClassAdmin));
+        }
+        [HttpPost]
+        public IActionResult chComisionPercent(ComisionManagement model)
+        {
+            var comi = _context.Tbl_Comisions.Find(1);
+            comi.percent = model.ComisionPercent;
+            _context.Tbl_Comisions.Update(comi);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(ComisionManagement));
+        }
+        [HttpPost]
+        public IActionResult chpeyforregister(ComisionManagement model)
+        {
+            var comi = _context.Tbl_Comisions.Find(2);
+            comi.price = model.peyforregister;
+            _context.Tbl_Comisions.Update(comi);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(ComisionManagement));
+        }
+        [HttpPost]
+        public IActionResult chpeyforonlineclass(ComisionManagement model)
+        {
+            var comi = _context.Tbl_Comisions.Find(3);
+            comi.price = model.peyforonlineclass;
+            _context.Tbl_Comisions.Update(comi);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(ComisionManagement));
         }
         [HttpGet]
         public IActionResult Registeradmin()

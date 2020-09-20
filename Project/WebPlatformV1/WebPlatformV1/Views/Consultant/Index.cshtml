@@ -31,20 +31,20 @@
                 <div class="card bg-secondary-gradient">
                     <div class="card-body">
                         <div class="row align-items-center">
-                            @if (ViewBag.state == false)
+                            @if (ViewBag.state == false && ViewBag.acceptdegree == true)
                             {
                                 <div class="col-md-7">
                                     <p>مدارک ارسالی شما تایید شده برای فعال سازی پروفایل خود از لینک زیر هزینه ثبت نام در سایت مشاویران را پرداخت کنید..</p>
 
-                                    <a href="#" class="btn bg-white">پرداخت</a>
+                                    <a asp-action="PeymentA" asp-controller="Consultant" class="btn bg-white">پرداخت</a>
                                 </div>
                             }
-                            @if (ViewBag.issendDegree == false)
+                            @if (ViewBag.issendDegree == false && ViewBag.state == false)
                             {
                                 <div class="col-md-7">
                                     <p>مشاور گرامی جهت فعال سازی پروفایل شما نیاز به ارسال مدارک معتبر از طریق بخش پروفایل شما برای کارشناسان ما می باشد..</p>
 
-                                    <a href="#" class="btn bg-white">پروفایل</a>
+                                    <a asp-action="profile" asp-controller="Consultant" class="btn bg-white">پروفایل</a>
                                 </div>
                             }
                             @if (ViewBag.acceptdegree == false && ViewBag.issendDegree == true)
@@ -54,7 +54,7 @@
 
                                 </div>
                             }
-                            @if (ViewBag.acceptdegree == true && ViewBag.issendDegree == true && ViewBag.issendDegree == false)
+                            @if (ViewBag.acceptdegree == true && ViewBag.issendDegree == true && ViewBag.state == true)
                             {
                                 <div class="col-md-7">
                                     <p>  خوش آمدید کاربر عزیز از منوی سمت راست می توانید پنل خودرا مدیریت کنید با تشکر از انتخاب شما :) </p>

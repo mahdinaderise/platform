@@ -2841,3 +2841,5 @@ E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\Historypay.cshtml.g.cs
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Student\Blog.cshtml.g.cs
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Registeradmin.cshtml.g.cs
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Registeradmin.cshtml.g.cs
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\OnlinePaymentA.cshtml.g.cs
