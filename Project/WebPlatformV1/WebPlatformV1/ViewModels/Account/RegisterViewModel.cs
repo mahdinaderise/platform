@@ -16,13 +16,10 @@ namespace WebPlatformV1.ViewModels.Account
         [Display(Name = "ایمیل")]
         [EmailAddress]
         public string Email { get; set; }
-        [Required]
         [Display(Name = "نام ")]
         public string Name { get; set; }
-        [Required]
         [Display(Name = "نام خانوادگی")]
         public string Family { get; set; }
-        [Required]
         [Display(Name = "کدملی")]
         public int NationalCode { get; set; }
 

@@ -70,7 +70,9 @@ namespace WebPlatformV1.Controllers
             ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
             ViewBag.hasP = Consultant.ProfilePicUrl;
             #endregion
-
+            ViewBag.state = Consultant.State;
+            ViewBag.issendDegree = Consultant.IsSendDegree;
+            ViewBag.acceptdegree = Consultant.isAcceptDegree;
 
             foreach (var item in c)
             {
@@ -741,6 +743,54 @@ namespace WebPlatformV1.Controllers
 
                     _context.consultants.Update(consultant);
 
+                    _context.SaveChanges();
+                    ViewBag.code = res.RefId;
+                    return View();
+                }
+            }
+
+            return NotFound();
+        }
+        public IActionResult PeymentA()
+        {
+            var price = _context.Tbl_Comisions.Find(2);
+            var payment = new Payment(price.price);
+            var res = payment.PaymentRequest($"پرداخت جهت فعال سازی پروفایل",
+               "http://localhost:5000/Consultant/OnlinePaymentA/", "Mahdinaderi.se@outlook.com", "09130087194");
+
+            if (res.Result.Status == 100)
+            {
+
+                return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Result.Authority);
+            }
+            else
+            {
+                return BadRequest();
+            }
+            return View();
+        }
+        public IActionResult OnlinePaymentA()
+        {
+            var cid = _userManager.GetUserId(User);
+
+            if (HttpContext.Request.Query["Status"] != "" &&
+                HttpContext.Request.Query["Status"].ToString().ToLower() == "ok" &&
+                HttpContext.Request.Query["Authority"] != "")
+            {
+                string authority = HttpContext.Request.Query["Authority"].ToString();
+                var price = _context.Tbl_Comisions.Find(2);
+
+                var consultant = _context.consultants.FirstOrDefault(p => p.Id == cid);
+                var Wallet = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == cid);
+                var payment = new Payment(price.price);
+                var Balance = _context.Tbl_Balances.Find(1);
+                var res = payment.Verification(authority).Result;
+                if (res.Status == 100)
+                {
+                    consultant.State = true;
+                    Balance.SumComosion = Balance.SumComosion + price.price;
+                    _context.consultants.Update(consultant);
+                    _context.Tbl_Balances.Update(Balance);
                     _context.SaveChanges();
                     ViewBag.code = res.RefId;
                     return View();

@@ -31,15 +31,36 @@
                 <div class="card bg-secondary-gradient">
                     <div class="card-body">
                         <div class="row align-items-center">
-                            <div class="col-md-7">
-                                <h6 class="card-title mb-3">خوش برگشتی (نام کاربر)</h6>
-                                <p>با چک کردن قسمت های مختلف بیشتر با سایت آشنا شو لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                                <ul class="mb-3">
-                                    <li>این قسمت ها را مشاهده کنید</li>
-                                    <li>مخاطبان خود را اضافه کنید</li>
-                                </ul>
-                                <a href="#" class="btn bg-white">اضافه کردن دانش آموز</a>
-                            </div>
+                            @if (ViewBag.state == false)
+                            {
+                                <div class="col-md-7">
+                                    <p>مدارک ارسالی شما تایید شده برای فعال سازی پروفایل خود از لینک زیر هزینه ثبت نام در سایت مشاویران را پرداخت کنید..</p>
+
+                                    <a href="#" class="btn bg-white">پرداخت</a>
+                                </div>
+                            }
+                            @if (ViewBag.issendDegree == false)
+                            {
+                                <div class="col-md-7">
+                                    <p>مشاور گرامی جهت فعال سازی پروفایل شما نیاز به ارسال مدارک معتبر از طریق بخش پروفایل شما برای کارشناسان ما می باشد..</p>
+
+                                    <a href="#" class="btn bg-white">پروفایل</a>
+                                </div>
+                            }
+                            @if (ViewBag.acceptdegree == false && ViewBag.issendDegree == true)
+                            {
+                                <div class="col-md-7">
+                                    <p> مدارک ارسالی شما به دست ما رسیده پس از بررسی نتیجه را به شما اعلام میکنیم.</p>
+
+                                </div>
+                            }
+                            @if (ViewBag.acceptdegree == true && ViewBag.issendDegree == true && ViewBag.issendDegree == false)
+                            {
+                                <div class="col-md-7">
+                                    <p>  خوش آمدید کاربر عزیز از منوی سمت راست می توانید پنل خودرا مدیریت کنید با تشکر از انتخاب شما :) </p>
+
+                                </div>
+                            }
                             <div class="col-md-5">
                                 <img src="/assets/media/svg/undraw_onboarding_o8mv.svg" alt="..." class="img-fluid">
                             </div>

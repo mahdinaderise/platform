@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
+using WebPlatformV1.ViewModels.Account;
 using WebPlatformV1.ViewModels.Admin;
 using WebPlatformV1.ViewModels.ConsultantViewModel;
 
@@ -18,10 +19,14 @@ namespace WebPlatformV1.Controllers
     {
         private readonly MainDBContext _context;
         private readonly UserManager<ApplicationUsers> _userManager;
-        public AdminController(MainDBContext context, UserManager<ApplicationUsers> userManager)
+        private readonly SignInManager<ApplicationUsers> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public AdminController(MainDBContext context, UserManager<ApplicationUsers> userManager, SignInManager<ApplicationUsers> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
             _userManager = userManager;
+            _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Index()
@@ -251,6 +256,51 @@ namespace WebPlatformV1.Controllers
             _context.tbl_Requestonlineclasses.Update(req);
             _context.SaveChanges();
             return RedirectToAction(nameof(AcriveRequestClassAdmin));
+        }
+        [HttpGet]
+        public IActionResult Registeradmin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Registeradmin(RegisterViewModel model)
+        {
+            bool x = await _roleManager.RoleExistsAsync("Admin");
+            if (!x)
+            {
+                // first we create Admin rool    
+                var role = new IdentityRole();
+                role.Name = "Admin";
+                await _roleManager.CreateAsync(role);
+            }
+
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUsers()
+                {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                  
+                    EmailConfirmed = true,
+               
+                };
+
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    var result1 = await _userManager.AddToRoleAsync(user, "Admin");
+                    return RedirectToAction("Index", "admin");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+            }
+            return View(model);
+
         }
     }
 }
