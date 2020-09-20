@@ -36,8 +36,7 @@
                         else
                         {
                             <figure class="avatar avatar-xl">
-                                <img src="/images/Profile/@(Model.id).jpg"
-                                     class="rounded-circle bg-info" alt="...">
+                                      class="rounded-circle bg-info" alt="...">
                             </figure>
                         }
 
@@ -54,7 +53,6 @@
 
                                 <th scope="col"> وضعیت</th>
                                 <th scope="col"> توضیحات </th>
-                                <th scope="col"> نمایش</th>
 
                             </tr>
                         </thead>
@@ -78,12 +76,12 @@
                                         <td> تایید شده</td>
 
                                     }
-                                    <td> @item.Description</td>
-                                    @if (item.state == 3 || item.state == 1)
-                                    {
+                                    @*<td> @item.Description</td>*@
+                                   @* @if (item.state == 3 || item.state == 1)*@
+                                    @*{
                                         <th scope="col"> <a href="~/images/Degree/@(Model.id).jpg"> نمایش تصویر ارسالی</a></th>
 
-                                    }
+                                    }*@
 
                                 </tr>
 
@@ -149,7 +147,7 @@
                             </div>
                             <div class="form-row">
                                 <label for="exampleFormControlFile1">آپلود عکس پروفایل  </label>
-                                <input type="file" class="form-control-file" asp-for="Picture" onclick="Upload()" accept=".jpg" id="fileUpload">
+                                <input type="file" class="form-control-file" asp-for="Picture" onclick="Upload()" accept=".jpg" id="fileUpload" required>
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="d-flex justify-content-end">
@@ -172,11 +170,14 @@
                     <div class="card-body">
 
                         <form asp-action="ProfileDegree" asp-controller="Consultant" method="post" enctype="multipart/form-data" onsubmit="return checkSize(1000000)">
-                            <input type="hidden" name="MAX_FILE_SIZE" asp-for="MAX_FILE_SIZE" value="1000000" />
 
                             <div class="form-row">
                                 <label for="exampleFormControlFile1">آپلود عکس مدرک شما   </label>
-                                <input type="file" class="form-control-file" asp-for="DegreePic" accept=".jpg" id="exampleFormControlFile1">
+                                <input type="file" class="form-control-file" asp-for="DegreePic" accept=".jpg" id="exampleFormControlFile1" required>
+                            </div>
+                            <div class="form-row">
+                                <label for="exampleFormControlFile1">آپلود عکس کارت ملی شما   </label>
+                                <input type="file" class="form-control-file" asp-for="DegreemeliPic" accept=".jpg" id="exampleFormControlFile1" required>
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="d-flex justify-content-end">

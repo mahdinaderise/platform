@@ -363,8 +363,6 @@ namespace WebPlatformV1.Controllers
 
             return View();
         }
-
-
         [HttpGet]
         public IActionResult Profile(Profile model)
         {
@@ -373,7 +371,7 @@ namespace WebPlatformV1.Controllers
 
             var C = _context.Find<Consultant>(consultantId);
             //var user = _context.consultants.Select(p=>p.Name  p.Family , p.PhoneNumber).Where(p => p.Id == consultantId).ToList();
-
+            model.Degree = _context.SendDegree.Where(p => p.ConsultantId == consultantId).ToList();
             #region view data in textbox
 
 
@@ -385,7 +383,9 @@ namespace WebPlatformV1.Controllers
             model.PhoneNumber = C.PhoneNumber;
             model.Shaba = C.Shaba;
             model.ProfilePicUrl = C.ProfilePicUrl;
-
+            model.telephone = C.telephone;
+            model.Province = C.Province;
+            model.city = C.city;
             #endregion
 
             #region get on char of name and family
@@ -417,6 +417,9 @@ namespace WebPlatformV1.Controllers
                 c.CardNumber = model.CardNumber;
                 c.PhoneNumber = model.PhoneNumber;
                 c.Shaba = model.Shaba;
+                c.city = model.city;
+                c.Province = model.Province;
+                c.telephone = model.telephone;
                 await _context.SaveChangesAsync();
                 if (model.Picture?.Length > 0)
                 {
@@ -433,6 +436,60 @@ namespace WebPlatformV1.Controllers
                         await _context.SaveChangesAsync();
 
                         consultant.ProfilePicUrl = model.Picture.ToString();
+                    }
+                }
+
+                return RedirectToAction(nameof(Profile));
+
+            }
+
+
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ProfileDegree(Profile model)
+        {
+            var consultantId = _userManager.GetUserId(User);
+            if (model != null)
+            {
+               
+         
+                if (model.DegreePic?.Length > 0)
+                {
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        "images", "Degree",
+
+                        consultantId + Path.GetExtension(model.DegreePic.FileName));
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.DegreePic.CopyTo(stream);
+                        SendDegree sendDegree = new SendDegree();
+                        sendDegree.IsSend = true;
+                        sendDegree.ConsultantId = consultantId;
+                        sendDegree.state = 1;
+                        _context.SendDegree.Add(sendDegree);
+                        _context.SaveChanges();
+
+                    }
+                }
+                if (model.DegreemeliPic?.Length > 0)
+                {
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        "images", "Degree",
+
+                        consultantId+"m" + Path.GetExtension(model.DegreemeliPic.FileName));
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.DegreemeliPic.CopyTo(stream);
+                        SendDegree sendDegreemeli = new SendDegree();
+                        sendDegreemeli.IsSend = true;
+                        sendDegreemeli.ConsultantId = consultantId;
+                        sendDegreemeli.state = 1;
+                        _context.SendDegree.Add(sendDegreemeli);
+                        _context.SaveChanges();
+
                     }
                 }
                 return RedirectToAction(nameof(Profile));

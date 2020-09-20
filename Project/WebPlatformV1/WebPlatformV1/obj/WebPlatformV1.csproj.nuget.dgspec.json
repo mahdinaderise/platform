@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Naderi\\platform\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {}
+    "E:\\GitHub\\newplatform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {}
   },
   "projects": {
-    "E:\\Naderi\\platform\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {
+    "E:\\GitHub\\newplatform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Naderi\\platform\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
+        "projectUniqueName": "E:\\GitHub\\newplatform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
         "projectName": "WebPlatformV1",
-        "projectPath": "E:\\Naderi\\platform\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
-        "packagesPath": "C:\\Users\\aragrp.com\\.nuget\\packages\\",
-        "outputPath": "E:\\Naderi\\platform\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\obj\\",
+        "projectPath": "E:\\GitHub\\newplatform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
+        "packagesPath": "C:\\Users\\Mahdi\\.nuget\\packages\\",
+        "outputPath": "E:\\GitHub\\newplatform\\Project\\WebPlatformV1\\WebPlatformV1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\aragrp.com\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mahdi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -31,6 +32,78 @@ namespace WebPlatformV1.Controllers
          public IActionResult PeyTest()
         {
             return View();
+        }
+        [HttpGet]
+        public IActionResult Profile(Profile model)
+        {
+
+            var studentid = _userManager.GetUserId(User);
+
+            var C = _context.Find<Student>(studentid);
+            //var user = _context.consultants.Select(p=>p.Name  p.Family , p.PhoneNumber).Where(p => p.Id == consultantId).ToList();
+            #region view data in textbox
+
+
+            model.id = C.Id;
+            model.Name = C.Name;
+            model.Family = C.Family;
+            model.PhoneNumber = C.PhoneNumber;
+            model.ProfilePicUrl = C.ProfilePicUrl;
+            #endregion
+
+            #region get on char of name and family
+
+            //model.Consultants = _context.consultants.Where(p => p.Id == user).ToList();
+            //consultants = _context.consultants.Where(p=>p.Id==id).ToList();
+            if (model.Name != null && model.Family != null)
+            {
+                string FristLast = model.Family;
+                string fristCharecter = model.Name;
+                ViewBag.fristCharecter = fristCharecter[0] + " " + FristLast[0].ToString();
+            }
+
+
+            #endregion
+
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Profile(Profile model, Consultant consultant)
+        {
+            var studentId = _userManager.GetUserId(User);
+            var s = _context.students.FirstOrDefault(p => p.Id == studentId);
+            if (s != null)
+            {
+                s.Name = model.Name;
+                s.Family = model.Family;
+               
+                s.PhoneNumber = model.PhoneNumber;
+               
+                await _context.SaveChangesAsync();
+                if (model.Picture?.Length > 0)
+                {
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        "images", "Profile",
+
+                        s.Id + Path.GetExtension(model.Picture.FileName));
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.Picture.CopyTo(stream);
+                        var test = filePath;
+                        s.ProfilePicUrl = filePath;
+                        await _context.SaveChangesAsync();
+
+                        consultant.ProfilePicUrl = model.Picture.ToString();
+                    }
+                }
+
+                return RedirectToAction(nameof(Profile));
+
+            }
+
+
+            return View(model);
         }
         public IActionResult course()
         {

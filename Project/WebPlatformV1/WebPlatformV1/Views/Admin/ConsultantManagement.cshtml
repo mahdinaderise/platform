@@ -1,0 +1,40 @@
+﻿@model List<Consultant>
+@{
+    ViewData["Title"] = "ConsultantManagement";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="main-content">
+
+    <div class="container-fluid">
+        <!-- اینجا ساخته شود -->
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-hover bg-white text-center">
+                    <thead class="thead-dark">
+                        <tr>
+
+                            <th scope="col">نام مشاور </th>
+                            <th scope="col">شماره ملی</th>
+                            <th scope="col"> عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td> @item.Name</td>
+                            <td>@item.NationalCode</td>
+                            <a class="btn btn-primary" title="ویرایش" data-toggle="tooltip" data-placement="bottom" asp-action="StudentPage" asp-controller="Consultant" asp-route-id="@item.Id"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
+
+                        </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- end::main-content -->
+
+    </div>
+</div>
+
