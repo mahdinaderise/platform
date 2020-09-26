@@ -2154,7 +2154,6 @@ E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\System.Text.Json.dll
-E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\ZarinpalSandbox.dll
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll
@@ -2843,3 +2842,6 @@ C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.csproj.CoreCompileInputs.cache
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.MvcApplicationPartsAssemblyInfo.cache
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Zarinpal.dll
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Account\LoginAdmin.cshtml.g.cs
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\OnlinePaymentA.cshtml.g.cs
