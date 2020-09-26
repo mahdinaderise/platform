@@ -16,7 +16,7 @@ using WebPlatformV1.ViewModels;
 using WebPlatformV1.ViewModels.Consultant;
 using WebPlatformV1.ViewModels.ConsultantViewModel;
 using WebPlatformV1.ViewModels.StudentViewModel;
-using ZarinpalSandbox;
+using Zarinpal;
 
 namespace WebPlatformV1.Controllers
 {
@@ -278,17 +278,17 @@ namespace WebPlatformV1.Controllers
             return View();
         }
         public IActionResult Peyment()
-        {
+        { var merchan = "2ae499a0-1e82-47eb-9208-d099026ef22a";
             var studentId = _userManager.GetUserId(User);
             var panel = _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending(p => p.IDAddPanel).FirstOrDefault();
             if (panel == null)
                 return NotFound();
-            var payment = new ZarinpalSandbox.Payment(panel.Price);
+            var payment = new Zarinpal.Payment(merchan, panel.Price);
             var res = payment.PaymentRequest($"پرداخت فاکتور شماره {panel.IDAddPanel}",
-               "http://localhost:5000/Student/OnlinePayment/" + panel.IDAddPanel, "Mahdinaderi.se@outlook.com", "09130087194");
+               "http://panel.moshaviran.com/Student/OnlinePayment/" + panel.IDAddPanel, "Mahdinaderi.se@outlook.com", "09130087194");
             if (res.Result.Status == 100)
             {
-                return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Result.Authority);
+                return Redirect("https://zarinpal.com/pg/StartPay/" + res.Result.Authority);
             }
             else
             {
@@ -298,6 +298,8 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult OnlinePayment(int id)
         {
+         var merchan = "2ae499a0-1e82-47eb-9208-d099026ef22a";
+
             #region menuDt
             var sId = _userManager.GetUserId(User);
 
@@ -321,7 +323,7 @@ namespace WebPlatformV1.Controllers
                 var Balance = _context.Tbl_Balances.Find(1);
                 DateTime today = DateTime.Today;
               DateTime  CreditTime1= today.AddDays(panel.Day);
-                var payment = new Payment(panel.Price);
+                var payment = new Payment(merchan, panel.Price);
                 var res = payment.Verification(authority).Result;
                 if (res.Status == 100)
                 {

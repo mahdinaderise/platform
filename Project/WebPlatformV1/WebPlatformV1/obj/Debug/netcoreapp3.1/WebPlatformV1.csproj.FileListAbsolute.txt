@@ -2597,7 +2597,6 @@ C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll
@@ -2628,7 +2627,6 @@ C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.VisualBasic.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
@@ -2655,7 +2653,6 @@ C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\System.Text.Json.dll
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\ZarinpalSandbox.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll
@@ -2708,14 +2705,6 @@ C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\debian-x64\native\libuv.so
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\fedora-x64\native\libuv.so
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\opensuse-x64\native\libuv.so
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\osx\native\libuv.dylib
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\rhel-x64\native\libuv.so
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\win7-arm\native\libuv.dll
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\win7-x64\native\libuv.dll
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\win7-x86\native\libuv.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
@@ -2739,9 +2728,6 @@ C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.csprojAssemblyReference.cache
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.AssemblyInfoInputs.cache
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.AssemblyInfo.cs
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.csproj.CoreCompileInputs.cache
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.RazorAssemblyInfo.cache
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.RazorAssemblyInfo.cs
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.TagHelpers.input.cache
@@ -2843,3 +2829,17 @@ E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Registeradmin.cshtml.g.cs
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Registeradmin.cshtml.g.cs
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Consultant\OnlinePaymentA.cshtml.g.cs
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Microsoft.VisualBasic.dll
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\Zarinpal.dll
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\debian-x64\native\libuv.so
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\fedora-x64\native\libuv.so
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\opensuse-x64\native\libuv.so
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\osx\native\libuv.dylib
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\rhel-x64\native\libuv.so
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\win7-arm\native\libuv.dll
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\win7-x64\native\libuv.dll
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\bin\Debug\netcoreapp3.1\runtimes\win7-x86\native\libuv.dll
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.csproj.CoreCompileInputs.cache
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\WebPlatformV1.MvcApplicationPartsAssemblyInfo.cache

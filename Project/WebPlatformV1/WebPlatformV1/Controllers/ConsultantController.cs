@@ -16,7 +16,8 @@ using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.ViewModels.Admin;
 using WebPlatformV1.ViewModels.Consultant;
 using WebPlatformV1.ViewModels.ConsultantViewModel;
-using ZarinpalSandbox;
+using Zarinpal;
+
 
 namespace WebPlatformV1.Controllers
 {
@@ -703,16 +704,17 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult Peyment()
         {
+            var merchan = "2ae499a0-1e82-47eb-9208-d099026ef22a";
           var  price = HttpContext.Session.GetInt32("Price");
 
-            var payment = new Payment((int)price);
+            var payment = new Payment(merchan, (int)price);
             var res = payment.PaymentRequest($"پرداخت فاکتور",
-               "http://localhost:5000/Consultant/OnlinePayment/", "Mahdinaderi.se@outlook.com", "09130087194");
+               "http://panel.moshaviran.com/Consultant/OnlinePayment/", "Mahdinaderi.se@outlook.com", "09130087194");
 
             if (res.Result.Status == 100)
             {
 
-                return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Result.Authority);
+                return Redirect("https://zarinpal.com/pg/StartPay/" + res.Result.Authority);
             }
             else
             {
@@ -722,6 +724,8 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult OnlinePayment()
         {
+            var merchan = "2ae499a0-1e82-47eb-9208-d099026ef22a";
+
             var cid = _userManager.GetUserId(User);
 
             if (HttpContext.Request.Query["Status"] != "" &&
@@ -733,7 +737,7 @@ namespace WebPlatformV1.Controllers
 
                 var consultant = _context.consultants.FirstOrDefault(p => p.Id == cid);
                 var Wallet = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == cid);
-                var payment = new Payment((int)price);
+                var payment = new Payment(merchan,(int)price);
                 var res = payment.Verification(authority).Result;
                 if (res.Status == 100)
                 {
@@ -758,15 +762,17 @@ namespace WebPlatformV1.Controllers
         }
         public IActionResult PeymentA()
         {
+            var merchan = "2ae499a0-1e82-47eb-9208-d099026ef22a";
+
             var price = _context.Tbl_Comisions.Find(2);
-            var payment = new Payment(price.price);
+            var payment = new Payment(merchan,price.price);
             var res = payment.PaymentRequest($"پرداخت جهت فعال سازی پروفایل",
-               "http://localhost:5000/Consultant/OnlinePaymentA/", "Mahdinaderi.se@outlook.com", "09130087194");
+               "http://panel.moshaviran.com/Consultant/OnlinePaymentA/", "Mahdinaderi.se@outlook.com", "09130087194");
 
             if (res.Result.Status == 100)
             {
 
-                return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Result.Authority);
+                return Redirect("https://zarinpal.com/pg/StartPay/" + res.Result.Authority);
             }
             else
             {
@@ -777,6 +783,7 @@ namespace WebPlatformV1.Controllers
         public IActionResult OnlinePaymentA()
         {
             var cid = _userManager.GetUserId(User);
+            var merchan = "2ae499a0-1e82-47eb-9208-d099026ef22a";
 
             if (HttpContext.Request.Query["Status"] != "" &&
                 HttpContext.Request.Query["Status"].ToString().ToLower() == "ok" &&
@@ -787,7 +794,7 @@ namespace WebPlatformV1.Controllers
 
                 var consultant = _context.consultants.FirstOrDefault(p => p.Id == cid);
                 var Wallet = _context.tbl_Wallets.FirstOrDefault(p => p.ConsultantId == cid);
-                var payment = new Payment(price.price);
+                var payment = new Payment(merchan,price.price);
                 var Balance = _context.Tbl_Balances.Find(1);
                 var res = payment.Verification(authority).Result;
                 if (res.Status == 100)

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LrdjpO7TK9rRDN7WPVRuQxFxD90D4Phw69njh7wu8Vq14jvtGl+pDsT830IX0pQqzl9f/7V5lFUiHWlSHrJKBw==",
+  "dgSpecHash": "oAtaF37Y/NSyyizVziB6Lb9Figq0K5gZPuxVuCEe1DBhzN4q9xuXtWBY8YfXRnYfo2dPJCO7n2y2SA4CJ6qsTA==",
   "success": true,
   "projectFilePath": "C:\\Users\\4bagh\\Documents\\GitHub\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
   "expectedPackageFiles": [
@@ -213,7 +213,7 @@
     "C:\\Users\\4bagh\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\4bagh\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\4bagh\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\4bagh\\.nuget\\packages\\zarinpalsandbox\\2.0.4\\zarinpalsandbox.2.0.4.nupkg.sha512"
+    "C:\\Users\\4bagh\\.nuget\\packages\\zarinpal\\2.0.4\\zarinpal.2.0.4.nupkg.sha512"
   ],
   "logs": []
 }

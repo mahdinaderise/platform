@@ -3499,17 +3499,17 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "ZarinpalSandbox/2.0.4": {
+      "Zarinpal/2.0.4": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.App": "1.0.5",
           "Newtonsoft.Json": "10.0.3"
         },
         "compile": {
-          "lib/netcoreapp1.0/ZarinpalSandbox.dll": {}
+          "lib/netcoreapp1.0/Zarinpal.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp1.0/ZarinpalSandbox.dll": {}
+          "lib/netcoreapp1.0/Zarinpal.dll": {}
         }
       }
     }
@@ -6677,6 +6677,7 @@
       "path": "system.dynamic.runtime/4.0.11",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -7510,6 +7511,7 @@
       "path": "system.linq.queryable/4.0.1",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/monoandroid10/_._",
@@ -10744,16 +10746,16 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "ZarinpalSandbox/2.0.4": {
-      "sha512": "bDuCkin4KqcZggLQBjDw0CK9PU6U8SmlLbJh7UHzcKBsSmKXmRE4myLls+A/cxDuqh0EucSAdthMiFM6odu58A==",
+    "Zarinpal/2.0.4": {
+      "sha512": "iGVX2YQUFe7veIKKYjxFY2bGhNlqzI0ooveUe/TYEIAtLh5jCYv1stgmp+EJyeWX9wRl81zs9N0IT5im3NZOkw==",
       "type": "package",
-      "path": "zarinpalsandbox/2.0.4",
+      "path": "zarinpal/2.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/netcoreapp1.0/ZarinpalSandbox.dll",
-        "zarinpalsandbox.2.0.4.nupkg.sha512",
-        "zarinpalsandbox.nuspec"
+        "lib/netcoreapp1.0/Zarinpal.dll",
+        "zarinpal.2.0.4.nupkg.sha512",
+        "zarinpal.nuspec"
       ]
     }
   },
@@ -10767,7 +10769,7 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.7",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.7",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
-      "zarinpalsandbox >= 2.0.4"
+      "Zarinpal >= 2.0.4"
     ]
   },
   "packageFolders": {
@@ -10843,7 +10845,7 @@
             "target": "Package",
             "version": "[3.1.4, )"
           },
-          "zarinpalsandbox": {
+          "Zarinpal": {
             "target": "Package",
             "version": "[2.0.4, )"
           }

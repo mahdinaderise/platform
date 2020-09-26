@@ -136,6 +136,45 @@ namespace WebPlatformV1.Controllers
             ViewData["returnUrl"] = returnUrl;
             return View();
         }
+        [HttpGet]
+        public IActionResult LoginAdmin(string returnUrl = null)
+        {
+            if (_signInManager.IsSignedIn(User))
+                return RedirectToAction("Index", "Admin");
+
+            ViewData["returnUrl"] = returnUrl;
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> LoginAdmin(LoginViewModel model, string returnUrl = null)
+        {
+            if (_signInManager.IsSignedIn(User))
+                //return RedirectToAction("Index", "Consultant");
+                return RedirectToAction("Index", "Admin");
+
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(
+                    model.UserName, model.Password, model.RememberMe, true);
+
+                if (result.Succeeded)
+                {
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        return Redirect(returnUrl);
+
+                    return RedirectToAction("Index", "Admin");
+                }
+
+                if (result.IsLockedOut)
+                {
+                    ViewData["ErrorMessage"] = "اکانت شما به دلیل پنج بار ورود ناموفق به مدت پنج دقیق قفل شده است";
+                    return View(model);
+                }
+
+                ModelState.AddModelError("", "رمزعبور یا نام کاربری اشتباه است");
+            }
+            return View(model);
+        }
         [HttpPost]
         public async Task<IActionResult> LoginConsultant(LoginViewModel model, string returnUrl = null)
         {
