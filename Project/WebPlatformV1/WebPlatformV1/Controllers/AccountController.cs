@@ -74,7 +74,7 @@ namespace WebPlatformV1.Controllers
                 if (result.Succeeded)
                 {
                     var result1 = await _userManager.AddToRoleAsync(user, "Student");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("LoginStudent", "Account");
                 }
 
                 foreach (var error in result.Errors)
@@ -122,7 +122,7 @@ namespace WebPlatformV1.Controllers
                 {
                     var result1 = await _userManager.AddToRoleAsync(user, "Consultant");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("LoginConsultant", "Account");
                 }
 
                 foreach (var error in result.Errors)
@@ -261,6 +261,13 @@ namespace WebPlatformV1.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("LoginConsultant", "Account");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LogOutAdmin()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("LoginAdmin", "Account");
         }
         //ResetPass
         [HttpGet]

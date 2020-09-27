@@ -180,7 +180,7 @@
 
             <div class="navigation-menu-tab">
                 <div>
-                    <div class="navigation-menu-tab-header" data-toggle="tooltip" title="مهدی نظری" data-placement="right">
+                    <!--<div class="navigation-menu-tab-header" data-toggle="tooltip" title="مهدی نظری" data-placement="right">
                         <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
                             <figure class="avatar avatar-sm">
                                 <img src="assets/media/image/user/man_avatar5.jpg" class="rounded-circle" alt="avatar">
@@ -197,9 +197,9 @@
                                     <a href="#" class="btn btn-primary btn-sm ml-2" data-toggle="tooltip" title="ویرایش پروفایل">
                                         <i data-feather="edit-2"></i>
                                     </a>
-                                </h6>
+                                </h6>-->
                                 @*<small>شارژ: <strong>1000 تومان</strong></small>*@
-                            </div>
+                            <!--</div>
                             <div class="dropdown-menu-body">
                                 <div class="border-bottom p-4">
                                     <h6 class="text-uppercase font-size-11 d-flex justify-content-between">
@@ -219,7 +219,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="flex-grow-1">
                     <ul>
@@ -230,8 +230,7 @@
                             </a>
                         </li>
 
-                        </a>
-                        </li>
+                  
                         <li>
                             <a href="pay managment.html" data-toggle="tooltip" data-placement="right" title="مدیریت مالی" data-nav-target="#pages">
 
@@ -254,13 +253,13 @@
                 </div>
                 <div>
                     <ul>
-                        <li>
+                        @*<li>
                             <a href="#" data-toggle="tooltip" data-placement="right" title="تنظیمات">
                                 <i data-feather="settings"></i>
                             </a>
-                        </li>
+                        </li>*@
                         <li>
-                            <a href="login.html" data-toggle="tooltip" data-placement="right" title="خروج">
+                            <a asp-action="LogOutAdmin" asp-controller="Account" data-toggle="tooltip" data-placement="right" title="خروج">
                                 <i data-feather="log-out"></i>
                             </a>
                         </li>
