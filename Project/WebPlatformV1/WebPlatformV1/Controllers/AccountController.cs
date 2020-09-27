@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
+using WebPlatformV1.Repositories;
 using WebPlatformV1.ViewModels.Account;
+using WebPlatformV1.ViewModels.Admin;
 
 namespace WebPlatformV1.Controllers
 {
@@ -20,13 +22,17 @@ namespace WebPlatformV1.Controllers
         private readonly UserManager<ApplicationUsers> _userManager;
         private readonly SignInManager<ApplicationUsers> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IMessageSender _messageSender;
 
-        public AccountController(MainDBContext context, UserManager<ApplicationUsers> userManager, SignInManager<ApplicationUsers> signInManager, RoleManager<IdentityRole> roleManager)
+        public AccountController(MainDBContext context, UserManager<ApplicationUsers> userManager, SignInManager<ApplicationUsers> signInManager,RoleManager<IdentityRole> roleManager, IMessageSender messageSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+
             _context = context;
+            _messageSender = messageSender;
+
         }
         [HttpGet]
         public IActionResult RegisterConsultant()
@@ -255,6 +261,73 @@ namespace WebPlatformV1.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("LoginConsultant", "Account");
+        }
+        //ResetPass
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+               
+
+                ViewData["ErrorMessage"] = "اگر ایمیل وارد معتبر باشد، لینک فراموشی رمزعبور به ایمیل شما ارسال شد";
+
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user == null) return View();
+
+                var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var resetPasswordUrl = Url.Action("ResetPassword", "Account",
+                    new { email = user.Email, token = resetPasswordToken }, Request.Scheme);
+
+                await _messageSender.SendEmailAsync(user.Email, "لینک تغییر کلمه عبور", resetPasswordUrl);
+                return View();
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult ResetPassword(string email, string token)
+        {
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(token))
+                return RedirectToAction("Index", "Home");
+
+            var model = new ResetPasswordViewModel()
+            {
+                Email = email,
+                Token = token
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+               
+
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user == null) return RedirectToAction();
+                var result = await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    ViewData["ErrorMessage"] = "رمزعبور شما با موفقیت تغییر یافت";
+                    return View();
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View(model);
         }
     }
 

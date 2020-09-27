@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> ورود مدیر   </title>
+    <title> ورود مدیر </title>
 
     <!-- Favicon -->
     <link href="~/assets/media/image/favicon.png" />
@@ -32,11 +32,11 @@
     <div class="form-wrapper">
 
         <!-- logo -->
-        <div id="logo">
+       @*div id="logo">
             <img src="~/assets/media/image/logo.png" />
 
             <img class="logo-dark" src="assets/media/image/logo-dark.html" alt="image">
-        </div>
+        </div>*@
         <!-- ./ logo -->
 
         <h5>ورود مدیر</h5>
@@ -49,7 +49,7 @@
             {
                 <div class="text-danger">@ViewData["ErrorMessage"]</div>
             }
-
+         
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="نام کاربری  " asp-for="UserName" required autofocus>
                 <span asp-validation-for="UserName" class="text-danger"></span>
@@ -65,11 +65,11 @@
                     <input type="checkbox" class="custom-control-input" checked="" id="customCheck1" asp-for="RememberMe">
                     <label class="custom-control-label" for="customCheck1" asp-for="RememberMe"></label>
                 </div>
-                @*<a href="recover-password.html">بازگردانی رمزعبور</a>*@
+                <a asp-action="ForgotPassword" asp-controller="Account">بازگردانی رمزعبور</a>
             </div>
             <button class="btn btn-primary btn-block">ورود</button>
 
-          
+
         </form>
         <!-- ./ form -->
 
