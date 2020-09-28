@@ -2848,3 +2848,5 @@ E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Account\LoginAdmin.cshtml.g.cs
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs

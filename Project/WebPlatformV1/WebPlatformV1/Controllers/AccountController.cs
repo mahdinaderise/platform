@@ -110,7 +110,7 @@ namespace WebPlatformV1.Controllers
                     UserName = model.UserName,
                     Email = model.Email,
                     NationalCode = model.NationalCode,
-                    State = true,
+                    State = false,
                     EmailConfirmed = true,
                     Name = model.Name,
                     Family = model.Family

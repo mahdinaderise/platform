@@ -440,28 +440,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/12/2019 17:08:36</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>09/27/2020 21:49:42</publishTime>
+      <publishTime>09/27/2020 23:28:18</publishTime>
     </File>
     <File Include="WebPlatformV1.deps.json">
-      <publishTime>09/27/2020 21:49:42</publishTime>
+      <publishTime>09/27/2020 23:28:18</publishTime>
     </File>
     <File Include="WebPlatformV1.dll">
-      <publishTime>09/27/2020 21:49:18</publishTime>
+      <publishTime>09/27/2020 23:28:13</publishTime>
     </File>
     <File Include="WebPlatformV1.exe">
-      <publishTime>09/27/2020 21:49:18</publishTime>
+      <publishTime>09/27/2020 23:28:13</publishTime>
     </File>
     <File Include="WebPlatformV1.pdb">
-      <publishTime>09/27/2020 21:49:18</publishTime>
+      <publishTime>09/27/2020 23:28:13</publishTime>
     </File>
     <File Include="WebPlatformV1.runtimeconfig.json">
       <publishTime>09/27/2020 21:49:26</publishTime>
     </File>
     <File Include="WebPlatformV1.Views.dll">
-      <publishTime>09/27/2020 21:49:25</publishTime>
+      <publishTime>09/27/2020 23:28:15</publishTime>
     </File>
     <File Include="WebPlatformV1.Views.pdb">
-      <publishTime>09/27/2020 21:49:25</publishTime>
+      <publishTime>09/27/2020 23:28:15</publishTime>
     </File>
     <File Include="wwwroot/assets/Cal/fa.js">
       <publishTime>08/20/2020 10:07:31</publishTime>

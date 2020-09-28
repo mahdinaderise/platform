@@ -61,6 +61,13 @@
 
                                 </div>
                             }
+                            @if (ViewBag.acceptdegree == false && ViewBag.issendDegree == false && ViewBag.state == false)
+                            {
+                                <div class="col-md-7">
+                                    <p>  خوش آمدید کاربر عزیز از قسمت پروفایل مدارک خود را ارسال کنید. :) </p>
+
+                                </div>
+                            }
                             <div class="col-md-5">
                                 <img src="/assets/media/svg/undraw_onboarding_o8mv.svg" alt="..." class="img-fluid">
                             </div>
