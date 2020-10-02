@@ -347,6 +347,7 @@ namespace WebPlatformV1.Controllers
                 tasks.ConsultantId = _userManager.GetUserId(User);
                 tasks.StudentId = id;
                 tasks.CourseIDCourse = model.courseid;
+                tasks.Gradeid = model.Gradeid;
                 tasks.SendDelivery = model.SendDelivery;
                 tasks.SubmitDate = DateTime.Today;
                 await _context.AddAsync(tasks);
