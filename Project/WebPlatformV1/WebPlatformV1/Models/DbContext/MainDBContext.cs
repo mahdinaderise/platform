@@ -201,6 +201,34 @@ namespace WebPlatformV1.Models.DbContext
 
 
     }
+    //public class Tbl_Day
+    //{
+    //    [Key]
+    //    public int ID { get; set; }
+    //    public string Day { get; set; }
+
+    //}
+    public class Tbl_Times
+    {
+        public int id { get; set; }
+        public string time { get; set; }
+    }
+    public class Tbl_Nobat
+    {
+        [Key]
+        public int Id { get; set; }
+        public string ConsultantId { get; set; }
+        public string StudentId { get; set; }
+        public DateTime Date { get; set; }
+        public bool IsSelect { get; set; } = false;
+        public int TimesID { get; set; }
+        public ICollection<Consultant> consultants { get; set; }
+        public ICollection<Student> Students { get; set; }
+        public ICollection<Tbl_Times> times { get; set; }
+
+
+    }
+
 
 
     public class Tbl_Blog
@@ -290,7 +318,7 @@ namespace WebPlatformV1.Models.DbContext
         public string ConsultantId { get; set; }
         public int? CourseIDCourse { get; set; }
         public int? DoIDdo { get; set; }
-        public string MyGrade { get; set; }
+        public int Gradeid { get; set; }
         //public bool isSpecial { get; set; }
 
         // Navigation 
@@ -298,6 +326,7 @@ namespace WebPlatformV1.Models.DbContext
         public Consultant Cansultant { get; set; }
         public Student Student { get; set; }
         public Tbl_Do Do { get; set; }
+        public Tbl_grade grade { get; set; }
 
     }
     public class Tbl_FinnialManegment
