@@ -18,7 +18,7 @@ namespace WebPlatformV1.ViewModels.ConsultantViewModel
         public List<SendDegree> Degree { get; set; }
 
         public string id { get; set; }
-
+        public int NationalCode { get; set; }
         public string Name { get; set; }
         public string Family { get; set; }
         public string PhoneNumber { get; set; }

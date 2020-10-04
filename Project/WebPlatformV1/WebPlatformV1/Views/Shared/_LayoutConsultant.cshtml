@@ -256,8 +256,12 @@
                             <li class="navigation-divider">داشبردها</li>
                             <li><a class="active" asp-action="index" asp-controller="consultant">داشبرد</a></li>
                             <li><a asp-action="Tasks" asp-controller="consultant">ایجاد وظیفه برای دانش آموزان</a></li>
-                            
-                           
+
+                            <li>
+                                <a asp-action="Students" asp-controller="consultant">
+                                    <span> مدیریت دانش آموزان</span>
+                                </a>
+                            </li>
 
                         </ul>
                     </div>
@@ -277,15 +281,11 @@
                         <ul>
                             <li class="navigation-divider">مدیریت مالی</li>
                             <li>
-                                <a asp-controller="Consultnt" asp-action="Historypey">
+                                <a asp-controller="Consultnt" asp-action="Historypay">
                                     <span> تراز مالی من</span>
                                 </a>
                             </li>
-                            <li>
-                                <a asp-action="Students" asp-controller="consultant">
-                                    <span> ایجاد پنل برای دانش آموزان</span>
-                                </a>
-                            </li>
+                          
                             <li>
                                 <a asp-action="AddtoWallet" asp-controller="consultant">
                                     <span> شارژ کیف پول</span>
