@@ -463,6 +463,24 @@ namespace WebPlatformV1.Controllers
             ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
             ViewBag.hasP = students.ProfilePicUrl;
             #endregion
+            if (students.ConsultantID == null)
+            {
+                return RedirectToAction(nameof(SelectConsultant));
+
+            }
+
+            if (students.CreditTime < DateTime.Today)
+            {
+                if (students.State == true)
+                {
+                    students.State = false;
+                    _context.students.Update(students);
+                    _context.SaveChanges();
+                }
+
+                return RedirectToAction(nameof(MyPanel));
+
+            }
             var result = _context.consultants.FirstOrDefault(p => p.Id == students.ConsultantID);
             model.blog = _context.tbl_Blogs.Where(p => p.ConsultantId == result.Id).OrderByDescending(P => P.ID).ToList();
             model.Name = result.Name;

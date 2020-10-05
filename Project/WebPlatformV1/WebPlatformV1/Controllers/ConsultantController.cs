@@ -502,7 +502,7 @@ namespace WebPlatformV1.Controllers
             model.Degree = _context.SendDegree.Where(p => p.ConsultantId == consultantId).ToList();
             #region view data in textbox
 
-
+            model.NationalCode = C.NationalCode;
             model.id = C.Id;
             model.Name = C.Name;
             model.Family = C.Family;
@@ -541,6 +541,8 @@ namespace WebPlatformV1.Controllers
             var c = _context.consultants.FirstOrDefault(p => p.Id == consultantId);
             if (c != null)
             {
+
+                c.NationalCode = model.NationalCode;
                 c.Name = model.Name;
                 c.Family = model.Family;
                 c.Address = model.Address;
