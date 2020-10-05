@@ -247,6 +247,30 @@ namespace WebPlatformV1.Controllers
         [HttpGet]
         public IActionResult studenttask(TasksStudents model)
         {
+            #region check credit
+            var IdStudent = _userManager.GetUserId(User);
+            var r = _context.students.Find(IdStudent);
+            ViewBag.myid = IdStudent;
+
+            if (r.ConsultantID == null)
+            {
+                return RedirectToAction(nameof(SelectConsultant));
+
+            }
+
+            if (r.CreditTime < DateTime.Today)
+            {
+                if (r.State == true)
+                {
+                    r.State = false;
+                    _context.students.Update(r);
+                    _context.SaveChanges();
+                }
+
+                return RedirectToAction(nameof(MyPanel));
+
+            }
+            #endregion
             #region menuDt
             var sId = _userManager.GetUserId(User);
 

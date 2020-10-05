@@ -67,8 +67,12 @@ namespace WebPlatformV1.Controllers
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
             var name = Consultant.Name;
             var Family = Consultant.Family;
-            ViewBag.NameAndFamily = name + " " + Family;
-            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            if(name != null && Family != null)
+            {
+                ViewBag.NameAndFamily = name + " " + Family;
+                ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            }
+            ViewBag.ID = Consultant.Id;
             ViewBag.hasP = Consultant.ProfilePicUrl;
             #endregion
             ViewBag.state = Consultant.State;
@@ -103,6 +107,8 @@ namespace WebPlatformV1.Controllers
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
             var name = Consultant.Name;
             var Family = Consultant.Family;
+            ViewBag.ID = Consultant.Id;
+
             ViewBag.NameAndFamily = name + " " + Family;
             ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
             ViewBag.hasP = Consultant.ProfilePicUrl;
@@ -148,6 +154,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -179,6 +187,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -234,6 +244,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -283,6 +295,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -319,6 +333,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -367,6 +383,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -385,6 +403,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -425,6 +445,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -460,6 +482,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -489,10 +513,15 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
-            ViewBag.NameAndFamily = name + " " + Family;
-            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            if (name != null && Family != null)
+            {
+                ViewBag.NameAndFamily = name + " " + Family;
+                ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            }
             ViewBag.hasP = Consultant.ProfilePicUrl;
             #endregion
             var C = _context.Find<Consultant>(cId);
@@ -505,6 +534,21 @@ namespace WebPlatformV1.Controllers
         {
             var consultantId = _userManager.GetUserId(User);
             var c = _context.consultants.FirstOrDefault(p => p.Id == consultantId);
+            #region menuDt
+            var cId = _userManager.GetUserId(User);
+
+            var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
+            var name = Consultant.Name;
+            var Family = Consultant.Family;
+            if (name != null && Family != null)
+            {
+                ViewBag.NameAndFamily = name + " " + Family;
+                ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            }
+            ViewBag.hasP = Consultant.ProfilePicUrl;
+            #endregion
             if (c != null)
             {
 
@@ -521,10 +565,15 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
-            ViewBag.NameAndFamily = name + " " + Family;
-            ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            if (name != null && Family != null)
+            {
+                ViewBag.NameAndFamily = name + " " + Family;
+                ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
+            }
             ViewBag.hasP = Consultant.ProfilePicUrl;
             #endregion
             var consultantId = _userManager.GetUserId(User);
@@ -673,6 +722,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -720,6 +771,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -853,6 +906,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
             #region menuDt
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -868,6 +923,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
             #region menuDt
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -904,6 +961,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
             #region menuDt
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -921,6 +980,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
 
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -970,6 +1031,8 @@ namespace WebPlatformV1.Controllers
             var cId = _userManager.GetUserId(User);
             #region menuDt
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cId);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -990,6 +1053,8 @@ namespace WebPlatformV1.Controllers
             var dayint = day.AddDays(-30);
             #region menuDt
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cid);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;
@@ -1220,6 +1285,8 @@ namespace WebPlatformV1.Controllers
             var dayint = day.AddDays(-7);
             #region menuDt
             var Consultant = _context.consultants.FirstOrDefault(p => p.Id == cid);
+            ViewBag.ID = Consultant.Id;
+
             var name = Consultant.Name;
             var Family = Consultant.Family;
             ViewBag.NameAndFamily = name + " " + Family;

@@ -122,7 +122,7 @@
                                     <div class="form-group col-md-3">
 
                                         <label asp-for="NationalCode">شماره ملی</label>
-                                        <input type="number" class="form-control" asp-for="NationalCode">
+                                        <input type="number" class="form-control" asp-for="NationalCode" disabled>
 
                                     </div>
                                     <div class="form-group col-md-3">
@@ -131,14 +131,26 @@
                                         <input type="number" class="form-control" asp-for="CardNumber">
 
                                     </div>
-
-
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-4">
 
                                         <label for="exampleInputPassword1">شماره شبا</label>
                                         <input type="number" class="form-control" asp-for="Shaba">
 
                                     </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="exampleInputPassword1" style="color:white">شماره شبا</label>
+
+                                        <input type="text" class="form-control col-md-3" placeholder="IR" disabled>
+
+                                    </div>
+
+
+
+
+
+                                </div>
+                                <div class="form-row">
+
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
@@ -172,15 +184,23 @@
                                         <textarea asp-for="Bio" class="form-control"></textarea>
 
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label asp-for="about"> مشخص کردن زمان حضور برای کلاس انلاین</label>
-                                        <textarea asp-for="about" class="form-control"></textarea>
-                                    </div>
+                                    @*<div class="form-group col-md-6">
+                    <label asp-for="about"> مشخص کردن زمان حضور برای کلاس انلاین</label>
+                    <textarea asp-for="about" class="form-control"></textarea>
+                </div>*@
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="card card-body bg-info">
+                                    <p>یک عکس با پسوند JPG انتخاب کنید.</p>
+                                </div>
+
+                            </div>
+
                             <div class="form-row">
+
                                 <label for="exampleFormControlFile1">آپلود عکس پروفایل  </label>
-                                <input type="file" class="form-control-file" asp-for="Picture" onclick="Upload()" accept=".jpg" id="fileUpload" required oninvalid="this.setCustomValidity('این فیلد را نمی توانید خالی رها کنید')">
+                                <input type="file" class="form-control-file" asp-for="Picture" onclick="Upload()" accept=".jpeg,.jpg" id="fileUpload" required oninvalid="this.setCustomValidity('لطفا عکس با فرمت JPG انتخاب کنید')">
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="d-flex justify-content-end">
