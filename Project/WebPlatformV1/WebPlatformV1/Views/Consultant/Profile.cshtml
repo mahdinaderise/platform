@@ -180,7 +180,7 @@
                             </div>
                             <div class="form-row">
                                 <label for="exampleFormControlFile1">آپلود عکس پروفایل  </label>
-                                <input type="file" class="form-control-file" asp-for="Picture" onclick="Upload()" accept=".jpg" id="fileUpload" required>
+                                <input type="file" class="form-control-file" asp-for="Picture" onclick="Upload()" accept=".jpg" id="fileUpload" required oninvalid="this.setCustomValidity('این فیلد را نمی توانید خالی رها کنید')">
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="d-flex justify-content-end">
@@ -206,11 +206,11 @@
 
                             <div class="form-row">
                                 <label for="exampleFormControlFile1">آپلود عکس مدرک شما   </label>
-                                <input type="file" class="form-control-file" asp-for="DegreePic" accept=".jpg" id="exampleFormControlFile1" required>
+                                <input type="file" class="form-control-file" asp-for="DegreePic" accept=".jpg" id="exampleFormControlFile1" required oninvalid="this.setCustomValidity('این فیلد را نمی توانید خالی رها کنید')">
                             </div>
                             <div class="form-row">
                                 <label for="exampleFormControlFile1">آپلود عکس کارت ملی شما   </label>
-                                <input type="file" class="form-control-file" asp-for="DegreemeliPic" accept=".jpg" id="exampleFormControlFile1" required>
+                                <input type="file" class="form-control-file" asp-for="DegreemeliPic" accept=".jpg" id="exampleFormControlFile1" required oninvalid="this.setCustomValidity('این فیلد را نمی توانید خالی رها کنید')">
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="d-flex justify-content-end">
