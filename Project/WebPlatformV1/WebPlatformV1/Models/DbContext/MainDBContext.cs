@@ -280,6 +280,7 @@ namespace WebPlatformV1.Models.DbContext
         public int IDGrade { get; set; }
         public string grade { get; set; }
         public ICollection<Tbl_Tasks> tasks { get; set; }
+        public ICollection<Student> students { get; set; }
 
     }
     public class Tbl_Do

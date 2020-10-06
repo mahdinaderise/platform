@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Internal;
 using WebPlatformV1.Migrations;
 using WebPlatformV1.Models;
@@ -111,7 +112,7 @@ namespace WebPlatformV1.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Profile(Profile model)
+        public IActionResult Profile(Profile model, Tbl_grade grade)
         {
             #region menuDt
             var sId = _userManager.GetUserId(User);
@@ -127,6 +128,8 @@ namespace WebPlatformV1.Controllers
             var studentid = _userManager.GetUserId(User);
 
             var C = _context.Find<Student>(studentid);
+            ViewData["Grade"] = new SelectList(_context.grades, "IDGrade", "grade", grade.IDGrade);
+
             //var user = _context.consultants.Select(p=>p.Name  p.Family , p.PhoneNumber).Where(p => p.Id == consultantId).ToList();
             #region view data in textbox
 
@@ -165,7 +168,10 @@ namespace WebPlatformV1.Controllers
                 s.Family = model.Family;
                
                 s.PhoneNumber = model.PhoneNumber;
-               
+                s.Gradeid = model.Gradeid;
+                s.city = model.city;
+                s.Magh = model.Magh;
+                s.Province = model.Province;
                 await _context.SaveChangesAsync();
                 if (model.Picture?.Length > 0)
                 {
@@ -281,7 +287,6 @@ namespace WebPlatformV1.Controllers
             ViewBag.fristCharecter = name[0] + " " + Family[0].ToString();
             ViewBag.hasP = students.ProfilePicUrl;
             #endregion
-            var IdStudent = _userManager.GetUserId(User);
             var NowDateTime = DateTime.Today;
             var StartDate = model.StartDate;
             model.tasks = _context.tbl_Tasks.Where(p => p.StudentId == IdStudent && p.SendDelivery == DateTime.Today).ToList();

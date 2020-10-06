@@ -18,6 +18,7 @@ namespace WebPlatformV1.ViewModels.ConsultantViewModel
         public List<SendDegree> Degree { get; set; }
 
         public string id { get; set; }
+        public int Gradeid { get; set; }
         public int NationalCode { get; set; }
         public string Name { get; set; }
         public string Family { get; set; }
@@ -27,6 +28,7 @@ namespace WebPlatformV1.ViewModels.ConsultantViewModel
         public string CardNumber { get; set; }
         public string city { get; set; }
         public string Province { get; set; }
+        public string Magh { get; set; }
         public string telephone { get; set; }
         public string Bio { get; set; }
         public string about { get; set; }

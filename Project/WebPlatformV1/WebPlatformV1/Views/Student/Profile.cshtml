@@ -68,20 +68,61 @@
 
 
                                     </div>
+                                    <div class="form-group col-md-3">
+
+                                        <label asp-for="NationalCode">شماره ملی</label>
+                                        <input type="number" class="form-control" asp-for="NationalCode" disabled>
+
+                                    </div>
                                 </div>
-                              
+
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
-                                        <label asp-for="PhoneNumber">شماره تلفن</label>
+                                        <label asp-for="PhoneNumber">شماره موبایل</label>
                                         <input type="number" class="form-control" asp-for="PhoneNumber">
 
                                     </div>
-                                  
+                                    <div class="form-group col-md-3">
+                                        <label asp-for="telephone">شماره تلفن</label>
+                                        <input type="number" class="form-control" asp-for="PhoneNumber">
+
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label asp-for="city">شهر </label>
+                                        <input type="text" class="form-control" asp-for="city">
+
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label asp-for="Province">استان </label>
+                                        <input type="text" class="form-control" asp-for="Province">
+
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationTooltip01" asp-for="Gradeid"> پایه:</label>
+                                        <select asp-for="Gradeid" asp-items="ViewBag.Grade" class="form-control"></select>
+
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label asp-for="Magh">مقطع تحصیلی </label>
+                                        <input type="text" class="form-control" asp-for="Magh">
+
+                                    </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="card card-body bg-info">
+                                    <p>یک عکس با پسوند JPG انتخاب کنید.</p>
+                                </div>
+
+                            </div>
+
                             <div class="form-row">
+
                                 <label for="exampleFormControlFile1">آپلود عکس پروفایل  </label>
-                                <input type="file" class="form-control-file" asp-for="Picture" onclick="Upload()" accept=".jpg" id="fileUpload" required>
+                                <input type="file" class="form-control-file" asp-for="Picture" onclick="Upload()" accept=".jpeg,.jpg" id="fileUpload" required oninvalid="this.setCustomValidity('لطفا عکس با فرمت JPG انتخاب کنید')">
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="d-flex justify-content-end">

@@ -16,11 +16,18 @@ namespace WebPlatformV1.Models
         public string Name { get; set; }
         public string Family { get; set; }
         public int NationalCode { get; set; }
+        public string telephone { get; set; }
+        public int Gradeid { get; set; }
+
         public bool State { get; set; }
+        public string Province { get; set; }
+        public string city { get; set; }
         public string ConsultantID { get; set; }
         public string ProfilePicUrl { get; set; }
-
+        public string Magh { get; set; }
         public DateTime CreditTime { get; set; }
+        public Tbl_grade grade { get; set; }
+
     }
     public class Consultant : ApplicationUsers
     {
