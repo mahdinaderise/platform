@@ -1,0 +1,76 @@
+﻿@model Profile
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_LayoutConsultant.cshtml";
+}
+
+
+<div class="main-content">
+
+    <div class="container-fluid">
+   
+        <div class="Row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <form asp-action="OnlineInWeek" asp-controller="Consultant" method="post"  onsubmit="return checkSizeprofile(1000000)">
+
+                            <div class="form-group">
+                         
+                                <div class="form-row">
+                                   
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="about"> مشخص کردن زمان حضور برای کلاس انلاین</label>
+                                        <textarea asp-for="about" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                            <div class="form-group col-md-12">
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-success">ثبت</button>
+                                </div>
+
+                            </div>
+                        </form>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+      
+
+    </div>
+
+</div>
+<script type="text/javascript">
+    function checkSize(max_img_size) {
+        var input = document.getElementById("exampleFormControlFile1");
+        // check for browser support (may need to be modified)
+        if (input.files && input.files.length == 1) {
+            if (input.files[0].size > max_img_size) {
+                alert("حجم فایل انتخابی باید کمتر از یک مگابایت باشد.");
+                return false;
+            }
+        } 
+
+        return true;
+    }
+    function checkSizeprofile(max_img_size) {
+        var input = document.getElementById("fileUpload");
+        // check for browser support (may need to be modified)
+        if (input.files && input.files.length == 1) {
+            if (input.files[0].size > max_img_size) {
+                alert("حجم فایل انتخابی باید کمتر از یک مگابایت باشد.");
+                return false;
+            }
+        }
+
+        return true;
+    }
+</script>

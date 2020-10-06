@@ -247,6 +247,30 @@ namespace WebPlatformV1.Controllers
         [HttpGet]
         public IActionResult studenttask(TasksStudents model)
         {
+            #region check credit
+            var IdStudent = _userManager.GetUserId(User);
+            var r = _context.students.Find(IdStudent);
+            ViewBag.myid = IdStudent;
+
+            if (r.ConsultantID == null)
+            {
+                return RedirectToAction(nameof(SelectConsultant));
+
+            }
+
+            if (r.CreditTime < DateTime.Today)
+            {
+                if (r.State == true)
+                {
+                    r.State = false;
+                    _context.students.Update(r);
+                    _context.SaveChanges();
+                }
+
+                return RedirectToAction(nameof(MyPanel));
+
+            }
+            #endregion
             #region menuDt
             var sId = _userManager.GetUserId(User);
 
@@ -280,12 +304,13 @@ namespace WebPlatformV1.Controllers
         public IActionResult Peyment()
         { var merchan = "2ae499a0-1e82-47eb-9208-d099026ef22a";
             var studentId = _userManager.GetUserId(User);
+            var student = _context.students.FirstOrDefault(p => p.Id == studentId);
             var panel = _context.tbl_AddPanels.Where(p => p.StudentID == studentId).OrderByDescending(p => p.IDAddPanel).FirstOrDefault();
             if (panel == null)
                 return NotFound();
             var payment = new Zarinpal.Payment(merchan, panel.Price);
             var res = payment.PaymentRequest($"پرداخت فاکتور شماره {panel.IDAddPanel}",
-               "http://panel.moshaviran.com/Student/OnlinePayment/" + panel.IDAddPanel, "Mahdinaderi.se@outlook.com", "09130087194");
+               "http://panel.moshaviran.com/Student/OnlinePayment/" + panel.IDAddPanel, student.Email,student.PhoneNumber);
             if (res.Result.Status == 100)
             {
                 return Redirect("https://zarinpal.com/pg/StartPay/" + res.Result.Authority);

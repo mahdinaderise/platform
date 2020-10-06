@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GitHub\\newplatform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {}
+    "C:\\Users\\4bagh\\Documents\\GitHub\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {}
   },
   "projects": {
-    "E:\\GitHub\\newplatform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {
+    "C:\\Users\\4bagh\\Documents\\GitHub\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHub\\newplatform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
+        "projectUniqueName": "C:\\Users\\4bagh\\Documents\\GitHub\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
         "projectName": "WebPlatformV1",
-        "projectPath": "E:\\GitHub\\newplatform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
-        "packagesPath": "C:\\Users\\Mahdi\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHub\\newplatform\\Project\\WebPlatformV1\\WebPlatformV1\\obj\\",
+        "projectPath": "C:\\Users\\4bagh\\Documents\\GitHub\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\WebPlatformV1.csproj",
+        "packagesPath": "C:\\Users\\4bagh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\4bagh\\Documents\\GitHub\\platform\\Project\\WebPlatformV1\\WebPlatformV1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Mahdi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\4bagh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
