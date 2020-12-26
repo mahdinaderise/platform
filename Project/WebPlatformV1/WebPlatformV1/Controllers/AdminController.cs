@@ -16,7 +16,7 @@ using WebPlatformV1.ViewModels.ConsultantViewModel;
 
 namespace WebPlatformV1.Controllers
 {
-    [Authorize(Roles = "Admin")]
+   [Authorize(Roles = "Admin")]
 
     public class AdminController : Controller
     {
@@ -232,6 +232,7 @@ namespace WebPlatformV1.Controllers
         public IActionResult ReplayRequest(int id,RequestListClass model)
         {
             model.SRequest = _context.tbl_Requestonlineclasses.FirstOrDefault(p => p.DisplayForAdmin == true && p.id==id);
+          var s=  model.SRequest.RequestTextConsultant;
             var studentName = _context.students.FirstOrDefault(p => p.Id == model.SRequest.StudentID).Name;
             var studentFamily = _context.students.FirstOrDefault(p => p.Id == model.SRequest.StudentID).Family;
             ViewBag.NameF = studentName + " " + studentFamily;

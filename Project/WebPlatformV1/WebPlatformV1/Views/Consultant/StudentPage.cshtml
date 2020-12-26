@@ -12,84 +12,85 @@
         </div>
     </div>
     <div class="container-fluid">
-     
-    <div class="row">
 
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <h6 class="card-title mb-3">دانش آموز</h6>
-                                    <div class="d-flex d-sm-block d-lg-flex align-items-end">
+        <div class="row">
 
-                                        @foreach (var item in Model.Students)
-                                        {
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h6 class="card-title mb-3">دانش آموز</h6>
+                                        <div class="d-flex d-sm-block d-lg-flex align-items-end">
 
-                                        <h2 class="mb-0 mr-2 font-weight-bold">
-                                            @item.Name   @item.Family
+                                            @foreach (var item in Model.Students)
+                                            {
 
-                                        </h2>
+                                                <h2 class="mb-0 mr-2 font-weight-bold">
+                                                    @item.Name   @item.Family
+
+                                                </h2>
 
 
-                                                }
-                                           
+                                            }
+
                                             <p class="small text-muted mb-0 line-height-20">
                                             </p>
                                         </div>
-                                </div>
-                                <div>
-                                    <div class="avatar avatar-lg">
-                                        <div class="avatar-title bg-success-bright text-success rounded-circle">
-                                            <i class="fa fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <div class="avatar avatar-lg">
+                                            <div class="avatar-title bg-success-bright text-success rounded-circle">
+                                                <i class="fa fa-users"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <h6 class="card-title mb-3">تسک های انجام شده</h6>
-                                    <div class="d-flex d-sm-block d-lg-flex align-items-end">
-                                        <h2 class="mb-0 mr-2 font-weight-bold">@ViewBag.tasksdo</h2>
-                                        <p class="small text-muted mb-0 line-height-20">
-                                        </p>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h6 class="card-title mb-3">تسک های انجام شده</h6>
+                                        <div class="d-flex d-sm-block d-lg-flex align-items-end">
+                                            <h2 class="mb-0 mr-2 font-weight-bold">@ViewBag.tasksdo</h2>
+                                            <p class="small text-muted mb-0 line-height-20">
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <div class="avatar avatar-lg">
-                                        <div class="avatar-title bg-warning-bright text-warning rounded-circle">
-                                            <i class="fa fa-check"></i>
+                                    <div>
+                                        <div class="avatar avatar-lg">
+                                            <div class="avatar-title bg-warning-bright text-warning rounded-circle">
+                                                <i class="fa fa-check"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <h6 class="card-title mb-3">اعتبار به روز</h6>
-                                    <div class="d-flex d-sm-block d-lg-flex align-items-end">
-                                        <h2 class="mb-0 mr-2 font-weight-bold"> @ViewBag.credittime روز</h2>
-                                        <p class="small text-muted mb-0 line-height-20">
-                                        </p>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h6 class="card-title mb-3">اعتبار به روز</h6>
+                                        <div class="d-flex d-sm-block d-lg-flex align-items-end">
+                                            <h2 class="mb-0 mr-2 font-weight-bold"> @ViewBag.credittime روز</h2>
+                                            <p class="small text-muted mb-0 line-height-20">
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <div class="avatar avatar-lg">
-                                        <div class="avatar-title bg-info-bright text-info rounded-circle">
-                                            <i class="fa fa-money"></i>
+                                    <div>
+                                        <div class="avatar avatar-lg">
+                                            <div class="avatar-title bg-info-bright text-info rounded-circle">
+                                                <i class="fa fa-money"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -98,9 +99,8 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
         <div class="d-flex flex-row ">
             <div class="p-2">
                 <div style="margin-bottom: 20px; " class="d-flex justify-content-end">
@@ -160,7 +160,7 @@
                                 <tr>
 
                                     <td> @item.NameTasks</td>
-                                    <td> @item.Descibtion</td>
+                                    <td style=" word-break: break-all"> @item.Descibtion</td>
                                     <td>
                                         @Html.CheckBoxFor(m => item.isDo)
                                     </td>
@@ -169,11 +169,14 @@
                                         <button type="button" class="btn btn-primary" title="حذف" data-toggle="tooltip" data-placement="bottom">
                                             <i class="fa fa-times" aria-hidden="true"></i>
                                         </button>
+                                        @if (item.isDo == true)
+                                        {
+                                            <a class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;" asp-action="detaildo" asp-controller="consultant" asp-route-id="@item.DoIDdo">
+                                                <i class="fa fa-info" aria-hidden="true"></i>
 
-                                        <a class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;" asp-action="detaildo" asp-controller="consultant" asp-route-id="@item.DoIDdo">
-                                            <i class="fa fa-info" aria-hidden="true"></i>
+                                            </a>
+                                        }
 
-                                        </a>
                                     </td>
                                 </tr>
 

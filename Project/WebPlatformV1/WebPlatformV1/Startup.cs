@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PersianTranslation.Identity;
 using WebPlatformV1.Models;
 using WebPlatformV1.Models.DbContext;
 using WebPlatformV1.Repositories;
@@ -36,9 +37,15 @@ namespace WebPlatformV1
             {
                 options.UseSqlServer(Configuration.GetConnectionString("SqlServer"));
             });
-            services.AddIdentity<ApplicationUsers, IdentityRole>()
+            services.AddIdentity<ApplicationUsers, IdentityRole>(options => {
+                options.User.RequireUniqueEmail = true;
+                options.SignIn.RequireConfirmedEmail = true;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            })
                 .AddEntityFrameworkStores<MainDBContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddErrorDescriber<PersianIdentityErrorDescriber>();
+           
             //services.Configure<IISServerOptions>(options =>
             //{
             //    options.MaxRequestBodySize = 1000000;

@@ -134,11 +134,11 @@
                                     <div class="form-group col-md-4">
 
                                         <label for="exampleInputPassword1">شماره شبا</label>
-                                        <input type="number" class="form-control" asp-for="Shaba"><span>IR</span>
+                                        <input type="number" class="form-control" asp-for="Shaba">
 
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="exampleInputPassword1" style="color:white">شماره شبا</label>
+                                        <label style="color:white" for="exampleInputPassword1"> شماره شبا</label>
 
                                         <input type="text" class="form-control col-md-3" placeholder="IR" disabled>
 
@@ -198,9 +198,11 @@
                             </div>
 
                             <div class="form-row">
-
-                                <label for="exampleFormControlFile1">آپلود عکس پروفایل  </label>
-                                <input type="file" class="form-control-file" asp-for="Picture" onclick="Upload()" accept=".jpeg,.jpg" id="fileUpload" required oninvalid="this.setCustomValidity('لطفا عکس با فرمت JPG انتخاب کنید')">
+                                <div class="col-3">
+                                    <label for="exampleFormControlFile1">آپلود عکس پروفایل  </label>
+                                    <input type="file" class="form-control-file" asp-for="Picture" onclick="Upload()" accept=".jpeg,.jpg" id="fileUpload" required oninvalid="this.setCustomValidity('لطفا عکس با فرمت JPG انتخاب کنید')">
+                                </div>
+                                
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="d-flex justify-content-end">
@@ -225,20 +227,26 @@
                         <form asp-action="ProfileDegree" asp-controller="Consultant" method="post" enctype="multipart/form-data" onsubmit="return checkSize(1000000)">
 
                             <div class="form-row">
-                                <label for="exampleFormControlFile1">آپلود عکس مدرک شما   </label>
-                                <input type="file" class="form-control-file" asp-for="DegreePic" accept=".jpg" id="exampleFormControlFile1" required oninvalid="this.setCustomValidity('این فیلد را نمی توانید خالی رها کنید')">
-                            </div>
-                            <div class="form-row">
-                                <label for="exampleFormControlFile1">آپلود عکس کارت ملی شما   </label>
-                                <input type="file" class="form-control-file" asp-for="DegreemeliPic" accept=".jpg" id="exampleFormControlFile1" required oninvalid="this.setCustomValidity('این فیلد را نمی توانید خالی رها کنید')">
-                            </div>
-                            <div class="form-group col-md-12">
-                                <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-success">ثبت</button>
-                                </div>
+                                <div class="col-3">
 
-                            </div>
-                        </form>
+                                    <label for="exampleFormControlFile1">آپلود عکس مدرک شما   </label>
+                                    <input type="file" class="form-control-file" asp-for="DegreePic" accept=".jpg" id="exampleFormControlFile1" required oninvalid="this.setCustomValidity('این فیلد را نمی توانید خالی رها کنید')">
+                                    </div>
+                                </div>
+                            <div class="form-row">
+                                <div class="col-3">
+
+                                    <label for="exampleFormControlFile3">آپلود عکس کارت ملی شما   </label>
+                                    <input type="file" class="form-control-file" asp-for="DegreemeliPic" accept=".jpg" id="exampleFormControlFile3" required oninvalid="this.setCustomValidity('این فیلد را نمی توانید خالی رها کنید')">
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-success">ثبت</button>
+                                    </div>
+
+                                </div>
+</form>
 
 
 

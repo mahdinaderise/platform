@@ -81,7 +81,7 @@
                             <tr>
 
                                 <td> @item.NameTasks</td>
-                                <td> @item.Descibtion</td>
+                                <td style="word-break:break-all"> @item.Descibtion</td>
                                 <td>
                                     @Html.CheckBoxFor(m => item.isDo)
                                 </td>
@@ -90,9 +90,9 @@
                                     <a class="btn btn-primary" title="انجام" data-toggle="tooltip" data-placement="bottom" asp-route-id="@item.IDTasks" asp-action="ido" asp-controller="student">
                                         <i class="fa fa-check" aria-hidden="true"></i>
                                     </a>
-                                        <button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;">
+                                        @*<button type="button" class="btn btn-primary" title="جزئیات" data-toggle="tooltip" data-placement="bottom" style="padding-right: 20px; padding-left: 20px;">
                                             <i class="fa fa-info" aria-hidden="true"></i>
-                                        </button>
+                                        </button>*@
                                 </td>
                             </tr>
 

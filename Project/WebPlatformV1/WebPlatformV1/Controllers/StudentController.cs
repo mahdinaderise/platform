@@ -139,6 +139,11 @@ namespace WebPlatformV1.Controllers
             model.Family = C.Family;
             model.PhoneNumber = C.PhoneNumber;
             model.ProfilePicUrl = C.ProfilePicUrl;
+            model.NationalCode = C.NationalCode;
+            model.Magh = C.Magh;
+            model.Province = C.Province;
+            model.city = C.city;
+            model.Reshteh = C.Reshteh;
             #endregion
 
             #region get on char of name and family
@@ -172,6 +177,8 @@ namespace WebPlatformV1.Controllers
                 s.city = model.city;
                 s.Magh = model.Magh;
                 s.Province = model.Province;
+                s.Reshteh = model.Reshteh;
+                s.NationalCode = model.NationalCode;
                 await _context.SaveChangesAsync();
                 if (model.Picture?.Length > 0)
                 {
@@ -236,12 +243,13 @@ namespace WebPlatformV1.Controllers
                 _Do.NullTest = model.NullTest;
                 _Do.TestTime = model.TestTime;
                 _Do.RevisionTime = model.RevisionTime;
-              
+                
                 await _context.AddAsync(_Do);
                 await _context.SaveChangesAsync();
                 tasks = _context.Find<Tbl_Tasks>((int)id);
                 tasks.isDo = true;
                 tasks.DoIDdo = _Do.IDdo;
+                tasks.Gradeid = tasks.Gradeid;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(studenttask));
             }

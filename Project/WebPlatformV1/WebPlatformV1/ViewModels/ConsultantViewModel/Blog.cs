@@ -12,9 +12,10 @@ namespace WebPlatformV1.ViewModels.ConsultantViewModel
         public Blog()
         {
             blog = new List<Tbl_Blog>();
+            b = new Tbl_Blog();
         }
         public List<Tbl_Blog> blog { get; set; }
-
+        public Tbl_Blog b { get; set; }
         public string Name { get; set; }
         public string id { get; set; }
         public string Family { get; set; }

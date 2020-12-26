@@ -319,7 +319,7 @@ namespace WebPlatformV1.Models.DbContext
         public string ConsultantId { get; set; }
         public int? CourseIDCourse { get; set; }
         public int? DoIDdo { get; set; }
-        public int Gradeid { get; set; }
+        public int? Gradeid { get; set; }
         //public bool isSpecial { get; set; }
 
         // Navigation 

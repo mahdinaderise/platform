@@ -50,7 +50,15 @@
     <script src="~/vendors/vmap/maps/jquery.vmap.usa.js"></script>
     <script src="~/assets/js/examples/vmap.js"></script>
 
+    <!-- Css -->
+    <link rel="stylesheet" href="vendors/dataTable/dataTables.min.css" type="text/css">
 
+    <!-- Javascript -->
+    <script src="vendors/dataTable/jquery.dataTables.min.js"></script>
+
+    <!-- Bootstrap 4 and responsive compatibility -->
+    <script src="vendors/dataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="vendors/dataTable/dataTables.responsive.min.js"></script>
     <!-- a -->
     <script src="~/assets/Cal/moment.js"></script>
     <script src="~/assets/Cal/moment-jalaali.js"></script>
@@ -163,7 +171,7 @@
                                 </figure>
                             }
                         </a>
-                        <div class="dropdown-menu dropdown-menu-left dropdown-menu-big">
+                        <div class="dropdown-menu dropdown-menu-left dropdown-menu-big" style="margin-right:80px">
                             <div class="p-3 text-center" data-backround-image="/assets/media/image/image1.jpg">
                                 @if (ViewBag.hasP == null)
                                 {
@@ -257,10 +265,11 @@
                             <li><a class="active" asp-action="index" asp-controller="consultant">داشبرد</a></li>
                             <li><a asp-action="Tasks" asp-controller="consultant">ایجاد وظیفه برای دانش آموزان</a></li>
                             <li><a asp-action="OnlineInWeek" asp-controller="consultant">تغییر در زمان حضور</a></li>
+                            <li><a asp-action="AcriveRequestClass" asp-controller="consultant">مدیریت درخواست های کلاس انلاین</a></li>
 
                             <li>
                                 <a asp-action="Students" asp-controller="consultant">
-                                    <span> مدیریت دانش آموزان</span>
+                                    <span>  مدیریت دانش آموزان غیر فعال</span>
                                 </a>
                             </li>
 
@@ -272,7 +281,6 @@
                             <li>
                                 <a asp-action="Blog" asp-controller="consultant">
                                     <span>صفحه من</span>
-                                    <span class="badge badge-danger">5</span>
                                 </a>
                             </li>
 
@@ -282,7 +290,7 @@
                         <ul>
                             <li class="navigation-divider">مدیریت مالی</li>
                             <li>
-                                <a asp-controller="Consultnt" asp-action="Historypay">
+                                <a asp-controller="consultant" asp-action="Historypay">
                                     <span> تراز مالی من</span>
                                 </a>
                             </li>

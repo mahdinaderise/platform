@@ -14,6 +14,7 @@ namespace WebPlatformV1.ViewModels.ConsultantViewModel
             SRequest = new Tbl_RequestonlineclassStudent();
 
         }
+        public string Text { get; set; }
         public List<Tbl_RequestonlineclassStudent> Request { get; set; }
         public Tbl_RequestonlineclassStudent SRequest { get; set; }
         

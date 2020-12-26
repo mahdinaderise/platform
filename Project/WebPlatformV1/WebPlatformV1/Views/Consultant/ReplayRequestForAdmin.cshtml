@@ -101,7 +101,7 @@
                     </a>
                     <div class="accordion-body">
                         <form asp-action="ReplayRequestForAdmin" asp-controller="consultant" asp-route-id="@Model.SRequest.id" method="post">
-                            <textarea asp-for="@Model.SRequest.RequestTextConsultant" class="form-control" placeholder="توضیحات و زمان پیشنهادی درخواست"></textarea>
+                            <textarea asp-for="Text" class="form-control" placeholder="توضیحات و زمان پیشنهادی درخواست"></textarea>
 
                             <button type="submit" class="btn btn-danger" style="margin:10px">ارسال درخواست</button>
                         </form>

@@ -29,6 +29,8 @@ namespace WebPlatformV1.ViewModels.ConsultantViewModel
         public string city { get; set; }
         public string Province { get; set; }
         public string Magh { get; set; }
+        public string Reshteh { get; set; }
+
         public string telephone { get; set; }
         public string Bio { get; set; }
         public string about { get; set; }

@@ -238,7 +238,7 @@ namespace WebPlatformV1.Controllers
             return View();
         }
         [HttpGet]
-        public async Task<IActionResult> EditPost(int? id, Tbl_Blog model)
+        public async Task<IActionResult> EditPost(int? id, Tbl_Blog model, Blog models)
         {
             #region menuDt
             var cId = _userManager.GetUserId(User);
@@ -257,16 +257,17 @@ namespace WebPlatformV1.Controllers
                 return NotFound();
             }
 
-            model = _context.Find<Tbl_Blog>(id);
+            models.b = _context.Find<Tbl_Blog>(id);
+
             if (model == null)
             {
                 return NotFound();
             }
-            return View(model);
+            return View(models);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPost(int id, [Bind("ID", "Note")] Tbl_Blog model)
+        public async Task<IActionResult> EditPost(int id, [Bind("ID", "Note")] Tbl_Blog model,Blog models)
         {
             var consultantId = _userManager.GetUserId(User);
 
@@ -282,11 +283,22 @@ namespace WebPlatformV1.Controllers
 
                 _context.Update(model);
                 await _context.SaveChangesAsync();
+                 if (models.Picture?.Length > 0)
+                {
+                    string filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        "images",
 
+                        model.ID + Path.GetExtension(models.Picture.FileName));
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        models.Picture.CopyTo(stream);
+                    }
+                }
 
                 return RedirectToAction(nameof(blog));
             }
-            return View(model);
+            return View(models);
         }
         [HttpGet]
         public async Task<IActionResult> DeletePost(int? id)
@@ -590,6 +602,7 @@ namespace WebPlatformV1.Controllers
             model.Address = C.Address;
             model.CardNumber = C.CardNumber;
             model.PhoneNumber = C.PhoneNumber;
+            model.NationalCode = C.NationalCode;
             model.Shaba = C.Shaba;
             model.ProfilePicUrl = C.ProfilePicUrl;
             model.telephone = C.telephone;
@@ -633,6 +646,7 @@ namespace WebPlatformV1.Controllers
                 c.Province = model.Province;
                 c.telephone = model.telephone;
                 c.Bio = model.Bio;
+                c.NationalCode = model.NationalCode;
                 await _context.SaveChangesAsync();
                 if (model.Picture?.Length > 0)
                 {
@@ -738,9 +752,9 @@ namespace WebPlatformV1.Controllers
         [HttpPost]
         public async Task<IActionResult> TodoApp(todoappc model, Tbl_TodoAppConsultant todo)
         {
-            var studentId = _userManager.GetUserId(User);
+            var consultantid = _userManager.GetUserId(User);
             todo.Note = model.Note;
-            todo.ConsultantID = model.consultantid;
+            todo.ConsultantID = consultantid;
             todo.IsFinally = model.IsFinally;
 
             await _context.Tbl_TodoAppConsultant.AddAsync(todo);
@@ -750,12 +764,12 @@ namespace WebPlatformV1.Controllers
         [HttpPost]
         public async Task<IActionResult> TodoAppupdate(todoappc model, Tbl_TodoAppConsultant todo)
         {
-            var studentId = _userManager.GetUserId(User);
+            var consultantid = _userManager.GetUserId(User);
             todo.Note = model.Note;
-            todo.ConsultantID = model.consultantid;
+            todo.ConsultantID = consultantid;
             todo.IsFinally = true;
             todo.Id = model.id;
-            await _context.Tbl_TodoAppConsultant.AddAsync(todo);
+             _context.Tbl_TodoAppConsultant.Update(todo);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -1011,7 +1025,7 @@ namespace WebPlatformV1.Controllers
               Wallet.Credit=  Wallet.Credit - Comision.price;
                 Req = _context.tbl_Requestonlineclasses.Find(id);
                 Req.statusForConsultant = true;
-                Req.RequestTextConsultant = model.SRequest.RequestTextConsultant;
+                Req.RequestTextConsultant = model.Text;
                 Req.DisplayForAdmin = true;
                 _context.Tbl_Balances.Update(Balance);
                 _context.tbl_Wallets.Update(Wallet);

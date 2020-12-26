@@ -1024,3 +1024,7 @@ E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Release\netcoreapp
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Release\netcoreapp3.1\WebPlatformV1.pdb
 E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Release\netcoreapp3.1\WebPlatformV1.genruntimeconfig.cache
 C:\Users\4bagh\Documents\GitHub\platform\Project\WebPlatformV1\WebPlatformV1\obj\Release\netcoreapp3.1\Razor\Views\Consultant\OnlineInWeek.cshtml.g.cs
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Release\netcoreapp3.1\PersianTranslation.dll
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\bin\Release\netcoreapp3.1\PersianTranslation.pdb
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Release\netcoreapp3.1\Razor\Views\Account\ConfirmEmail.cshtml.g.cs
+E:\GitHub\newplatform\Project\WebPlatformV1\WebPlatformV1\obj\Release\netcoreapp3.1\Razor\Views\Consultant\OnlineInWeek.cshtml.g.cs

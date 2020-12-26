@@ -718,7 +718,7 @@ namespace WebPlatformV1.Migrations
                     b.Property<int?>("DoIDdo")
                         .HasColumnType("int");
 
-                    b.Property<int>("Gradeid")
+                    b.Property<int?>("Gradeid")
                         .HasColumnType("int");
 
                     b.Property<string>("NameTasks")
@@ -998,7 +998,7 @@ namespace WebPlatformV1.Migrations
                         .HasColumnName("Student_Family")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Gradeid")
+                    b.Property<int?>("Gradeid")
                         .HasColumnType("int");
 
                     b.Property<string>("Magh")
@@ -1018,6 +1018,9 @@ namespace WebPlatformV1.Migrations
 
                     b.Property<string>("Province")
                         .HasColumnName("Student_Province")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reshteh")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("State")
@@ -1168,9 +1171,7 @@ namespace WebPlatformV1.Migrations
 
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_grade", "grade")
                         .WithMany("tasks")
-                        .HasForeignKey("Gradeid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Gradeid");
 
                     b.HasOne("WebPlatformV1.Models.Student", "Student")
                         .WithMany()
@@ -1215,9 +1216,7 @@ namespace WebPlatformV1.Migrations
                 {
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_grade", "grade")
                         .WithMany("students")
-                        .HasForeignKey("Gradeid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Gradeid");
 
                     b.HasOne("WebPlatformV1.Models.DbContext.Tbl_RequestonlineclassStudent", null)
                         .WithMany("students")

@@ -64,7 +64,6 @@ namespace WebPlatformV1.Controllers
                     Email = model.Email,
                     NationalCode = model.NationalCode,
                     State = false,
-                    EmailConfirmed = true,
                     Name = model.Name,
                     Family = model.Family
                 };
@@ -73,8 +72,17 @@ namespace WebPlatformV1.Controllers
 
                 if (result.Succeeded)
                 {
+                    var emailConfirmationToken =
+                        await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var emailMessage =
+                        Url.Action("ConfirmEmail", "Account",
+                            new { username = user.UserName, token = emailConfirmationToken },
+                            Request.Scheme);
+                    await _messageSender.SendEmailAsync(model.Email, "Email confirmation", emailMessage);
                     var result1 = await _userManager.AddToRoleAsync(user, "Student");
-                    return RedirectToAction("LoginStudent", "Account");
+                    ViewBag.ErrorM = "ایمیلی جهت تایید حساب کاربری برای شما ارسال شد لطفا برای فعال سازی حساب خود لینک را فعال کنید";
+                    return View();
+                    //return RedirectToAction("LoginStudent", "Account");
                 }
 
                 foreach (var error in result.Errors)
@@ -86,6 +94,18 @@ namespace WebPlatformV1.Controllers
             return View(model);
 
         }
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(string userName, string token)
+        {
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(token))
+                return NotFound();
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null) return NotFound();
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+          
+            return Content(result.Succeeded ? "ایمیل شما تایید شد" : "ایمیل شما تایید نشده!");
+        }
+       
         public IActionResult AccessDenied()
         {
             return View();
@@ -111,7 +131,6 @@ namespace WebPlatformV1.Controllers
                     Email = model.Email,
                     NationalCode = model.NationalCode,
                     State = false,
-                    EmailConfirmed = true,
                     Name = model.Name,
                     Family = model.Family
                 };
@@ -120,9 +139,17 @@ namespace WebPlatformV1.Controllers
 
                 if (result.Succeeded)
                 {
+                    var emailConfirmationToken =
+                          await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var emailMessage =
+                        Url.Action("ConfirmEmail", "Account",
+                            new { username = user.UserName, token = emailConfirmationToken },
+                            Request.Scheme);
+                    await _messageSender.SendEmailAsync(model.Email, "Email confirmation", emailMessage);
                     var result1 = await _userManager.AddToRoleAsync(user, "Consultant");
-
-                    return RedirectToAction("LoginConsultant", "Account");
+                    ViewBag.ErrorM = "ایمیلی جهت تایید حساب کاربری برای شما ارسال شد لطفا برای فعال سازی حساب خود لینک را فعال کنید";
+                    return View();
+                    //return RedirectToAction("LoginConsultant", "Account");
                 }
 
                 foreach (var error in result.Errors)
@@ -229,7 +256,7 @@ namespace WebPlatformV1.Controllers
             if (ModelState.IsValid)
             {
                 var result = await _signInManager.PasswordSignInAsync(
-                    model.UserName, model.Password, model.RememberMe, true);
+                    model.UserName, model.Password, model.RememberMe,true);
 
                 if (result.Succeeded)
                 {
@@ -335,6 +362,19 @@ namespace WebPlatformV1.Controllers
                 }
             }
             return View(model);
+        }
+        public async Task<IActionResult> IsEmailInUse(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null) return Json(true);
+            return Json("ایمیل وارد شده از قبل موجود است");
+        }
+
+        public async Task<IActionResult> IsUserNameInUse(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null) return Json(true);
+            return Json("نام کاربری وارد شده از قبل موجود است");
         }
     }
 

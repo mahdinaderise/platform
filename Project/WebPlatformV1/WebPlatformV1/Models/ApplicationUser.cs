@@ -17,7 +17,7 @@ namespace WebPlatformV1.Models
         public string Family { get; set; }
         public int NationalCode { get; set; }
         public string telephone { get; set; }
-        public int Gradeid { get; set; }
+        public int? Gradeid { get; set; }
 
         public bool State { get; set; }
         public string Province { get; set; }
@@ -25,6 +25,7 @@ namespace WebPlatformV1.Models
         public string ConsultantID { get; set; }
         public string ProfilePicUrl { get; set; }
         public string Magh { get; set; }
+        public string Reshteh { get; set; }
         public DateTime CreditTime { get; set; }
         public Tbl_grade grade { get; set; }
 

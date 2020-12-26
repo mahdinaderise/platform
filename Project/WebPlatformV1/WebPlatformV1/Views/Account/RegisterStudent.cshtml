@@ -33,9 +33,9 @@
 
         <!-- logo -->
         @*<div id="logo">
-            <img class="logo" src="assets/media/image/logo-F.png" alt="image">
-            <img class="logo-dark" src="assets/media/image/logo-dark.html" alt="image">
-        </div>*@
+                <img class="logo" src="assets/media/image/logo-F.png" alt="image">
+                <img class="logo-dark" src="assets/media/image/logo-dark.html" alt="image">
+            </div>*@
         <!-- ./ logo -->
 
         <h5>ساخت اکانت</h5>
@@ -43,7 +43,12 @@
             <div class="card card-body bg-info">
                 <p>کلمه عبور شما حتما باید شامل یک حرف بزرگ یک حرف کوچک و یک نشانه مانند !$# باشد.</p>
             </div>
-
+            @if (ViewBag.ErrorM != null)
+            {
+                <div class="card card-body bg-success">
+                    <p>@ViewBag.ErrorM</p>
+                </div>
+            }
         </div>
         <!-- form -->
         <form asp-action="RegisterStudent" asp-controller="Account" method="post">
@@ -51,6 +56,8 @@
 
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="نام کاربری" required autofocus asp-for="UserName">
+                <span asp-validation-for="UserName" class="text-danger"></span>
+
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="نام " required asp-for="Name">
@@ -63,27 +70,37 @@
             </div>
             <div class="form-group">
                 <input type="email" class="form-control" placeholder="ایمیل " required asp-for="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" placeholder="رمزعبور" required asp-for="Password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" placeholder="تکرار رمزعبور" required asp-for="ConfirmPassword">
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
             </div>
-            <button type="submit" class="btn btn-primary btn-block">ثبت‌نام</button>
+            <button type="submit" class="btn btn-primary btn-block">ثبت‌ نام</button>
             <hr>
             <p class="text-muted">اکانت دارید?</p>
-            <a asp-action="Loginstudent" asp-controller="Account"  class="btn btn-outline-light btn-sm"> ورود!</a>
+            <a asp-action="Loginstudent" asp-controller="Account" class="btn btn-outline-light btn-sm"> ورود!</a>
         </form>
         <!-- ./ form -->
 
     </div>
 
+    @section Scripts {
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    }
     <!-- Plugin scripts -->
     <script src="~/vendors/bundle.js"></script>
     <!-- App scripts -->
     <script src="~/assets/js/app.min.js"></script>
-
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </body>
 
 </html>

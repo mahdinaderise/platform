@@ -48,7 +48,7 @@
                 <div class="form-row">
                    
                     <div class="col-md-3 mb-3">
-                        <label for="validationTooltip04">زمان</label>
+                        <label for="validationTooltip04">زمان(دقیقه)</label>
                         <input type="number" class="form-control" id="validationTooltip04" placeholder="زمان مطالعه" asp-for="TimeStudy" required>
                         <div class="invalid-tooltip">
                             زمان مطالعه را مشخص کنید
@@ -70,20 +70,21 @@
         <!-- end::main-content -->
         <div class="row">
             <div class="table-responsive">
-                <table class="table table-hover bg-white text-center">
+                <table class="table table-hover bg-white text-center table-striped">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col"> نوضیحات  </th>
                             <th scope="col">  زمان مطالعه </th>
                             <th scope="col">مبحث</th>
                         </tr>
+
                     </thead>
                     <tbody>
                         @foreach (var item in Model.tasks)
                         {
                             <tr>
 
-                                <td> @item.Descibtion</td>
+                                <td style="word-break:break-all"> @item.Descibtion</td>
                                 <td>
                                   @item.TimeStudy
                                 </td>

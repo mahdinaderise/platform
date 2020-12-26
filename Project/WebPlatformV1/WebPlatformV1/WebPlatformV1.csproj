@@ -27,4 +27,8 @@
     <Folder Include="wwwroot\images\Degree\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Mahdi\Downloads\06_Identity3\06_Identity3\Files\IdentitySample\PersianTranslation\PersianTranslation.csproj" />
+  </ItemGroup>
+
 </Project>
